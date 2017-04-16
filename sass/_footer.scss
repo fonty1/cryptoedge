@@ -1,0 +1,45 @@
+footer {
+  position: relative;
+  background-color: #484848;
+  padding: 10px;
+
+  #scroll-msg {
+      color: white;
+      text-align: center;
+  }
+
+  #more-funny-button {
+    display: none;
+    background: #02AAB0;
+    background: linear-gradient(to right, #02AAB0, #00CDAC);
+    color: white;
+    padding: 20px;
+    display: block;
+    text-align: center;
+    font-size: 1.4rem;
+    text-decoration: none;
+    transition: all 0.15s ease-in-out;
+    width: 50%;
+    max-width: 300px;
+    margin: 10px auto;
+    border-radius: 50px;
+
+    &:hover, &:active, &:focus {
+        background: linear-gradient(to right, darken(#02AAB0, 10%),darken(#00CDAC, 10%));
+        cursor: pointer;
+        text-decoration: none;
+    }
+  }
+}
+
+.social-container {
+  display: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+
+  .addthis_inline_follow_toolbox {
+    text-align: center;
+  }
+}

@@ -1,0 +1,35 @@
+.cryptotable {
+  max-width: 850px;
+  margin: 30px auto;
+}
+
+.cryptotable td {
+  vertical-align: middle;
+}
+
+.cryptotable th {
+  text-align: center;
+  vertical-align: top;
+  height: 50px;
+}
+
+.cryptotable th span {
+  font-size: 1rem;
+  display: block;
+  color: #CCC;
+  font-weight: normal;
+  height: 30px;
+}
+
+.cryptotable img {
+  max-width: 24px;
+  margin-right: 10px;
+}
+
+.cryptotable .cryptoid {
+  text-align: left;
+}
+
+.cryptotable .cryptoPrice {
+  text-align: right;
+}
