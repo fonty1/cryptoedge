@@ -63,11 +63,11 @@ class Portfolio extends Component {
                </tr>
              </thead>
              <tbody>
-                 {this.props.cryptoPortfolio.map(function(crypto, index){
+                 {/* {this.props.cryptoPortfolio.map(function(crypto, index){
                    return (
                               <PortfolioCoin crypto={ crypto } key={ index } index={ index } />
                           )
-                 })}
+                 })} */}
              </tbody>
             </Table>
         </div>)

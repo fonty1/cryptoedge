@@ -15,9 +15,6 @@ import Portfolio from './components/Portfolio/PortfolioContainer';
 const store = configureStore();
 
 class App extends Component {
-  constructor(props) {
-      super(props);
-  }
 
   render() {
     return (

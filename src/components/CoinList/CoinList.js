@@ -28,6 +28,7 @@ class CoinList extends Component {
       super(props);
       this.addCoinToPortfolio = this.addCoinToPortfolio.bind(this);
       this.getCryptoList = this.getCryptoList.bind(this);
+      console.log(props);
   }
 
   componentDidMount() {
@@ -59,7 +60,7 @@ class CoinList extends Component {
       });
 
       console.log(cryptoList);
-      //this.setState({ cryptoList: cryptoList });
+      this.props.actions.downloadCoins(cryptoList);
 
       return response;
     });
@@ -160,12 +161,6 @@ class CoinList extends Component {
   }
 
   render() {
-    var Coins = this.props.cryptoList.map(function(crypto, index){
-      return (
-                 <Coin key={ index } index={ index } />
-             )
-    }, this);
-
     return (
       <div className="LeaderboardList">
           <h4>Coin List</h4>
@@ -182,7 +177,8 @@ class CoinList extends Component {
              </tr>
            </thead>
            <tbody>
-               {Coins}
+             {this.props.cryptoList.map(function(crypto, index) {
+               return ( <Coin key={ index } crypto={ crypto } index={ index } /> ) }, this)}
            </tbody>
           </Table>
       </div>)

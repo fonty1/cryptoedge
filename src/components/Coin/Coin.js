@@ -4,6 +4,8 @@ import { Input } from 'react-bootstrap';
 class Coin extends Component {
     constructor(props) {
         super(props);
+        console.log('props');
+        console.log(props);
         this.handleAddCoinPortfolio = this.handleAddCoinPortfolio.bind(this);
     }
 

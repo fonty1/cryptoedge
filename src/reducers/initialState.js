@@ -1,6 +1,6 @@
 export default {
   coins: [],
-  selectedCoin: '',
+  selectedCoin: 'boot',
   coinPortfolio: {
     yourUSDs: '0',
     coinNumber: '0',
