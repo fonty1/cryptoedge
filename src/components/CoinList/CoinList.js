@@ -1,25 +1,25 @@
 import React, { Component } from 'react';
 import { Table } from 'react-bootstrap';
 import axios from 'axios';
-import { addCommas } from '../helpers';
+import { addCommas } from '../../helpers';
 import Coin from '../Coin/CoinContainer'
 import './CoinList.css';
 
-import logo from './logo.svg';
-import btc from './img/btc.png';
-import eth from './img/eth.png';
-import ltc from './img/ltc.png';
-import xrp from './img/xrp.png';
-import dash from './img/dash.png';
-import xmr from './img/xmr.png';
-import etc from './img/etc.png';
-import xem from './img/xem.png';
-import rep from './img/rep.png';
-import maid from './img/maid.png';
-import pivx from './img/pivx.png';
-import zec from './img/zec.png';
-import gnt from './img/gnt.png';
-import unknown from './img/unknown.png';
+import logo from '../../logo.svg';
+import btc from '../../img/btc.png';
+import eth from '../../img/eth.png';
+import ltc from '../../img/ltc.png';
+import xrp from '../../img/xrp.png';
+import dash from '../../img/dash.png';
+import xmr from '../../img/xmr.png';
+import etc from '../../img/etc.png';
+import xem from '../../img/xem.png';
+import rep from '../../img/rep.png';
+import maid from '../../img/maid.png';
+import pivx from '../../img/pivx.png';
+import zec from '../../img/zec.png';
+import gnt from '../../img/gnt.png';
+import unknown from '../../img/unknown.png';
 
 const url = "https://api.coinmarketcap.com/v1/ticker/?limit=10";
 
@@ -37,8 +37,8 @@ class CoinList extends Component {
   getCryptoList() {
     let that = this;
     axios.get(url).then(response => {
-      var cryptoList = response.data;
-      var btcVal = cryptoList[0].market_cap_usd;
+      let cryptoList = response.data;
+      let btcVal = cryptoList[0].market_cap_usd;
 
       cryptoList = cryptoList.map(function(cryptoRow) {
         // Maps Icons to their Coin

@@ -1,11 +1,10 @@
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import * as actions from '../../actions/coinListActions';
-import CoinList from './CoinList';
+import Coin from './Coin';
 
 const mapStateToProps = (state, ownProps) => ({
-    ...ownProps,
-    mobileMenuVisible: state.mobileMenuVisible
+    ...ownProps
 });
 
 const mapDispatchToProps = (dispatch) => {
@@ -14,4 +13,4 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-export default connect(  mapStateToProps,  mapDispatchToProps )(CoinList);
+export default connect(  mapStateToProps,  mapDispatchToProps )(Coin);

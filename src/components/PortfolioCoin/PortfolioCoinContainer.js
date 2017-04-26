@@ -4,8 +4,7 @@ import * as actions from '../../actions/coinListActions';
 import CoinList from './CoinList';
 
 const mapStateToProps = (state, ownProps) => ({
-    ...ownProps,
-    mobileMenuVisible: state.mobileMenuVisible
+    ...ownProps
 });
 
 const mapDispatchToProps = (dispatch) => {

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './AppHeader.css';
 import cryptoedge from '../../img/cryptoedge.png';
 
-class Header extends Component {
+class AppHeader extends Component {
   render() {
     return <header>
               <img src={cryptoedge} className="edge-logo"/>
@@ -11,4 +11,4 @@ class Header extends Component {
   }
 }
 
-export default Header;
+export default AppHeader;

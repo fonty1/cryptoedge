@@ -13,3 +13,11 @@ export function updatePortfolioCoinCount() {
     type: UPDATE_PORTFOLIOCOIN_COUNT
   };
 }
+
+import { UPDATE_PORTFOLIO_TOTALS } from '../constants/actionTypes';
+
+export function updatePortfolioTotals() {
+  return {
+    type: UPDATE_PORTFOLIO_TOTALS
+  };
+}

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Table, Input } from 'react-bootstrap';
-import PortfolioCoin from './PortfolioCoin';
+import PortfolioCoin from '../PortfolioCoin/PortfolioCoin';
 import './Portfolio.css';
 
 class Portfolio extends Component {

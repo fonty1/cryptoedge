@@ -1,7 +1,6 @@
-import React, {Component} from 'react';
-import {Input} from 'react-bootstrap';
-import './PortfolioCoin.css';
-import { addCommas } from '../helpers';
+import React, { Component } from 'react';
+import { Input } from 'react-bootstrap';
+import { addCommas } from '../../helpers';
 
 class PortfolioCoin extends Component {
     constructor(props) {

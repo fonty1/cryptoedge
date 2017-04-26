@@ -1,13 +1,9 @@
-import React, {Component} from 'react';
-import {Input} from 'react-bootstrap';
-import './Coin.css';
+import React, { Component } from 'react';
+import { Input } from 'react-bootstrap';
 
 class Coin extends Component {
     constructor(props) {
         super(props);
-
-        this.state = {
-        };
         this.handleAddCoinPortfolio = this.handleAddCoinPortfolio.bind(this);
     }
 
@@ -19,7 +15,7 @@ class Coin extends Component {
         return (
             <tr className="cryptorank">
                 <td>
-                    <button onClick={(e) => this.handleAddCoinPortfolio(e, this.props.crypto.symbol)} className="addCoinToPortfolio"><i className="fa fa-plus-square-o" aria-hidden="true"></i></button>
+                    <button onClick={(e) => this.handleAddCoinPortfolio(e)} className="addCoinToPortfolio"><i className="fa fa-plus-square-o" aria-hidden="true"></i></button>
                 </td>
                 <td>{this.props.crypto.rank}</td>
                 <td className="cryptoid">
@@ -35,4 +31,4 @@ class Coin extends Component {
     }
 }
 
-export default LeaderboardCoin;
+export default Coin;
