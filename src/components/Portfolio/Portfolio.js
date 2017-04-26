@@ -1,37 +1,41 @@
 import React, { Component } from 'react';
 import { Table, Input } from 'react-bootstrap';
 import PortfolioCoin from './PortfolioCoin';
-import './PortfolioList.css';
-
-// Coin gets the props of 'crypto' which is a specific coin and all its details
-// This component is about displaying what's in 'crypto'.
+import './Portfolio.css';
 
 class Portfolio extends Component {
     constructor(props) {
         super(props);
-
-        this.state = {
-
-        };
-
         this.updateCoinNumber = this.updateCoinNumber.bind(this);
+        this.getSavedPortfolio = this.getSavedPortfolio.bind(this);
+    }
+
+    componentDidMount() {
+        this.getSavedPortfolio();
+    }
+
+    getSavedPortfolio() {
+      // Load local storage here
     }
 
     updateCoinNumber(evt) {
-        this.setState({coinNumber: evt.target.value});
+        // this.setState({coinNumber: evt.target.value});
+        // this.calculateUSDHoldings(evt.target.value);
+        // this.calculatePercentageHoldings(evt.target.value);
+    }
 
-        this.calculateUSDHoldings(evt.target.value);
-        this.calculatePercentageHoldings(evt.target.value);
+    calcYourUSDs() {
+        // var calcedVal = this.state.coinValue * 10;
+        // this.setState({ yourUSDs: calcedVal });
     }
 
     calculateUSDHoldings(updatedCoinNumber) {
-        var coinUSD = updatedCoinNumber * this.props.crypto.price_usd;
-
-        this.setState({coinUSD: coinUSD});
+        // var coinUSD = updatedCoinNumber * this.props.crypto.price_usd;
+        // this.setState({coinUSD: coinUSD});
     }
 
     calculatePercentageHoldings(updatedCoinNumber) {
-        var coinPercentage = 0;
+        let coinPercentage = 0;
         // I will need to calculate the total somewhere...
         // percentageHolding should live on the parent cryptoObject.
         //
@@ -61,7 +65,7 @@ class Portfolio extends Component {
              <tbody>
                  {this.props.cryptoPortfolio.map(function(crypto, index){
                    return (
-                              <PortfolioCoin crypto={ crypto } key={ index } />
+                              <PortfolioCoin crypto={ crypto } key={ index } index={ index } />
                           )
                  })}
              </tbody>

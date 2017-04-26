@@ -1,32 +1,24 @@
 import React, {Component} from 'react';
 import {Input} from 'react-bootstrap';
-import './Coin.css';
+import './PortfolioCoin.css';
 import { addCommas } from '../helpers';
-
-// Coin gets the props of 'crypto' which is a specific coin and all its details
-// This component is about displaying what's in 'crypto'.
 
 class PortfolioCoin extends Component {
     constructor(props) {
         super(props);
-
-        this.state = {
-
-        };
-
         this.updateCoinNumber = this.updateCoinNumber.bind(this);
+        this.calculateUSDHoldings = this.calculateUSDHoldings.bind(this);
     }
 
     updateCoinNumber(evt) {
-        this.setState({coinNumber: evt.target.value});
-        this.calculateUSDHoldings(evt.target.value);
-        this.calculatePercentageHoldings(evt.target.value);
+        //this.setState({coinNumber: evt.target.value});
+        //this.calculateUSDHoldings(evt.target.value);
+        //this.calculatePercentageHoldings(evt.target.value);
     }
 
     calculateUSDHoldings(updatedCoinNumber) {
-        var coinUSD = '$' + addCommas((updatedCoinNumber * this.props.crypto.price_usd).toFixed(2));
-
-        this.setState({coinUSD: coinUSD});
+        //var coinUSD = '$' + addCommas((updatedCoinNumber * this.props.crypto.price_usd).toFixed(2));
+        //this.setState({coinUSD: coinUSD});
     }
 
     calculatePercentageHoldings(updatedCoinNumber) {

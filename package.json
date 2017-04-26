@@ -6,6 +6,7 @@
     "react": "^15.4.2",
     "react-bootstrap": "^0.30.8",
     "react-dom": "^15.4.2",
+    "react-redux": "^5.0.4",
     "react-router-dom": "^4.0.0"
   },
   "devDependencies": {
@@ -18,7 +19,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
-    "build-css": "node-sass sass/ -o sass/",
-    "watch-css": "npm run build-css && node-sass sass/ -o sass/ --watch --recursive"
+    "build-css": "node-sass --include-path node_modules/normalize-scss/sass src/ -o src/",
+    "watch-css": "npm run build-css && node-sass --include-path node_modules/normalize-scss/sass src/ -o src/ --watch --recursive"
   }
 }

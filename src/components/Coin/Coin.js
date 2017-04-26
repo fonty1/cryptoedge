@@ -2,23 +2,24 @@ import React, {Component} from 'react';
 import {Input} from 'react-bootstrap';
 import './Coin.css';
 
-// Coin gets the props of 'crypto' which is a specific coin and all its details
-// This component is about displaying what's in 'crypto'.
-
-class LeaderboardCoin extends Component {
+class Coin extends Component {
     constructor(props) {
         super(props);
 
         this.state = {
         };
+        this.handleAddCoinPortfolio = this.handleAddCoinPortfolio.bind(this);
+    }
 
+    handleAddCoinPortfolio(e, index) {
+        this.props.addCoinToPortfolio(index)
     }
 
     render() {
         return (
             <tr className="cryptorank">
                 <td>
-                    <button className="addCoinToPortfolio"><i className="fa fa-plus-square-o" aria-hidden="true"></i></button>
+                    <button onClick={(e) => this.handleAddCoinPortfolio(e, this.props.crypto.symbol)} className="addCoinToPortfolio"><i className="fa fa-plus-square-o" aria-hidden="true"></i></button>
                 </td>
                 <td>{this.props.crypto.rank}</td>
                 <td className="cryptoid">
