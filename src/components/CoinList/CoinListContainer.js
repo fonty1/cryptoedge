@@ -5,7 +5,7 @@ import CoinList from './CoinList';
 
 const mapStateToProps = (state, ownProps) => ({
     ...ownProps,
-    cryptoList: state.coinList.coins
+    cryptoList: state.coinStorage.coins
 });
 
 const mapDispatchToProps = (dispatch) => {
@@ -15,4 +15,3 @@ const mapDispatchToProps = (dispatch) => {
 };
 
 export default connect(  mapStateToProps,  mapDispatchToProps )(CoinList);
-    // cryptoList: state.coins,

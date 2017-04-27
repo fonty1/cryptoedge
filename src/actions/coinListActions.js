@@ -8,8 +8,9 @@ export function downloadCoins(coins) {
   };
 }
 
-export function addCoinToPortfolio() {
+export function addCoinToPortfolio(coin) {
   return {
     type: ADD_COIN_TO_PORTFOLIO,
+    coin
   };
 }

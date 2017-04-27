@@ -4,7 +4,8 @@ import * as actions from '../../actions/portfolioActions';
 import Portfolio from './Portfolio';
 
 const mapStateToProps = (state, ownProps) => ({
-    ...ownProps
+    ...ownProps,
+    portfolioCryptoList: state.coinStorage.portfolioCoins
 });
 
 const mapDispatchToProps = (dispatch) => {

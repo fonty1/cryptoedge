@@ -5,7 +5,6 @@ import { addCommas } from '../../helpers';
 import Coin from '../Coin/CoinContainer'
 import './CoinList.css';
 
-import logo from '../../logo.svg';
 import btc from '../../img/btc.png';
 import eth from '../../img/eth.png';
 import ltc from '../../img/ltc.png';
@@ -26,9 +25,7 @@ const url = "https://api.coinmarketcap.com/v1/ticker/?limit=10";
 class CoinList extends Component {
   constructor(props) {
       super(props);
-      this.addCoinToPortfolio = this.addCoinToPortfolio.bind(this);
       this.getCryptoList = this.getCryptoList.bind(this);
-      console.log(props);
   }
 
   componentDidMount() {
@@ -64,10 +61,6 @@ class CoinList extends Component {
 
       return response;
     });
-  }
-
-  addCoinToPortfolio(coinKey) {
-    let percent_change_1h = 999;
   }
 
   symbolMapping(cryptoRow) {
@@ -178,7 +171,24 @@ class CoinList extends Component {
            </thead>
            <tbody>
              {this.props.cryptoList.map(function(crypto, index) {
-               return ( <Coin key={ index } crypto={ crypto } index={ index } /> ) }, this)}
+               return (
+                 <tr className="cryptorank">
+                     <td>
+                         <button onClick={() => this.props.actions.addCoinToPortfolio(crypto)} className="addCoinToPortfolio">
+                             <i className="fa fa-plus-square-o" aria-hidden="true"></i>
+                         </button>
+                     </td>
+                     <td>{crypto.rank}</td>
+                     <td className="cryptoid">
+                         <img alt={crypto.symbol} src={crypto.logo}/>{crypto.name}
+                          &nbsp;<span className="cryptoSymbol">({crypto.symbol})</span>
+                     </td>
+                     <td className="bold">${crypto.formatted_price_usd}</td>
+                     <td className="percentage__changes" style={crypto.oneHourStyles}>{crypto.percent_change_1h}%</td>
+                     <td className="percentage__changes" style={crypto.twentyFourHourStyles}>{crypto.percent_change_24h}%</td>
+                     <td className="percentage__changes" style={crypto.sevenDayStyles}>{crypto.percent_change_7d}%</td>
+                 </tr>
+               ) }, this )}
            </tbody>
           </Table>
       </div>)

@@ -11,7 +11,7 @@ class Portfolio extends Component {
     }
 
     componentDidMount() {
-        this.getSavedPortfolio();
+        //this.getSavedPortfolio();
     }
 
     getSavedPortfolio() {
@@ -63,11 +63,25 @@ class Portfolio extends Component {
                </tr>
              </thead>
              <tbody>
-                 {/* {this.props.cryptoPortfolio.map(function(crypto, index){
+                 {this.props.portfolioCryptoList.map(function(crypto, index){
                    return (
-                              <PortfolioCoin crypto={ crypto } key={ index } index={ index } />
-                          )
-                 })} */}
+                     <tr className="cryptorank">
+                         <td>
+                             <button className="addCoinToPortfolio">
+                                 <i className="fa fa-plus-square-o" aria-hidden="true"></i>
+                             </button>
+                         </td>
+                         <td>{crypto.rank}</td>
+                         <td className="cryptoid">
+                             <img alt={crypto.symbol} src={crypto.logo}/>{crypto.name}
+                              &nbsp;<span className="cryptoSymbol">({crypto.symbol})</span>
+                         </td>
+                         <td className="bold">${crypto.formatted_price_usd}</td>
+                         <td className="percentage__changes" style={crypto.oneHourStyles}>{crypto.percent_change_1h}%</td>
+                         <td className="percentage__changes" style={crypto.twentyFourHourStyles}>{crypto.percent_change_24h}%</td>
+                         <td className="percentage__changes" style={crypto.sevenDayStyles}>{crypto.percent_change_7d}%</td>
+                     </tr>
+                   ) }, this )}
              </tbody>
             </Table>
         </div>)

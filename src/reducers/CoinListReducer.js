@@ -6,10 +6,14 @@ export default function coinListReducer(state = initialState, action) {
 
   switch (action.type) {
     case ADD_COIN_TO_PORTFOLIO:
-      return state;
+      return {
+        ...state,
+        portfolioCoins: action.coin
+      };
 
     case DOWNLOAD_COINS:
       return {
+        ...state,
         coins: action.coins
       };
 

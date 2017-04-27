@@ -1,11 +1,9 @@
 import { combineReducers } from 'redux';
-import coinPortfolio from './portfolioReducer';
-import coinList from './coinListReducer';
-
+//import coinPortfolio from './portfolioReducer';
+import coinStorage from './coinListReducer';
 
 const rootReducer = combineReducers({
-  coinPortfolio,
-  coinList
+  coinStorage
 });
 
 export default rootReducer;

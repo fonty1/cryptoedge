@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './AppHeader.css';
-import cryptoedge from '../../img/cryptoedge.png';
+import cryptoedge from '../../img/cryptoedge2.png';
 
 class AppHeader extends Component {
   render() {

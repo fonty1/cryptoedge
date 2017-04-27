@@ -4,8 +4,7 @@ import * as actions from '../../actions/coinListActions';
 import Coin from './Coin';
 
 const mapStateToProps = (state, ownProps) => ({
-  ...ownProps,
-  cryptoList: state.coinList.coins
+  ...ownProps
 });
 
 const mapDispatchToProps = (dispatch) => {
