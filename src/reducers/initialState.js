@@ -1,7 +1,7 @@
 export default {
   coins: [],
   selectedCoin: 'boot',
-  portfolioCoins: [],
+  portfolio: [],
   coinPortfolioTotals: {
     yourTotalUSD: '0'
   }

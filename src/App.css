@@ -57,15 +57,16 @@ header {
 .yourCoinNumber {
   text-align: right; }
 
-.addCoinToPortfolio {
+.addCoinToPortfolio, .removeCoinFromPortfolio {
   font-size: 2.2rem;
   color: #7398c1;
   background: transparent;
   border: 0;
   height: 30px; }
 
-.addCoinToPortfolioColumn {
-  width: 30px; }
+.addCoinToPortfolioColumn, .removeCoinFromPortfolioColumn {
+  width: 30px;
+  text-align: center; }
 
 .table.cryptotable > tbody > tr > td {
   vertical-align: middle; }

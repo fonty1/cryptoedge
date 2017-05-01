@@ -1,11 +1,11 @@
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import * as actions from '../../actions/coinListActions';
+import * as actions from '../../actions/coinListPortfolioActions';
 import CoinList from './CoinList';
 
 const mapStateToProps = (state, ownProps) => ({
     ...ownProps,
-    cryptoList: state.coinStorage.coins
+    cryptoList: state.coinListPortfolio.coins
 });
 
 const mapDispatchToProps = (dispatch) => {

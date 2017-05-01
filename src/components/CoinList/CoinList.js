@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { Table } from 'react-bootstrap';
 import axios from 'axios';
 import { addCommas } from '../../helpers';
-import Coin from '../Coin/CoinContainer'
 import './CoinList.css';
 
 import btc from '../../img/btc.png';
@@ -38,9 +37,13 @@ class CoinList extends Component {
       let cryptoList = response.data;
       let btcVal = cryptoList[0].market_cap_usd;
 
-      cryptoList = cryptoList.map(function(cryptoRow) {
+      cryptoList = cryptoList.map(function(cryptoRow, index) {
         // Maps Icons to their Coin
         cryptoRow.logo = that.symbolMapping(cryptoRow);
+
+        cryptoRow.position = index;
+
+        cryptoRow.count = 0;
 
         // Currency formatting
         cryptoRow.formatted_price_usd = addCommas(cryptoRow.price_usd);
@@ -172,8 +175,8 @@ class CoinList extends Component {
            <tbody>
              {this.props.cryptoList.map(function(crypto, index) {
                return (
-                 <tr className="cryptorank">
-                     <td>
+                 <tr className="cryptorank" key={index}>
+                     <td className="addCoinToPortfolioColumn">
                          <button onClick={() => this.props.actions.addCoinToPortfolio(crypto)} className="addCoinToPortfolio">
                              <i className="fa fa-plus-square-o" aria-hidden="true"></i>
                          </button>

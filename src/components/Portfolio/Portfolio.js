@@ -2,12 +2,22 @@ import React, { Component } from 'react';
 import { Table, Input } from 'react-bootstrap';
 import PortfolioCoin from '../PortfolioCoin/PortfolioCoin';
 import './Portfolio.css';
+import PortCoin from '../PortCoin/PortCoinContainer';
 
 class Portfolio extends Component {
     constructor(props) {
         super(props);
-        this.updateCoinNumber = this.updateCoinNumber.bind(this);
+        this.state = {value: ''};
+        this.handleChange = this.handleChange.bind(this);
         this.getSavedPortfolio = this.getSavedPortfolio.bind(this);
+    }
+
+    handleChange(index, event) {
+      var newVal = event.target.value;
+      this.setState({value: event.target.value});
+      this.props.actions.updatePortfolioCount(newVal, index);
+    //   this.calculateUSDHoldings(evt.target.value, index);
+    //   this.calculatePercentageHoldings(evt.target.value);
     }
 
     componentDidMount() {
@@ -18,20 +28,14 @@ class Portfolio extends Component {
       // Load local storage here
     }
 
-    updateCoinNumber(evt) {
-        // this.setState({coinNumber: evt.target.value});
-        // this.calculateUSDHoldings(evt.target.value);
-        // this.calculatePercentageHoldings(evt.target.value);
-    }
-
     calcYourUSDs() {
-        // var calcedVal = this.state.coinValue * 10;
-        // this.setState({ yourUSDs: calcedVal });
+        var calcedVal = this.state.coinValue * 10;
+        this.setState({ yourUSDs: calcedVal });
     }
 
-    calculateUSDHoldings(updatedCoinNumber) {
-        // var coinUSD = updatedCoinNumber * this.props.crypto.price_usd;
-        // this.setState({coinUSD: coinUSD});
+    calculateUSDHoldings(updatedCoinNumber, index) {
+        var coinUSD = updatedCoinNumber * this.props.portfolio[index].price_usd;
+        this.setState({coinUSD: coinUSD});
     }
 
     calculatePercentageHoldings(updatedCoinNumber) {
@@ -46,7 +50,7 @@ class Portfolio extends Component {
       return (
         <div className="Portfolio">
             <h4>Portfolio</h4>
-            <Table responsive className="cryptotable">
+            <Table responsive striped className="cryptotable">
             <thead>
                <tr>
                   <th>Remove</th>
@@ -65,22 +69,7 @@ class Portfolio extends Component {
              <tbody>
                  {this.props.portfolioCryptoList.map(function(crypto, index){
                    return (
-                     <tr className="cryptorank">
-                         <td>
-                             <button className="addCoinToPortfolio">
-                                 <i className="fa fa-plus-square-o" aria-hidden="true"></i>
-                             </button>
-                         </td>
-                         <td>{crypto.rank}</td>
-                         <td className="cryptoid">
-                             <img alt={crypto.symbol} src={crypto.logo}/>{crypto.name}
-                              &nbsp;<span className="cryptoSymbol">({crypto.symbol})</span>
-                         </td>
-                         <td className="bold">${crypto.formatted_price_usd}</td>
-                         <td className="percentage__changes" style={crypto.oneHourStyles}>{crypto.percent_change_1h}%</td>
-                         <td className="percentage__changes" style={crypto.twentyFourHourStyles}>{crypto.percent_change_24h}%</td>
-                         <td className="percentage__changes" style={crypto.sevenDayStyles}>{crypto.percent_change_7d}%</td>
-                     </tr>
+                       <PortCoin crypto={crypto} index={index} key={index} />
                    ) }, this )}
              </tbody>
             </Table>
@@ -89,3 +78,5 @@ class Portfolio extends Component {
 }
 
 export default Portfolio;
+
+// {this.updateCoinNumber.bind(this)}
