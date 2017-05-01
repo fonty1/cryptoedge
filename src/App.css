@@ -10,10 +10,11 @@ body {
 .app__content {
   max-width: 1300px;
   margin: 0 auto; }
-  .app__content h2 {
-    text-align: left;
-    text-transform: uppercase;
-    font-size: 2.2rem; }
+
+.app__content h2 {
+  text-align: left;
+  text-transform: uppercase;
+  font-size: 2.2rem; }
 
 .App-intro {
   font-size: large; }
@@ -37,13 +38,14 @@ header {
   text-align: left;
   background: -webkit-radial-gradient(#464646, #444);
   background: radial-gradient(#464646, #444); }
-  header h1 {
-    font-size: 10px;
-    margin-top: 10px;
-    line-height: 1;
-    padding: 0;
-    text-transform: uppercase;
-    margin-left: -5px; }
+
+header h1 {
+  font-size: 10px;
+  margin-top: 10px;
+  line-height: 1;
+  padding: 0;
+  text-transform: uppercase;
+  margin-left: -5px; }
 
 .table.cryptotable > tbody > tr > td.bold {
   font-size: 1.6rem;
@@ -64,7 +66,7 @@ header {
   border: 0;
   height: 30px; }
 
-.addCoinToPortfolioColumn, .removeCoinFromPortfolioColumn {
+.addCoinToPortfolioColumn, .removeCoinFromPortfolioColumn, .capRank {
   width: 30px;
   text-align: center; }
 

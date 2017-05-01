@@ -8,16 +8,7 @@ class Portfolio extends Component {
     constructor(props) {
         super(props);
         this.state = {value: ''};
-        this.handleChange = this.handleChange.bind(this);
         this.getSavedPortfolio = this.getSavedPortfolio.bind(this);
-    }
-
-    handleChange(index, event) {
-      var newVal = event.target.value;
-      this.setState({value: event.target.value});
-      this.props.actions.updatePortfolioCount(newVal, index);
-    //   this.calculateUSDHoldings(evt.target.value, index);
-    //   this.calculatePercentageHoldings(evt.target.value);
     }
 
     componentDidMount() {
@@ -28,24 +19,6 @@ class Portfolio extends Component {
       // Load local storage here
     }
 
-    calcYourUSDs() {
-        var calcedVal = this.state.coinValue * 10;
-        this.setState({ yourUSDs: calcedVal });
-    }
-
-    calculateUSDHoldings(updatedCoinNumber, index) {
-        var coinUSD = updatedCoinNumber * this.props.portfolio[index].price_usd;
-        this.setState({coinUSD: coinUSD});
-    }
-
-    calculatePercentageHoldings(updatedCoinNumber) {
-        let coinPercentage = 0;
-        // I will need to calculate the total somewhere...
-        // percentageHolding should live on the parent cryptoObject.
-        //
-        //this.setState({coinPercentage: this.props.crypto.percentageHolding});
-    }
-
     render() {
       return (
         <div className="Portfolio">
@@ -54,7 +27,7 @@ class Portfolio extends Component {
             <thead>
                <tr>
                   <th>Remove</th>
-                  <th>Rank</th>
+                  <th>Cap Rank</th>
                   <th className="cryptoid">Crypto Currency</th>
                   <th className="holding">Your Coins<span>#</span></th>
                   <th className="holding">Your Coin Value<span>$USD</span></th>

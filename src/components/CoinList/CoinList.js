@@ -164,7 +164,7 @@ class CoinList extends Component {
           <thead>
              <tr>
                 <th className="addCoinToPortfolioColumn">Portfolio</th>
-                <th>Rank</th>
+                <th>Cap Rank</th>
                 <th className="cryptoid">Crypto Currency</th>
                 <th className="cryptoPrice">USD</th>
                 <th>1 Hour</th>
@@ -181,7 +181,7 @@ class CoinList extends Component {
                              <i className="fa fa-plus-square-o" aria-hidden="true"></i>
                          </button>
                      </td>
-                     <td>{crypto.rank}</td>
+                     <td className="capRank">{crypto.rank}</td>
                      <td className="cryptoid">
                          <img alt={crypto.symbol} src={crypto.logo}/>{crypto.name}
                           &nbsp;<span className="cryptoSymbol">({crypto.symbol})</span>

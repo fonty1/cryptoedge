@@ -5,7 +5,6 @@ import { DOWNLOAD_COINS } from '../constants/actionTypes';
 import { UPDATE_PORTFOLIOCOIN_COUNT } from '../constants/actionTypes';
 import { UPDATE_USD_HOLDINGS } from '../constants/actionTypes';
 import { UPDATE_PERCENTAGE_HOLDINGS } from '../constants/actionTypes';
-const { Map } = require('immutable')
 
 export default function coinListPortfolioReducer(state = initialState, action) {
   let portfolio = updateObjectInArray(state.portfolio, action);
@@ -38,18 +37,6 @@ export default function coinListPortfolioReducer(state = initialState, action) {
         portfolio
       };
 
-    case UPDATE_USD_HOLDINGS:
-        return {
-          ...state,
-          portfolio
-        };
-
-    case UPDATE_PERCENTAGE_HOLDINGS:
-        return {
-          ...state,
-          portfolio
-        };
-
     default:
       return state;
   }
@@ -59,19 +46,14 @@ function updateObjectInArray(array, action) {
     return array.map( (item, index) => {
         if(index !== action.position) {
             // This isn't the item we care about - keep it as-is
-              return item;
+          return item;
         } else {
           return {
               ...item,
-              count: action.count
+              count: action.count,
+              coinUSD: action.formattedUSD,
+              coinPercentage: action.count
           };
         }
     });
 }
-//
-// portfolio: state.portfolio.map(portfolio => portfolio.position === action.position ?
-//     // transform the one with a matching id
-//     { ...portfolio, coinCount: action.count } :
-//     // otherwise return original todo
-//     portfolio
-// )

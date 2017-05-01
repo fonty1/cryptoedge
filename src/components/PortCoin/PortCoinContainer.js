@@ -10,13 +10,6 @@ const mapStateToProps = (state, ownProps) => ({
 const mapDispatchToProps = (dispatch) => {
   return {
     actions: bindActionCreators(actions, dispatch),
-    handleChange(index, event) {
-      var newVal = event.target.value;
-      this.setState({value: event.target.value});
-      this.props.actions.updatePortfolioCount(newVal, index);
-      this.props.actions.updateUSDHoldings(newVal, index);
-      this.props.actions.updatePercentageHoldings(newVal, index);
-    }
   };
 };
 

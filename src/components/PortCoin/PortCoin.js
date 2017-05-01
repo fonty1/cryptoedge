@@ -5,10 +5,11 @@ const PortCoin = ( { actions, crypto, index } ) => {
 
     const onChange = e => {
       e.preventDefault()
-
       let newVal = val.value;
-      actions.updatePortfolioCount(newVal, index);
+      let formattedUSD = (newVal * crypto.price_usd);
+      actions.updatePortfolioCount(newVal, index, formattedUSD);
     }
+
       return (
         <tr className="cryptorank" key={index}>
             <td className="removeCoinFromPortfolioColumn">
@@ -16,7 +17,7 @@ const PortCoin = ( { actions, crypto, index } ) => {
                     <i className="fa fa-minus-square-o" aria-hidden="true"></i>
                 </button>
             </td>
-            <td>
+            <td className="capRank">
                 {crypto.rank}
             </td>
             <td className="cryptoid">
@@ -27,14 +28,13 @@ const PortCoin = ( { actions, crypto, index } ) => {
                     className="yourCoinNumber"
                     ref={ el => val = el }
                     onChange={onChange}
-
                 />
             </td>
             <td>
-
+                ${crypto.coinUSD}
             </td>
             <td>
-
+                {crypto.coinPercentage}%
             </td>
             <td className="bold">
                 ${crypto.formatted_price_usd}
@@ -42,11 +42,11 @@ const PortCoin = ( { actions, crypto, index } ) => {
             <td>
                 {crypto.price_btc}
             </td>
-            <td style={crypto.oneHourStyles}>
+            <td className="percentage__changes" style={crypto.oneHourStyles}>
                 {crypto.percent_change_1h}%</td>
-            <td style={crypto.twentyFourHourStyles}>
+            <td className="percentage__changes" style={crypto.twentyFourHourStyles}>
                 {crypto.percent_change_24h}%</td>
-            <td style={crypto.sevenDayStyles}>
+            <td className="percentage__changes" style={crypto.sevenDayStyles}>
                 {crypto.percent_change_7d}%</td>
         </tr>
       )
