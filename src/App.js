@@ -11,6 +11,7 @@ import { addCommas } from './helpers';
 import AppHeader from './components/AppHeader/AppHeader';
 import CoinList from './components/CoinList/CoinListContainer';
 import Portfolio from './components/Portfolio/PortfolioContainer';
+import TotalPortfolio from './components/TotalPortfolio/TotalPortfolioContainer';
 
 const store = configureStore();
 
@@ -25,6 +26,7 @@ class App extends Component {
             <div className="app__content">
               <Portfolio/>
               <CoinList/>
+              <TotalPortfolio/>
             </div>
           </div>
         </Router>

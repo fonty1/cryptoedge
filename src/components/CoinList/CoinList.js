@@ -43,6 +43,8 @@ class CoinList extends Component {
 
         cryptoRow.position = index;
 
+        // Setting defaults temporarily
+        cryptoRow.percentage = 0;
         cryptoRow.count = 0;
 
         // Currency formatting

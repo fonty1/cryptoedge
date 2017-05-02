@@ -52,7 +52,7 @@ function updateObjectInArray(array, action) {
               ...item,
               count: action.count,
               coinUSD: action.formattedUSD,
-              coinPercentage: action.count
+              percentage: action.percentage
           };
         }
     });

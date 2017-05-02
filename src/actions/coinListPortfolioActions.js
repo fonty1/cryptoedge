@@ -31,11 +31,14 @@ export function downloadCoins(coins) {
   };
 }
 
-export function updatePortfolioCount(count, position, formattedUSD) {
+export function updatePortfolioCount(count, position, formattedUSD, percentage, price_usd, price_btc) {
   return {
     type: UPDATE_PORTFOLIOCOIN_COUNT,
     count,
     position,
-    formattedUSD
+    formattedUSD,
+    percentage,
+    price_usd,
+    price_btc
   };
 }

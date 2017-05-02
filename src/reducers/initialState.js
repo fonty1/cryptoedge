@@ -1,10 +1,8 @@
 export default {
   coins: [],
-  selectedCoin: 'boot',
   portfolio: [],
-  coinPortfolioTotals: {
-    yourTotalUSD: '0'
-  }
+  yourTotalUSD: '0',
+  yourTotalBTC: '0'
 }
 
 

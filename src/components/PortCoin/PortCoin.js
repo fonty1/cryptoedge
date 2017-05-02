@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { addCommas } from '../../helpers';
 
 const PortCoin = ( { actions, crypto, index } ) => {
     let val;
@@ -6,8 +7,10 @@ const PortCoin = ( { actions, crypto, index } ) => {
     const onChange = e => {
       e.preventDefault()
       let newVal = val.value;
-      let formattedUSD = (newVal * crypto.price_usd);
-      actions.updatePortfolioCount(newVal, index, formattedUSD);
+      let formattedUSD = addCommas(Math.round((newVal * crypto.price_usd) * 10000) / 10000);
+      let addedUSD = 0;
+      let addedBTC = 0;
+      actions.updatePortfolioCount(newVal, index, formattedUSD, addedUSD, addedBTC);
     }
 
       return (
@@ -26,20 +29,21 @@ const PortCoin = ( { actions, crypto, index } ) => {
             <td>
                 <input
                     className="yourCoinNumber"
+                    defaultValue= {0}
                     ref={ el => val = el }
                     onChange={onChange}
                 />
             </td>
-            <td>
+            <td className="yourCoinUsd">
                 ${crypto.coinUSD}
             </td>
-            <td>
-                {crypto.coinPercentage}%
+            <td className="yourCoinPercentage">
+                {crypto.percentage}%
             </td>
-            <td className="bold">
+            <td className="PriceUsd">
                 ${crypto.formatted_price_usd}
             </td>
-            <td>
+            <td className="priceBtc">
                 {crypto.price_btc}
             </td>
             <td className="percentage__changes" style={crypto.oneHourStyles}>

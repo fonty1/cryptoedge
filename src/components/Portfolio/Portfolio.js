@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Table, Input } from 'react-bootstrap';
-import PortfolioCoin from '../PortfolioCoin/PortfolioCoin';
 import './Portfolio.css';
 import PortCoin from '../PortCoin/PortCoinContainer';
 
@@ -29,14 +28,14 @@ class Portfolio extends Component {
                   <th>Remove</th>
                   <th>Cap Rank</th>
                   <th className="cryptoid">Crypto Currency</th>
-                  <th className="holding">Your Coins<span>#</span></th>
-                  <th className="holding">Your Coin Value<span>$USD</span></th>
-                  <th className="holding">Your Crypto<span>%</span></th>
-                  <th>Price <span>$USD</span></th>
-                  <th>Price <span>BTC</span></th>
-                  <th>1 Hour <span>% Change</span></th>
-                  <th>24 Hours <span>% Change</span></th>
-                  <th>7 Days<span>% Change</span></th>
+                  <th className="holding">Coin #</th>
+                  <th className="holding">Your USD</th>
+                  <th className="holding">%</th>
+                  <th>USD Price</th>
+                  <th>BTC Price</th>
+                  <th>1 Hour</th>
+                  <th>24 Hours</th>
+                  <th>7 Days</th>
                </tr>
              </thead>
              <tbody>
