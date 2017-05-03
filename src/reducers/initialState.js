@@ -1,8 +1,8 @@
 export default {
   coins: [],
   portfolio: [],
-  yourTotalUSD: '0',
-  yourTotalBTC: '0'
+  totalUSD: 0,
+  totalBTC: 0
 }
 
 

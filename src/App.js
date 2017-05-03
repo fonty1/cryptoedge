@@ -25,8 +25,8 @@ class App extends Component {
             <AppHeader/>
             <div className="app__content">
               <Portfolio/>
-              <CoinList/>
               <TotalPortfolio/>
+              <CoinList/>
             </div>
           </div>
         </Router>

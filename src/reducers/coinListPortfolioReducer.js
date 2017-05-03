@@ -28,13 +28,17 @@ export default function coinListPortfolioReducer(state = initialState, action) {
       let portfolioNew = portfolioTemp1.concat(portfolioTemp2);
       return {
         ...state,
-        portfolio: portfolioNew
+        portfolio: portfolioNew,
+        totalUSD: action.totalUSD,
+        totalBTC: action.totalBTC
       };
 
     case UPDATE_PORTFOLIOCOIN_COUNT:
       return {
         ...state,
-        portfolio
+        portfolio,
+        totalUSD: action.totalUSD,
+        totalBTC: action.totalBTC
       };
 
     default:
@@ -43,7 +47,9 @@ export default function coinListPortfolioReducer(state = initialState, action) {
 }
 
 function updateObjectInArray(array, action) {
+        let totalUSD = 0;
     return array.map( (item, index) => {
+        totalUSD = totalUSD + item.coinUSD;
         if(index !== action.position) {
             // This isn't the item we care about - keep it as-is
           return item;

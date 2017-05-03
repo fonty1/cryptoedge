@@ -19,6 +19,7 @@ import zec from '../../img/zec.png';
 import gnt from '../../img/gnt.png';
 import unknown from '../../img/unknown.png';
 
+//const url = "https://cors-anywhere.herokuapp.com/https://api.coinmarketcap.com/v1/ticker/?limit=10";
 const url = "https://api.coinmarketcap.com/v1/ticker/?limit=10";
 
 class CoinList extends Component {
@@ -161,12 +162,11 @@ class CoinList extends Component {
   render() {
     return (
       <div className="LeaderboardList">
-          <h4>Coin List</h4>
           <Table responsive striped className="cryptotable">
           <thead>
              <tr>
                 <th className="addCoinToPortfolioColumn">Portfolio</th>
-                <th>Cap Rank</th>
+                <th>Cap</th>
                 <th className="cryptoid">Crypto Currency</th>
                 <th className="cryptoPrice">USD</th>
                 <th>1 Hour</th>

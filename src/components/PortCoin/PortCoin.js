@@ -1,22 +1,48 @@
 import React, { Component } from 'react';
 import { addCommas } from '../../helpers';
 
-const PortCoin = ( { actions, crypto, index } ) => {
+const PortCoin = ( { actions, crypto, index, totalUSD, totalBTC } ) => {
     let val;
+
 
     const onChange = e => {
       e.preventDefault()
       let newVal = val.value;
       let formattedUSD = addCommas(Math.round((newVal * crypto.price_usd) * 10000) / 10000);
-      let addedUSD = 0;
-      let addedBTC = 0;
-      actions.updatePortfolioCount(newVal, index, formattedUSD, addedUSD, addedBTC);
+      let newTotalUSD = 0
+      let newTotalBTC = 0
+      let percentage = 0;
+      
+      // This code only adds.. never removes.
+      if(typeof crypto.coinUSD !== "undefined") {
+          newTotalUSD = Number(totalUSD) + Number(newVal * crypto.price_usd) - Number(crypto.coinUSD);
+          newTotalBTC = Number(totalBTC) + Number(newVal * crypto.price_btc) - Number(crypto.coinBTC);
+      } else {
+          newTotalUSD = Number(totalUSD) + Number(newVal * crypto.price_usd);
+          newTotalBTC = Number(totalBTC) + Number(newVal * crypto.price_btc);
+      }
+
+      actions.updatePortfolioCount(newVal, index, formattedUSD, percentage, newTotalUSD, newTotalBTC);
+    }
+
+    const calcTotals = () => {
+
+    }
+
+    const calcPercentage = () => {
+
+    }
+
+    const preRemoveCoin = () => {
+        let newTotalUSD = totalUSD - crypto.coinUSD;
+        let newTotalBTC = totalBTC - crypto.coinBTC;
+        actions.removeCoinFromPortfolio(index, newTotalUSD, newTotalBTC);
     }
 
       return (
         <tr className="cryptorank" key={index}>
             <td className="removeCoinFromPortfolioColumn">
-                <button onClick={() => actions.removeCoinFromPortfolio(index)} className="removeCoinFromPortfolio">
+                <button onClick={() => preRemoveCoin()} className="removeCoinFromPortfolio">
                     <i className="fa fa-minus-square-o" aria-hidden="true"></i>
                 </button>
             </td>
@@ -26,9 +52,8 @@ const PortCoin = ( { actions, crypto, index } ) => {
             <td className="cryptoid">
                 <img alt={crypto.symbol} src={crypto.logo}/>{crypto.name}
                  &nbsp;<span className="cryptoSymbol">({crypto.symbol})</span></td>
-            <td>
+            <td className="yourCoinNumber">
                 <input
-                    className="yourCoinNumber"
                     defaultValue= {0}
                     ref={ el => val = el }
                     onChange={onChange}

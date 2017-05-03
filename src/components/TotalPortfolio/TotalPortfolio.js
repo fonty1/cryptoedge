@@ -1,26 +1,30 @@
 import React, { Component } from 'react';
 import { Table } from 'react-bootstrap';
-// yourTotalUSD: '0',
-// yourTotalBTC
-//
 import { addCommas } from '../../helpers';
+import renderIf from 'render-if';
 
-const TotalPortfolio = ( { } ) => {
-
+const TotalPortfolio = ( { cryptoPortfolio, totalUSD, totalBTC } ) => {
       return (
-        <Table responsive className="cryptotable">
-            <thead>
-               <tr>
-                  <th>Total</th>
-               </tr>
-             </thead>
-             <tbody>
-                   <tr className="portfolioTotals" >
-                      <td>
-                      </td>
-                  </tr>
-             </tbody>
-        </Table>
+        renderIf(cryptoPortfolio.length > 0)(
+            <Table responsive className="cryptotable">
+                  <thead>
+                     <tr>
+                        <th>Total USD</th>
+                        <th>Total BTC</th>
+                     </tr>
+                   </thead>
+                 <tbody>
+                       <tr className="portfolioTotals" >
+                          <td>
+                            { totalUSD }
+                          </td>
+                          <td>
+                            { totalBTC }
+                          </td>
+                      </tr>
+                 </tbody>
+            </Table>
+        )
       )
     }
 
