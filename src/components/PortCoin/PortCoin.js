@@ -8,44 +8,19 @@ const PortCoin = ( { actions, crypto, index, totalUSD, totalBTC, portfolio } ) =
     const onChange = e => {
       e.preventDefault()
       let newVal = val.value;
-      let formattedUSD = addCommas(Math.round((newVal * crypto.price_usd) * 10000) / 10000);
       let newCoinUSD = newVal * crypto.price_usd;
-      let newTotalUSD = 0
-      let newTotalBTC = 0
-      let percentage = 0;
+      let formattedUSD = addCommas(Math.round((newVal * crypto.price_usd) * 10000) / 10000);
+      let newCoinBTC = newVal * crypto.price_btc;
 
-      // This code only adds.. never removes.
-        // console.log('Number(totalUSD)' + Number(totalUSD));
-        // console.log('Number(newVal * crypto.price_usd)' + Number(newVal * crypto.price_usd));
-
-        // console.log('Number(newVal * crypto.price_btc)' + Number(newVal * crypto.price_btc));
-        // console.log('Number(crypto.coinBTC)' + Number(crypto.coinBTC));
-        // newTotalUSD = totalUSD + newVal * crypto.price_usd;
-        // newTotalUSD = Number(newTotalUSD) - Number(crypto.coinUSD)
-        // newTotalBTC = Number(totalBTC) + Number(newVal * crypto.price_btc) - Number(crypto.coinBTC);
-
-
-      actions.updatePortfolioCount(newVal, index, newCoinUSD, formattedUSD);
-      calcTotals();
-    }
-
-    const calcTotals = () => {
-        actions.updatePortfolioTotals();
-    }
-
-    const calcPercentage = () => {
-
+      actions.updatePortfolioCount(newVal, index, newCoinUSD, formattedUSD, newCoinBTC);
+      actions.updatePortfolioTotals();
+      actions.updatePortfolioPercentage();
     }
 
     const preRemoveCoin = () => {
-        console.log('rem newTotalUSD' + Number(newTotalUSD));
-        console.log('rem newTotalBTC' + Number(newTotalBTC));
-        console.log('rem crypto.coinUSD' + Number(crypto.coinUSD));
-        console.log('rem crypto.coinBTC' + Number(crypto.coinBTC));
-
-        let newTotalUSD = Number(totalUSD) - Number(crypto.coinUSD);
-        let newTotalBTC = Number(totalBTC) - Number(crypto.coinBTC);
-        actions.removeCoinFromPortfolio(index, newTotalUSD, newTotalBTC);
+        actions.removeCoinFromPortfolio(index);
+        actions.updatePortfolioTotals();
+        actions.updatePortfolioPercentage();
     }
 
       return (

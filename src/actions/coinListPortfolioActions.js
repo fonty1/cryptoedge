@@ -1,6 +1,7 @@
 import { REMOVE_COIN_FROM_PORTFOLIO } from '../constants/actionTypes';
 import { UPDATE_PORTFOLIOCOIN_COUNT } from '../constants/actionTypes';
 import { UPDATE_PORTFOLIO_TOTALS } from '../constants/actionTypes';
+import { UPDATE_PORTFOLIO_PERCENTAGE } from '../constants/actionTypes';
 import { ADD_COIN_TO_PORTFOLIO } from '../constants/actionTypes';
 import { DOWNLOAD_COINS } from '../constants/actionTypes';
 
@@ -11,7 +12,7 @@ export function addCoinToPortfolio(coin) {
   };
 }
 
-export function removeCoinFromPortfolio(position, newTotalUSD, newTotalBTC) {
+export function removeCoinFromPortfolio(position) {
   return {
     type: REMOVE_COIN_FROM_PORTFOLIO,
     position
@@ -31,12 +32,19 @@ export function downloadCoins(coins) {
   };
 }
 
-export function updatePortfolioCount(count, position, coinUSD, formattedUSD) {
+export function updatePortfolioCount(count, position, coinUSD, formattedUSD, coinBTC) {
   return {
     type: UPDATE_PORTFOLIOCOIN_COUNT,
     count,
     position,
     coinUSD,
-    formattedUSD
+    formattedUSD,
+    coinBTC
+  };
+}
+
+export function updatePortfolioPercentage() {
+  return {
+    type: UPDATE_PORTFOLIO_PERCENTAGE
   };
 }

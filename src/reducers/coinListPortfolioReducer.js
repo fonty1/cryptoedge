@@ -4,11 +4,13 @@ import { ADD_COIN_TO_PORTFOLIO } from '../constants/actionTypes';
 import { DOWNLOAD_COINS } from '../constants/actionTypes';
 import { UPDATE_PORTFOLIOCOIN_COUNT } from '../constants/actionTypes';
 import { UPDATE_PORTFOLIO_TOTALS } from '../constants/actionTypes';
-
+import { UPDATE_PORTFOLIO_PERCENTAGE } from '../constants/actionTypes';
 
 export default function coinListPortfolioReducer(state = initialState, action) {
   let portfolio = updateObjectInArray(state.portfolio, action);
   let totalUSD = sumTotalUSD(state.portfolio);
+  let totalBTC = sumTotalBTC(state.portfolio);
+  let percentagePortfolio = calcPercentage(state.portfolio, state.totalUSD);
 
   switch (action.type) {
     case DOWNLOAD_COINS:
@@ -41,7 +43,14 @@ export default function coinListPortfolioReducer(state = initialState, action) {
     case UPDATE_PORTFOLIO_TOTALS:
       return {
         ...state,
-        totalUSD
+        totalUSD,
+        totalBTC
+      };
+
+    case UPDATE_PORTFOLIO_PERCENTAGE:
+      return {
+        ...state,
+        portfolio: percentagePortfolio
       };
 
     default:
@@ -50,9 +59,7 @@ export default function coinListPortfolioReducer(state = initialState, action) {
 }
 
 function updateObjectInArray(array, action) {
-        let totalUSD = 0;
     return array.map( (item, index) => {
-        totalUSD = totalUSD + item.coinUSD;
         if(index !== action.position) {
             // This isn't the item we care about - keep it as-is
           return item;
@@ -61,8 +68,8 @@ function updateObjectInArray(array, action) {
               ...item,
               count: action.count,
               coinUSD: action.coinUSD,
-              formattedCoinUSD: action.formattedUSD,
-              percentage: action.percentage
+              coinBTC: action.coinBTC,
+              formattedCoinUSD: action.formattedUSD
           };
         }
     });
@@ -70,10 +77,27 @@ function updateObjectInArray(array, action) {
 
 function sumTotalUSD(array) {
   var myTotal = 0;
+
   for(var i = 0, len = array.length; i < len; i++) {
     myTotal += array[i].coinUSD;
-    console.log('myTotal: ' + myTotal);
   }
-
   return myTotal
+}
+
+function sumTotalBTC(array) {
+  var myTotal = 0;
+
+  for(var i = 0, len = array.length; i < len; i++) {
+    myTotal += array[i].coinBTC;
+  }
+  return myTotal
+}
+
+function calcPercentage(array, totalUSD) {
+    return array.map( (item, index) => {
+          return {
+              ...item,
+              percentage: ((item.coinUSD / totalUSD) * 100).toFixed(2)
+          };
+    });
 }
