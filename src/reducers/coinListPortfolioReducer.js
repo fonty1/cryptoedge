@@ -3,11 +3,12 @@ import { REMOVE_COIN_FROM_PORTFOLIO } from '../constants/actionTypes';
 import { ADD_COIN_TO_PORTFOLIO } from '../constants/actionTypes';
 import { DOWNLOAD_COINS } from '../constants/actionTypes';
 import { UPDATE_PORTFOLIOCOIN_COUNT } from '../constants/actionTypes';
-import { UPDATE_USD_HOLDINGS } from '../constants/actionTypes';
-import { UPDATE_PERCENTAGE_HOLDINGS } from '../constants/actionTypes';
+import { UPDATE_PORTFOLIO_TOTALS } from '../constants/actionTypes';
+
 
 export default function coinListPortfolioReducer(state = initialState, action) {
   let portfolio = updateObjectInArray(state.portfolio, action);
+  let totalUSD = sumTotalUSD(state.portfolio);
 
   switch (action.type) {
     case DOWNLOAD_COINS:
@@ -28,17 +29,19 @@ export default function coinListPortfolioReducer(state = initialState, action) {
       let portfolioNew = portfolioTemp1.concat(portfolioTemp2);
       return {
         ...state,
-        portfolio: portfolioNew,
-        totalUSD: action.totalUSD,
-        totalBTC: action.totalBTC
+        portfolio: portfolioNew
       };
 
     case UPDATE_PORTFOLIOCOIN_COUNT:
       return {
         ...state,
-        portfolio,
-        totalUSD: action.totalUSD,
-        totalBTC: action.totalBTC
+        portfolio
+      };
+
+    case UPDATE_PORTFOLIO_TOTALS:
+      return {
+        ...state,
+        totalUSD
       };
 
     default:
@@ -57,9 +60,20 @@ function updateObjectInArray(array, action) {
           return {
               ...item,
               count: action.count,
-              coinUSD: action.formattedUSD,
+              coinUSD: action.coinUSD,
+              formattedCoinUSD: action.formattedUSD,
               percentage: action.percentage
           };
         }
     });
+}
+
+function sumTotalUSD(array) {
+  var myTotal = 0;
+  for(var i = 0, len = array.length; i < len; i++) {
+    myTotal += array[i].coinUSD;
+    console.log('myTotal: ' + myTotal);
+  }
+
+  return myTotal
 }

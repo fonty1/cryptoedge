@@ -5,6 +5,7 @@ import PortCoin from './PortCoin';
 
 const mapStateToProps = (state, ownProps) => ({
     ...ownProps,
+    portfolio: state.coinListPortfolio.portfolio,
     totalUSD : state.coinListPortfolio.totalUSD,
     totalBTC : state.coinListPortfolio.totalBTC,
 });

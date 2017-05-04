@@ -14,9 +14,7 @@ export function addCoinToPortfolio(coin) {
 export function removeCoinFromPortfolio(position, newTotalUSD, newTotalBTC) {
   return {
     type: REMOVE_COIN_FROM_PORTFOLIO,
-    position,
-    newTotalUSD,
-    newTotalBTC
+    position
   };
 }
 
@@ -33,14 +31,12 @@ export function downloadCoins(coins) {
   };
 }
 
-export function updatePortfolioCount(count, position, formattedUSD, percentage, totalUSD, totalBTC) {
+export function updatePortfolioCount(count, position, coinUSD, formattedUSD) {
   return {
     type: UPDATE_PORTFOLIOCOIN_COUNT,
     count,
     position,
-    formattedUSD,
-    percentage,
-    totalUSD,
-    totalBTC
+    coinUSD,
+    formattedUSD
   };
 }

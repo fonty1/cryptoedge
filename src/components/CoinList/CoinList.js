@@ -47,6 +47,9 @@ class CoinList extends Component {
         // Setting defaults temporarily
         cryptoRow.percentage = 0;
         cryptoRow.count = 0;
+        cryptoRow.coinUSD = 0;
+        cryptoRow.formattedCoinUSD = 0;
+        cryptoRow.coinBTC = 0;
 
         // Currency formatting
         cryptoRow.formatted_price_usd = addCommas(cryptoRow.price_usd);
