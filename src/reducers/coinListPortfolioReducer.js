@@ -95,8 +95,6 @@ function sumTotalBTC(array) {
   return myTotal
 }
 
-
-
 function calcPercentage(array, totalUSD) {
     return array.map( (item, index) => {
           return {

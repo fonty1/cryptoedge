@@ -4,12 +4,11 @@ import { addCommas } from '../../helpers';
 const PortCoin = ( { actions, crypto, index, totalUSD, totalBTC, portfolio } ) => {
     let val;
 
-
     const onChange = e => {
       e.preventDefault()
       let newVal = val.value;
       let newCoinUSD = newVal * crypto.price_usd;
-      let formattedUSD = addCommas(Math.round((newVal * crypto.price_usd) * 10000) / 10000);
+      let formattedUSD = addCommas(Math.round((newVal * crypto.price_usd).toFixed(2) * 10000) / 10000);
       let newCoinBTC = newVal * crypto.price_btc;
 
       actions.updatePortfolioCount(newVal, index, newCoinUSD, formattedUSD, newCoinBTC);
@@ -38,7 +37,7 @@ const PortCoin = ( { actions, crypto, index, totalUSD, totalBTC, portfolio } ) =
                  &nbsp;<span className="cryptoSymbol">({crypto.symbol})</span></td>
             <td className="yourCoinNumber">
                 <input
-                    defaultValue= {0}
+                    defaultValue= {crypto.count}
                     ref={ el => val = el }
                     onChange={onChange}
                 />

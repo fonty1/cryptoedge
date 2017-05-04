@@ -4,6 +4,7 @@ import {
   Route,
   Switch
 } from 'react-router-dom';
+import {createStore} from 'redux';
 import './App.css';
 import { Provider } from 'react-redux';
 import configureStore from './store/configureStore';
@@ -13,7 +14,24 @@ import CoinList from './components/CoinList/CoinListContainer';
 import Portfolio from './components/Portfolio/PortfolioContainer';
 import TotalPortfolio from './components/TotalPortfolio/TotalPortfolioContainer';
 
-const store = configureStore();
+import { combineReducers } from 'redux';
+import coinListPortfolio from './reducers/coinListPortfolioReducer';
+
+const rootReducer = combineReducers({
+  coinListPortfolio
+});
+
+const persistedState = loadState();
+
+const store = createStore(
+  rootReducer,
+  persistedState
+);
+import { loadState, saveState } from './localStorage';
+
+store.subscribe(() => {
+  saveState(store.getState());
+});
 
 class App extends Component {
 
