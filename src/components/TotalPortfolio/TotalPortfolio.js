@@ -2,13 +2,14 @@ import React, { Component } from 'react';
 import { Table } from 'react-bootstrap';
 import { addCommas } from '../../helpers';
 import renderIf from 'render-if';
+import './TotalPortfolio.css';
 
-const TotalPortfolio = ( { cryptoPortfolio, totalUSD, totalBTC } ) => {
+const TotalPortfolio = ( { cryptoPortfolio, formattedTotalUSD, totalBTC } ) => {
       return (
         renderIf(cryptoPortfolio.length > 0)(
-            <Table responsive className="cryptotable">
+            <Table responsive className="totalTable">
                   <thead>
-                     <tr>
+                     <tr className="headings">
                         <th>Total USD</th>
                         <th>Total BTC</th>
                      </tr>
@@ -16,7 +17,7 @@ const TotalPortfolio = ( { cryptoPortfolio, totalUSD, totalBTC } ) => {
                  <tbody>
                        <tr className="portfolioTotals" >
                           <td>
-                            { totalUSD }
+                            ${ formattedTotalUSD }
                           </td>
                           <td>
                             { totalBTC }

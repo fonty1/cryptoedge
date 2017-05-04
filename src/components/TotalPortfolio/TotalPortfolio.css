@@ -1,0 +1,11 @@
+.totalTable {
+  max-width: 300px;
+  float: right;
+  text-align: center;
+  margin-right: 50px; }
+
+.totalTable .headings th {
+  text-align: center; }
+
+.totalTable .portfolioTotals {
+  text-align: center; }

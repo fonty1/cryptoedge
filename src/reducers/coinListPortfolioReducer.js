@@ -1,4 +1,5 @@
 import initialState from './initialState';
+import { addCommas } from '../helpers';
 import { REMOVE_COIN_FROM_PORTFOLIO } from '../constants/actionTypes';
 import { ADD_COIN_TO_PORTFOLIO } from '../constants/actionTypes';
 import { DOWNLOAD_COINS } from '../constants/actionTypes';
@@ -44,7 +45,8 @@ export default function coinListPortfolioReducer(state = initialState, action) {
       return {
         ...state,
         totalUSD,
-        totalBTC
+        totalBTC: totalBTC.toFixed(4),
+        formattedTotalUSD: addCommas(totalUSD.toFixed(2))
       };
 
     case UPDATE_PORTFOLIO_PERCENTAGE:
@@ -92,6 +94,8 @@ function sumTotalBTC(array) {
   }
   return myTotal
 }
+
+
 
 function calcPercentage(array, totalUSD) {
     return array.map( (item, index) => {

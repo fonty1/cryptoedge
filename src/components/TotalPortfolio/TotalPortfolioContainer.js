@@ -6,7 +6,7 @@ import TotalPortfolio from './TotalPortfolio';
 const mapStateToProps = (state, ownProps) => ({
     ...ownProps,
     cryptoPortfolio: state.coinListPortfolio.portfolio,
-    totalUSD: state.coinListPortfolio.totalUSD,
+    formattedTotalUSD: state.coinListPortfolio.formattedTotalUSD,
     totalBTC: state.coinListPortfolio.totalBTC
 });
 

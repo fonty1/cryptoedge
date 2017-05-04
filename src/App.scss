@@ -16,12 +16,18 @@ body {
 .app__content {
   max-width: 1300px;
   margin: 0 auto;
-  margin-left: 150px;
+
 
   h2 {
     text-align: left;
     text-transform: uppercase;
     font-size: 2.2rem;
+  }
+}
+
+@media(min-width: 1020px) {
+  .app__content {
+    margin-left: 150px;
   }
 }
 
