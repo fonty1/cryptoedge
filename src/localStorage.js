@@ -4,20 +4,22 @@ export const loadState = () => {
     if (serializedState === null) {
       return undefined;
     }
-    console.log('loadwin');
+    console.log('loading from localstorage');
+    console.log(serializedState);
+
     return JSON.parse(serializedState);
   } catch (err) {
-    console.log('prob1');
+    console.log('prob loading from localstorage');
     return undefined
   }
 };
 
 export const saveState = (state) => {
   try {
-    console.log('win');
+    console.log('Saving state to localstorage');
     const serializedState = JSON.stringify(state);
     localStorage.setItem('state', serializedState);
   } catch (err) {
-    console.log('prob2');
+    console.log('problem saving state to local storage');
   }
 }

@@ -4,6 +4,7 @@ import { UPDATE_PORTFOLIO_TOTALS } from '../constants/actionTypes';
 import { UPDATE_PORTFOLIO_PERCENTAGE } from '../constants/actionTypes';
 import { ADD_COIN_TO_PORTFOLIO } from '../constants/actionTypes';
 import { DOWNLOAD_COINS } from '../constants/actionTypes';
+import { UPDATE_SAVED_PORTFOLIO } from '../constants/actionTypes';
 
 export function addCoinToPortfolio(coin) {
   return {
@@ -29,6 +30,12 @@ export function downloadCoins(coins) {
   return {
     type: DOWNLOAD_COINS,
     coins
+  };
+}
+
+export function updateSavedPortfolio() {
+  return {
+    type: UPDATE_SAVED_PORTFOLIO
   };
 }
 

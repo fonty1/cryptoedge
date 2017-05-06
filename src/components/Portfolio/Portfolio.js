@@ -8,15 +8,15 @@ class Portfolio extends Component {
     constructor(props) {
         super(props);
         this.state = {value: ''};
-        this.getSavedPortfolio = this.getSavedPortfolio.bind(this);
+        this.updateSavedPortfolio = this.updateSavedPortfolio.bind(this);
     }
 
     componentDidMount() {
-        //this.getSavedPortfolio();
+
     }
 
-    getSavedPortfolio() {
-      // Load local storage here
+    updateSavedPortfolio() {
+
     }
 
     render() {

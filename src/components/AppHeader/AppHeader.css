@@ -31,14 +31,17 @@ header {
   color: #FFF;
   font-family: 'Signika', sans-serif;
   text-align: left;
-  background: #232323; }
+  background-color: #f9f9f9;
+  border-right: 1px solid #DDD; }
 
 header h1 {
-  font-size: 10px;
+  display: none;
+  font-size: 14px;
   margin-top: 30px;
   line-height: 1;
   padding: 0;
-  text-transform: uppercase; }
+  text-transform: uppercase;
+  color: #000; }
 
 @media (min-width: 1020px) {
   header {
@@ -46,6 +49,8 @@ header h1 {
     font-family: 'Signika', sans-serif;
     width: 115px;
     min-height: 100%;
-    position: absolute;
+    position: fixed;
     left: 0;
-    top: 0; } }
+    top: 0; }
+  header h1 {
+    display: block; } }

@@ -6,18 +6,28 @@ import { DOWNLOAD_COINS } from '../constants/actionTypes';
 import { UPDATE_PORTFOLIOCOIN_COUNT } from '../constants/actionTypes';
 import { UPDATE_PORTFOLIO_TOTALS } from '../constants/actionTypes';
 import { UPDATE_PORTFOLIO_PERCENTAGE } from '../constants/actionTypes';
+import { UPDATE_SAVED_PORTFOLIO } from '../constants/actionTypes';
 
 export default function coinListPortfolioReducer(state = initialState, action) {
+  console.log('bang');
+  console.log(state.portfolio);
   let portfolio = updateObjectInArray(state.portfolio, action);
   let totalUSD = sumTotalUSD(state.portfolio);
   let totalBTC = sumTotalBTC(state.portfolio);
   let percentagePortfolio = calcPercentage(state.portfolio, state.totalUSD);
+  let updatedSavedPortfolio = updateSavedPortfolio(state.portfolio, state.coins);
 
   switch (action.type) {
     case DOWNLOAD_COINS:
       return {
         ...state,
         coins: action.coins
+      };
+
+    case UPDATE_SAVED_PORTFOLIO:
+      return {
+        ...state,
+        portfolio: updatedSavedPortfolio
       };
 
     case ADD_COIN_TO_PORTFOLIO:
@@ -90,6 +100,8 @@ function sumTotalBTC(array) {
   var myTotal = 0;
 
   for(var i = 0, len = array.length; i < len; i++) {
+    console.log('summing');
+    console.log(array[i].coinBTC);
     myTotal += array[i].coinBTC;
   }
   return myTotal
@@ -103,3 +115,36 @@ function calcPercentage(array, totalUSD) {
           };
     });
 }
+
+function updateSavedPortfolio(portfolio, coins, totalUSD) {
+  return portfolio.map( (portItem, index) => {
+      coins.map( (coinItem, index) => {
+        if(portItem.id === coinItem.id) {
+          portItem.price_usd = coinItem.price_usd;
+          portItem.formatted_price_usd = coinItem.formatted_price_usd;
+          portItem.price_btc = coinItem.price_btc;
+          portItem.oneHourStyles = coinItem.oneHourStyles;
+          portItem.twentyFourHourStyles = coinItem.twentyFourHourStyles;
+          portItem.sevenDayStyles = coinItem.sevenDayStyles;
+          portItem.percent_change_1h = coinItem.percent_change_1h;
+          portItem.percent_change_24h = coinItem.percent_change_24h;
+          portItem.percent_change_7d = coinItem.percent_change_7d;
+          portItem.coinUSD = portItem.count * coinItem.price_usd;
+        }
+      });
+      return {
+        ...portItem
+      }
+  });
+  sumTotalUSD(portfolio);
+  sumTotalBTC(portfolio);
+  calcPercentage(portfolio, totalUSD);
+}
+
+
+
+//Like the download action.. just more complex
+//When the portfolio mounts, override bits of it..
+//Or dispatch an action.. that updates all of the portfolio items with the correct numbers..
+//This would be a complicated update array map which lives at the reducer which modifies
+//portfolio[i].price_usd if portfolio[i].id = coins[i].id

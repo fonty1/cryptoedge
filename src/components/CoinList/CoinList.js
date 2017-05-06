@@ -20,7 +20,7 @@ import gnt from '../../img/gnt.png';
 import unknown from '../../img/unknown.png';
 
 //const url = "https://cors-anywhere.herokuapp.com/https://api.coinmarketcap.com/v1/ticker/?limit=10";
-const url = "https://api.coinmarketcap.com/v1/ticker/?limit=10";
+const url = "https://cors-anywhere.herokuapp.com/https://api.coinmarketcap.com/v1/ticker/?limit=100";
 
 class CoinList extends Component {
   constructor(props) {
@@ -67,7 +67,9 @@ class CoinList extends Component {
 
       console.log(cryptoList);
       this.props.actions.downloadCoins(cryptoList);
-
+      this.props.actions.updateSavedPortfolio();
+      this.props.actions.updatePortfolioTotals();
+      this.props.actions.updatePortfolioPercentage();
       return response;
     });
   }
