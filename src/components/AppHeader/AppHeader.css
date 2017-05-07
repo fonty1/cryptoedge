@@ -35,8 +35,11 @@ header {
   border-right: 1px solid #DDD; }
 
 header h1 {
-  display: none;
-  font-size: 14px;
+  position: relative;
+  top: -19px;
+  display: inline;
+  left: 60px;
+  font-size: 16px;
   margin-top: 30px;
   line-height: 1;
   padding: 0;
@@ -53,4 +56,7 @@ header h1 {
     left: 0;
     top: 0; }
   header h1 {
-    display: block; } }
+    display: block;
+    top: auto;
+    left: auto;
+    position: static; } }

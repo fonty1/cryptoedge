@@ -46,11 +46,6 @@ body {
   padding-right: 10px;
 }
 
-.cryptoSymbol {
-  font-size: 1.2rem;
-  color: #999;
-}
-
 .yourCoinNumber {
   text-align: center;
 
@@ -79,4 +74,32 @@ body {
 
 .PriceUsd, .formatted_price_usd, .priceBtc, .yourCoinUsd, .yourCoinPercentage {
   text-align: center;
+}
+
+.cryptoNameFull {
+  display: none;
+}
+
+.cryptoSymbol {
+  font-size: 1.2rem;
+  color: #000;
+}
+
+.cryptoid {
+    width: 100px;
+}
+
+@media(min-width: 1020px){
+  .cryptoNameFull {
+    display: inline;
+  }
+
+  .cryptoSymbol {
+    font-size: 1.2rem;
+    color: #999;
+  }
+
+  .cryptoid {
+      width: auto;
+  }
 }

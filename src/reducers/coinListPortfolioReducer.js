@@ -100,8 +100,6 @@ function sumTotalBTC(array) {
   var myTotal = 0;
 
   for(var i = 0, len = array.length; i < len; i++) {
-    console.log('summing');
-    console.log(array[i].coinBTC);
     myTotal += array[i].coinBTC;
   }
   return myTotal

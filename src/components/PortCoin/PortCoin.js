@@ -2,24 +2,34 @@ import React, { Component } from 'react';
 import { addCommas } from '../../helpers';
 
 const PortCoin = ( { actions, crypto, index, totalUSD, totalBTC, portfolio } ) => {
-    let val;
+    let coinNumberValue = crypto.count;
 
     const onChange = e => {
       e.preventDefault()
-      let newVal = val.value;
+      let newVal = e.target.value;
       let newCoinUSD = newVal * crypto.price_usd;
       let formattedUSD = addCommas(Math.round((newVal * crypto.price_usd).toFixed(2) * 10000) / 10000);
       let newCoinBTC = newVal * crypto.price_btc;
-
+      console.log('onchangetriggered');
       actions.updatePortfolioCount(newVal, index, newCoinUSD, formattedUSD, newCoinBTC);
       actions.updatePortfolioTotals();
       actions.updatePortfolioPercentage();
+    }
+
+    const forceUpdateInput = () => {
+        // const thisInput = document.querySelectorAll('input[name$="coinNum-'+index+'"]');
+        // if (thisInput) {
+        //     thisInput.val = crypto.count;
+        // }
     }
 
     const preRemoveCoin = () => {
         actions.removeCoinFromPortfolio(index);
         actions.updatePortfolioTotals();
         actions.updatePortfolioPercentage();
+        console.log('preRemoveCoin triggered');
+        console.log('coinNumberValue.value: ' + coinNumberValue.value);
+
     }
 
       return (
@@ -33,13 +43,16 @@ const PortCoin = ( { actions, crypto, index, totalUSD, totalBTC, portfolio } ) =
                 {crypto.rank}
             </td>
             <td className="cryptoid">
-                <img alt={crypto.symbol} src={crypto.logo}/>{crypto.name}
-                 &nbsp;<span className="cryptoSymbol">({crypto.symbol})</span></td>
+                <img alt={crypto.symbol} src={crypto.logo}/>
+                <span className="cryptoNameFull">{crypto.name + " "}</span>
+                <span className="cryptoSymbol">({crypto.symbol})</span>
+            </td>
             <td className="yourCoinNumber">
                 <input
-                    defaultValue= {crypto.count}
-                    ref={ el => val = el }
+                    value={crypto.count}
                     onChange={onChange}
+                    type="number"
+                    name={"coinNum-" + index}
                 />
             </td>
             <td className="yourCoinUsd">

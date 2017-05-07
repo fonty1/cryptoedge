@@ -170,12 +170,12 @@ class CoinList extends Component {
           <Table responsive striped className="cryptotable">
           <thead>
              <tr>
-                <th className="addCoinToPortfolioColumn">Portfolio</th>
+                <th className="addCoinToPortfolioColumn"></th>
                 <th>Cap</th>
-                <th className="cryptoid">Crypto Currency</th>
+                <th className="cryptoid">Crypto</th>
                 <th className="cryptoPrice">USD</th>
-                <th>1 Hour</th>
-                <th>24 Hours</th>
+                <th>1 Hr</th>
+                <th>24 Hrs</th>
                 <th>7 Days</th>
              </tr>
            </thead>
@@ -190,8 +190,9 @@ class CoinList extends Component {
                      </td>
                      <td className="capRank">{crypto.rank}</td>
                      <td className="cryptoid">
-                         <img alt={crypto.symbol} src={crypto.logo}/>{crypto.name}
-                          &nbsp;<span className="cryptoSymbol">({crypto.symbol})</span>
+                       <img alt={crypto.symbol} src={crypto.logo}/>
+                       <span className="cryptoNameFull">{crypto.name + " "}</span>
+                       <span className="cryptoSymbol">({crypto.symbol})</span>
                      </td>
                      <td className="bold">${crypto.formatted_price_usd}</td>
                      <td className="percentage__changes" style={crypto.oneHourStyles}>{crypto.percent_change_1h}%</td>

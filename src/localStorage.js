@@ -5,8 +5,6 @@ export const loadState = () => {
       return undefined;
     }
     console.log('loading from localstorage');
-    console.log(serializedState);
-
     return JSON.parse(serializedState);
   } catch (err) {
     console.log('prob loading from localstorage');
