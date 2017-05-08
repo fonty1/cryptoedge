@@ -1,9 +1,19 @@
 .totalTable {
-  max-width: 300px;
-  float: right;
   text-align: center;
-  margin-right: 50px; }
-  .totalTable .headings th {
-    text-align: center; }
-  .totalTable .portfolioTotals {
-    text-align: center; }
+  margin-right: 50px;
+  border: 2px solid #444; }
+
+.totalTable > thead > tr > th {
+  border: none; }
+
+.totalTable .headings th {
+  text-align: center; }
+
+.totalTable .portfolioTotals {
+  text-align: center; }
+
+@media (min-width: 1020px) {
+  .totalTable {
+    max-width: 300px;
+    float: right;
+    border: none; } }

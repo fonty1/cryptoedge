@@ -1,8 +1,11 @@
 .totalTable {
-  max-width: 300px;
-  float: right;
   text-align: center;
   margin-right: 50px;
+  border: 2px solid #444;
+
+  >thead>tr>th {
+    border: none;
+  }
 
   .headings th {
     text-align: center;
@@ -11,4 +14,13 @@
   .portfolioTotals {
     text-align: center;
   }
+}
+
+@media(min-width: 1020px) {
+  .totalTable {
+    max-width: 300px;
+    float: right;
+    border: none;
+  }
+
 }
