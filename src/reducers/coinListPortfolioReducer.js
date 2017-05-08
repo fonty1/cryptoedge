@@ -9,8 +9,6 @@ import { UPDATE_PORTFOLIO_PERCENTAGE } from '../constants/actionTypes';
 import { UPDATE_SAVED_PORTFOLIO } from '../constants/actionTypes';
 
 export default function coinListPortfolioReducer(state = initialState, action) {
-  console.log('bang');
-  console.log(state.portfolio);
   let portfolio = updateObjectInArray(state.portfolio, action);
   let totalUSD = sumTotalUSD(state.portfolio);
   let totalBTC = sumTotalBTC(state.portfolio);
@@ -129,6 +127,7 @@ function updateSavedPortfolio(portfolio, coins, totalUSD) {
           portItem.percent_change_7d = coinItem.percent_change_7d;
           portItem.coinUSD = portItem.count * coinItem.price_usd;
         }
+        return false
       });
       return {
         ...portItem
@@ -138,11 +137,3 @@ function updateSavedPortfolio(portfolio, coins, totalUSD) {
   sumTotalBTC(portfolio);
   calcPercentage(portfolio, totalUSD);
 }
-
-
-
-//Like the download action.. just more complex
-//When the portfolio mounts, override bits of it..
-//Or dispatch an action.. that updates all of the portfolio items with the correct numbers..
-//This would be a complicated update array map which lives at the reducer which modifies
-//portfolio[i].price_usd if portfolio[i].id = coins[i].id

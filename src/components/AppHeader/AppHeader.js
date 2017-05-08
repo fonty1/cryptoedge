@@ -8,7 +8,7 @@ class AppHeader extends Component {
               <nav>
                 <ul className="primary-nav">
                   <li className="logo-container left">
-                    <img src={cryptoedge} className="edge-logo"/>
+                    <img alt="Cryptoedge" src={cryptoedge} className="edge-logo"/>
                     <h1>ryptoEdge</h1>
                   </li>
                   <li className="right">
@@ -20,8 +20,10 @@ class AppHeader extends Component {
                     Help
                   </li>
                   <li className="right">
-                    <i className="fa fa-envelope-o" aria-hidden="true"></i>
-                    Feedback
+                    <a target="blank_" href="https://docs.google.com/forms/d/e/1FAIpQLSeU1ICsh-USOAy2pjJqn9CWRxMf5NdhlIfztBpkExbv4YJbQw/viewform?usp=sf_link">
+                      <i className="fa fa-envelope-o" aria-hidden="true"></i>
+                      Feedback
+                    </a>
                   </li>
                 </ul>
               </nav>

@@ -1,14 +1,16 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { addCommas } from '../../helpers';
 
-const PortCoin = ( { actions, crypto, index, totalUSD, totalBTC, portfolio } ) => {
+const CustomPortCoin = ( { actions, crypto, index, totalUSD, totalBTC, portfolio } ) => {
+    let coinNumberValue = crypto.count;
+
     const onChange = e => {
       e.preventDefault()
       let newVal = e.target.value;
       let newCoinUSD = newVal * crypto.price_usd;
       let formattedUSD = addCommas(Math.round((newVal * crypto.price_usd).toFixed(2) * 10000) / 10000);
       let newCoinBTC = newVal * crypto.price_btc;
-
+      console.log('onchangetriggered');
       actions.updatePortfolioCount(newVal, index, newCoinUSD, formattedUSD, newCoinBTC);
       actions.updatePortfolioTotals();
       actions.updatePortfolioPercentage();
@@ -65,4 +67,4 @@ const PortCoin = ( { actions, crypto, index, totalUSD, totalBTC, portfolio } ) =
       )
     }
 
-export default PortCoin;
+export default CustomPortCoin;

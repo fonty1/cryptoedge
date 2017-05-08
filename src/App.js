@@ -7,13 +7,11 @@ import {
 import {createStore} from 'redux';
 import './App.css';
 import { Provider } from 'react-redux';
-import configureStore from './store/configureStore';
-import { addCommas } from './helpers';
 import AppHeader from './components/AppHeader/AppHeader';
 import CoinList from './components/CoinList/CoinListContainer';
 import Portfolio from './components/Portfolio/PortfolioContainer';
 import TotalPortfolio from './components/TotalPortfolio/TotalPortfolioContainer';
-
+import { loadState, saveState } from './localStorage';
 import { combineReducers } from 'redux';
 import coinListPortfolio from './reducers/coinListPortfolioReducer';
 
@@ -28,7 +26,6 @@ const store = createStore(
   persistedState,
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 );
-import { loadState, saveState } from './localStorage';
 
 store.subscribe(() => {
   saveState(store.getState());
@@ -46,6 +43,9 @@ class App extends Component {
               <Portfolio/>
               <TotalPortfolio/>
               <CoinList/>
+              <p>Cryptoedge is used at the user's own risk.
+                Cryptoedge is currently in beta testing and there may be bugs in prices or calculations.
+                Cryptoedge takes no responsibility for it's user's actions. Nothing on Cryptoedge should be considered as trading advice.</p>
             </div>
           </div>
         </Router>
