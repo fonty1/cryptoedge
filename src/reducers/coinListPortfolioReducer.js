@@ -9,6 +9,7 @@ import { UPDATE_PORTFOLIO_TOTALS } from '../constants/actionTypes';
 import { UPDATE_PORTFOLIO_PERCENTAGE } from '../constants/actionTypes';
 import { UPDATE_SAVED_PORTFOLIO } from '../constants/actionTypes';
 import { ADD_CUSTOM_COIN_TO_PORTFOLIO } from '../constants/actionTypes';
+import { UPDATE_INDIVIDUAL_TOTALS } from '../constants/actionTypes';
 
 import { UPDATE_CUSTOM_NAME } from '../constants/actionTypes';
 import { UPDATE_CUSTOM_BTC } from '../constants/actionTypes';
@@ -19,6 +20,7 @@ export default function coinListPortfolioReducer(state = initialState, action) {
   let customNamePortfolio = updateNameInArray(state.portfolio, action);
   let customUSDPortfolio = updateUSDInArray(state.portfolio, action);
   let customBTCPortfolio = updateBTCInArray(state.portfolio, action);
+  let updateIndividualTotalsPortfolio = updateIndividualTotals(state.portfolio);
   let totalUSD = sumTotalUSD(state.portfolio);
   let totalBTC = sumTotalBTC(state.portfolio);
   let percentagePortfolio = calcPercentage(state.portfolio, state.totalUSD);
@@ -103,9 +105,25 @@ export default function coinListPortfolioReducer(state = initialState, action) {
           portfolio: customUSDPortfolio
         };
 
+        case UPDATE_INDIVIDUAL_TOTALS:
+          return {
+            ...state,
+            portfolio: updateIndividualTotalsPortfolio
+          };
+
     default:
       return state;
   }
+}
+
+function updateIndividualTotals(array) {
+    return array.map( (item, index) => {
+          return {
+              ...item,
+              coinUSD: item.count * item.price_usd,
+              formattedCoinUSD: addCommas(Math.round((item.count * item.price_usd).toFixed(2) * 10000) / 10000)        
+          };
+    });
 }
 
 function updateObjectInArray(array, action) {

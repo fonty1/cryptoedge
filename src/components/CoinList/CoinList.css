@@ -1,21 +1,16 @@
 .cryptotable {
   max-width: 1200px;
   margin: 10px auto;
-  /* active state */
-  /* BOTTOM BARS ================================= */
-  /* active state */
-  /* HIGHLIGHTER ================================== */
-  /* active state */
   /* ANIMATIONS ================ */ }
+
+.cryptotable .priceUsd, .cryptotable .priceBtc {
+  width: 80px; }
+
+.cryptotable .priceUsd input, .cryptotable .priceBtc input {
+  text-align: right; }
 
 .cryptotable .customCoin .cryptoid, .cryptotable .customCoin .yourCoinNumber {
   padding-bottom: 0; }
-
-.cryptotable .customCoin .priceUsd, .cryptotable .customCoin .priceBtc {
-  width: 80px; }
-
-.cryptotable .customCoin .priceUsd input, .cryptotable .customCoin .priceBtc input {
-  text-align: right; }
 
 .cryptotable td {
   vertical-align: middle; }
@@ -45,9 +40,9 @@
 .cryptotable input {
   background-color: transparent;
   border: none;
-  border-bottom: 3px solid #dddddd;
+  border-bottom: 2px solid #dddddd;
   position: relative;
-  top: 3px; }
+  top: 2px; }
 
 .cryptotable input:focus {
   outline: none; }
@@ -65,7 +60,7 @@
 
 .cryptotable .bar:before, .cryptotable .bar:after {
   content: '';
-  height: 3px;
+  height: 2px;
   width: 0;
   bottom: -3px;
   position: absolute;

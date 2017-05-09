@@ -82,6 +82,7 @@ class CoinList extends Component {
       this.props.actions.downloadCoins(cryptoList);
       this.props.actions.setPriceMarkers(BTCPriceMarker, ETHPriceMarker);
       this.props.actions.updateSavedPortfolio();
+      this.props.actions.updateIndividualTotals();
       this.props.actions.updatePortfolioTotals();
       this.props.actions.updatePortfolioPercentage();
       return response;
