@@ -5,6 +5,19 @@ body {
   min-height: 100vh;
 }
 
+.hide {
+  display: none;
+}
+
+.rightTableHeading {
+  text-align: right !important;
+  padding-right: 22px !important;
+}
+
+.relative {
+  position: relative;
+}
+
 .App {
   text-align: center;
 }
@@ -36,8 +49,9 @@ body {
   padding-right: 10px;
 }
 
-.yourCoinNumber {
+.cryptotable .yourCoinNumber {
   text-align: center;
+  padding-bottom: 0;
 
   input {
     width: 90px;
@@ -58,12 +72,24 @@ body {
   text-align: center;
 }
 
+.customAddTd, .customAddTr {
+  border: none !important;
+  background-color: transparent !important;
+}
+
 .table.cryptotable>tbody>tr>td {
   vertical-align: middle;
 }
 
-.PriceUsd, .formatted_price_usd, .priceBtc, .yourCoinUsd, .yourCoinPercentage {
+.formatted_price_usd, .yourCoinUsd, .yourCoinPercentage {
   text-align: center;
+}
+
+.priceBtc, .priceUsd {
+  text-align: right;
+  .price {
+    padding-right: 14px;
+  }
 }
 
 .cryptoNameFull {
@@ -76,8 +102,14 @@ body {
 }
 
 .cryptotable th.cryptoid {
-    width: 100px;
+    min-width: 100px;
     text-align: left;
+}
+
+@media(min-width: 768px){
+  .cryptotable th.cryptoid {
+      min-width: 200px;
+  }
 }
 
 @media(min-width: 1020px){

@@ -3,7 +3,7 @@ import { Table } from 'react-bootstrap';
 import './Portfolio.css';
 import PortCoin from '../PortCoin/PortCoinContainer';
 import CustomPortCoin from '../CustomPortCoin/CustomPortCoinContainer';
-import AddCustomButton from '../AddCustomButton/AddCustomButton';
+import AddCustomButton from '../AddCustomButton/AddCustomButtonContainer';
 class Portfolio extends Component {
     render() {
         const portfolioFilled = this.props.portfolioCryptoList.length > 0;
@@ -20,8 +20,8 @@ class Portfolio extends Component {
                                  <th className="holding">Coin #</th>
                                  <th className="holding">Total USD</th>
                                  <th className="holding">%</th>
-                                 <th>USD</th>
-                                 <th>BTC</th>
+                                 <th className="rightTableHeading priceUsd">USD Price</th>
+                                 <th className="rightTableHeading priceBtc">BTC Price</th>
                                  <th>1 Hr</th>
                                  <th>24 Hrs</th>
                                  <th>7 Days</th>
@@ -33,15 +33,32 @@ class Portfolio extends Component {
                           return (
                               <PortCoin crypto={crypto} index={index} key={index} />
                           ) }, this )}
+                          <tr className="customAddTr">
+                              <td className="addCoinToPortfolioColumn customAddTd">
+                                  <AddCustomButton/>
+                              </td>
+                          </tr>
                     </tbody>
                    </Table>
-                   <AddCustomButton/>
                </div>
            );
            } else {
              return (
                  <div className="Portfolio">
-                     <AddCustomButton/>
+                     <Table responsive striped className="cryptotable">
+                         <thead>
+                            <tr>
+                               <th></th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                                <tr className="customAddTr">
+                                    <td className="addCoinToPortfolioColumn customAddTd">
+                                        <AddCustomButton/>
+                                    </td>
+                                </tr>
+                          </tbody>
+                     </Table>
                  </div>
              );
             }
@@ -52,5 +69,5 @@ export default Portfolio;
                         //   <CustomPortCoin />
                         //   Add Custom Crypto should add a new crypto row to the portfolio array.
                         //   It should conditionally render either a normal coin or a custom coin with input boxes
-                        //   at USD / BTC / Name / Coin# MAYBE THE TOTALUSD - defaults at 0 "x"
-                        //   It should have handlers for those input boxes that do the regular total calculations. And that's it. 
+                        //   at USD / BTC / Name / Coin# MAYBE THE TOTALUSD - defaults at 0 "C"
+                        //   It should have handlers for those input boxes that do the regular total calculations. And that's it.

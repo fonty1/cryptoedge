@@ -3,13 +3,22 @@ import { addCommas } from '../helpers';
 import { REMOVE_COIN_FROM_PORTFOLIO } from '../constants/actionTypes';
 import { ADD_COIN_TO_PORTFOLIO } from '../constants/actionTypes';
 import { DOWNLOAD_COINS } from '../constants/actionTypes';
+import { SET_PRICE_MARKERS } from '../constants/actionTypes';
 import { UPDATE_PORTFOLIOCOIN_COUNT } from '../constants/actionTypes';
 import { UPDATE_PORTFOLIO_TOTALS } from '../constants/actionTypes';
 import { UPDATE_PORTFOLIO_PERCENTAGE } from '../constants/actionTypes';
 import { UPDATE_SAVED_PORTFOLIO } from '../constants/actionTypes';
+import { ADD_CUSTOM_COIN_TO_PORTFOLIO } from '../constants/actionTypes';
+
+import { UPDATE_CUSTOM_NAME } from '../constants/actionTypes';
+import { UPDATE_CUSTOM_BTC } from '../constants/actionTypes';
+import { UPDATE_CUSTOM_USD } from '../constants/actionTypes';
 
 export default function coinListPortfolioReducer(state = initialState, action) {
   let portfolio = updateObjectInArray(state.portfolio, action);
+  let customNamePortfolio = updateNameInArray(state.portfolio, action);
+  let customUSDPortfolio = updateUSDInArray(state.portfolio, action);
+  let customBTCPortfolio = updateBTCInArray(state.portfolio, action);
   let totalUSD = sumTotalUSD(state.portfolio);
   let totalBTC = sumTotalBTC(state.portfolio);
   let percentagePortfolio = calcPercentage(state.portfolio, state.totalUSD);
@@ -20,6 +29,13 @@ export default function coinListPortfolioReducer(state = initialState, action) {
       return {
         ...state,
         coins: action.coins
+      };
+
+    case SET_PRICE_MARKERS:
+      return {
+        ...state,
+        BTCPriceMarker: action.BTCPriceMarker,
+        ETHPriceMarker: action.ETHPriceMarker
       };
 
     case UPDATE_SAVED_PORTFOLIO:
@@ -63,6 +79,30 @@ export default function coinListPortfolioReducer(state = initialState, action) {
         portfolio: percentagePortfolio
       };
 
+    case ADD_CUSTOM_COIN_TO_PORTFOLIO:
+      return {
+        ...state,
+        portfolio: state.portfolio.concat(action.customCoin)
+      };
+
+      case UPDATE_CUSTOM_NAME:
+        return {
+          ...state,
+          portfolio: customNamePortfolio
+        };
+
+      case UPDATE_CUSTOM_BTC:
+        return {
+          ...state,
+          portfolio: customBTCPortfolio
+        };
+
+      case UPDATE_CUSTOM_USD:
+        return {
+          ...state,
+          portfolio: customUSDPortfolio
+        };
+
     default:
       return state;
   }
@@ -80,6 +120,50 @@ function updateObjectInArray(array, action) {
               coinUSD: action.coinUSD,
               coinBTC: action.coinBTC,
               formattedCoinUSD: action.formattedUSD
+          };
+        }
+    });
+}
+
+function updateNameInArray(array, action) {
+    return array.map( (item, index) => {
+        if(index !== action.position) {
+            // This isn't the item we care about - keep it as-is
+          return item;
+        } else {
+          return {
+              ...item,
+              name: action.name
+          };
+        }
+    });
+}
+
+function updateUSDInArray(array, action) {
+    return array.map( (item, index) => {
+        if(index !== action.position) {
+            // This isn't the item we care about - keep it as-is
+          return item;
+        } else {
+          return {
+              ...item,
+              price_usd: action.price_usd,
+              price_btc: action.price_btc
+          };
+        }
+    });
+}
+
+function updateBTCInArray(array, action) {
+    return array.map( (item, index) => {
+        if(index !== action.position) {
+            // This isn't the item we care about - keep it as-is
+          return item;
+        } else {
+          return {
+              ...item,
+              price_usd: action.price_usd,
+              price_btc: action.price_btc
           };
         }
     });

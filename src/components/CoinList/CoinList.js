@@ -20,7 +20,7 @@ import gnt from '../../img/gnt.png';
 import unknown from '../../img/unknown.png';
 
 //const url = "https://cors-anywhere.herokuapp.com/https://api.coinmarketcap.com/v1/ticker/?limit=10";
-const url = "https://cors-anywhere.herokuapp.com/https://api.coinmarketcap.com/v1/ticker/?limit=50";
+const url = "https://cors-anywhere.herokuapp.com/https://api.coinmarketcap.com/v1/ticker/?limit=200";
 
 class CoinList extends Component {
   constructor(props) {
@@ -34,6 +34,8 @@ class CoinList extends Component {
 
   getCryptoList() {
     let that = this;
+    let BTCPriceMarker = 0;
+    let ETHPriceMarker = 0;
     axios.get(url).then(response => {
       let cryptoList = response.data;
       let btcVal = cryptoList[0].market_cap_usd;
@@ -50,6 +52,17 @@ class CoinList extends Component {
         cryptoRow.coinUSD = 0;
         cryptoRow.formattedCoinUSD = 0;
         cryptoRow.coinBTC = 0;
+        cryptoRow.type = 'regular';
+        const annoyingIdentifier = '24h_volume_usd';
+        cryptoRow.twentyfour_volume_usd = cryptoRow.annoyingIdentifier;
+
+        //Set Price Markers
+        if (cryptoRow.id === "bitcoin") {
+          BTCPriceMarker = cryptoRow.price_usd;
+        }
+        if (cryptoRow.id === "ethereum") {
+          ETHPriceMarker = cryptoRow.price_usd;
+        }
 
         // Currency formatting
         cryptoRow.formatted_price_usd = addCommas(cryptoRow.price_usd);
@@ -67,6 +80,7 @@ class CoinList extends Component {
 
       //console.log(cryptoList);
       this.props.actions.downloadCoins(cryptoList);
+      this.props.actions.setPriceMarkers(BTCPriceMarker, ETHPriceMarker);
       this.props.actions.updateSavedPortfolio();
       this.props.actions.updatePortfolioTotals();
       this.props.actions.updatePortfolioPercentage();

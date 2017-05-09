@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './AppHeader.css';
-import cryptoedge from '../../img/cryptoedge5.jpg';
+import cryptoedge from '../../img/cryptoedge.jpg';
 
 class AppHeader extends Component {
   render() {
@@ -11,11 +11,11 @@ class AppHeader extends Component {
                     <img alt="Cryptoedge" src={cryptoedge} className="edge-logo"/>
                     <h1>ryptoEdge</h1>
                   </li>
-                  <li className="right">
+                  <li className="right hide">
                     <i className="fa fa-refresh" aria-hidden="true"></i>
                     Refresh
                   </li>
-                  <li className="right">
+                  <li className="right hide">
                     <i className="fa fa-question" aria-hidden="true"></i>
                     Help
                   </li>
