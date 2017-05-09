@@ -38,7 +38,6 @@ class CoinList extends Component {
     let ETHPriceMarker = 0;
     axios.get(url).then(response => {
       let cryptoList = response.data;
-      let btcVal = cryptoList[0].market_cap_usd;
 
       cryptoList = cryptoList.map(function(cryptoRow, index) {
         // Maps Icons to their Coin
@@ -66,9 +65,6 @@ class CoinList extends Component {
 
         // Currency formatting
         cryptoRow.formatted_price_usd = addCommas(cryptoRow.price_usd);
-
-        // Calculates the Coin's relative BTC val
-        cryptoRow.btcVal = Math.round((cryptoRow.market_cap_usd / btcVal) * 10000) / 100;
 
         // Assigning the Change Styles.
         cryptoRow.oneHourStyles = that.heatmapChangeCalc(cryptoRow.percent_change_1h);

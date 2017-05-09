@@ -11,7 +11,6 @@ export default {
 
 // 24h_volume_usd: '',
 // available_supply: '',
-// btcVal: '',
 // formatted_price_usd: '',
 // id: '',
 // last_updated: '',

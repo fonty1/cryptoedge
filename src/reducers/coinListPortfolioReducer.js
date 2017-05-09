@@ -121,7 +121,8 @@ function updateIndividualTotals(array) {
           return {
               ...item,
               coinUSD: item.count * item.price_usd,
-              formattedCoinUSD: addCommas(Math.round((item.count * item.price_usd).toFixed(2) * 10000) / 10000)        
+              coinBTC: item.count * item.price_btc,
+              formattedCoinUSD: addCommas(Math.round((item.count * item.price_usd).toFixed(2) * 10000) / 10000)
           };
     });
 }

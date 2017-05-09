@@ -113,7 +113,6 @@ export function addCustomCoinToPortfolio() {
     formattedCoinUSD: 0,
     coinBTC: 0,
     formatted_price_usd: 0,
-    btcVal: 0,
     type: "custom"
   };
   return {
