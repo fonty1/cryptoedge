@@ -86,6 +86,19 @@ const PortCoin = ( { actions, crypto, index, totalUSD, totalBTC, portfolio, BTCP
                 <td className="yourCoinPercentage">
                     {crypto.percentage}%
                 </td>
+                <td className="boughtAt">
+                  <input
+                      value={crypto.count}
+                      onChange={onCoinNumberChange}
+                      type="number"
+                      name={"coinNum-" + index}
+                      min="0"
+                      step="any"
+                  />
+                </td>
+                <td className="profitLoss">
+                    $5,000
+                </td>
                 <td className="priceUsd">
                     <span className="price">${crypto.formatted_price_usd}</span>
                 </td>
@@ -138,6 +151,19 @@ const PortCoin = ( { actions, crypto, index, totalUSD, totalBTC, portfolio, BTCP
               </td>
               <td className="yourCoinPercentage">
                   {crypto.percentage}%
+              </td>
+              <td className="boughtAt">
+                <input
+                    value={crypto.count}
+                    onChange={onCoinNumberChange}
+                    type="number"
+                    name={"coinNum-" + index}
+                    min="0"
+                    step="any"
+                />
+              </td>
+              <td className="profitLoss">
+                  $5,000
               </td>
               <td className="priceUsd">
                   <input

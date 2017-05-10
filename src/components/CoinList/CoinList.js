@@ -81,6 +81,7 @@ class CoinList extends Component {
       this.props.actions.updateIndividualTotals();
       this.props.actions.updatePortfolioTotals();
       this.props.actions.updatePortfolioPercentage();
+      this.props.actions.calculateIndividualProfitLoss();
       return response;
     });
   }

@@ -20,6 +20,8 @@ class Portfolio extends Component {
                                  <th className="holding">Coin #</th>
                                  <th className="holding">Total USD</th>
                                  <th className="holding">%</th>
+                                 <th className="holding">Bought At</th>
+                                 <th className="holding">Profit/Loss</th>
                                  <th className="rightTableHeading priceUsd">USD Price</th>
                                  <th className="rightTableHeading priceBtc">BTC Price</th>
                                  <th>1 Hr</th>

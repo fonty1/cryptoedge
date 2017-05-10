@@ -11,6 +11,7 @@ import { UPDATE_CUSTOM_NAME } from '../constants/actionTypes';
 import { UPDATE_CUSTOM_BTC } from '../constants/actionTypes';
 import { UPDATE_CUSTOM_USD } from '../constants/actionTypes';
 import { UPDATE_INDIVIDUAL_TOTALS } from '../constants/actionTypes';
+import { CALCULATE_INDIVIDUAL_PROFIT_LOSS } from '../constants/actionTypes';
 import customCoinLogo from '../img/customcoin.png';
 
 export function addCoinToPortfolio(coin) {
@@ -113,7 +114,8 @@ export function addCustomCoinToPortfolio() {
     formattedCoinUSD: 0,
     coinBTC: 0,
     formatted_price_usd: 0,
-    type: "custom"
+    type: "custom",
+    boughtAt: 0
   };
   return {
     type: ADD_CUSTOM_COIN_TO_PORTFOLIO,
@@ -132,5 +134,11 @@ export function setPriceMarkers(BTCPriceMarker, ETHPriceMarker) {
 export function updateIndividualTotals() {
   return {
     type: UPDATE_INDIVIDUAL_TOTALS
+  };
+}
+
+export function calculateIndividualProfitLoss() {
+  return {
+    type: CALCULATE_INDIVIDUAL_PROFIT_LOSS
   };
 }

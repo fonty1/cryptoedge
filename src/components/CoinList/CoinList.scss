@@ -1,6 +1,6 @@
 .cryptotable {
     max-width: 1200px;
-    margin: 10px auto;
+    margin: 0 auto;
 
     .priceUsd, .priceBtc {
       width: 80px;
@@ -8,13 +8,6 @@
       input {
         text-align: right;
       }
-    }
-
-    .customCoin {
-      .cryptoid, .yourCoinNumber {
-        padding-bottom: 0;
-      }
-
     }
 
     td {
@@ -114,5 +107,104 @@
   @keyframes inputHighlighter {
   	from { background:#5264AE; }
     to 	{ width:0; background:transparent; }
+  }
+}
+
+
+.rightTableHeading {
+  text-align: right !important;
+  padding-right: 22px !important;
+}
+
+.table.cryptotable>tbody>tr>td.bold {
+  font-size: 1.6rem;
+  text-align: right;
+  padding-right: 10px;
+}
+
+.Portfolio {
+  margin-top: 40px;
+}
+
+.LeaderboardList {
+  margin-top: 40px;
+}
+
+.cryptotable .yourCoinNumber {
+  text-align: center;
+
+  input {
+    width: 90px;
+    text-align: right;
+  }
+}
+
+.addCoinToPortfolio, .removeCoinFromPortfolio {
+  font-size: 2.2rem;
+  color: #7398c1;
+  background: transparent;
+  border: 0;
+  height: 30px;
+}
+
+.addCoinToPortfolioColumn, .removeCoinFromPortfolioColumn, .capRank {
+  width: 85px;
+  text-align: center;
+}
+
+.customAddTd, .customAddTr {
+  border: none !important;
+  background-color: transparent !important;
+}
+
+.table.cryptotable>tbody>tr>td {
+  vertical-align: middle;
+}
+
+.formatted_price_usd, .yourCoinUsd, .yourCoinPercentage {
+  text-align: center;
+}
+
+.priceBtc, .priceUsd {
+  text-align: right;
+  width: 80px;
+
+  .price {
+    padding-right: 14px;
+  }
+}
+
+.cryptoNameFull {
+  display: none;
+}
+
+.cryptoSymbol {
+  font-size: 1.2rem;
+  color: #000;
+}
+
+.cryptotable th.cryptoid {
+    min-width: 100px;
+    text-align: left;
+}
+
+@media(min-width: 768px){
+  .cryptotable th.cryptoid {
+      min-width: 200px;
+  }
+}
+
+@media(min-width: 1020px){
+  .cryptoNameFull {
+    display: inline;
+  }
+
+  .cryptoSymbol {
+    font-size: 1.2rem;
+    color: #999;
+  }
+
+  .cryptotable th.cryptoid {
+      width: auto;
   }
 }

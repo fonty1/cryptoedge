@@ -10,6 +10,7 @@ import { UPDATE_PORTFOLIO_PERCENTAGE } from '../constants/actionTypes';
 import { UPDATE_SAVED_PORTFOLIO } from '../constants/actionTypes';
 import { ADD_CUSTOM_COIN_TO_PORTFOLIO } from '../constants/actionTypes';
 import { UPDATE_INDIVIDUAL_TOTALS } from '../constants/actionTypes';
+import { CALCULATE_INDIVIDUAL_PROFIT_LOSS } from '../constants/actionTypes';
 
 import { UPDATE_CUSTOM_NAME } from '../constants/actionTypes';
 import { UPDATE_CUSTOM_BTC } from '../constants/actionTypes';
@@ -25,6 +26,7 @@ export default function coinListPortfolioReducer(state = initialState, action) {
   let totalBTC = sumTotalBTC(state.portfolio);
   let percentagePortfolio = calcPercentage(state.portfolio, state.totalUSD);
   let updatedSavedPortfolio = updateSavedPortfolio(state.portfolio, state.coins);
+  let calculateIndividualProfitLossPortfolio = calculateIndividualProfitLoss(state.portfolio);
 
   switch (action.type) {
     case DOWNLOAD_COINS:
@@ -38,6 +40,13 @@ export default function coinListPortfolioReducer(state = initialState, action) {
         ...state,
         BTCPriceMarker: action.BTCPriceMarker,
         ETHPriceMarker: action.ETHPriceMarker
+      };
+
+    case CALCULATE_INDIVIDUAL_PROFIT_LOSS:
+      console.log('calcIndvPL');
+      return {
+        ...state,
+        portfolio: calculateIndividualProfitLossPortfolio
       };
 
     case UPDATE_SAVED_PORTFOLIO:
@@ -123,6 +132,15 @@ function updateIndividualTotals(array) {
               coinUSD: item.count * item.price_usd,
               coinBTC: item.count * item.price_btc,
               formattedCoinUSD: addCommas(Math.round((item.count * item.price_usd).toFixed(2) * 10000) / 10000)
+          };
+    });
+}
+
+function calculateIndividualProfitLoss(array) {
+    return array.map( (item, index) => {
+          return {
+              ...item,
+              profitLoss: (item.boughtAt - item.price_usd) * item.count
           };
     });
 }

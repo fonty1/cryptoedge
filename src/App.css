@@ -7,10 +7,6 @@ body {
 .hide {
   display: none; }
 
-.rightTableHeading {
-  text-align: right !important;
-  padding-right: 22px !important; }
-
 .relative {
   position: relative; }
 
@@ -18,84 +14,9 @@ body {
   text-align: center; }
 
 .app__content {
-  max-width: 1300px;
+  max-width: 1400px;
   margin: 0 auto; }
-
-.app__content h2 {
-  text-align: left;
-  text-transform: uppercase;
-  font-size: 2.2rem; }
-
-.App-intro {
-  font-size: large; }
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg); }
-  to {
-    transform: rotate(360deg); } }
-
-.table.cryptotable > tbody > tr > td.bold {
-  font-size: 1.6rem;
-  text-align: right;
-  padding-right: 10px; }
-
-.cryptotable .yourCoinNumber {
-  text-align: center;
-  padding-bottom: 0; }
-
-.cryptotable .yourCoinNumber input {
-  width: 90px;
-  text-align: right; }
-
-.addCoinToPortfolio, .removeCoinFromPortfolio {
-  font-size: 2.2rem;
-  color: #7398c1;
-  background: transparent;
-  border: 0;
-  height: 30px; }
-
-.addCoinToPortfolioColumn, .removeCoinFromPortfolioColumn, .capRank {
-  width: 85px;
-  text-align: center; }
-
-.customAddTd, .customAddTr {
-  border: none !important;
-  background-color: transparent !important; }
-
-.table.cryptotable > tbody > tr > td {
-  vertical-align: middle; }
-
-.formatted_price_usd, .yourCoinUsd, .yourCoinPercentage {
-  text-align: center; }
-
-.priceBtc, .priceUsd {
-  text-align: right;
-  width: 80px; }
-
-.priceBtc .price, .priceUsd .price {
-  padding-right: 14px; }
-
-.cryptoNameFull {
-  display: none; }
-
-.cryptoSymbol {
-  font-size: 1.2rem;
-  color: #000; }
-
-.cryptotable th.cryptoid {
-  min-width: 100px;
-  text-align: left; }
-
-@media (min-width: 768px) {
-  .cryptotable th.cryptoid {
-    min-width: 200px; } }
-
-@media (min-width: 1020px) {
-  .cryptoNameFull {
-    display: inline; }
-  .cryptoSymbol {
-    font-size: 1.2rem;
-    color: #999; }
-  .cryptotable th.cryptoid {
-    width: auto; } }
+  .app__content h2 {
+    text-align: left;
+    text-transform: uppercase;
+    font-size: 2.2rem; }
