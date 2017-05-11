@@ -137,19 +137,23 @@ function updateIndividualTotals(array) {
 
 function calculateIndividualProfitLoss(array, action) {
         return array.map( (item, index) => {
-          let correctBoughtAt = item.boughtAt;
-
-          if (item.boughtAt !== action.boughtAt) {
-            // If boughtAt has been updated, use it.
-            // If not, use the existing boughtAt value.
-            correctBoughtAt = action.boughtAt
+          if(index !== action.position) {
+              // This isn't the item we care about - keep it as-is
+            return item;
+          } else {
+            let correctBoughtAt = item.boughtAt;
+            if (item.boughtAt !== action.boughtAt) {
+              // If boughtAt has been updated, use it.
+              // If not, use the existing boughtAt value.
+              correctBoughtAt = action.boughtAt
+            }
+            let profitLossFormatted = addCommas(Math.round(((item.price_usd - correctBoughtAt) * item.count).toFixed(2) * 10000) / 10000);
+            return {
+                ...item,
+                boughtAt: correctBoughtAt,
+                profitLoss: profitLossFormatted
+            };
           }
-
-          return {
-              ...item,
-              boughtAt: correctBoughtAt,
-              profitLoss: (item.price_usd - correctBoughtAt) * item.count
-          };
     });
 }
 
@@ -191,7 +195,7 @@ function updateUSDInArray(array, action) {
           return item;
         } else {
           return {
-              item,
+              ...item,
               price_usd: action.price_usd,
               price_btc: action.price_btc
           };

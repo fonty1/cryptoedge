@@ -12,7 +12,7 @@ const PortCoin = ( { actions, crypto, index, totalUSD, totalBTC, portfolio, BTCP
       actions.updatePortfolioCount(newVal, index, newCoinUSD, formattedUSD, newCoinBTC);
       actions.updatePortfolioTotals();
       actions.updatePortfolioPercentage();
-      actions.calculateIndividualProfitLoss();
+      actions.calculateIndividualProfitLoss(crypto.boughtAt, index);
     }
 
     const onChangeName = e => {
@@ -30,7 +30,7 @@ const PortCoin = ( { actions, crypto, index, totalUSD, totalBTC, portfolio, BTCP
 
         actions.updateCustomUSDPrice(newUSDPriceVal, index, calcdBTCPrice);
         actions.updatePortfolioCount(crypto.count, index, newCoinUSD, formattedUSD, calcdBTCPrice);
-        actions.calculateIndividualProfitLoss();
+        actions.calculateIndividualProfitLoss(crypto.boughtAt, index);
         actions.updatePortfolioTotals();
         actions.updatePortfolioPercentage();
     }
@@ -44,7 +44,7 @@ const PortCoin = ( { actions, crypto, index, totalUSD, totalBTC, portfolio, BTCP
 
         actions.updateCustomBTCPrice(newBTCPriceVal, index, calcdUSDPrice);
         actions.updatePortfolioCount(crypto.count, index, newCoinUSD, formattedUSD, newBTCPriceVal, crypto.boughtAt);
-        actions.calculateIndividualProfitLoss();
+        actions.calculateIndividualProfitLoss(crypto.boughtAt, index);
         actions.updatePortfolioTotals();
         actions.updatePortfolioPercentage();
     }
@@ -52,7 +52,7 @@ const PortCoin = ( { actions, crypto, index, totalUSD, totalBTC, portfolio, BTCP
     const onBoughtAtChange = e => {
         e.preventDefault()
         let newboughtAtUSDPriceVal = e.target.value;
-        actions.calculateIndividualProfitLoss(newboughtAtUSDPriceVal);
+        actions.calculateIndividualProfitLoss(newboughtAtUSDPriceVal, index);
     }
 
     const preRemoveCoin = () => {

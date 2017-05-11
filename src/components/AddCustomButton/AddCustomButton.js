@@ -2,7 +2,6 @@ import React from 'react';
 
 const AddCustomButton = ( { actions } ) => {
   const handleClick = () => {
-    console.log('I got clicked');
     actions.addCustomCoinToPortfolio();
   }
 
