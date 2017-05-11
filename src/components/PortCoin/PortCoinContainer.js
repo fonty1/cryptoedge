@@ -8,6 +8,7 @@ const mapStateToProps = (state, ownProps) => ({
     portfolio: state.coinListPortfolio.portfolio,
     totalUSD : state.coinListPortfolio.totalUSD,
     totalBTC : state.coinListPortfolio.totalBTC,
+    boughtAt : state.coinListPortfolio.boughtAt,
     BTCPriceMarker : state.coinListPortfolio.BTCPriceMarker
 });
 

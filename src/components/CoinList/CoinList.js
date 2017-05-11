@@ -45,13 +45,15 @@ class CoinList extends Component {
 
         cryptoRow.position = index;
 
-        // Setting defaults temporarily
+        // Setting defaults of the downloaded coinList
         cryptoRow.percentage = 0;
         cryptoRow.count = 0;
         cryptoRow.coinUSD = 0;
         cryptoRow.formattedCoinUSD = 0;
         cryptoRow.coinBTC = 0;
         cryptoRow.type = 'regular';
+        cryptoRow.boughtAt = 0;
+        cryptoRow.profitLoss = 0;
         const annoyingIdentifier = '24h_volume_usd';
         cryptoRow.twentyfour_volume_usd = cryptoRow.annoyingIdentifier;
 

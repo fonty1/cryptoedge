@@ -12,6 +12,7 @@ const PortCoin = ( { actions, crypto, index, totalUSD, totalBTC, portfolio, BTCP
       actions.updatePortfolioCount(newVal, index, newCoinUSD, formattedUSD, newCoinBTC);
       actions.updatePortfolioTotals();
       actions.updatePortfolioPercentage();
+      actions.calculateIndividualProfitLoss();
     }
 
     const onChangeName = e => {
@@ -29,6 +30,7 @@ const PortCoin = ( { actions, crypto, index, totalUSD, totalBTC, portfolio, BTCP
 
         actions.updateCustomUSDPrice(newUSDPriceVal, index, calcdBTCPrice);
         actions.updatePortfolioCount(crypto.count, index, newCoinUSD, formattedUSD, calcdBTCPrice);
+        actions.calculateIndividualProfitLoss();
         actions.updatePortfolioTotals();
         actions.updatePortfolioPercentage();
     }
@@ -41,9 +43,16 @@ const PortCoin = ( { actions, crypto, index, totalUSD, totalBTC, portfolio, BTCP
         let calcdUSDPrice = ((newBTCPriceVal * BTCPriceMarker) * 10000) / 10000;
 
         actions.updateCustomBTCPrice(newBTCPriceVal, index, calcdUSDPrice);
-        actions.updatePortfolioCount(crypto.count, index, newCoinUSD, formattedUSD, newBTCPriceVal);
+        actions.updatePortfolioCount(crypto.count, index, newCoinUSD, formattedUSD, newBTCPriceVal, crypto.boughtAt);
+        actions.calculateIndividualProfitLoss();
         actions.updatePortfolioTotals();
         actions.updatePortfolioPercentage();
+    }
+
+    const onBoughtAtChange = e => {
+        e.preventDefault()
+        let newboughtAtUSDPriceVal = e.target.value;
+        actions.calculateIndividualProfitLoss(newboughtAtUSDPriceVal);
     }
 
     const preRemoveCoin = () => {
@@ -88,16 +97,15 @@ const PortCoin = ( { actions, crypto, index, totalUSD, totalBTC, portfolio, BTCP
                 </td>
                 <td className="boughtAt">
                   <input
-                      value={crypto.count}
-                      onChange={onCoinNumberChange}
+                      value={crypto.boughtAt}
+                      onChange={onBoughtAtChange}
                       type="number"
-                      name={"coinNum-" + index}
                       min="0"
                       step="any"
                   />
                 </td>
                 <td className="profitLoss">
-                    $5,000
+                    <span className="profitLoss">${crypto.profitLoss}</span>
                 </td>
                 <td className="priceUsd">
                     <span className="price">${crypto.formatted_price_usd}</span>
@@ -154,8 +162,8 @@ const PortCoin = ( { actions, crypto, index, totalUSD, totalBTC, portfolio, BTCP
               </td>
               <td className="boughtAt">
                 <input
-                    value={crypto.count}
-                    onChange={onCoinNumberChange}
+                    value={crypto.boughtAt}
+                    onChange={onBoughtAtChange}
                     type="number"
                     name={"coinNum-" + index}
                     min="0"
@@ -163,7 +171,7 @@ const PortCoin = ( { actions, crypto, index, totalUSD, totalBTC, portfolio, BTCP
                 />
               </td>
               <td className="profitLoss">
-                  $5,000
+                  <span className="profitLoss">${crypto.profitLoss}</span>
               </td>
               <td className="priceUsd">
                   <input

@@ -26,7 +26,7 @@ export default function coinListPortfolioReducer(state = initialState, action) {
   let totalBTC = sumTotalBTC(state.portfolio);
   let percentagePortfolio = calcPercentage(state.portfolio, state.totalUSD);
   let updatedSavedPortfolio = updateSavedPortfolio(state.portfolio, state.coins);
-  let calculateIndividualProfitLossPortfolio = calculateIndividualProfitLoss(state.portfolio);
+  let calculateIndividualProfitLossPortfolio = calculateIndividualProfitLoss(state.portfolio, action);
 
   switch (action.type) {
     case DOWNLOAD_COINS:
@@ -43,7 +43,6 @@ export default function coinListPortfolioReducer(state = initialState, action) {
       };
 
     case CALCULATE_INDIVIDUAL_PROFIT_LOSS:
-      console.log('calcIndvPL');
       return {
         ...state,
         portfolio: calculateIndividualProfitLossPortfolio
@@ -136,11 +135,20 @@ function updateIndividualTotals(array) {
     });
 }
 
-function calculateIndividualProfitLoss(array) {
-    return array.map( (item, index) => {
+function calculateIndividualProfitLoss(array, action) {
+        return array.map( (item, index) => {
+          let correctBoughtAt = item.boughtAt;
+
+          if (item.boughtAt !== action.boughtAt) {
+            // If boughtAt has been updated, use it.
+            // If not, use the existing boughtAt value.
+            correctBoughtAt = action.boughtAt
+          }
+
           return {
               ...item,
-              profitLoss: (item.boughtAt - item.price_usd) * item.count
+              boughtAt: correctBoughtAt,
+              profitLoss: (item.price_usd - correctBoughtAt) * item.count
           };
     });
 }
@@ -183,7 +191,7 @@ function updateUSDInArray(array, action) {
           return item;
         } else {
           return {
-              ...item,
+              item,
               price_usd: action.price_usd,
               price_btc: action.price_btc
           };

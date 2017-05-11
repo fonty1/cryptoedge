@@ -137,8 +137,9 @@ export function updateIndividualTotals() {
   };
 }
 
-export function calculateIndividualProfitLoss() {
+export function calculateIndividualProfitLoss(boughtAt) {
   return {
-    type: CALCULATE_INDIVIDUAL_PROFIT_LOSS
+    type: CALCULATE_INDIVIDUAL_PROFIT_LOSS,
+    boughtAt
   };
 }
