@@ -130,6 +130,7 @@ function updateIndividualTotals(array) {
               ...item,
               coinUSD: item.count * item.price_usd,
               coinBTC: item.count * item.price_btc,
+              profitLoss: addCommas(Math.round(((item.price_usd - item.boughtAt) * item.count).toFixed(2) * 10000) / 10000),
               formattedCoinUSD: addCommas(Math.round((item.count * item.price_usd).toFixed(2) * 10000) / 10000)
           };
     });

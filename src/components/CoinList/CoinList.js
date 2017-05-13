@@ -4,11 +4,13 @@ import axios from 'axios';
 import { addCommas } from '../../helpers';
 import './CoinList.css';
 
+import bcap from '../../img/bcap.png';
 import btc from '../../img/btc.png';
 import eth from '../../img/eth.png';
 import ltc from '../../img/ltc.png';
 import xrp from '../../img/xrp.png';
 import dash from '../../img/dash.png';
+import fct from '../../img/fct.png';
 import xmr from '../../img/xmr.png';
 import etc from '../../img/etc.png';
 import xem from '../../img/xem.png';
@@ -17,6 +19,10 @@ import maid from '../../img/maid.png';
 import pivx from '../../img/pivx.png';
 import zec from '../../img/zec.png';
 import gnt from '../../img/gnt.png';
+import round from '../../img/round.png';
+import steem from '../../img/steem.png';
+import xlm from '../../img/xlm.png';
+import tkn from '../../img/tkn.png';
 import unknown from '../../img/unknown.png';
 
 //const url = "https://cors-anywhere.herokuapp.com/https://api.coinmarketcap.com/v1/ticker/?limit=10";
@@ -93,11 +99,17 @@ class CoinList extends Component {
         case "BTC":
             cryptoRow.logo = btc;
             break;
+        case "BCAP":
+            cryptoRow.logo = bcap;
+            break;
         case "ETH":
             cryptoRow.logo = eth;
             break;
         case "LTC":
             cryptoRow.logo = ltc;
+            break;
+        case "FCT":
+            cryptoRow.logo = fct;
             break;
         case "XRP":
             cryptoRow.logo = xrp;
@@ -128,6 +140,18 @@ class CoinList extends Component {
             break;
         case "GNT":
             cryptoRow.logo = gnt;
+            break;
+        case "ROUND":
+            cryptoRow.logo = round;
+            break;
+        case "STEEM":
+            cryptoRow.logo = steem;
+            break;
+        case "TKN":
+            cryptoRow.logo = tkn;
+            break;
+        case "XLM":
+            cryptoRow.logo = xlm;
             break;
         default:
             cryptoRow.logo = unknown;
