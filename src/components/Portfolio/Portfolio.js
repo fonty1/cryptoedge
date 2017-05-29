@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { Table } from 'react-bootstrap';
 import './Portfolio.css';
 import PortCoin from '../PortCoin/PortCoinContainer';
-import CustomPortCoin from '../CustomPortCoin/CustomPortCoinContainer';
 import AddCustomButton from '../AddCustomButton/AddCustomButtonContainer';
 class Portfolio extends Component {
     render() {
@@ -68,8 +67,3 @@ class Portfolio extends Component {
 }
 
 export default Portfolio;
-                        //   <CustomPortCoin />
-                        //   Add Custom Crypto should add a new crypto row to the portfolio array.
-                        //   It should conditionally render either a normal coin or a custom coin with input boxes
-                        //   at USD / BTC / Name / Coin# MAYBE THE TOTALUSD - defaults at 0 "C"
-                        //   It should have handlers for those input boxes that do the regular total calculations. And that's it.

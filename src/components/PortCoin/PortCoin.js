@@ -4,26 +4,27 @@ import { addCommas } from '../../helpers';
 const PortCoin = ( { actions, crypto, index, totalUSD, totalBTC, portfolio, BTCPriceMarker } ) => {
     const onCoinNumberChange = e => {
       e.preventDefault()
-      let newVal = e.target.value;
+      let newVal = Number(e.target.value);
       let newCoinUSD = newVal * crypto.price_usd;
       let formattedUSD = addCommas(Math.round((newCoinUSD).toFixed(2) * 10000) / 10000);
       let newCoinBTC = newVal * crypto.price_btc;
 
       actions.updatePortfolioCount(newVal, index, newCoinUSD, formattedUSD, newCoinBTC);
+      actions.calculateIndividualProfitLoss(crypto.boughtAt, index);
       actions.updatePortfolioTotals();
       actions.updatePortfolioPercentage();
-      actions.calculateIndividualProfitLoss(crypto.boughtAt, index);
+      // Perectage calculation, always after total calculation
     }
 
     const onChangeName = e => {
         e.preventDefault()
-        let newVal = e.target.value;
+        let newVal = Number(e.target.value);
         actions.updateCustomName(newVal, index);
     }
 
     const onChangeUSDPrice = e => {
         e.preventDefault()
-        let newUSDPriceVal = e.target.value;
+        let newUSDPriceVal = Number(e.target.value);
         let newCoinUSD = newUSDPriceVal * crypto.count;
         let formattedUSD = addCommas(Math.round((newCoinUSD).toFixed(2) * 10000) / 10000);
         let calcdBTCPrice = Math.round((newUSDPriceVal / BTCPriceMarker).toFixed(6) * 1000000) / 1000000;
@@ -37,7 +38,7 @@ const PortCoin = ( { actions, crypto, index, totalUSD, totalBTC, portfolio, BTCP
 
     const onChangeBTCPrice = e => {
         e.preventDefault()
-        let newBTCPriceVal = (e.target.value * 100000) / 100000;
+        let newBTCPriceVal = Number((e.target.value * 100000) / 100000);
         let newCoinUSD = newBTCPriceVal * crypto.count * BTCPriceMarker;
         let formattedUSD = addCommas(Math.round((newCoinUSD).toFixed(2) * 10000) / 10000);
         let calcdUSDPrice = ((newBTCPriceVal * BTCPriceMarker) * 10000) / 10000;
@@ -51,8 +52,9 @@ const PortCoin = ( { actions, crypto, index, totalUSD, totalBTC, portfolio, BTCP
 
     const onBoughtAtChange = e => {
         e.preventDefault()
-        let newboughtAtUSDPriceVal = e.target.value;
+        let newboughtAtUSDPriceVal = Number(e.target.value);
         actions.calculateIndividualProfitLoss(newboughtAtUSDPriceVal, index);
+        actions.updatePortfolioTotals();
     }
 
     const preRemoveCoin = () => {
@@ -103,9 +105,11 @@ const PortCoin = ( { actions, crypto, index, totalUSD, totalBTC, portfolio, BTCP
                       min="0"
                       step="any"
                   />
+                  <span className="highlight"></span>
+                  <span className="bar"></span>
                 </td>
                 <td className="profitLoss">
-                    <span className="profitLoss">${crypto.profitLoss}</span>
+                  <span className="profitLoss">${crypto.formattedProfitLoss}</span>
                 </td>
                 <td className="priceUsd">
                     <span className="price">${crypto.formatted_price_usd}</span>
@@ -169,9 +173,11 @@ const PortCoin = ( { actions, crypto, index, totalUSD, totalBTC, portfolio, BTCP
                     min="0"
                     step="any"
                 />
+                <span className="highlight"></span>
+                <span className="bar"></span>
               </td>
               <td className="profitLoss">
-                  <span className="profitLoss">${crypto.profitLoss}</span>
+                  <span className="profitLoss">${crypto.formattedProfitLoss}</span>
               </td>
               <td className="priceUsd">
                   <input

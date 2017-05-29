@@ -2,7 +2,7 @@ import React from 'react';
 import { Table } from 'react-bootstrap';
 import './TotalPortfolio.css';
 
-const TotalPortfolio = ( { cryptoPortfolio, formattedTotalUSD, totalBTC } ) => {
+const TotalPortfolio = ( { cryptoPortfolio, formattedTotalUSD, totalBTC, formattedTotalProfitLoss } ) => {
     if (cryptoPortfolio.length > 0) {
         return (
               <Table responsive className="totalTable">
@@ -10,6 +10,7 @@ const TotalPortfolio = ( { cryptoPortfolio, formattedTotalUSD, totalBTC } ) => {
                        <tr className="headings">
                           <th>Total USD</th>
                           <th>Total BTC</th>
+                          <th>Total Profit/Loss</th>
                        </tr>
                      </thead>
                    <tbody>
@@ -19,6 +20,9 @@ const TotalPortfolio = ( { cryptoPortfolio, formattedTotalUSD, totalBTC } ) => {
                             </td>
                             <td>
                               { totalBTC }
+                            </td>
+                            <td>
+                             ${ formattedTotalProfitLoss }
                             </td>
                         </tr>
                    </tbody>

@@ -1,9 +1,12 @@
+import CoinMarketCapApi from '../api/CoinMarketCapApi';
+
 import { REMOVE_COIN_FROM_PORTFOLIO } from '../constants/actionTypes';
 import { UPDATE_PORTFOLIOCOIN_COUNT } from '../constants/actionTypes';
 import { UPDATE_PORTFOLIO_TOTALS } from '../constants/actionTypes';
 import { UPDATE_PORTFOLIO_PERCENTAGE } from '../constants/actionTypes';
 import { ADD_COIN_TO_PORTFOLIO } from '../constants/actionTypes';
-import { DOWNLOAD_COINS } from '../constants/actionTypes';
+import { DOWNLOAD_COINS_PENDING } from '../constants/actionTypes';
+import { DOWNLOAD_COINS_FULFILLED } from '../constants/actionTypes';
 import { SET_PRICE_MARKERS } from '../constants/actionTypes';
 import { UPDATE_SAVED_PORTFOLIO } from '../constants/actionTypes';
 import { ADD_CUSTOM_COIN_TO_PORTFOLIO } from '../constants/actionTypes';
@@ -34,11 +37,24 @@ export function updatePortfolioTotals() {
   };
 }
 
-export function downloadCoins(coins) {
-  return {
-    type: DOWNLOAD_COINS,
-    coins
-  };
+export function downloadCoins() {
+  return async (dispatch) => {
+    dispatch({
+      type: DOWNLOAD_COINS_PENDING
+    });
+      try {
+        const coinsReceived = await CoinMarketCapApi.downloadCoinList();
+        dispatch({
+          type: DOWNLOAD_COINS_FULFILLED,
+          coins: coinsReceived.data
+      });
+      }
+      catch (e) {
+        console.log(e);
+        const error = JSON.parse(e.error).error;
+        console.log(error);
+      };
+    }
 }
 
 export function updateSavedPortfolio() {
@@ -115,7 +131,9 @@ export function addCustomCoinToPortfolio() {
     coinBTC: 0,
     formatted_price_usd: 0,
     type: "custom",
-    boughtAt: 0
+    boughtAt: 0,
+    profitLoss: 0,
+    formattedProfitLoss: 0
   };
   return {
     type: ADD_CUSTOM_COIN_TO_PORTFOLIO,

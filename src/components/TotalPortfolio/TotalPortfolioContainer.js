@@ -7,7 +7,8 @@ const mapStateToProps = (state, ownProps) => ({
     ...ownProps,
     cryptoPortfolio: state.coinListPortfolio.portfolio,
     formattedTotalUSD: state.coinListPortfolio.formattedTotalUSD,
-    totalBTC: state.coinListPortfolio.totalBTC
+    totalBTC: state.coinListPortfolio.totalBTC,
+    formattedTotalProfitLoss: state.coinListPortfolio.formattedTotalProfitLoss
 });
 
 const mapDispatchToProps = (dispatch) => {

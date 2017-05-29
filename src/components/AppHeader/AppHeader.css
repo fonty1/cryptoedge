@@ -5,35 +5,59 @@
   list-style-type: none;
   padding: 0;
   justify-content: flex-end; }
-  .primary-nav li {
-    position: relative;
-    top: 0;
-    padding: 0px 10px;
-    color: black;
-    text-align: center; }
-    .primary-nav li a {
-      color: black;
-      transition: all 0.3s;
-      display: block; }
-      .primary-nav li a i {
-        display: block;
-        font-size: 3rem;
-        padding-bottom: 5px; }
-        .primary-nav li a i:hover, .primary-nav li a i:focus {
-          color: #337ab7;
-          text-decoration: none; }
-      .primary-nav li a:hover, .primary-nav li a:focus {
-        color: #337ab7;
-        text-decoration: none; }
-    .primary-nav li i {
-      display: block;
-      font-size: 3rem;
-      padding-bottom: 5px; }
-  .primary-nav .logo-container {
-    position: relative;
-    left: -32px;
-    padding: 0;
-    top: 5px; }
+
+.primary-nav li {
+  position: relative;
+  top: 0;
+  padding: 0px 10px;
+  color: black;
+  text-align: center;
+  color: black;
+  transition: all 0.3s;
+  display: block; }
+
+.primary-nav li i {
+  display: block;
+  font-size: 3rem;
+  padding-bottom: 5px; }
+
+.primary-nav li i:hover, .primary-nav li i:focus {
+  color: #337ab7;
+  text-decoration: none; }
+
+.primary-nav li:hover, .primary-nav li:focus {
+  cursor: pointer;
+  color: #337ab7;
+  text-decoration: none; }
+
+.primary-nav li a {
+  color: black;
+  transition: all 0.3s;
+  display: block; }
+
+.primary-nav li a i {
+  display: block;
+  font-size: 3rem;
+  padding-bottom: 5px; }
+
+.primary-nav li a i:hover, .primary-nav li a i:focus {
+  color: #337ab7;
+  text-decoration: none; }
+
+.primary-nav li a:hover, .primary-nav li a:focus {
+  color: #337ab7;
+  text-decoration: none; }
+
+.primary-nav li i {
+  display: block;
+  font-size: 3rem;
+  padding-bottom: 5px; }
+
+.primary-nav .logo-container {
+  position: relative;
+  left: -32px;
+  padding: 0;
+  top: 5px; }
 
 .left {
   margin-right: auto; }
@@ -42,12 +66,13 @@
   width: 115px;
   text-align: center;
   padding: 5px; }
-  .logo-container .edge-logo {
-    max-width: 40px;
-    left: 0;
-    top: 0;
-    display: inline-block;
-    position: relative; }
+
+.logo-container .edge-logo {
+  max-width: 40px;
+  left: 0;
+  top: 0;
+  display: inline-block;
+  position: relative; }
 
 @media (min-width: 1020px) {
   .logo-container {
@@ -69,13 +94,14 @@ header {
   text-align: left;
   background-color: #fff;
   border-bottom: 1px solid #DDD; }
-  header h1 {
-    position: relative;
-    top: -17px;
-    display: inline;
-    left: 71px;
-    font-size: 19px;
-    line-height: 1;
-    padding: 0;
-    text-transform: uppercase;
-    color: #000; }
+
+header h1 {
+  position: relative;
+  top: -17px;
+  display: inline;
+  left: 71px;
+  font-size: 19px;
+  line-height: 1;
+  padding: 0;
+  text-transform: uppercase;
+  color: #000; }

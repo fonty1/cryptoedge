@@ -2,7 +2,8 @@ import initialState from './initialState';
 import { addCommas } from '../helpers';
 import { REMOVE_COIN_FROM_PORTFOLIO } from '../constants/actionTypes';
 import { ADD_COIN_TO_PORTFOLIO } from '../constants/actionTypes';
-import { DOWNLOAD_COINS } from '../constants/actionTypes';
+import { DOWNLOAD_COINS_PENDING } from '../constants/actionTypes';
+import { DOWNLOAD_COINS_FULFILLED } from '../constants/actionTypes';
 import { SET_PRICE_MARKERS } from '../constants/actionTypes';
 import { UPDATE_PORTFOLIOCOIN_COUNT } from '../constants/actionTypes';
 import { UPDATE_PORTFOLIO_TOTALS } from '../constants/actionTypes';
@@ -24,12 +25,18 @@ export default function coinListPortfolioReducer(state = initialState, action) {
   let updateIndividualTotalsPortfolio = updateIndividualTotals(state.portfolio);
   let totalUSD = sumTotalUSD(state.portfolio);
   let totalBTC = sumTotalBTC(state.portfolio);
+  let totalProfitLoss = sumTotalProfitLoss(state.portfolio);
   let percentagePortfolio = calcPercentage(state.portfolio, state.totalUSD);
   let updatedSavedPortfolio = updateSavedPortfolio(state.portfolio, state.coins);
   let calculateIndividualProfitLossPortfolio = calculateIndividualProfitLoss(state.portfolio, action);
 
   switch (action.type) {
-    case DOWNLOAD_COINS:
+    case DOWNLOAD_COINS_PENDING:
+      return {
+        ...state
+      };
+
+    case DOWNLOAD_COINS_FULFILLED:
       return {
         ...state,
         coins: action.coins
@@ -80,7 +87,8 @@ export default function coinListPortfolioReducer(state = initialState, action) {
         ...state,
         totalUSD,
         totalBTC: totalBTC.toFixed(4),
-        formattedTotalUSD: addCommas(totalUSD.toFixed(2))
+        formattedTotalUSD: addCommas(totalUSD.toFixed(2)),
+        formattedTotalProfitLoss: addCommas(totalProfitLoss.toFixed(2))
       };
 
     case UPDATE_PORTFOLIO_PERCENTAGE:
@@ -130,7 +138,8 @@ function updateIndividualTotals(array) {
               ...item,
               coinUSD: item.count * item.price_usd,
               coinBTC: item.count * item.price_btc,
-              profitLoss: addCommas(Math.round(((item.price_usd - item.boughtAt) * item.count).toFixed(2) * 10000) / 10000),
+              profitLoss: Math.round(((item.price_usd - item.boughtAt) * item.count).toFixed(2) * 10000) / 10000,
+              formattedProfitLoss: addCommas(Math.round(((item.price_usd - item.boughtAt) * item.count).toFixed(2) * 10000) / 10000),
               formattedCoinUSD: addCommas(Math.round((item.count * item.price_usd).toFixed(2) * 10000) / 10000)
           };
     });
@@ -143,16 +152,26 @@ function calculateIndividualProfitLoss(array, action) {
             return item;
           } else {
             let correctBoughtAt = item.boughtAt;
-            if (item.boughtAt !== action.boughtAt) {
+            if (typeof action.boughtAt !== 'undefined') {
               // If boughtAt has been updated, use it.
               // If not, use the existing boughtAt value.
-              correctBoughtAt = action.boughtAt
+              correctBoughtAt = action.boughtAt;
             }
-            let profitLossFormatted = addCommas(Math.round(((item.price_usd - correctBoughtAt) * item.count).toFixed(2) * 10000) / 10000);
+            console.log('action.position ' + action.position);
+            console.log('price_usd ' + item.price_usd);
+            console.log('count ' + item.count);
+            console.log('boughtAt ' + item.boughtAt);
+            console.log('action.position ' + action.position);
+            console.log('correctBoughtAt ' + correctBoughtAt);
+            var profitLoss = ((item.price_usd - correctBoughtAt) * item.count).toFixed(2) * 10000 / 10000;
+            var formattedProfitLoss = addCommas(Math.round(((item.price_usd - correctBoughtAt) * item.count).toFixed(2) * 10000) / 10000);
+            console.log('profitLoss ' + profitLoss);
+            console.log('formattedProfitLoss ' + formattedProfitLoss);
             return {
                 ...item,
                 boughtAt: correctBoughtAt,
-                profitLoss: profitLossFormatted
+                profitLoss: profitLoss,
+                formattedProfitLoss: formattedProfitLoss
             };
           }
     });
@@ -197,8 +216,8 @@ function updateUSDInArray(array, action) {
         } else {
           return {
               ...item,
-              price_usd: action.price_usd,
-              price_btc: action.price_btc
+              price_usd: Number(action.price_usd).toFixed(6),
+              price_btc: Number(action.price_btc).toFixed(6)
           };
         }
     });
@@ -212,8 +231,8 @@ function updateBTCInArray(array, action) {
         } else {
           return {
               ...item,
-              price_usd: action.price_usd,
-              price_btc: action.price_btc
+              price_usd: Number(action.price_usd).toFixed(6),
+              price_btc: Number(action.price_btc).toFixed(6)
           };
         }
     });
@@ -224,6 +243,15 @@ function sumTotalUSD(array) {
 
   for(var i = 0, len = array.length; i < len; i++) {
     myTotal += array[i].coinUSD;
+  }
+  return myTotal
+}
+
+function sumTotalProfitLoss(array) {
+  var myTotal = 0;
+
+  for(var i = 0, len = array.length; i < len; i++) {
+    myTotal += array[i].profitLoss;
   }
   return myTotal
 }
@@ -251,6 +279,7 @@ function updateSavedPortfolio(portfolio, coins, totalUSD) {
       coins.map( (coinItem, index) => {
         if(portItem.id === coinItem.id) {
           portItem.price_usd = coinItem.price_usd;
+          portItem.rank = coinItem.rank;
           portItem.formatted_price_usd = coinItem.formatted_price_usd;
           portItem.price_btc = coinItem.price_btc;
           portItem.oneHourStyles = coinItem.oneHourStyles;
@@ -260,6 +289,8 @@ function updateSavedPortfolio(portfolio, coins, totalUSD) {
           portItem.percent_change_24h = coinItem.percent_change_24h;
           portItem.percent_change_7d = coinItem.percent_change_7d;
           portItem.coinUSD = portItem.count * coinItem.price_usd;
+          portItem.profitLoss = Math.round(((coinItem.price_usd - coinItem.boughtAt) * coinItem.count).toFixed(2) * 10000) / 10000;
+          portItem.formattedProfitLoss = addCommas(portItem.profitLoss);
         }
         return false
       });
@@ -269,5 +300,6 @@ function updateSavedPortfolio(portfolio, coins, totalUSD) {
   });
   sumTotalUSD(portfolio);
   sumTotalBTC(portfolio);
+  sumTotalProfitLoss(portfolio);
   calcPercentage(portfolio, totalUSD);
 }
