@@ -20,12 +20,6 @@ const rootReducer = combineReducers({
 
 const persistedState = loadState();
 
-// const store = createStore(
-//   rootReducer,
-//   persistedState,
-//   applyMiddleware(thunk)
-// );
-
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const store = createStore(rootReducer, persistedState, composeEnhancers(
     applyMiddleware(thunk)

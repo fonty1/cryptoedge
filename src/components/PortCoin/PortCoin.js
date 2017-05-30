@@ -11,6 +11,7 @@ const PortCoin = ( { actions, crypto, index, totalUSD, totalBTC, portfolio, BTCP
 
       actions.updatePortfolioCount(newVal, index, newCoinUSD, formattedUSD, newCoinBTC);
       actions.calculateIndividualProfitLoss(crypto.boughtAt, index);
+      actions.updateIndividualTotals();
       actions.updatePortfolioTotals();
       actions.updatePortfolioPercentage();
       // Perectage calculation, always after total calculation
@@ -32,6 +33,7 @@ const PortCoin = ( { actions, crypto, index, totalUSD, totalBTC, portfolio, BTCP
         actions.updateCustomUSDPrice(newUSDPriceVal, index, calcdBTCPrice);
         actions.updatePortfolioCount(crypto.count, index, newCoinUSD, formattedUSD, calcdBTCPrice);
         actions.calculateIndividualProfitLoss(crypto.boughtAt, index);
+        actions.updateIndividualTotals();
         actions.updatePortfolioTotals();
         actions.updatePortfolioPercentage();
     }
@@ -42,10 +44,10 @@ const PortCoin = ( { actions, crypto, index, totalUSD, totalBTC, portfolio, BTCP
         let newCoinUSD = newBTCPriceVal * crypto.count * BTCPriceMarker;
         let formattedUSD = addCommas(Math.round((newCoinUSD).toFixed(2) * 10000) / 10000);
         let calcdUSDPrice = ((newBTCPriceVal * BTCPriceMarker) * 10000) / 10000;
-
         actions.updateCustomBTCPrice(newBTCPriceVal, index, calcdUSDPrice);
-        actions.updatePortfolioCount(crypto.count, index, newCoinUSD, formattedUSD, newBTCPriceVal, crypto.boughtAt);
+        actions.updatePortfolioCount(crypto.count, index, newCoinUSD, formattedUSD, newBTCPriceVal);
         actions.calculateIndividualProfitLoss(crypto.boughtAt, index);
+        actions.updateIndividualTotals();
         actions.updatePortfolioTotals();
         actions.updatePortfolioPercentage();
     }
@@ -54,13 +56,12 @@ const PortCoin = ( { actions, crypto, index, totalUSD, totalBTC, portfolio, BTCP
         e.preventDefault()
         let newboughtAtUSDPriceVal = Number(e.target.value);
         actions.calculateIndividualProfitLoss(newboughtAtUSDPriceVal, index);
+        actions.updateIndividualTotals();
         actions.updatePortfolioTotals();
     }
 
     const preRemoveCoin = () => {
         actions.removeCoinFromPortfolio(index);
-        actions.updatePortfolioTotals();
-        actions.updatePortfolioPercentage();
     }
 
     if (crypto.type !== "custom"){

@@ -1,26 +1,17 @@
 import React, { Component } from 'react';
 import { Table } from 'react-bootstrap';
 import { addCommas } from '../../helpers';
+import * as actions from '../../actions/coinListPortfolioActions';
 import './CoinList.css';
 
-class CoinList extends Component {
-  constructor(props) {
-      super(props);
-  }
+class CoinList extends React.Component {
 
-  componentDidMount() {
+  componentWillMount() {
     this.props.actions.downloadCoins();
-    //this.props.actions.setPriceMarkers(BTCPriceMarker, ETHPriceMarker);
-    this.props.actions.updateSavedPortfolio();
-    this.props.actions.updateIndividualTotals();
-    this.props.actions.updatePortfolioTotals();
-    this.props.actions.updatePortfolioPercentage();
-    //this.props.actions.calculateIndividualProfitLoss();
   }
 
   render() {
     const listFilled = this.props.cryptoList.length > 0;
-
      if (listFilled) {
         return (
           <div className="LeaderboardList">

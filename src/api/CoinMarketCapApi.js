@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { addCommas } from '../helpers';
+import * as actions from '../actions/coinListPortfolioActions';
 
 import bcap from '../img/bcap.png';
 import btc from '../img/btc.png';
@@ -23,7 +24,7 @@ import tkn from '../img/tkn.png';
 import unknown from '../img/unknown.png';
 
 //const url = "https://cors-anywhere.herokuapp.com/https://api.coinmarketcap.com/v1/ticker/?limit=10";
-const url = "https://cors-anywhere.herokuapp.com/https://api.coinmarketcap.com/v1/ticker/?limit=20";
+const url = "https://cors-anywhere.herokuapp.com/https://api.coinmarketcap.com/v1/ticker/?limit=50";
 
 const api = {
   downloadCoinList: () => {
@@ -45,7 +46,7 @@ const api = {
         cryptoRow.type = 'regular';
         cryptoRow.boughtAt = 0;
         cryptoRow.profitLoss = 0;
-        cryptoRow.formattedProfitLoss = '0';
+        cryptoRow.formattedProfitLoss = 0;
         const annoyingIdentifier = '24h_volume_usd';
         cryptoRow.twentyfour_volume_usd = cryptoRow.annoyingIdentifier;
 

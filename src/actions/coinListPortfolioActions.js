@@ -25,10 +25,18 @@ export function addCoinToPortfolio(coin) {
 }
 
 export function removeCoinFromPortfolio(position) {
-  return {
-    type: REMOVE_COIN_FROM_PORTFOLIO,
-    position
-  };
+    return (dispatch) => {
+      dispatch ({
+        type: REMOVE_COIN_FROM_PORTFOLIO,
+        position
+      });
+      dispatch({
+        type: UPDATE_PORTFOLIO_TOTALS
+      });
+      dispatch({
+        type: UPDATE_PORTFOLIO_PERCENTAGE
+      });
+    }
 }
 
 export function updatePortfolioTotals() {
@@ -47,7 +55,35 @@ export function downloadCoins() {
         dispatch({
           type: DOWNLOAD_COINS_FULFILLED,
           coins: coinsReceived.data
-      });
+        });
+        dispatch({
+          type: UPDATE_SAVED_PORTFOLIO,
+          coins: coinsReceived.data
+        });
+        let BTCPriceMarker = coinsReceived.data.find( function( crypto ){
+          return crypto.id === 'bitcoin';
+        } );
+        let ETHPriceMarker = coinsReceived.data.find( function( crypto ){
+          return crypto.id === 'ethereum';
+        } );
+        BTCPriceMarker = Number(BTCPriceMarker.price_usd).toFixed(6);
+        ETHPriceMarker = Number(ETHPriceMarker.price_usd).toFixed(6);
+        dispatch({
+          type: SET_PRICE_MARKERS,
+          BTCPriceMarker,
+          ETHPriceMarker
+        });
+        //requires bought at?
+        //calculateIndividualProfitLoss();
+        dispatch({
+          type: UPDATE_INDIVIDUAL_TOTALS
+        });
+        dispatch({
+          type: UPDATE_PORTFOLIO_TOTALS
+        });
+        dispatch({
+          type: UPDATE_PORTFOLIO_PERCENTAGE
+        });
       }
       catch (e) {
         console.log(e);
@@ -58,6 +94,7 @@ export function downloadCoins() {
 }
 
 export function updateSavedPortfolio() {
+  debugger
   return {
     type: UPDATE_SAVED_PORTFOLIO
   };

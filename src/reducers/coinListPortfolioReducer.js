@@ -18,18 +18,6 @@ import { UPDATE_CUSTOM_BTC } from '../constants/actionTypes';
 import { UPDATE_CUSTOM_USD } from '../constants/actionTypes';
 
 export default function coinListPortfolioReducer(state = initialState, action) {
-  let portfolio = updateObjectInArray(state.portfolio, action);
-  let customNamePortfolio = updateNameInArray(state.portfolio, action);
-  let customUSDPortfolio = updateUSDInArray(state.portfolio, action);
-  let customBTCPortfolio = updateBTCInArray(state.portfolio, action);
-  let updateIndividualTotalsPortfolio = updateIndividualTotals(state.portfolio);
-  let totalUSD = sumTotalUSD(state.portfolio);
-  let totalBTC = sumTotalBTC(state.portfolio);
-  let totalProfitLoss = sumTotalProfitLoss(state.portfolio);
-  let percentagePortfolio = calcPercentage(state.portfolio, state.totalUSD);
-  let updatedSavedPortfolio = updateSavedPortfolio(state.portfolio, state.coins);
-  let calculateIndividualProfitLossPortfolio = calculateIndividualProfitLoss(state.portfolio, action);
-
   switch (action.type) {
     case DOWNLOAD_COINS_PENDING:
       return {
@@ -50,15 +38,57 @@ export default function coinListPortfolioReducer(state = initialState, action) {
       };
 
     case CALCULATE_INDIVIDUAL_PROFIT_LOSS:
+          let dog = state.portfolio.map( (item, index) => {
+            if(index !== action.position) {
+                // This isn't the item we care about - keep it as-is
+              return item;
+            } else {
+              let correctBoughtAt = item.boughtAt;
+              if (typeof action.boughtAt !== 'undefined') {
+                // If boughtAt has been updated, use it.
+                // If not, use the existing boughtAt value.
+                correctBoughtAt = action.boughtAt;
+              }
+              var profitLoss = ((item.price_usd - correctBoughtAt) * item.count).toFixed(2) * 10000 / 10000;
+              var formattedProfitLoss = addCommas(Math.round(((item.price_usd - correctBoughtAt) * item.count).toFixed(2) * 10000) / 10000);
+              return {
+                  ...item,
+                  boughtAt: correctBoughtAt
+              };
+            }
+      });
       return {
         ...state,
-        portfolio: calculateIndividualProfitLossPortfolio
+        portfolio: dog
       };
 
     case UPDATE_SAVED_PORTFOLIO:
+    let tempSavedUpdate = state.portfolio.map( (portItem, index) => {
+        state.coins.map( (coinItem, index) => {
+          if(portItem.id === coinItem.id) {
+            portItem.price_usd = coinItem.price_usd;
+            portItem.rank = coinItem.rank;
+            portItem.formatted_price_usd = coinItem.formatted_price_usd;
+            portItem.price_btc = coinItem.price_btc;
+            portItem.oneHourStyles = coinItem.oneHourStyles;
+            portItem.twentyFourHourStyles = coinItem.twentyFourHourStyles;
+            portItem.sevenDayStyles = coinItem.sevenDayStyles;
+            portItem.percent_change_1h = coinItem.percent_change_1h;
+            portItem.percent_change_24h = coinItem.percent_change_24h;
+            portItem.percent_change_7d = coinItem.percent_change_7d;
+            portItem.coinUSD = portItem.count * coinItem.price_usd;
+            // portItem.profitLoss = Math.round(((coinItem.price_usd - coinItem.boughtAt) * coinItem.count).toFixed(2) * 10000) / 10000;
+            // portItem.formattedProfitLoss = addCommas(portItem.profitLoss);
+          }
+          return false
+        });
+        return {
+          ...portItem
+        }
+      });
       return {
         ...state,
-        portfolio: updatedSavedPortfolio
+        portfolio: tempSavedUpdate
       };
 
     case ADD_COIN_TO_PORTFOLIO:
@@ -77,24 +107,55 @@ export default function coinListPortfolioReducer(state = initialState, action) {
       };
 
     case UPDATE_PORTFOLIOCOIN_COUNT:
+      let tempPortfolio =  state.portfolio.map( (item, index) => {
+              if(index !== action.position) {
+                  // This isn't the item we care about - keep it as-is
+                return item;
+              } else {
+                return {
+                    ...item,
+                    count: action.count,
+                    coinUSD: action.coinUSD,
+                    coinBTC: action.coinBTC,
+                    formattedCoinUSD: action.formattedUSD
+                };
+              }
+          });
       return {
         ...state,
-        portfolio
+        portfolio: tempPortfolio
       };
 
     case UPDATE_PORTFOLIO_TOTALS:
+      let tempTotalUSD = 0;
+      var tempTotalBTC = 0;
+      var tempTotalProfitLoss = 0;
+
+      for(var i = 0, len = state.portfolio.length; i < len; i++) {
+        tempTotalProfitLoss += state.portfolio[i].profitLoss;
+        tempTotalUSD += state.portfolio[i].coinUSD;
+        tempTotalUSD += state.portfolio[i].coinBTC;
+        tempTotalBTC += state.portfolio[i].coinBTC;
+      }
+
       return {
         ...state,
-        totalUSD,
-        totalBTC: totalBTC.toFixed(4),
-        formattedTotalUSD: addCommas(totalUSD.toFixed(2)),
-        formattedTotalProfitLoss: addCommas(totalProfitLoss.toFixed(2))
+        totalUSD: tempTotalUSD,
+        totalBTC: tempTotalBTC.toFixed(4),
+        formattedTotalUSD: addCommas(tempTotalUSD.toFixed(2)),
+        formattedTotalProfitLoss: addCommas(tempTotalProfitLoss.toFixed(2))
       };
 
     case UPDATE_PORTFOLIO_PERCENTAGE:
+      let tempPercentagePortfolio = state.portfolio.map( (item, index) => {
+            return {
+                ...item,
+                percentage: ((item.coinUSD / state.totalUSD) * 100).toFixed(2)
+            };
+      });
       return {
         ...state,
-        portfolio: percentagePortfolio
+        portfolio: tempPercentagePortfolio
       };
 
     case ADD_CUSTOM_COIN_TO_PORTFOLIO:
@@ -104,202 +165,75 @@ export default function coinListPortfolioReducer(state = initialState, action) {
       };
 
       case UPDATE_CUSTOM_NAME:
+        let tempCustomName =  state.portfolio.map( (item, index) => {
+            if(index !== action.position) {
+                // This isn't the item we care about - keep it as-is
+              return item;
+            } else {
+              return {
+                  ...item,
+                  name: action.name
+              };
+            }
+        });
         return {
           ...state,
-          portfolio: customNamePortfolio
+          portfolio: tempCustomName
         };
 
       case UPDATE_CUSTOM_BTC:
+        let tempCustomBTCPortfolio = state.portfolio.map( (item, index) => {
+            if(index !== action.position) {
+                // This isn't the item we care about - keep it as-is
+              return item;
+            } else {
+              return {
+                  ...item,
+                  price_usd: Number(action.price_usd).toFixed(6),
+                  price_btc: Number(action.price_btc).toFixed(6)
+              };
+            }
+        });
         return {
           ...state,
-          portfolio: customBTCPortfolio
+          portfolio: tempCustomBTCPortfolio
         };
 
       case UPDATE_CUSTOM_USD:
+        let tempCustomUSDPortfolio = state.portfolio.map( (item, index) => {
+            if(index !== action.position) {
+                // This isn't the item we care about - keep it as-is
+              return item;
+            } else {
+              return {
+                  ...item,
+                  price_usd: Number(action.price_usd).toFixed(6),
+                  price_btc: Number(action.price_btc).toFixed(6)
+              };
+            }
+        });
         return {
           ...state,
-          portfolio: customUSDPortfolio
+          portfolio: tempCustomUSDPortfolio
         };
 
         case UPDATE_INDIVIDUAL_TOTALS:
+        let tempUpdatedIndividualTotalsPortfolio = state.portfolio.map( (item, index) => {
+                  return {
+                      ...item,
+                      coinUSD: item.count * item.price_usd,
+                      coinBTC: item.count * item.price_btc,
+                      profitLoss: Math.round(((item.price_usd - item.boughtAt) * item.count).toFixed(2) * 10000) / 10000,
+                      formattedProfitLoss: addCommas(Math.round(((item.price_usd - item.boughtAt) * item.count).toFixed(2) * 10000) / 10000),
+                      formattedCoinUSD: addCommas(Math.round((item.count * item.price_usd).toFixed(2) * 10000) / 10000)
+                  };
+            });
           return {
             ...state,
-            portfolio: updateIndividualTotalsPortfolio
+             portfolio: tempUpdatedIndividualTotalsPortfolio
           };
 
     default:
       return state;
   }
-}
-
-function updateIndividualTotals(array) {
-    return array.map( (item, index) => {
-          return {
-              ...item,
-              coinUSD: item.count * item.price_usd,
-              coinBTC: item.count * item.price_btc,
-              profitLoss: Math.round(((item.price_usd - item.boughtAt) * item.count).toFixed(2) * 10000) / 10000,
-              formattedProfitLoss: addCommas(Math.round(((item.price_usd - item.boughtAt) * item.count).toFixed(2) * 10000) / 10000),
-              formattedCoinUSD: addCommas(Math.round((item.count * item.price_usd).toFixed(2) * 10000) / 10000)
-          };
-    });
-}
-
-function calculateIndividualProfitLoss(array, action) {
-        return array.map( (item, index) => {
-          if(index !== action.position) {
-              // This isn't the item we care about - keep it as-is
-            return item;
-          } else {
-            let correctBoughtAt = item.boughtAt;
-            if (typeof action.boughtAt !== 'undefined') {
-              // If boughtAt has been updated, use it.
-              // If not, use the existing boughtAt value.
-              correctBoughtAt = action.boughtAt;
-            }
-            console.log('action.position ' + action.position);
-            console.log('price_usd ' + item.price_usd);
-            console.log('count ' + item.count);
-            console.log('boughtAt ' + item.boughtAt);
-            console.log('action.position ' + action.position);
-            console.log('correctBoughtAt ' + correctBoughtAt);
-            var profitLoss = ((item.price_usd - correctBoughtAt) * item.count).toFixed(2) * 10000 / 10000;
-            var formattedProfitLoss = addCommas(Math.round(((item.price_usd - correctBoughtAt) * item.count).toFixed(2) * 10000) / 10000);
-            console.log('profitLoss ' + profitLoss);
-            console.log('formattedProfitLoss ' + formattedProfitLoss);
-            return {
-                ...item,
-                boughtAt: correctBoughtAt,
-                profitLoss: profitLoss,
-                formattedProfitLoss: formattedProfitLoss
-            };
-          }
-    });
-}
-
-function updateObjectInArray(array, action) {
-    return array.map( (item, index) => {
-        if(index !== action.position) {
-            // This isn't the item we care about - keep it as-is
-          return item;
-        } else {
-          return {
-              ...item,
-              count: action.count,
-              coinUSD: action.coinUSD,
-              coinBTC: action.coinBTC,
-              formattedCoinUSD: action.formattedUSD
-          };
-        }
-    });
-}
-
-function updateNameInArray(array, action) {
-    return array.map( (item, index) => {
-        if(index !== action.position) {
-            // This isn't the item we care about - keep it as-is
-          return item;
-        } else {
-          return {
-              ...item,
-              name: action.name
-          };
-        }
-    });
-}
-
-function updateUSDInArray(array, action) {
-    return array.map( (item, index) => {
-        if(index !== action.position) {
-            // This isn't the item we care about - keep it as-is
-          return item;
-        } else {
-          return {
-              ...item,
-              price_usd: Number(action.price_usd).toFixed(6),
-              price_btc: Number(action.price_btc).toFixed(6)
-          };
-        }
-    });
-}
-
-function updateBTCInArray(array, action) {
-    return array.map( (item, index) => {
-        if(index !== action.position) {
-            // This isn't the item we care about - keep it as-is
-          return item;
-        } else {
-          return {
-              ...item,
-              price_usd: Number(action.price_usd).toFixed(6),
-              price_btc: Number(action.price_btc).toFixed(6)
-          };
-        }
-    });
-}
-
-function sumTotalUSD(array) {
-  var myTotal = 0;
-
-  for(var i = 0, len = array.length; i < len; i++) {
-    myTotal += array[i].coinUSD;
-  }
-  return myTotal
-}
-
-function sumTotalProfitLoss(array) {
-  var myTotal = 0;
-
-  for(var i = 0, len = array.length; i < len; i++) {
-    myTotal += array[i].profitLoss;
-  }
-  return myTotal
-}
-
-function sumTotalBTC(array) {
-  var myTotal = 0;
-
-  for(var i = 0, len = array.length; i < len; i++) {
-    myTotal += array[i].coinBTC;
-  }
-  return myTotal
-}
-
-function calcPercentage(array, totalUSD) {
-    return array.map( (item, index) => {
-          return {
-              ...item,
-              percentage: ((item.coinUSD / totalUSD) * 100).toFixed(2)
-          };
-    });
-}
-
-function updateSavedPortfolio(portfolio, coins, totalUSD) {
-  return portfolio.map( (portItem, index) => {
-      coins.map( (coinItem, index) => {
-        if(portItem.id === coinItem.id) {
-          portItem.price_usd = coinItem.price_usd;
-          portItem.rank = coinItem.rank;
-          portItem.formatted_price_usd = coinItem.formatted_price_usd;
-          portItem.price_btc = coinItem.price_btc;
-          portItem.oneHourStyles = coinItem.oneHourStyles;
-          portItem.twentyFourHourStyles = coinItem.twentyFourHourStyles;
-          portItem.sevenDayStyles = coinItem.sevenDayStyles;
-          portItem.percent_change_1h = coinItem.percent_change_1h;
-          portItem.percent_change_24h = coinItem.percent_change_24h;
-          portItem.percent_change_7d = coinItem.percent_change_7d;
-          portItem.coinUSD = portItem.count * coinItem.price_usd;
-          portItem.profitLoss = Math.round(((coinItem.price_usd - coinItem.boughtAt) * coinItem.count).toFixed(2) * 10000) / 10000;
-          portItem.formattedProfitLoss = addCommas(portItem.profitLoss);
-        }
-        return false
-      });
-      return {
-        ...portItem
-      }
-  });
-  sumTotalUSD(portfolio);
-  sumTotalBTC(portfolio);
-  sumTotalProfitLoss(portfolio);
-  calcPercentage(portfolio, totalUSD);
 }
