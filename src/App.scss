@@ -18,12 +18,20 @@ body {
 }
 
 .app__content {
-  max-width: 1400px;
+  max-width: 98%;
   margin: 0 auto;
 
   h2 {
     text-align: left;
     text-transform: uppercase;
     font-size: 2.2rem;
+  }
+
+  h6 {
+    text-align: left;
+    text-transform: uppercase;
+    font-weight: bold;
+    padding-left: 20px;
+    font-size: 1.6rem;
   }
 }

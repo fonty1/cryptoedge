@@ -10,7 +10,6 @@ const PortCoin = ( { actions, crypto, index, totalUSD, totalBTC, portfolio, BTCP
       let newCoinBTC = newVal * crypto.price_btc;
 
       actions.updatePortfolioCount(newVal, index, newCoinUSD, formattedUSD, newCoinBTC);
-      actions.calculateIndividualProfitLoss(crypto.boughtAt, index);
       actions.updateIndividualTotals();
       actions.updatePortfolioTotals();
       actions.updatePortfolioPercentage();
@@ -19,7 +18,7 @@ const PortCoin = ( { actions, crypto, index, totalUSD, totalBTC, portfolio, BTCP
 
     const onChangeName = e => {
         e.preventDefault()
-        let newVal = Number(e.target.value);
+        let newVal = e.target.value;
         actions.updateCustomName(newVal, index);
     }
 
@@ -32,7 +31,6 @@ const PortCoin = ( { actions, crypto, index, totalUSD, totalBTC, portfolio, BTCP
 
         actions.updateCustomUSDPrice(newUSDPriceVal, index, calcdBTCPrice);
         actions.updatePortfolioCount(crypto.count, index, newCoinUSD, formattedUSD, calcdBTCPrice);
-        actions.calculateIndividualProfitLoss(crypto.boughtAt, index);
         actions.updateIndividualTotals();
         actions.updatePortfolioTotals();
         actions.updatePortfolioPercentage();
@@ -44,9 +42,9 @@ const PortCoin = ( { actions, crypto, index, totalUSD, totalBTC, portfolio, BTCP
         let newCoinUSD = newBTCPriceVal * crypto.count * BTCPriceMarker;
         let formattedUSD = addCommas(Math.round((newCoinUSD).toFixed(2) * 10000) / 10000);
         let calcdUSDPrice = ((newBTCPriceVal * BTCPriceMarker) * 10000) / 10000;
+
         actions.updateCustomBTCPrice(newBTCPriceVal, index, calcdUSDPrice);
         actions.updatePortfolioCount(crypto.count, index, newCoinUSD, formattedUSD, newBTCPriceVal);
-        actions.calculateIndividualProfitLoss(crypto.boughtAt, index);
         actions.updateIndividualTotals();
         actions.updatePortfolioTotals();
         actions.updatePortfolioPercentage();
@@ -55,8 +53,8 @@ const PortCoin = ( { actions, crypto, index, totalUSD, totalBTC, portfolio, BTCP
     const onBoughtAtChange = e => {
         e.preventDefault()
         let newboughtAtUSDPriceVal = Number(e.target.value);
-        actions.calculateIndividualProfitLoss(newboughtAtUSDPriceVal, index);
-        actions.updateIndividualTotals();
+
+        actions.updateIndividualTotals(newboughtAtUSDPriceVal, index);
         actions.updatePortfolioTotals();
     }
 

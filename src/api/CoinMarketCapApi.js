@@ -38,6 +38,11 @@ const api = {
         cryptoRow.position = index;
 
         // Setting defaults of the downloaded coinList
+        cryptoRow.price_usd = Number(cryptoRow.price_usd);
+        cryptoRow.price_btc = Number(cryptoRow.price_btc);
+        cryptoRow.percent_change_1h = Number(cryptoRow.percent_change_1h);
+        cryptoRow.percent_change_24h = Number(cryptoRow.percent_change_24h);
+        cryptoRow.percent_change_7d = Number(cryptoRow.percent_change_7d);
         cryptoRow.percentage = 0;
         cryptoRow.count = 0;
         cryptoRow.coinUSD = 0;

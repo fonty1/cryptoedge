@@ -10,22 +10,83 @@ class Portfolio extends Component {
          if (portfolioFilled) {
            return (
                <div className="Portfolio">
+                  <h6>Portfolio</h6>
                    <Table responsive striped className="cryptotable">
                            <thead>
                               <tr>
                                  <th></th>
-                                 <th>Cap</th>
-                                 <th className="cryptoid">Crypto</th>
-                                 <th className="holding">Coin #</th>
-                                 <th className="holding">Total USD</th>
-                                 <th className="holding">%</th>
-                                 <th className="holding">Bought At ($USD)</th>
-                                 <th className="holding">Profit/Loss</th>
-                                 <th className="rightTableHeading priceUsd">USD Price</th>
-                                 <th className="rightTableHeading priceBtc">BTC Price</th>
-                                 <th>1 Hr</th>
-                                 <th>24 Hrs</th>
-                                 <th>7 Days</th>
+                                 <th>
+                                     Cap
+                                     <button onClick={() => this.sortByCap()} className="sortByButton">
+                                       <i className="fa fa-sort" aria-hidden="true"></i>
+                                     </button>
+                                 </th>
+                                 <th className="cryptoid">
+                                     Crypto
+                                     <button onClick={() => this.sortByCap()} className="sortByButton">
+                                       <i className="fa fa-sort" aria-hidden="true"></i>
+                                     </button>
+                                 </th>
+                                 <th className="holding">
+                                     Coin #
+                                     <button onClick={() => this.sortByCap()} className="sortByButton">
+                                       <i className="fa fa-sort" aria-hidden="true"></i>
+                                     </button>
+                                 </th>
+                                 <th className="holding">
+                                     Total USD
+                                     <button onClick={() => this.sortByCap()} className="sortByButton">
+                                       <i className="fa fa-sort" aria-hidden="true"></i>
+                                     </button>
+                                 </th>
+                                 <th className="holding">
+                                     %
+                                     <button onClick={() => this.sortByCap()} className="sortByButton">
+                                       <i className="fa fa-sort" aria-hidden="true"></i>
+                                     </button>
+                                 </th>
+                                 <th className="holding">
+                                     Bought At ($USD)
+                                     <button onClick={() => this.sortByCap()} className="sortByButton">
+                                       <i className="fa fa-sort" aria-hidden="true"></i>
+                                     </button>
+                                 </th>
+                                 <th className="holding">
+                                     Profit/Loss
+                                     <button onClick={() => this.sortByCap()} className="sortByButton">
+                                       <i className="fa fa-sort" aria-hidden="true"></i>
+                                     </button>
+                                 </th>
+                                 <th className="rightTableHeading priceUsd">
+                                     USD Price
+                                     <button onClick={() => this.sortByCap()} className="sortByButton">
+                                       <i className="fa fa-sort" aria-hidden="true"></i>
+                                     </button>
+                                 </th>
+                                 <th className="rightTableHeading priceBtc">
+                                     BTC Price
+                                     <button onClick={() => this.sortByCap()} className="sortByButton">
+                                       <i className="fa fa-sort" aria-hidden="true"></i>
+                                     </button>
+                                 </th>
+                                 <th>
+                                     1 Hr
+                                     <button onClick={() => this.sortByCap()} className="sortByButton">
+                                       <i className="fa fa-sort" aria-hidden="true"></i>
+                                     </button>
+                                 </th>
+                                 <th>
+                                     24 Hrs
+                                     <button onClick={() => this.sortByCap()} className="sortByButton">
+                                       <i className="fa fa-sort" aria-hidden="true"></i>
+                                     </button>
+                                 </th>
+                                 <th>
+                                     7 Days
+                                     <button onClick={() => this.sortByCap()} className="sortByButton">
+                                       <i className="fa fa-sort" aria-hidden="true"></i>
+                                     </button>
+                                 </th>
                               </tr>
                             </thead>
 

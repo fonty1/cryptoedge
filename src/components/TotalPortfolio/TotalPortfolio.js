@@ -10,7 +10,7 @@ const TotalPortfolio = ( { cryptoPortfolio, formattedTotalUSD, totalBTC, formatt
                        <tr className="headings">
                           <th>Total USD</th>
                           <th>Total BTC</th>
-                          <th>Total Profit/Loss</th>
+                          <th>Total USD Profit/Loss</th>
                        </tr>
                      </thead>
                    <tbody>

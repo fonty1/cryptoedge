@@ -14,8 +14,17 @@ import { UPDATE_CUSTOM_NAME } from '../constants/actionTypes';
 import { UPDATE_CUSTOM_BTC } from '../constants/actionTypes';
 import { UPDATE_CUSTOM_USD } from '../constants/actionTypes';
 import { UPDATE_INDIVIDUAL_TOTALS } from '../constants/actionTypes';
-import { CALCULATE_INDIVIDUAL_PROFIT_LOSS } from '../constants/actionTypes';
+import { SORTLIST } from '../constants/actionTypes';
 import customCoinLogo from '../img/customcoin.png';
+
+export function sortList(column, list) {
+  //How to do sortToggle?
+  return {
+    type: SORTLIST,
+    column,
+    list
+  };
+}
 
 export function addCoinToPortfolio(coin) {
   return {
@@ -73,8 +82,6 @@ export function downloadCoins() {
           BTCPriceMarker,
           ETHPriceMarker
         });
-        //requires bought at?
-        //calculateIndividualProfitLoss();
         dispatch({
           type: UPDATE_INDIVIDUAL_TOTALS
         });
@@ -94,7 +101,6 @@ export function downloadCoins() {
 }
 
 export function updateSavedPortfolio() {
-  debugger
   return {
     type: UPDATE_SAVED_PORTFOLIO
   };
@@ -186,15 +192,9 @@ export function setPriceMarkers(BTCPriceMarker, ETHPriceMarker) {
   };
 }
 
-export function updateIndividualTotals() {
+export function updateIndividualTotals(boughtAt, position) {
   return {
-    type: UPDATE_INDIVIDUAL_TOTALS
-  };
-}
-
-export function calculateIndividualProfitLoss(boughtAt, position) {
-  return {
-    type: CALCULATE_INDIVIDUAL_PROFIT_LOSS,
+    type: UPDATE_INDIVIDUAL_TOTALS,
     boughtAt,
     position
   };

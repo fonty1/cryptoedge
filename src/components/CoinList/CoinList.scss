@@ -1,5 +1,4 @@
 .cryptotable {
-    max-width: 1400px;
     margin: 0 auto;
 
     .priceUsd, .priceBtc {
@@ -108,6 +107,13 @@
   @keyframes inputHighlighter {
   	from { background:#5264AE; }
     to 	{ width:0; background:transparent; }
+  }
+
+  .sortByButton {
+    font-size: 1.2rem;
+    color: #bbbbbb;
+    background: transparent;
+    border: 0;
   }
 }
 

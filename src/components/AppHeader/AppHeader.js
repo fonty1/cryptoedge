@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './AppHeader.css';
 import cryptoedge from '../../img/cryptoedge.jpg';
 
-const AppHeader = ( { actions } ) => {
+const AppHeader = ( { actions, coinsLoading } ) => {
 
   const refreshClick = e => {
     e.preventDefault();
@@ -18,7 +18,7 @@ const AppHeader = ( { actions } ) => {
               <img alt="Cryptoedge" src={cryptoedge} className="edge-logo"/>
               <h1>ryptoEdge</h1>
             </li>
-            <li className="right" onClick={refreshClick}>
+            <li className={"right refresh " + (coinsLoading ? 'loading' : '')} onClick={refreshClick}>
               <i className="fa fa-refresh" aria-hidden="true"></i>
               Refresh
             </li>

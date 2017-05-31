@@ -10,21 +10,60 @@ class CoinList extends React.Component {
     this.props.actions.downloadCoins();
   }
 
+  sortByPriceBTC() {
+    this.props.actions.sortList('price_btc','coins');
+  }
+
+  sortByPriceUSD() {
+    this.props.actions.sortList('price_usd','coins');
+  }
+
+  sortByTwentyFourHrs() {
+    this.props.actions.sortList('price_usd','coins');
+  }
+
   render() {
     const listFilled = this.props.cryptoList.length > 0;
      if (listFilled) {
         return (
           <div className="LeaderboardList">
+              <h6>Coin List</h6>
               <Table responsive striped className="cryptotable">
               <thead>
                  <tr>
                     <th className="addCoinToPortfolioColumn"></th>
-                    <th>Cap</th>
-                    <th className="cryptoid">Crypto</th>
-                    <th className="cryptoPrice">USD</th>
-                    <th>1 Hr</th>
-                    <th>24 Hrs</th>
-                    <th>7 Days</th>
+                    <th>Cap
+                        <button onClick={() => this.sortByPriceBTC()} className="sortByButton">
+                          <i className="fa fa-sort" aria-hidden="true"></i>
+                        </button>
+                    </th>
+                    <th className="cryptoid">
+                      Crypto
+                    </th>
+                    <th className="cryptoPrice">
+                      USD
+                      <button onClick={() => this.sortByUSD()} className="sortByButton">
+                        <i className="fa fa-sort" aria-hidden="true"></i>
+                      </button>
+                    </th>
+                    <th>
+                      1 Hr
+                      <button onClick={() => this.sortByOneHr()} className="sortByButton">
+                        <i className="fa fa-sort" aria-hidden="true"></i>
+                      </button>
+                    </th>
+                    <th>
+                      24 Hrs
+                      <button onClick={() => this.sortByTwentyFourHrs()} className="sortByButton">
+                        <i className="fa fa-sort" aria-hidden="true"></i>
+                      </button>
+                    </th>
+                    <th>
+                      7 Days
+                      <button onClick={() => this.sortBySevenDays()} className="sortByButton">
+                        <i className="fa fa-sort" aria-hidden="true"></i>
+                      </button>
+                    </th>
                  </tr>
                </thead>
                <tbody>
