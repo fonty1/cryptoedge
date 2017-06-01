@@ -24,7 +24,7 @@ import tkn from '../img/tkn.png';
 import unknown from '../img/unknown.png';
 
 //const url = "https://cors-anywhere.herokuapp.com/https://api.coinmarketcap.com/v1/ticker/?limit=10";
-const url = "https://cors-anywhere.herokuapp.com/https://api.coinmarketcap.com/v1/ticker/?limit=50";
+const url = "https://cors-anywhere.herokuapp.com/https://api.coinmarketcap.com/v1/ticker/?limit=200";
 
 const api = {
   downloadCoinList: () => {
@@ -43,6 +43,7 @@ const api = {
         cryptoRow.percent_change_1h = Number(cryptoRow.percent_change_1h);
         cryptoRow.percent_change_24h = Number(cryptoRow.percent_change_24h);
         cryptoRow.percent_change_7d = Number(cryptoRow.percent_change_7d);
+        cryptoRow.market_cap_usd = Number(cryptoRow.market_cap_usd);
         cryptoRow.percentage = 0;
         cryptoRow.count = 0;
         cryptoRow.coinUSD = 0;
@@ -53,7 +54,11 @@ const api = {
         cryptoRow.profitLoss = 0;
         cryptoRow.formattedProfitLoss = 0;
         const annoyingIdentifier = '24h_volume_usd';
-        cryptoRow.twentyfour_volume_usd = cryptoRow.annoyingIdentifier;
+        cryptoRow.twentyfour_volume_usd = Number(cryptoRow[annoyingIdentifier]);
+        cryptoRow.formattedTwentyfour_volume_usd = addCommas(cryptoRow.twentyfour_volume_usd);
+
+        //Compute Weighted volume
+        cryptoRow.weightedVolume = ((cryptoRow.twentyfour_volume_usd * 100) / cryptoRow.market_cap_usd).toFixed(2);
 
         //Set Price Markers
         if (cryptoRow.id === "bitcoin") {

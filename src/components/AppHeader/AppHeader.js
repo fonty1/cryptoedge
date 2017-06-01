@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './AppHeader.css';
-import cryptoedge from '../../img/cryptoedge.jpg';
+import cryptoedge from '../../img/cryptoedge.png';
 
 const AppHeader = ( { actions, coinsLoading } ) => {
 
@@ -20,7 +20,7 @@ const AppHeader = ( { actions, coinsLoading } ) => {
             </li>
             <li className={"right refresh " + (coinsLoading ? 'loading' : '')} onClick={refreshClick}>
               <i className="fa fa-refresh" aria-hidden="true"></i>
-              Refresh
+              {"" + (coinsLoading ? 'Loading' : "Refresh")}
             </li>
             <li className="right hide">
               <i className="fa fa-question" aria-hidden="true"></i>

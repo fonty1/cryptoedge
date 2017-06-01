@@ -1,5 +1,5 @@
 import initialState from './initialState';
-import { addCommas } from '../helpers';
+import { addCommas, heatmapChangeCalc } from '../helpers';
 import { REMOVE_COIN_FROM_PORTFOLIO } from '../constants/actionTypes';
 import { ADD_COIN_TO_PORTFOLIO } from '../constants/actionTypes';
 import { DOWNLOAD_COINS_PENDING } from '../constants/actionTypes';
@@ -15,6 +15,7 @@ import { UPDATE_CUSTOM_NAME } from '../constants/actionTypes';
 import { UPDATE_CUSTOM_BTC } from '../constants/actionTypes';
 import { UPDATE_CUSTOM_USD } from '../constants/actionTypes';
 import { SORTLIST } from '../constants/actionTypes';
+import { CALCULATE_PORTFOLIO_TOTAL_PERCENTAGES } from '../constants/actionTypes';
 
 export default function coinListPortfolioReducer(state = initialState, action) {
   switch (action.type) {
@@ -35,15 +36,16 @@ export default function coinListPortfolioReducer(state = initialState, action) {
       let sortedCoins = [].concat(state[listSort])
         .sort(function(a,b){
           if (state.activeSorts[listSort][colSort] === true) {
-            return b[colSort]  - a[colSort]
+            return Number(a[colSort])  - Number(b[colSort])
           } else {
-          	return a[colSort]  - b[colSort]
+          	return Number(b[colSort])  - Number(a[colSort])
           }
         })
       return {
         ...state,
-        coins: sortedCoins,
+        [listSort]: sortedCoins,
         activeSorts: {
+          ...state.activeSorts,
           [listSort]: {
             ...state.activeSorts[listSort],
             [colSort]: activeSort,
@@ -76,9 +78,15 @@ export default function coinListPortfolioReducer(state = initialState, action) {
         state.coins.map( (coinItem, index) => {
           if(portItem.id === coinItem.id) {
             portItem.price_usd = coinItem.price_usd;
-            portItem.rank = coinItem.rank;
+            if (coinItem.rank === 'C') {
+              portItem.rank = 0;
+            } else {
+              portItem.rank = coinItem.rank;
+            }
             portItem.formatted_price_usd = coinItem.formatted_price_usd;
             portItem.price_btc = coinItem.price_btc;
+            portItem.twentyfour_volume_usd = coinItem.twentyfour_volume_usd;
+            portItem.formattedTwentyfour_volume_usd = coinItem.formattedTwentyfour_volume_usd;
             portItem.oneHourStyles = coinItem.oneHourStyles;
             portItem.twentyFourHourStyles = coinItem.twentyFourHourStyles;
             portItem.sevenDayStyles = coinItem.sevenDayStyles;
@@ -108,6 +116,7 @@ export default function coinListPortfolioReducer(state = initialState, action) {
       let portfolioTemp1 = state.portfolio.slice(0,action.position);
       let portfolioTemp2 = state.portfolio.slice(action.position + 1);
       let portfolioNew = portfolioTemp1.concat(portfolioTemp2);
+
       return {
         ...state,
         portfolio: portfolioNew
@@ -157,7 +166,7 @@ export default function coinListPortfolioReducer(state = initialState, action) {
       let tempPercentagePortfolio = state.portfolio.map( (item, index) => {
             return {
                 ...item,
-                percentage: ((item.coinUSD / state.totalUSD) * 100).toFixed(2)
+                percentage: Number(((item.coinUSD / state.totalUSD) * 100).toFixed(2))
             };
       });
       return {
@@ -239,8 +248,9 @@ export default function coinListPortfolioReducer(state = initialState, action) {
                   }
                 }
               }
-              var profitLoss = ((item.price_usd - correctBoughtAt) * item.count).toFixed(2) * 10000 / 10000;
-              var formattedProfitLoss = addCommas(Math.round(((item.price_usd - correctBoughtAt) * item.count).toFixed(2) * 10000) / 10000);
+              let profitLoss = ((item.price_usd - correctBoughtAt) * item.count).toFixed(2) * 10000 / 10000;
+              let formattedProfitLoss = addCommas(Math.round(((item.price_usd - correctBoughtAt) * item.count).toFixed(2) * 10000) / 10000);
+              let formattedCoinUSD = addCommas(Math.round((item.count * item.price_usd).toFixed(2) * 10000) / 10000);
               return {
                   ...item,
                   coinUSD: item.count * item.price_usd,
@@ -248,12 +258,39 @@ export default function coinListPortfolioReducer(state = initialState, action) {
                   boughtAt: correctBoughtAt,
                   profitLoss: profitLoss,
                   formattedProfitLoss: formattedProfitLoss,
-                  formattedCoinUSD: addCommas(Math.round((item.count * item.price_usd).toFixed(2) * 10000) / 10000)
+                  formattedCoinUSD: formattedCoinUSD
               }
           });
           return {
             ...state,
              portfolio: tempUpdatedIndividualTotalsPortfolio
+          };
+
+          case CALCULATE_PORTFOLIO_TOTAL_PERCENTAGES:
+          let totalPercentChangeOneHour = 0;
+          let totalPercentChangeTwentyFourHours = 0;
+          let totalPercentChangeSevenDays = 0;
+          
+          state.portfolio.map( (item, index) => {
+            totalPercentChangeOneHour += (item.percentage / 100) * item.percent_change_1h;
+            totalPercentChangeTwentyFourHours += (item.percentage / 100) * item.percent_change_24h;
+            totalPercentChangeSevenDays += (item.percentage / 100) * item.percent_change_7d;
+          });
+
+          let percent_change_1h = heatmapChangeCalc(totalPercentChangeOneHour);
+          let percent_change_24h = heatmapChangeCalc(totalPercentChangeTwentyFourHours);
+          let percent_change_7d = heatmapChangeCalc(totalPercentChangeSevenDays);
+          // Bug: Customs have 0 percent in calc
+          return {
+            ...state,
+            totalPercentChangeOneHour: totalPercentChangeOneHour.toFixed(2),
+            totalPercentChangeTwentyFourHours: totalPercentChangeTwentyFourHours.toFixed(2),
+            totalPercentChangeSevenDays: totalPercentChangeSevenDays.toFixed(2),
+            totalStyles: {
+              percent_change_1h,
+              percent_change_24h,
+              percent_change_7d
+            }
           };
 
     default:

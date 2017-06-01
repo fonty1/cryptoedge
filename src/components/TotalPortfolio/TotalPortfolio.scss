@@ -1,6 +1,7 @@
 .totalTable {
   text-align: center;
-  border: 2px solid #444;
+  margin: 0 15px 0 15px;
+  border: 2px solid #ECECEC;
 
   >thead>tr>th {
     border: none;
@@ -16,11 +17,8 @@
 }
 
 @media(min-width: 1020px) {
-
   .totalTable {
     max-width: 600px;
     float: right;
-    border: 2px solid #444;
   }
-
 }

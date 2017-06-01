@@ -1,4 +1,5 @@
 import CoinMarketCapApi from '../api/CoinMarketCapApi';
+import customCoinLogo from '../img/customcoin.png';
 
 import { REMOVE_COIN_FROM_PORTFOLIO } from '../constants/actionTypes';
 import { UPDATE_PORTFOLIOCOIN_COUNT } from '../constants/actionTypes';
@@ -15,7 +16,7 @@ import { UPDATE_CUSTOM_BTC } from '../constants/actionTypes';
 import { UPDATE_CUSTOM_USD } from '../constants/actionTypes';
 import { UPDATE_INDIVIDUAL_TOTALS } from '../constants/actionTypes';
 import { SORTLIST } from '../constants/actionTypes';
-import customCoinLogo from '../img/customcoin.png';
+import { CALCULATE_PORTFOLIO_TOTAL_PERCENTAGES } from '../constants/actionTypes';
 
 export function sortList(column, list) {
   //How to do sortToggle?
@@ -44,6 +45,9 @@ export function removeCoinFromPortfolio(position) {
       });
       dispatch({
         type: UPDATE_PORTFOLIO_PERCENTAGE
+      });
+      dispatch({
+        type: CALCULATE_PORTFOLIO_TOTAL_PERCENTAGES
       });
     }
 }
@@ -90,6 +94,9 @@ export function downloadCoins() {
         });
         dispatch({
           type: UPDATE_PORTFOLIO_PERCENTAGE
+        });
+        dispatch({
+          type: CALCULATE_PORTFOLIO_TOTAL_PERCENTAGES
         });
       }
       catch (e) {
@@ -154,10 +161,12 @@ export function addCustomCoinToPortfolio() {
     id: "custom",
     name: "Custom Coin",
     symbol: "C",
-    rank: "C",
+    rank: 0,
     price_usd: 0,
     price_btc: 0,
     twentyfour_volume_usd: 0,
+    formattedTwentyfour_volume_usd: 0,
+    weightedVolume: 0,
     market_cap_usd: 0,
     available_supply: 0,
     total_supply: 0,
@@ -197,5 +206,11 @@ export function updateIndividualTotals(boughtAt, position) {
     type: UPDATE_INDIVIDUAL_TOTALS,
     boughtAt,
     position
+  };
+}
+
+export function calculatePortfolioTotalPercentages() {
+  return {
+    type: CALCULATE_PORTFOLIO_TOTAL_PERCENTAGES
   };
 }

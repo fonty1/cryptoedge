@@ -10,6 +10,10 @@ class CoinList extends React.Component {
     this.props.actions.downloadCoins();
   }
 
+  sortByRank() {
+    this.props.actions.sortList('rank','coins');
+  }
+
   sortByPriceBTC() {
     this.props.actions.sortList('price_btc','coins');
   }
@@ -18,8 +22,24 @@ class CoinList extends React.Component {
     this.props.actions.sortList('price_usd','coins');
   }
 
-  sortByTwentyFourHrs() {
-    this.props.actions.sortList('price_usd','coins');
+  sortByOneHour() {
+    this.props.actions.sortList('percent_change_1h','coins');
+  }
+
+  sortByTwentyFourHours() {
+    this.props.actions.sortList('percent_change_24h','coins');
+  }
+
+  sortBySevenDays() {
+    this.props.actions.sortList('percent_change_7d','coins');
+  }
+
+  sortByVolume() {
+    this.props.actions.sortList('twentyfour_volume_usd','coins');
+  }
+
+  sortByWeightedVolume() {
+    this.props.actions.sortList('weightedVolume','coins');
   }
 
   render() {
@@ -32,29 +52,48 @@ class CoinList extends React.Component {
               <thead>
                  <tr>
                     <th className="addCoinToPortfolioColumn"></th>
-                    <th>Cap
-                        <button onClick={() => this.sortByPriceBTC()} className="sortByButton">
-                          <i className="fa fa-sort" aria-hidden="true"></i>
-                        </button>
+                    <th>
+                      Cap
+                      <button onClick={() => this.sortByRank()} className="sortByButton">
+                        <i className="fa fa-sort" aria-hidden="true"></i>
+                      </button>
                     </th>
                     <th className="cryptoid">
                       Crypto
                     </th>
+                    <th className="volume cryptoPrice">
+                      24hr Vol
+                      <button onClick={() => this.sortByVolume()} className="sortByButton">
+                        <i className="fa fa-sort" aria-hidden="true"></i>
+                      </button>
+                    </th>
+                    <th className="volume cryptoPrice">
+                      Weighted Vol
+                      <button onClick={() => this.sortByWeightedVolume()} className="sortByButton">
+                        <i className="fa fa-sort" aria-hidden="true"></i>
+                      </button>
+                    </th>
+                    <th className="cryptoPrice">
+                      BTC
+                      <button onClick={() => this.sortByPriceBTC()} className="sortByButton">
+                        <i className="fa fa-sort" aria-hidden="true"></i>
+                      </button>
+                    </th>
                     <th className="cryptoPrice">
                       USD
-                      <button onClick={() => this.sortByUSD()} className="sortByButton">
+                      <button onClick={() => this.sortByPriceUSD()} className="sortByButton">
                         <i className="fa fa-sort" aria-hidden="true"></i>
                       </button>
                     </th>
                     <th>
                       1 Hr
-                      <button onClick={() => this.sortByOneHr()} className="sortByButton">
+                      <button onClick={() => this.sortByOneHour()} className="sortByButton">
                         <i className="fa fa-sort" aria-hidden="true"></i>
                       </button>
                     </th>
                     <th>
                       24 Hrs
-                      <button onClick={() => this.sortByTwentyFourHrs()} className="sortByButton">
+                      <button onClick={() => this.sortByTwentyFourHours()} className="sortByButton">
                         <i className="fa fa-sort" aria-hidden="true"></i>
                       </button>
                     </th>
@@ -81,6 +120,9 @@ class CoinList extends React.Component {
                            <span className="cryptoNameFull">{crypto.name + " "}</span>
                            <span className="cryptoSymbol">({crypto.symbol})</span>
                          </td>
+                         <td className="bold">${crypto.formattedTwentyfour_volume_usd}</td>
+                         <td className="bold">{crypto.weightedVolume}</td>
+                         <td className="bold">{crypto.price_btc}</td>
                          <td className="bold">${crypto.formatted_price_usd}</td>
                          <td className="percentage__changes" style={crypto.oneHourStyles}>{crypto.percent_change_1h}%</td>
                          <td className="percentage__changes" style={crypto.twentyFourHourStyles}>{crypto.percent_change_24h}%</td>

@@ -13,6 +13,7 @@ const PortCoin = ( { actions, crypto, index, totalUSD, totalBTC, portfolio, BTCP
       actions.updateIndividualTotals();
       actions.updatePortfolioTotals();
       actions.updatePortfolioPercentage();
+      actions.calculatePortfolioTotalPercentages();
       // Perectage calculation, always after total calculation
     }
 
@@ -34,6 +35,7 @@ const PortCoin = ( { actions, crypto, index, totalUSD, totalBTC, portfolio, BTCP
         actions.updateIndividualTotals();
         actions.updatePortfolioTotals();
         actions.updatePortfolioPercentage();
+        actions.calculatePortfolioTotalPercentages();
     }
 
     const onChangeBTCPrice = e => {
@@ -48,6 +50,7 @@ const PortCoin = ( { actions, crypto, index, totalUSD, totalBTC, portfolio, BTCP
         actions.updateIndividualTotals();
         actions.updatePortfolioTotals();
         actions.updatePortfolioPercentage();
+        actions.calculatePortfolioTotalPercentages();
     }
 
     const onBoughtAtChange = e => {
@@ -110,6 +113,8 @@ const PortCoin = ( { actions, crypto, index, totalUSD, totalBTC, portfolio, BTCP
                 <td className="profitLoss">
                   <span className="profitLoss">${crypto.formattedProfitLoss}</span>
                 </td>
+                <td className="bold">${crypto.formattedTwentyfour_volume_usd}</td>
+                <td className="bold weightedVolColumn">{crypto.weightedVolume}</td>
                 <td className="priceUsd">
                     <span className="price">${crypto.formatted_price_usd}</span>
                 </td>
@@ -133,7 +138,6 @@ const PortCoin = ( { actions, crypto, index, totalUSD, totalBTC, portfolio, BTCP
                   </button>
               </td>
               <td className="capRank">
-                  {crypto.rank}
               </td>
               <td className="cryptoid">
                   <img alt={crypto.symbol} src={crypto.logo}/>
@@ -178,6 +182,8 @@ const PortCoin = ( { actions, crypto, index, totalUSD, totalBTC, portfolio, BTCP
               <td className="profitLoss">
                   <span className="profitLoss">${crypto.formattedProfitLoss}</span>
               </td>
+              <td className="bold"></td>
+              <td className="bold weightedVolColumn"></td>
               <td className="priceUsd">
                   <input
                       value={crypto.price_usd}
@@ -201,11 +207,11 @@ const PortCoin = ( { actions, crypto, index, totalUSD, totalBTC, portfolio, BTCP
                 <span className="bar"></span>
               </td>
               <td className="percentage__changes" style={crypto.oneHourStyles}>
-                  {crypto.percent_change_1h}%</td>
+              </td>
               <td className="percentage__changes" style={crypto.twentyFourHourStyles}>
-                  {crypto.percent_change_24h}%</td>
+              </td>
               <td className="percentage__changes" style={crypto.sevenDayStyles}>
-                  {crypto.percent_change_7d}%</td>
+              </td>
           </tr>
         )
     }
