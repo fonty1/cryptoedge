@@ -4,7 +4,7 @@ import customCoinLogo from '../img/customcoin.png';
 import { REMOVE_COIN_FROM_PORTFOLIO } from '../constants/actionTypes';
 import { UPDATE_PORTFOLIOCOIN_COUNT } from '../constants/actionTypes';
 import { UPDATE_PORTFOLIO_TOTALS } from '../constants/actionTypes';
-import { UPDATE_PORTFOLIO_PERCENTAGE } from '../constants/actionTypes';
+import { UPDATE_INDIVIDUAL_PORTFOLIO_PERCENTAGE } from '../constants/actionTypes';
 import { ADD_COIN_TO_PORTFOLIO } from '../constants/actionTypes';
 import { DOWNLOAD_COINS_PENDING } from '../constants/actionTypes';
 import { DOWNLOAD_COINS_FULFILLED } from '../constants/actionTypes';
@@ -44,7 +44,7 @@ export function removeCoinFromPortfolio(position) {
         type: UPDATE_PORTFOLIO_TOTALS
       });
       dispatch({
-        type: UPDATE_PORTFOLIO_PERCENTAGE
+        type: UPDATE_INDIVIDUAL_PORTFOLIO_PERCENTAGE
       });
       dispatch({
         type: CALCULATE_PORTFOLIO_TOTAL_PERCENTAGES
@@ -93,7 +93,7 @@ export function downloadCoins() {
           type: UPDATE_PORTFOLIO_TOTALS
         });
         dispatch({
-          type: UPDATE_PORTFOLIO_PERCENTAGE
+          type: UPDATE_INDIVIDUAL_PORTFOLIO_PERCENTAGE
         });
         dispatch({
           type: CALCULATE_PORTFOLIO_TOTAL_PERCENTAGES
@@ -126,7 +126,7 @@ export function updatePortfolioCount(count, position, coinUSD, formattedUSD, coi
 
 export function updatePortfolioPercentage() {
   return {
-    type: UPDATE_PORTFOLIO_PERCENTAGE
+    type: UPDATE_INDIVIDUAL_PORTFOLIO_PERCENTAGE
   };
 }
 
@@ -162,30 +162,30 @@ export function addCustomCoinToPortfolio() {
     name: "Custom Coin",
     symbol: "C",
     rank: 0,
-    price_usd: 0,
-    price_btc: 0,
-    twentyfour_volume_usd: 0,
-    formattedTwentyfour_volume_usd: 0,
-    weightedVolume: 0,
-    market_cap_usd: 0,
-    available_supply: 0,
-    total_supply: 0,
-    percent_change_1h: 0,
-    percent_change_24h: 0,
-    percent_change_7d: 0,
-    last_updated: 0,
+    price_usd: '',
+    price_btc: '',
+    twentyfour_volume_usd: '',
+    formattedTwentyfour_volume_usd: '',
+    weightedVolume: '',
+    market_cap_usd: '',
+    available_supply: '',
+    total_supply: '',
+    percent_change_1h: '',
+    percent_change_24h: '',
+    percent_change_7d: '',
+    last_updated: '',
     logo: customCoinLogo,
     position: 0,
-    percentage: 0,
+    percentage: '',
     count: 0,
-    coinUSD: 0,
-    formattedCoinUSD: 0,
-    coinBTC: 0,
-    formatted_price_usd: 0,
+    coinUSD: '',
+    formattedCoinUSD: '',
+    coinBTC: '',
+    formatted_price_usd: '',
     type: "custom",
-    boughtAt: 0,
-    profitLoss: 0,
-    formattedProfitLoss: 0
+    boughtAt: '',
+    profitLoss: '',
+    formattedProfitLoss: ''
   };
   return {
     type: ADD_CUSTOM_COIN_TO_PORTFOLIO,

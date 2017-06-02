@@ -67,13 +67,13 @@ const PortCoin = ( { actions, crypto, index, totalUSD, totalBTC, portfolio, BTCP
 
     if (crypto.type !== "custom"){
         return (
-            <tr className="cryptorank" key={index}>
+            <tr className="" key={index}>
                 <td className="removeCoinFromPortfolioColumn">
                     <button onClick={() => preRemoveCoin()} className="removeCoinFromPortfolio">
                         <i className="fa fa-minus-square-o" aria-hidden="true"></i>
                     </button>
                 </td>
-                <td className="capRank">
+                <td className="capRank capColumn">
                     {crypto.rank}
                 </td>
                 <td className="cryptoid">
@@ -137,7 +137,7 @@ const PortCoin = ( { actions, crypto, index, totalUSD, totalBTC, portfolio, BTCP
                       <i className="fa fa-minus-square-o" aria-hidden="true"></i>
                   </button>
               </td>
-              <td className="capRank">
+              <td className="capRank capColumn">
               </td>
               <td className="cryptoid">
                   <img alt={crypto.symbol} src={crypto.logo}/>

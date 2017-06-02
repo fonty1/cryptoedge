@@ -2,6 +2,7 @@ export default {
   coins: [],
   portfolio: [],
   totalUSD: 0,
+  totalUSDWithoutCustom: 0,
   formattedTotalUSD: 0,
   totalProfitLoss: 0,
   formattedTotalProfitLoss: 0,

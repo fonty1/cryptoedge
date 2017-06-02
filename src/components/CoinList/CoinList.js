@@ -48,11 +48,11 @@ class CoinList extends React.Component {
         return (
           <div className="LeaderboardList">
               <h6>Coin List</h6>
-              <Table responsive striped className="cryptotable">
+              <Table responsive striped className="cryptotable" id="coinlistTable">
               <thead>
                  <tr>
                     <th className="addCoinToPortfolioColumn"></th>
-                    <th>
+                    <th className="capColumn">
                       Cap
                       <button onClick={() => this.sortByRank()} className="sortByButton">
                         <i className="fa fa-sort" aria-hidden="true"></i>
@@ -114,11 +114,11 @@ class CoinList extends React.Component {
                                  <i className="fa fa-plus-square-o" aria-hidden="true"></i>
                              </button>
                          </td>
-                         <td className="capRank">{crypto.rank}</td>
+                         <td className="capRank capColumn">{crypto.rank}</td>
                          <td className="cryptoid">
                            <img alt={crypto.symbol} src={crypto.logo}/>
                            <span className="cryptoNameFull">{crypto.name + " "}</span>
-                           <span className="cryptoSymbol">({crypto.symbol})</span>
+                           <span className="cryptoSymbol">{crypto.symbol}</span>
                          </td>
                          <td className="bold">${crypto.formattedTwentyfour_volume_usd}</td>
                          <td className="bold">{crypto.weightedVolume}</td>

@@ -3,8 +3,13 @@ import { addCommas } from '../helpers';
 import * as actions from '../actions/coinListPortfolioActions';
 
 import bcap from '../img/bcap.png';
+import bcn from '../img/bcn.png';
 import btc from '../img/btc.png';
+import bts from '../img/bts.png';
+import doge from '../img/doge.png';
+import dgb from '../img/dgb.png';
 import eth from '../img/eth.png';
+import gno from '../img/gno.png';
 import ltc from '../img/ltc.png';
 import xrp from '../img/xrp.png';
 import dash from '../img/dash.png';
@@ -18,9 +23,12 @@ import pivx from '../img/pivx.png';
 import zec from '../img/zec.png';
 import gnt from '../img/gnt.png';
 import round from '../img/round.png';
+import sia from '../img/sia.png';
 import steem from '../img/steem.png';
-import xlm from '../img/xlm.png';
+import strat from '../img/strat.png';
 import tkn from '../img/tkn.png';
+import xlm from '../img/xlm.png';
+import waves from '../img/waves.png';
 import unknown from '../img/unknown.png';
 
 //const url = "https://cors-anywhere.herokuapp.com/https://api.coinmarketcap.com/v1/ticker/?limit=10";
@@ -88,11 +96,26 @@ const api = {
           case "BTC":
               cryptoRow.logo = btc;
               break;
+          case "BTS":
+              cryptoRow.logo = bts;
+              break;
           case "BCAP":
               cryptoRow.logo = bcap;
               break;
+          case "BCN":
+              cryptoRow.logo = bcn;
+              break;
+          case "DOGE":
+              cryptoRow.logo = doge;
+              break;
+          case "DGB":
+              cryptoRow.logo = dgb;
+              break;
           case "ETH":
               cryptoRow.logo = eth;
+              break;
+          case "GNO":
+              cryptoRow.logo = gno;
               break;
           case "LTC":
               cryptoRow.logo = ltc;
@@ -133,11 +156,20 @@ const api = {
           case "ROUND":
               cryptoRow.logo = round;
               break;
+          case "SIA":
+              cryptoRow.logo = sia;
+              break;
           case "STEEM":
               cryptoRow.logo = steem;
               break;
+          case "STRAT":
+              cryptoRow.logo = strat;
+              break;
           case "TKN":
               cryptoRow.logo = tkn;
+              break;
+          case "WAVES":
+              cryptoRow.logo = waves;
               break;
           case "XLM":
               cryptoRow.logo = xlm;

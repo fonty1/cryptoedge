@@ -1,18 +1,26 @@
 .totalTable {
   text-align: center;
-  margin: 0 15px 0 15px;
-  border: 2px solid #ECECEC; }
+  border-top: 2px solid #ECECEC;
+  border-bottom: 2px solid #ECECEC; }
 
 .totalTable > thead > tr > th {
   border: none; }
 
 .totalTable .headings th {
+  background-color: #f9f9f9;
   text-align: center; }
 
 .totalTable .portfolioTotals {
   text-align: center; }
 
-@media (min-width: 1020px) {
+.totalTable {
+  display: none; }
+
+.totalTablePercentages {
+  display: table; }
+
+@media (min-width: 768px) {
   .totalTable {
-    max-width: 600px;
-    float: right; } }
+    display: table; }
+  .totalTablePercentages {
+    display: none; } }

@@ -7,7 +7,7 @@ import { DOWNLOAD_COINS_FULFILLED } from '../constants/actionTypes';
 import { SET_PRICE_MARKERS } from '../constants/actionTypes';
 import { UPDATE_PORTFOLIOCOIN_COUNT } from '../constants/actionTypes';
 import { UPDATE_PORTFOLIO_TOTALS } from '../constants/actionTypes';
-import { UPDATE_PORTFOLIO_PERCENTAGE } from '../constants/actionTypes';
+import { UPDATE_INDIVIDUAL_PORTFOLIO_PERCENTAGE } from '../constants/actionTypes';
 import { UPDATE_SAVED_PORTFOLIO } from '../constants/actionTypes';
 import { ADD_CUSTOM_COIN_TO_PORTFOLIO } from '../constants/actionTypes';
 import { UPDATE_INDIVIDUAL_TOTALS } from '../constants/actionTypes';
@@ -25,7 +25,7 @@ export default function coinListPortfolioReducer(state = initialState, action) {
       var listSort = action.list;
       // make a true mark on the signature of the list/column
       // if it's true then invert the sort
-      // debugger
+
       var activeSort;
       if ((typeof state.activeSorts[listSort][colSort] === 'undefined') || (state.activeSorts[listSort][colSort] === true)) {
         activeSort = false;
@@ -146,28 +146,46 @@ export default function coinListPortfolioReducer(state = initialState, action) {
       let tempTotalUSD = 0;
       var tempTotalBTC = 0;
       var tempTotalProfitLoss = 0;
+      var tempTotalUSDWithoutCustom = 0;
 
       for(var i = 0, len = state.portfolio.length; i < len; i++) {
-        tempTotalProfitLoss += state.portfolio[i].profitLoss;
-        tempTotalUSD += state.portfolio[i].coinUSD;
-        tempTotalUSD += state.portfolio[i].coinBTC;
-        tempTotalBTC += state.portfolio[i].coinBTC;
+        if (state.portfolio[i].profitLoss !== '') {
+          tempTotalProfitLoss += state.portfolio[i].profitLoss;
+        }
+        if (state.portfolio[i].coinUSD !== '') {
+          tempTotalUSD += state.portfolio[i].coinUSD;
+        }
+        if (state.portfolio[i].coinBTC !== '') {
+          tempTotalBTC += state.portfolio[i].coinBTC;
+        }
+        if(state.portfolio[i].id !== "custom") {
+          tempTotalUSDWithoutCustom += state.portfolio[i].coinUSD;
+        }
       }
 
       return {
         ...state,
         totalUSD: tempTotalUSD,
+        totalUSDWithoutCustom: tempTotalUSDWithoutCustom,
         totalBTC: tempTotalBTC.toFixed(4),
         formattedTotalUSD: addCommas(tempTotalUSD.toFixed(2)),
         formattedTotalProfitLoss: addCommas(tempTotalProfitLoss.toFixed(2))
       };
 
-    case UPDATE_PORTFOLIO_PERCENTAGE:
+    case UPDATE_INDIVIDUAL_PORTFOLIO_PERCENTAGE:
       let tempPercentagePortfolio = state.portfolio.map( (item, index) => {
-            return {
-                ...item,
-                percentage: Number(((item.coinUSD / state.totalUSD) * 100).toFixed(2))
-            };
+          let individualPercentageTemp = '';
+          let percentageWithoutCustomsTemp = '';
+          if(item.coinUSD !== '') {
+            individualPercentageTemp = Number(((item.coinUSD / state.totalUSD) * 100).toFixed(2));
+            percentageWithoutCustomsTemp = Number(((item.coinUSD / state.totalUSDWithoutCustom) * 100).toFixed(2));
+          }
+
+          return {
+              ...item,
+              percentage: individualPercentageTemp,
+              percentageWithoutCustoms: percentageWithoutCustomsTemp
+          };
       });
       return {
         ...state,
@@ -248,9 +266,16 @@ export default function coinListPortfolioReducer(state = initialState, action) {
                   }
                 }
               }
-              let profitLoss = ((item.price_usd - correctBoughtAt) * item.count).toFixed(2) * 10000 / 10000;
-              let formattedProfitLoss = addCommas(Math.round(((item.price_usd - correctBoughtAt) * item.count).toFixed(2) * 10000) / 10000);
-              let formattedCoinUSD = addCommas(Math.round((item.count * item.price_usd).toFixed(2) * 10000) / 10000);
+              if(correctBoughtAt === '') {
+                var profitLoss = '';
+                var formattedProfitLoss = '';
+                var formattedCoinUSD = '';
+              } else {
+                var profitLoss = ((item.price_usd - correctBoughtAt) * item.count).toFixed(2) * 10000 / 10000;
+                var formattedProfitLoss = addCommas(Math.round(((item.price_usd - correctBoughtAt) * item.count).toFixed(2) * 10000) / 10000);
+                var formattedCoinUSD = addCommas(Math.round((item.count * item.price_usd).toFixed(2) * 10000) / 10000);
+              }
+
               return {
                   ...item,
                   coinUSD: item.count * item.price_usd,
@@ -270,17 +295,24 @@ export default function coinListPortfolioReducer(state = initialState, action) {
           let totalPercentChangeOneHour = 0;
           let totalPercentChangeTwentyFourHours = 0;
           let totalPercentChangeSevenDays = 0;
-          
+
           state.portfolio.map( (item, index) => {
-            totalPercentChangeOneHour += (item.percentage / 100) * item.percent_change_1h;
-            totalPercentChangeTwentyFourHours += (item.percentage / 100) * item.percent_change_24h;
-            totalPercentChangeSevenDays += (item.percentage / 100) * item.percent_change_7d;
+            console.log(item.percent_change_1h);
+            if (item.percent_change_1h !== '') {
+              totalPercentChangeOneHour += (item.percentageWithoutCustoms / 100) * item.percent_change_1h;
+            }
+            if (item.percent_change_24h !== '') {
+              totalPercentChangeTwentyFourHours += (item.percentageWithoutCustoms / 100) * item.percent_change_24h;
+            }
+            if (item.percent_change_7d !== '') {
+              totalPercentChangeSevenDays += (item.percentageWithoutCustoms / 100) * item.percent_change_7d;
+            }
           });
 
           let percent_change_1h = heatmapChangeCalc(totalPercentChangeOneHour);
           let percent_change_24h = heatmapChangeCalc(totalPercentChangeTwentyFourHours);
           let percent_change_7d = heatmapChangeCalc(totalPercentChangeSevenDays);
-          // Bug: Customs have 0 percent in calc
+          
           return {
             ...state,
             totalPercentChangeOneHour: totalPercentChangeOneHour.toFixed(2),

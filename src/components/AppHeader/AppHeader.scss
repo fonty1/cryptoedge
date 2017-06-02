@@ -1,14 +1,15 @@
 header {
   margin: 0 auto;
-  height: 80px;
+  height: 65px;
   position: relative;
-  padding: 0 15px;
+  padding: 0;
   font-family: 'Signika', sans-serif;
   text-align: left;
   background-color: #f9f9f9;
   border-bottom: 1px solid #DDD;
 
   h1 {
+    display: none;
     position: relative;
     top: -16px;
     display: inline;
@@ -21,14 +22,33 @@ header {
   }
 }
 
+@media(min-width: 768px){
+  header {
+    height: 80px;
+    padding: 0 15px;
+
+    h1 {
+      display: inline;
+    }
+  }
+}
+
 .primary-nav {
     position: relative;
-    top: 20px;
+    top: 5px;
     display: flex;
     list-style-type: none;
     padding: 0;
     justify-content: flex-end;
+}
 
+@media(min-width: 768px){
+  .primary-nav {
+      top: 20px;
+  }
+}
+
+.primary-nav {
     li {
       position: relative;
       top: 0;

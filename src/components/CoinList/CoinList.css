@@ -1,3 +1,6 @@
+.table-responsive {
+  margin-bottom: 0; }
+
 .table.cryptotable {
   margin: 0 auto; }
 
@@ -7,7 +10,8 @@
 .table.cryptotable th {
   text-align: center;
   vertical-align: bottom;
-  height: 50px; }
+  height: 50px;
+  font-size: 1.2rem; }
 
 .table.cryptotable th span {
   font-size: 1rem;
@@ -49,7 +53,7 @@
   width: 85px;
   text-align: center; }
 
-.table.cryptotable th.cryptoid {
+.table.cryptotable th.idColumn {
   min-width: 100px;
   text-align: left; }
 
@@ -60,15 +64,15 @@
   font-size: 1.2rem;
   color: #000; }
 
-.table.cryptotable .priceBtc, .table.cryptotable .priceUsd {
+.table.cryptotable .priceBTCColumn, .table.cryptotable .priceUSDColumn {
   text-align: right;
   width: 80px; }
 
-.table.cryptotable .priceBtc .price, .table.cryptotable .priceUsd .price {
+.table.cryptotable .priceBTCColumn .price, .table.cryptotable .priceUSDColumn .price {
   padding-right: 14px; }
 
 @media (min-width: 768px) {
-  .cryptotable th.cryptoid {
+  .cryptotable th.nameColumn {
     min-width: 200px; } }
 
 @media (min-width: 1020px) {
@@ -77,16 +81,16 @@
   .cryptoSymbol {
     font-size: 1.2rem;
     color: #999; }
-  .cryptotable th.cryptoid {
+  .cryptotable th.nameColumn {
     width: auto; } }
 
 .cryptotable .percentage__changes {
   text-align: center; }
 
-.cryptotable .priceUsd, .priceBtc {
+.cryptotable .priceUSDColumn, .priceBTCColumn {
   width: 80px; }
 
-.cryptotable .priceUsd input, .priceBtc input {
+.cryptotable .priceUSDColumn input, .priceBTCColumn input {
   text-align: right; }
 
 .table.cryptotable .cryptoPrice, .profitLoss {
@@ -124,4 +128,9 @@
   background-color: transparent !important; }
 
 .fullViewButton {
+  float: right; }
+
+.fullView .removeCoinFromPortfolioColumn,
+.fullView .addCoinToPortfolioColumn,
+.fullView .capColumn {
   display: none; }
