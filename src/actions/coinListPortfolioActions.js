@@ -159,9 +159,9 @@ export function updateCustomUSDPrice(price_usd, position, price_btc) {
 export function addCustomCoinToPortfolio() {
   let customCoin = {
     id: "custom",
-    name: "Custom Coin",
+    name: "Custom",
     symbol: "C",
-    rank: 0,
+    rank: 99999,
     price_usd: '',
     price_btc: '',
     twentyfour_volume_usd: '',

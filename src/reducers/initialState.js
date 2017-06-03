@@ -10,9 +10,12 @@ export default {
   BTCPriceMarker: 0,
   ETHPriceMarker: 0,
   coinsLoading: false,
-  totalPercentChangeOneHour: 0,
-  totalPercentChangeTwentyFourHours: 0,
-  totalPercentChangeSevenDays: 0,
+  totalPercentChangeOneHour: '',
+  change_1h_value: '',
+  totalPercentChangeTwentyFourHours: '',
+  change_24h_value: '',
+  totalPercentChangeSevenDays: '',
+  change_7d_value: '',
   totalStyles: {
     percent_change_1h: {},
     percent_change_24h: {},
@@ -20,6 +23,7 @@ export default {
   },
   activeSorts: {
     coins: {
+        currentSort: '',
         rank: true,
         price_usd: false,
         price_btc: false,
@@ -29,6 +33,7 @@ export default {
         weightedVolume: false
     },
     portfolio: {
+        currentSort: '',
         rank: false,
         count: false,
         coinUSD: false,

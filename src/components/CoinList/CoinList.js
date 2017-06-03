@@ -48,7 +48,7 @@ class CoinList extends React.Component {
         return (
           <div className="LeaderboardList">
               <h6>Coin List</h6>
-              <Table responsive striped className="cryptotable" id="coinlistTable">
+              <Table responsive striped className="cryptotable coinList" id="coinList">
               <thead>
                  <tr>
                     <th className="addCoinToPortfolioColumn"></th>
@@ -58,7 +58,7 @@ class CoinList extends React.Component {
                         <i className="fa fa-sort" aria-hidden="true"></i>
                       </button>
                     </th>
-                    <th className="cryptoid">
+                    <th className="nameColumn">
                       Crypto
                     </th>
                     <th className="volume cryptoPrice">
@@ -108,22 +108,22 @@ class CoinList extends React.Component {
                <tbody>
                  {this.props.cryptoList.map(function(crypto, index) {
                    return (
-                     <tr className="cryptorank" key={index}>
+                     <tr className="coin" key={index}>
                          <td className="addCoinToPortfolioColumn">
                              <button onClick={() => this.props.actions.addCoinToPortfolio(crypto)} className="addCoinToPortfolio">
                                  <i className="fa fa-plus-square-o" aria-hidden="true"></i>
                              </button>
                          </td>
-                         <td className="capRank capColumn">{crypto.rank}</td>
-                         <td className="cryptoid">
+                         <td className="capColumn">{crypto.rank}</td>
+                         <td className="nameColumn">
                            <img alt={crypto.symbol} src={crypto.logo}/>
                            <span className="cryptoNameFull">{crypto.name + " "}</span>
                            <span className="cryptoSymbol">{crypto.symbol}</span>
                          </td>
-                         <td className="bold">${crypto.formattedTwentyfour_volume_usd}</td>
-                         <td className="bold">{crypto.weightedVolume}</td>
-                         <td className="bold">{crypto.price_btc}</td>
-                         <td className="bold">${crypto.formatted_price_usd}</td>
+                         <td className="volColumn">${crypto.formattedTwentyfour_volume_usd}</td>
+                         <td className="weightedVolColumn">{crypto.weightedVolume}</td>
+                         <td className="priceBTCColumn">{crypto.price_btc}</td>
+                         <td className="priceUSDColumn">${crypto.formatted_price_usd}</td>
                          <td className="percentage__changes" style={crypto.oneHourStyles}>{crypto.percent_change_1h}%</td>
                          <td className="percentage__changes" style={crypto.twentyFourHourStyles}>{crypto.percent_change_24h}%</td>
                          <td className="percentage__changes" style={crypto.sevenDayStyles}>{crypto.percent_change_7d}%</td>

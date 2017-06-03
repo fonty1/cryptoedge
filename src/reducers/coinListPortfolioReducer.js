@@ -48,6 +48,7 @@ export default function coinListPortfolioReducer(state = initialState, action) {
           ...state.activeSorts,
           [listSort]: {
             ...state.activeSorts[listSort],
+            currentSort: colSort,
             [colSort]: activeSort,
           }
         }
@@ -269,12 +270,12 @@ export default function coinListPortfolioReducer(state = initialState, action) {
               if(correctBoughtAt === '') {
                 var profitLoss = '';
                 var formattedProfitLoss = '';
-                var formattedCoinUSD = '';
+                //var formattedCoinUSD = '';
               } else {
                 var profitLoss = ((item.price_usd - correctBoughtAt) * item.count).toFixed(2) * 10000 / 10000;
                 var formattedProfitLoss = addCommas(Math.round(((item.price_usd - correctBoughtAt) * item.count).toFixed(2) * 10000) / 10000);
-                var formattedCoinUSD = addCommas(Math.round((item.count * item.price_usd).toFixed(2) * 10000) / 10000);
               }
+              var formattedCoinUSD = addCommas(Math.round((item.count * item.price_usd).toFixed(2) * 10000) / 10000);
 
               return {
                   ...item,
@@ -307,17 +308,25 @@ export default function coinListPortfolioReducer(state = initialState, action) {
             if (item.percent_change_7d !== '') {
               totalPercentChangeSevenDays += (item.percentageWithoutCustoms / 100) * item.percent_change_7d;
             }
+
           });
 
           let percent_change_1h = heatmapChangeCalc(totalPercentChangeOneHour);
           let percent_change_24h = heatmapChangeCalc(totalPercentChangeTwentyFourHours);
           let percent_change_7d = heatmapChangeCalc(totalPercentChangeSevenDays);
-          
+
+          let change_1h_value = state.totalUSDWithoutCustom * totalPercentChangeOneHour / 100;
+          let change_24h_value = state.totalUSDWithoutCustom * totalPercentChangeTwentyFourHours / 100;
+          let change_7d_value = state.totalUSDWithoutCustom * totalPercentChangeSevenDays / 100;
+
           return {
             ...state,
             totalPercentChangeOneHour: totalPercentChangeOneHour.toFixed(2),
+            change_1h_value: addCommas(change_1h_value.toFixed(2)),
             totalPercentChangeTwentyFourHours: totalPercentChangeTwentyFourHours.toFixed(2),
+            change_24h_value: addCommas(change_24h_value.toFixed(2)),
             totalPercentChangeSevenDays: totalPercentChangeSevenDays.toFixed(2),
+            change_7d_value: addCommas(change_7d_value.toFixed(2)),
             totalStyles: {
               percent_change_1h,
               percent_change_24h,

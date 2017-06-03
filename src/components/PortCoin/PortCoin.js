@@ -73,15 +73,15 @@ const PortCoin = ( { actions, crypto, index, totalUSD, totalBTC, portfolio, BTCP
                         <i className="fa fa-minus-square-o" aria-hidden="true"></i>
                     </button>
                 </td>
-                <td className="capRank capColumn">
+                <td className="capColumn">
                     {crypto.rank}
                 </td>
-                <td className="cryptoid">
+                <td className="nameColumn">
                     <img alt={crypto.symbol} src={crypto.logo}/>
                     <span className="cryptoNameFull">{crypto.name + " "}</span>
-                    <span className="cryptoSymbol">({crypto.symbol})</span>
+                    <span className="cryptoSymbol">{crypto.symbol}</span>
                 </td>
-                <td className="yourCoinNumber">
+                <td className="coinCountColumn">
                     <input
                         value={crypto.count}
                         onChange={onCoinNumberChange}
@@ -90,16 +90,14 @@ const PortCoin = ( { actions, crypto, index, totalUSD, totalBTC, portfolio, BTCP
                         min="0"
                         step="any"
                     />
-                    <span className="highlight"></span>
-                    <span className="bar"></span>
                 </td>
-                <td className="yourCoinUsd">
+                <td className="USDHoldingColumn">
                     ${crypto.formattedCoinUSD}
                 </td>
-                <td className="yourCoinPercentage">
+                <td className="percentageHoldingColumn">
                     {crypto.percentage}%
                 </td>
-                <td className="boughtAt">
+                <td className="boughtAtColumn">
                   <input
                       value={crypto.boughtAt}
                       onChange={onBoughtAtChange}
@@ -107,49 +105,45 @@ const PortCoin = ( { actions, crypto, index, totalUSD, totalBTC, portfolio, BTCP
                       min="0"
                       step="any"
                   />
-                  <span className="highlight"></span>
-                  <span className="bar"></span>
                 </td>
-                <td className="profitLoss">
+                <td className="profitLossColumn">
                   <span className="profitLoss">${crypto.formattedProfitLoss}</span>
                 </td>
-                <td className="bold">${crypto.formattedTwentyfour_volume_usd}</td>
-                <td className="bold weightedVolColumn">{crypto.weightedVolume}</td>
-                <td className="priceUsd">
+                <td className="volColumn">${crypto.formattedTwentyfour_volume_usd}</td>
+                <td className="weightedVolColumn">{crypto.weightedVolume}</td>
+                <td className="priceUSDColumn">
                     <span className="price">${crypto.formatted_price_usd}</span>
                 </td>
-                <td className="priceBtc">
+                <td className="priceBTCColumn">
                     <span className="price">{crypto.price_btc}</span>
                 </td>
-                <td className="percentage__changes" style={crypto.oneHourStyles}>
+                <td className="oneHourColumn percentage__changes" style={crypto.oneHourStyles}>
                     {crypto.percent_change_1h}%</td>
-                <td className="percentage__changes" style={crypto.twentyFourHourStyles}>
+                <td className="twentyFourHoursColumn percentage__changes" style={crypto.twentyFourHourStyles}>
                     {crypto.percent_change_24h}%</td>
-                <td className="percentage__changes" style={crypto.sevenDayStyles}>
+                <td className="sevenDaysColumn percentage__changes" style={crypto.sevenDayStyles}>
                     {crypto.percent_change_7d}%</td>
             </tr>
         )
     } else {
         return (
-          <tr className="cryptorank customCoin" key={index}>
+          <tr className="customCoin" key={index}>
               <td className="removeCoinFromPortfolioColumn">
                   <button onClick={() => preRemoveCoin()} className="removeCoinFromPortfolio">
                       <i className="fa fa-minus-square-o" aria-hidden="true"></i>
                   </button>
               </td>
-              <td className="capRank capColumn">
+              <td className="capColumn">
               </td>
-              <td className="cryptoid">
+              <td className="nameColumn">
                   <img alt={crypto.symbol} src={crypto.logo}/>
                   <input
                       value={crypto.name}
                       onChange={onChangeName}
                       type="text"
                   />
-                  <span className="highlight"></span>
-                  <span className="bar"></span>
               </td>
-              <td className="yourCoinNumber">
+              <td className="coinCountColumn">
                   <input
                       value={crypto.count}
                       onChange={onCoinNumberChange}
@@ -158,16 +152,14 @@ const PortCoin = ( { actions, crypto, index, totalUSD, totalBTC, portfolio, BTCP
                       min="0"
                       step="any"
                   />
-                  <span className="highlight"></span>
-                  <span className="bar"></span>
               </td>
-              <td className="yourCoinUsd">
+              <td className="USDHoldingColumn">
                   ${crypto.formattedCoinUSD}
               </td>
-              <td className="yourCoinPercentage">
+              <td className="percentageHoldingColumn">
                   {crypto.percentage}%
               </td>
-              <td className="boughtAt">
+              <td className="boughtAtColumn">
                 <input
                     value={crypto.boughtAt}
                     onChange={onBoughtAtChange}
@@ -176,15 +168,13 @@ const PortCoin = ( { actions, crypto, index, totalUSD, totalBTC, portfolio, BTCP
                     min="0"
                     step="any"
                 />
-                <span className="highlight"></span>
-                <span className="bar"></span>
               </td>
-              <td className="profitLoss">
+              <td className="profitLossColumn">
                   <span className="profitLoss">${crypto.formattedProfitLoss}</span>
               </td>
-              <td className="bold"></td>
-              <td className="bold weightedVolColumn"></td>
-              <td className="priceUsd">
+              <td className="volColumn"></td>
+              <td className="weightedVolColumn"></td>
+              <td className="priceUSDColumn">
                   <input
                       value={crypto.price_usd}
                       onChange={onChangeUSDPrice}
@@ -192,10 +182,8 @@ const PortCoin = ( { actions, crypto, index, totalUSD, totalBTC, portfolio, BTCP
                       min="0"
                       step="1"
                   />
-                  <span className="highlight"></span>
-                  <span className="bar"></span>
               </td>
-              <td className="priceBtc">
+              <td className="priceBTCColumn">
                 <input
                     value={crypto.price_btc}
                     onChange={onChangeBTCPrice}
@@ -203,14 +191,12 @@ const PortCoin = ( { actions, crypto, index, totalUSD, totalBTC, portfolio, BTCP
                     min="0"
                     step=".1"
                 />
-                <span className="highlight"></span>
-                <span className="bar"></span>
               </td>
-              <td className="percentage__changes" style={crypto.oneHourStyles}>
+              <td className="oneHourColumn percentage__changes" style={crypto.oneHourStyles}>
               </td>
-              <td className="percentage__changes" style={crypto.twentyFourHourStyles}>
+              <td className="twentyFourHoursColumn percentage__changes" style={crypto.twentyFourHourStyles}>
               </td>
-              <td className="percentage__changes" style={crypto.sevenDayStyles}>
+              <td className="sevenDaysColumn percentage__changes" style={crypto.sevenDayStyles}>
               </td>
           </tr>
         )

@@ -11,7 +11,11 @@
   text-align: center; }
 
 .totalTable .portfolioTotals {
-  text-align: center; }
+  text-align: center;
+  font-weight: bold; }
+
+.changeValue {
+  font-weight: bold; }
 
 .totalTable {
   display: none; }

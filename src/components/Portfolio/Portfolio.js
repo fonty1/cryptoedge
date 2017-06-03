@@ -92,7 +92,7 @@ class Portfolio extends Component {
                                  Crypto
                              </th>
                              <th className="coinCountColumn">
-                                 Coin #
+                                 Coins
                                  <button onClick={() => this.sortByCoinCount()} className="sortByButton">
                                    <i className="fa fa-sort" aria-hidden="true"></i>
                                  </button>

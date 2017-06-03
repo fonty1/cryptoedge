@@ -5,15 +5,14 @@ header {
   padding: 0;
   font-family: 'Signika', sans-serif;
   text-align: left;
-  background-color: #f9f9f9;
+  background-color: #f5f5f5;
   border-bottom: 1px solid #DDD;
 
   h1 {
     display: none;
     position: relative;
-    top: -16px;
-    display: inline;
-    left: 71px;
+    top: -38px;
+    left: 82px;
     font-size: 19px;
     line-height: 1;
     padding: 0;
@@ -134,7 +133,7 @@ header {
   padding: 5px;
 
   .edge-logo {
-    max-width: 40px;
+    max-width: 55px;
     left: 0;
     top: 0;
     display: inline-block;
@@ -149,5 +148,10 @@ header {
     width: 115px;
     text-align: center;
     padding: 5px;
+
+    .edge-logo {
+      top: -20px;
+      max-width: 60px;
+    }
   }
 }

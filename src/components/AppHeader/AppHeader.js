@@ -24,6 +24,10 @@ const AppHeader = ( { actions, coinsLoading } ) => {
                 Feedback
               </a>
             </li>
+            <li className="right">
+              <i className="fa fa-cog" aria-hidden="true"></i>
+              Settings
+            </li>
             <li className={"right refresh " + (coinsLoading ? 'loading' : '')} onClick={refreshClick}>
               <i className="fa fa-refresh" aria-hidden="true"></i>
               {"" + (coinsLoading ? 'Loading' : "Refresh")}

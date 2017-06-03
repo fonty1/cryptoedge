@@ -14,7 +14,10 @@ const mapStateToProps = (state, ownProps) => ({
     totalPercentChangeSevenDays: state.coinListPortfolio.totalPercentChangeSevenDays,
     oneHourStyles: state.coinListPortfolio.totalStyles.percent_change_1h,
     twentyFourHourStyles: state.coinListPortfolio.totalStyles.percent_change_24h,
-    sevenDayStyles: state.coinListPortfolio.totalStyles.percent_change_7d
+    sevenDayStyles: state.coinListPortfolio.totalStyles.percent_change_7d,
+    change_1h_value: state.coinListPortfolio.change_1h_value,
+    change_24h_value: state.coinListPortfolio.change_24h_value,
+    change_7d_value: state.coinListPortfolio.change_7d_value
 });
 
 const mapDispatchToProps = (dispatch) => {

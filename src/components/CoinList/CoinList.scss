@@ -15,6 +15,15 @@
         vertical-align: bottom;
         height: 50px;
         font-size: 1.2rem;
+        padding-right: 0;
+    }
+
+    >tbody>tr:nth-of-type(odd) {
+      background-color: #f5f5f5;
+    }
+
+    >tbody>tr>td {
+      border-top: 0;
     }
 
     th span {
@@ -35,9 +44,10 @@
       border: none;
       border-bottom: 2px solid #dddddd;
       position: relative;
-      top: 4px;
+      text-align:right;
       &:focus {
         outline: none;
+        border-bottom: 2px solid #7398c1;
       }
     }
 
@@ -57,11 +67,7 @@
       color: #BBB;
       background: transparent;
       border: 0;
-    }
 
-    .capRank {
-      width: 85px;
-      text-align: center;
     }
 
     th.idColumn {
@@ -75,7 +81,24 @@
 
     .cryptoSymbol {
       font-size: 1.2rem;
-      color: #000;
+      color: #949494;
+    }
+
+    .USDHoldingColumn, .percentageHoldingColumn {
+      text-align: right;
+    }
+
+    .boughtAtColumn, .coinCountColumn {
+      text-align: right;
+      max-width: 80px;
+      input {
+        width: 100%;
+      }
+    }
+
+    .capColumn {
+      text-align: right;
+      width: 90px;
     }
 
     .priceBTCColumn, .priceUSDColumn {
@@ -88,15 +111,18 @@
     }
 }
 
-@media(min-width: 768px){
-  .cryptotable th.nameColumn {
-      min-width: 200px;
-  }
+.cryptotable th.nameColumn {
+    text-align: left;
+}
+
+.cryptotable .coinCountColumn {
+    text-align: right;
 }
 
 @media(min-width: 1020px) {
 .table.cryptotable .cryptoNameFull {
     display: inline;
+    font-weight: bold;
   }
 
   .cryptoSymbol {
@@ -133,14 +159,30 @@
   }
 }
 
+.table.cryptotable .nameColumn {
+  max-width: 140px;
+
+  input {
+    font-weight: bold;
+    text-align: left;
+    width: calc(100% - 40px);
+  }
+}
+
 // Coinlist Specific styling
 .LeaderboardList {
-  margin-top: 40px;
+  margin-top: 20px;
+}
+
+.coinList {
+  .priceUSDColumn {
+    font-weight: bold;
+  }
 }
 
 // Portfolio Specific styling
 .Portfolio {
-  margin-top: 40px;
+  margin-top: 20px;
 }
 
 .yourCoinNumber, .boughtAt {
@@ -174,13 +216,27 @@
 }
 
 .fullViewButton {
-  float: right;
+  position: absolute;
+  display: inline;
+}
+
+@media(min-width: 768px) {
+  .fullViewButton {
+    position: absolute;
+    display: none;
+  }
 }
 
 .fullView .removeCoinFromPortfolioColumn,
 .fullView .addCoinToPortfolioColumn,
 .fullView .capColumn {
   display: none;
+}
+
+#portfolioTable {
+  .volColumn, .weightedVolColumn {
+    display: none;
+  }
 }
 
 // Code for horizontal background visualisation
