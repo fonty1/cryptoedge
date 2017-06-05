@@ -10,26 +10,45 @@ import AppHeader from './components/AppHeader/AppHeaderContainer';
 import CoinList from './components/CoinList/CoinListContainer';
 import Portfolio from './components/Portfolio/PortfolioContainer';
 import TotalPortfolio from './components/TotalPortfolio/TotalPortfolioContainer';
-import { loadState, saveState } from './localStorage';
 import { combineReducers } from 'redux';
 import coinListPortfolio from './reducers/coinListPortfolioReducer';
+import {persistStore, autoRehydrate} from 'redux-persist'
 
 const rootReducer = combineReducers({
   coinListPortfolio
 });
 
-const persistedState = loadState();
-
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
-const store = createStore(rootReducer, persistedState, composeEnhancers(
-    applyMiddleware(thunk)
-  ));
 
-store.subscribe(() => {
-  saveState(store.getState());
-});
+// add `autoRehydrate` as an enhancer to your store (note: `autoRehydrate` is not a middleware)
+const store = createStore(
+  rootReducer,
+  undefined,
+  compose(
+    applyMiddleware(thunk),
+    autoRehydrate(),
+    composeEnhancers()
+  )
+)
+
+// begin periodically persisting the store
+
+// const rootReducer = combineReducers({
+//   coinListPortfolio
+// });
+//
+// const persistedState = loadState();
+//
+
+//
+// const store = createStore(rootReducer, persistedState, composeEnhancers(
+//     applyMiddleware(thunk)
+//   ));
 
 class App extends Component {
+  componentWillMount() {
+    persistStore(store);
+  }
 
   render() {
     return (

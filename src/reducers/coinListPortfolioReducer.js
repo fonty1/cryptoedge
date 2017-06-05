@@ -298,7 +298,6 @@ export default function coinListPortfolioReducer(state = initialState, action) {
           let totalPercentChangeSevenDays = 0;
 
           state.portfolio.map( (item, index) => {
-            console.log(item.percent_change_1h);
             if (item.percent_change_1h !== '') {
               totalPercentChangeOneHour += (item.percentageWithoutCustoms / 100) * item.percent_change_1h;
             }

@@ -7,7 +7,7 @@ const AddCustomButton = ( { actions } ) => {
 
   return (
     <button className="addCustomButton" className="addCoinToPortfolio" onClick={handleClick}>
-      <i className="fa fa-plus-square-o" aria-hidden="true"></i>
+      <i className="fa fa-plus-square-o" aria-hidden="true"></i> Add Custom Row
     </button>
   )
 }

@@ -42,6 +42,10 @@ class CoinList extends React.Component {
     this.props.actions.sortList('weightedVolume','coins');
   }
 
+  sortByCap() {
+    this.props.actions.sortList('market_cap_usd','coins');
+  }
+
   render() {
     const listFilled = this.props.cryptoList.length > 0;
      if (listFilled) {
@@ -51,7 +55,11 @@ class CoinList extends React.Component {
               <Table responsive striped className="cryptotable coinList" id="coinList">
               <thead>
                  <tr>
-                    <th className="addCoinToPortfolioColumn"></th>
+                    <th className="addCoinToPortfolioColumn">
+                      <button className="sortByButton hide">
+                        <i className="fa fa-cog" aria-hidden="true"></i>
+                      </button>
+                    </th>
                     <th className="capColumn">
                       Cap
                       <button onClick={() => this.sortByRank()} className="sortByButton">
@@ -61,24 +69,7 @@ class CoinList extends React.Component {
                     <th className="nameColumn">
                       Crypto
                     </th>
-                    <th className="volume cryptoPrice">
-                      24hr Vol
-                      <button onClick={() => this.sortByVolume()} className="sortByButton">
-                        <i className="fa fa-sort" aria-hidden="true"></i>
-                      </button>
-                    </th>
-                    <th className="volume cryptoPrice">
-                      Weighted Vol
-                      <button onClick={() => this.sortByWeightedVolume()} className="sortByButton">
-                        <i className="fa fa-sort" aria-hidden="true"></i>
-                      </button>
-                    </th>
-                    <th className="cryptoPrice">
-                      BTC
-                      <button onClick={() => this.sortByPriceBTC()} className="sortByButton">
-                        <i className="fa fa-sort" aria-hidden="true"></i>
-                      </button>
-                    </th>
+
                     <th className="cryptoPrice">
                       USD
                       <button onClick={() => this.sortByPriceUSD()} className="sortByButton">
@@ -103,6 +94,31 @@ class CoinList extends React.Component {
                         <i className="fa fa-sort" aria-hidden="true"></i>
                       </button>
                     </th>
+                    <th className="marketCapColumn">
+                      Market Cap
+                      <button onClick={() => this.sortByCap()} className="sortByButton">
+                        <i className="fa fa-sort" aria-hidden="true"></i>
+                      </button>
+                    </th>
+                    <th className="volume cryptoPrice">
+                      24hr Vol
+                      <button onClick={() => this.sortByVolume()} className="sortByButton">
+                        <i className="fa fa-sort" aria-hidden="true"></i>
+                      </button>
+                    </th>
+                    <th className="volume cryptoPrice">
+                      Weighted Vol
+                      <button onClick={() => this.sortByWeightedVolume()} className="sortByButton">
+                        <i className="fa fa-sort" aria-hidden="true"></i>
+                      </button>
+                    </th>
+                    <th className="cryptoPrice">
+                      BTC
+                      <button onClick={() => this.sortByPriceBTC()} className="sortByButton">
+                        <i className="fa fa-sort" aria-hidden="true"></i>
+                      </button>
+                    </th>
+
                  </tr>
                </thead>
                <tbody>
@@ -120,13 +136,15 @@ class CoinList extends React.Component {
                            <span className="cryptoNameFull">{crypto.name + " "}</span>
                            <span className="cryptoSymbol">{crypto.symbol}</span>
                          </td>
-                         <td className="volColumn">${crypto.formattedTwentyfour_volume_usd}</td>
-                         <td className="weightedVolColumn">{crypto.weightedVolume}</td>
-                         <td className="priceBTCColumn">{crypto.price_btc}</td>
                          <td className="priceUSDColumn">${crypto.formatted_price_usd}</td>
                          <td className="percentage__changes" style={crypto.oneHourStyles}>{crypto.percent_change_1h}%</td>
                          <td className="percentage__changes" style={crypto.twentyFourHourStyles}>{crypto.percent_change_24h}%</td>
                          <td className="percentage__changes" style={crypto.sevenDayStyles}>{crypto.percent_change_7d}%</td>
+                         <td className="marketCapColumn">${crypto.market_cap_usd_formatted}</td>
+                         <td className="volColumn">${crypto.formattedTwentyfour_volume_usd}</td>
+                         <td className="weightedVolColumn">{crypto.weightedVolume}</td>
+                         <td className="priceBTCColumn">{crypto.price_btc}</td>
+
                      </tr>
                    ) }, this )}
                </tbody>

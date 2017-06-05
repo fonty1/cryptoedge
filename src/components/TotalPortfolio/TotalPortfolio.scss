@@ -1,14 +1,13 @@
 .totalTable {
   text-align: center;
-  border-top: 2px solid #ECECEC;
-  border-bottom: 2px solid #ECECEC;
+  border: none;
 
   >thead>tr>th {
     border: none;
   }
 
   .headings th {
-    background-color: #f9f9f9;
+    background-color: #f5f5f5;
     text-align: center;
   }
 
@@ -16,26 +15,36 @@
     text-align: center;
     font-weight: bold;
   }
+
+  >tbody>tr>td, >tbody>tr>th, >tfoot>tr>td, >tfoot>tr>th, >thead>tr>td, >thead>tr>th {
+    width: 16.67%
+    border-top: none;
+  }
 }
 
 .changeValue {
   font-weight: bold;
 }
 
-.totalTable {
+.totalTable.fullTable {
   display: none;
 }
 
-.totalTablePercentages {
+.totalTablePercentagesOnly, .totalTableTotalsOnly {
   display: table;
+
+  >tbody>tr>td, >tbody>tr>th, >tfoot>tr>td, >tfoot>tr>th, >thead>tr>td, >thead>tr>th {
+    width: 33.33%;
+    border-top: none;
+  }
 }
 
 @media(min-width: 768px) {
-  .totalTable {
+  .totalTable.fullTable {
     display: table;
   }
 
-  .totalTablePercentages {
+  .totalTablePercentagesOnly, .totalTableTotalsOnly {
     display: none;
   }
 }

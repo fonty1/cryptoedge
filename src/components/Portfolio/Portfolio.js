@@ -81,7 +81,11 @@ class Portfolio extends Component {
                    <Table responsive striped className="cryptotable" id="portfolioTable">
                        <thead>
                           <tr>
-                             <th className={"addCoinToPortfolioColumn " + (this.props.userRequestsFullView ? 'userRequestsFullView' : '')}></th>
+                             <th className={"addCoinToPortfolioColumn " + (this.props.userRequestsFullView ? 'userRequestsFullView' : '')}>
+                               <button className="sortByButton hide">
+                                 <i className="fa fa-cog" aria-hidden="true"></i>
+                               </button>
+                             </th>
                              <th className="capColumn">
                                  Cap
                                  <button onClick={() => this.sortByRank()} className="sortByButton">
@@ -181,7 +185,7 @@ class Portfolio extends Component {
            );
            } else {
              return (
-                 <div className="Portfolio">
+                 <div className="Portfolio hide">
                      <Table responsive striped className="cryptotable">
                          <thead>
                             <tr>
@@ -191,6 +195,7 @@ class Portfolio extends Component {
                           <tbody>
                                 <tr className="customAddTr">
                                     <td className="addCoinToPortfolioColumn customAddTd">
+                                        <p>Welcome to CryptoEdge! </p>
                                         <AddCustomButton/>
                                     </td>
                                 </tr>

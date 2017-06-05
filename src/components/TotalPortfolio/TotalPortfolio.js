@@ -9,7 +9,7 @@ const TotalPortfolio = ( { cryptoPortfolio, formattedTotalUSD, totalBTC, formatt
     if (cryptoPortfolio.length > 0) {
         return (
               <div className="totalTables">
-                <Table responsive className="totalTable">
+                <Table responsive className="totalTable fullTable">
                       <thead>
                          <tr className="headings">
                             <th>USD</th>
@@ -38,15 +38,37 @@ const TotalPortfolio = ( { cryptoPortfolio, formattedTotalUSD, totalBTC, formatt
                                ${ formattedTotalProfitLoss }
                               </td>
                               <td className="percentage__changes" style={oneHourStyles}>
-                                  {totalPercentChangeOneHour}%  <span className="changeValue">${change_1h_value}</span></td>
+                                  {totalPercentChangeOneHour}% &nbsp;&nbsp; <span className="changeValue">${change_1h_value}</span></td>
                               <td className="percentage__changes" style={twentyFourHourStyles}>
-                                  {totalPercentChangeTwentyFourHours}%    <span className="changeValue">${change_24h_value}</span></td>
+                                  {totalPercentChangeTwentyFourHours}% &nbsp;&nbsp; <span className="changeValue">${change_24h_value}</span></td>
                               <td className="percentage__changes" style={sevenDayStyles}>
-                                  {totalPercentChangeSevenDays}%   <span className="changeValue">${change_7d_value}</span></td>
+                                  {totalPercentChangeSevenDays}% &nbsp;&nbsp; <span className="changeValue">${change_7d_value}</span></td>
                           </tr>
                      </tbody>
                 </Table>
-                <Table responsive className="totalTable totalTablePercentages">
+                <Table responsive className="totalTable totalTableTotalsOnly">
+                      <thead>
+                          <tr className="headings">
+                             <th>USD</th>
+                             <th>BTC</th>
+                             <th>Profit/Loss USD</th>
+                          </tr>
+                       </thead>
+                     <tbody>
+                           <tr className="portfolioTotals" >
+                               <td>
+                                 ${ formattedTotalUSD }
+                               </td>
+                               <td>
+                                 { totalBTC }
+                               </td>
+                               <td>
+                                ${ formattedTotalProfitLoss }
+                               </td>
+                          </tr>
+                     </tbody>
+                </Table>
+                <Table responsive className="totalTable totalTablePercentagesOnly">
                       <thead>
                          <tr className="headings">
                             <th>
@@ -63,11 +85,11 @@ const TotalPortfolio = ( { cryptoPortfolio, formattedTotalUSD, totalBTC, formatt
                      <tbody>
                            <tr className="portfolioTotals" >
                                <td className="percentage__changes" style={oneHourStyles}>
-                                   {totalPercentChangeOneHour}% <span className="changeValue">${change_1h_value}</span></td>
+                                   {totalPercentChangeOneHour}% &nbsp;&nbsp; <span className="changeValue">${change_1h_value}</span></td>
                                <td className="percentage__changes" style={twentyFourHourStyles}>
-                                   {totalPercentChangeTwentyFourHours}% <span className="changeValue">${change_24h_value}</span></td>
+                                   {totalPercentChangeTwentyFourHours}% &nbsp;&nbsp; <span className="changeValue">${change_24h_value}</span></td>
                                <td className="percentage__changes" style={sevenDayStyles}>
-                                   {totalPercentChangeSevenDays}% <span className="changeValue">${change_7d_value}</span></td>
+                                   {totalPercentChangeSevenDays}% &nbsp;&nbsp; <span className="changeValue">${change_7d_value}</span></td>
                           </tr>
                      </tbody>
                 </Table>

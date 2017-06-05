@@ -168,6 +168,7 @@ export function addCustomCoinToPortfolio() {
     formattedTwentyfour_volume_usd: '',
     weightedVolume: '',
     market_cap_usd: '',
+    market_cap_usd_formatted: '',
     available_supply: '',
     total_supply: '',
     percent_change_1h: '',

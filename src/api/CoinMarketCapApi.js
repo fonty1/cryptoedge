@@ -32,7 +32,7 @@ import waves from '../img/waves.png';
 import unknown from '../img/unknown.png';
 
 //const url = "https://cors-anywhere.herokuapp.com/https://api.coinmarketcap.com/v1/ticker/?limit=10";
-const url = "https://cors-anywhere.herokuapp.com/https://api.coinmarketcap.com/v1/ticker/?limit=200";
+const url = "https://cors-anywhere.herokuapp.com/https://api.coinmarketcap.com/v1/ticker/?limit=100";
 
 const api = {
   downloadCoinList: () => {
@@ -52,6 +52,7 @@ const api = {
         cryptoRow.percent_change_24h = Number(cryptoRow.percent_change_24h);
         cryptoRow.percent_change_7d = Number(cryptoRow.percent_change_7d);
         cryptoRow.market_cap_usd = Number(cryptoRow.market_cap_usd);
+        cryptoRow.market_cap_usd_formatted = addCommas(cryptoRow.market_cap_usd);
         cryptoRow.percentage = '';
         cryptoRow.count = 0;
         cryptoRow.coinUSD = '';
@@ -60,6 +61,7 @@ const api = {
         cryptoRow.type = 'regular';
         cryptoRow.boughtAt = '';
         cryptoRow.profitLoss = '';
+        cryptoRow.rank = Number(cryptoRow.rank);
         cryptoRow.formattedProfitLoss = '';
         const annoyingIdentifier = '24h_volume_usd';
         cryptoRow.twentyfour_volume_usd = Number(cryptoRow[annoyingIdentifier]);

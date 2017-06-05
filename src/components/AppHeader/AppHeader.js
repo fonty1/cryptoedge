@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './AppHeader.css';
-import cryptoedge from '../../img/cryptoedge.png';
+import cryptoedge from '../../img/cryptoedgeinverted.png';
 
 const AppHeader = ( { actions, coinsLoading } ) => {
 
@@ -24,9 +24,31 @@ const AppHeader = ( { actions, coinsLoading } ) => {
                 Feedback
               </a>
             </li>
-            <li className="right">
+            <li className="right hide">
+              <a target="blank_" href="https://docs.google.com/forms/d/e/1FAIpQLSeU1ICsh-USOAy2pjJqn9CWRxMf5NdhlIfztBpkExbv4YJbQw/viewform?usp=sf_link">
+                <i className="fa fa-info" aria-hidden="true"></i>
+                About
+              </a>
+            </li>
+            <li className="right hide">
+              <i className="fa fa-user" aria-hidden="true"></i>
+              Sign Up
+            </li>
+            <li className="right hide">
+              <i className="fa fa-btc" aria-hidden="true"></i>
+              Donate
+            </li>
+            <li className="right hide">
+              <i className="fa fa-share-alt" aria-hidden="true"></i>
+              Share
+            </li>
+            <li className="right hide">
               <i className="fa fa-cog" aria-hidden="true"></i>
               Settings
+            </li>
+            <li className="right hide">
+              <i className="fa fa-calculator" aria-hidden="true"></i>
+              Converter
             </li>
             <li className={"right refresh " + (coinsLoading ? 'loading' : '')} onClick={refreshClick}>
               <i className="fa fa-refresh" aria-hidden="true"></i>
