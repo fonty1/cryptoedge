@@ -2,12 +2,17 @@ import React, { Component } from 'react';
 import './AppHeader.css';
 import cryptoedge from '../../img/cryptoedgeinverted.png';
 
-const AppHeader = ( { actions, coinsLoading } ) => {
+const AppHeader = ( { coinListPortfolioActions, uiActions, coinsLoading } ) => {
 
   const refreshClick = e => {
     e.preventDefault();
     console.log('Refreshing...');
-    actions.downloadCoins();
+    coinListPortfolioActions.downloadCoins();
+  }
+
+  const flagModalClick = e => {
+    e.preventDefault();
+    uiActions.showFlagModal();
   }
 
   return (
@@ -31,28 +36,46 @@ const AppHeader = ( { actions, coinsLoading } ) => {
               </a>
             </li>
             <li className="right hide">
-              <i className="fa fa-user" aria-hidden="true"></i>
-              Sign Up
+              <a>
+                <i className="fa fa-user" aria-hidden="true"></i>
+                Sign Up
+              </a>
             </li>
             <li className="right hide">
-              <i className="fa fa-btc" aria-hidden="true"></i>
-              Donate
+              <a>
+                <i className="fa fa-btc" aria-hidden="true"></i>
+                Donate
+              </a>
             </li>
             <li className="right hide">
-              <i className="fa fa-share-alt" aria-hidden="true"></i>
-              Share
+              <a>
+                <i className="fa fa-share-alt" aria-hidden="true"></i>
+                Share
+              </a>
             </li>
             <li className="right hide">
-              <i className="fa fa-cog" aria-hidden="true"></i>
-              Settings
+              <a>
+                <i className="fa fa-cog" aria-hidden="true"></i>
+                Settings
+              </a>
+            </li>
+            <li className="right" onClick={flagModalClick}>
+              <a>
+                <i className="fa fa-flag" aria-hidden="true"></i>
+                If - Then
+              </a>
             </li>
             <li className="right hide">
-              <i className="fa fa-calculator" aria-hidden="true"></i>
-              Converter
+              <a>
+                <i className="fa fa-calculator" aria-hidden="true"></i>
+                Converter
+              </a>
             </li>
             <li className={"right refresh " + (coinsLoading ? 'loading' : '')} onClick={refreshClick}>
-              <i className="fa fa-refresh" aria-hidden="true"></i>
-              {"" + (coinsLoading ? 'Loading' : "Refresh")}
+              <a>
+                <i className="fa fa-refresh" aria-hidden="true"></i>
+                {"" + (coinsLoading ? 'Loading' : "Refresh")}
+              </a>
             </li>
           </ul>
         </nav>

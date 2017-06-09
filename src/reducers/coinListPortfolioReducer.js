@@ -16,16 +16,24 @@ import { UPDATE_CUSTOM_BTC } from '../constants/actionTypes';
 import { UPDATE_CUSTOM_USD } from '../constants/actionTypes';
 import { SORTLIST } from '../constants/actionTypes';
 import { CALCULATE_PORTFOLIO_TOTAL_PERCENTAGES } from '../constants/actionTypes';
+import { EVALUATE_FLAGS } from '../constants/actionTypes';
 
-export default function coinListPortfolioReducer(state = initialState, action) {
+export default function coinListPortfolioReducer(state = initialState.coinListPortfolio, action) {
   switch (action.type) {
+
+    case EVALUATE_FLAGS:
+      // evaluates state.conditions.conditionals
+      var testCondition = 2 < 1;
+      var conditionChecker = function(){ return testCondition };
+      console.log(conditionChecker());
+      return {
+        ...state,
+      };
 
     case SORTLIST:
       var colSort = action.column;
       var listSort = action.list;
-      // make a true mark on the signature of the list/column
-      // if it's true then invert the sort
-
+      // Toggles boolean on the signature of the list/column to toggle the sort direction
       var activeSort;
       if ((typeof state.activeSorts[listSort][colSort] === 'undefined') || (state.activeSorts[listSort][colSort] === true)) {
         activeSort = false;

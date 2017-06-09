@@ -1,16 +1,19 @@
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import * as actions from '../../actions/coinListPortfolioActions';
+import * as coinListPortfolioActions from '../../actions/coinListPortfolioActions';
+import * as uiActions from '../../actions/uiActions';
 import AppHeader from './AppHeader';
 
 const mapStateToProps = (state, ownProps) => ({
     ...ownProps,
-    coinsLoading: state.coinListPortfolio.coinsLoading 
+    coinsLoading: state.coinListPortfolio.coinsLoading,
+    flagModalVisibility: state.ui.flagModalVisibility
 });
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    actions: bindActionCreators(actions, dispatch)
+    coinListPortfolioActions: bindActionCreators(coinListPortfolioActions, dispatch),
+    uiActions: bindActionCreators(uiActions, dispatch)
   };
 };
 

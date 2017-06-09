@@ -1,20 +1,17 @@
 .totalTable {
   text-align: center;
   border: none; }
-
-.totalTable > thead > tr > th {
-  border: none; }
-
-.totalTable .headings th {
-  background-color: #f5f5f5;
-  text-align: center; }
-
-.totalTable .portfolioTotals {
-  text-align: center;
-  font-weight: bold; }
-
-.totalTable > tbody > tr > td, .totalTable > tbody > tr > th, .totalTable > tfoot > tr > td, .totalTable > tfoot > tr > th, .totalTable > thead > tr > td, .totalTable > thead > tr > th {
-  border-top: none; }
+  .totalTable > thead > tr > th {
+    border: none; }
+  .totalTable .headings th {
+    background-color: #f5f5f5;
+    text-align: center; }
+  .totalTable .portfolioTotals {
+    text-align: center;
+    font-weight: bold; }
+  .totalTable > tbody > tr > td, .totalTable > tbody > tr > th, .totalTable > tfoot > tr > td, .totalTable > tfoot > tr > th, .totalTable > thead > tr > td, .totalTable > thead > tr > th {
+    width: 16.67%;
+    border-top: none; }
 
 .changeValue {
   font-weight: bold; }
@@ -24,10 +21,9 @@
 
 .totalTablePercentagesOnly, .totalTableTotalsOnly {
   display: table; }
-
-.totalTablePercentagesOnly > tbody > tr > td, .totalTablePercentagesOnly > tbody > tr > th, .totalTablePercentagesOnly > tfoot > tr > td, .totalTablePercentagesOnly > tfoot > tr > th, .totalTablePercentagesOnly > thead > tr > td, .totalTablePercentagesOnly > thead > tr > th, .totalTableTotalsOnly > tbody > tr > td, .totalTableTotalsOnly > tbody > tr > th, .totalTableTotalsOnly > tfoot > tr > td, .totalTableTotalsOnly > tfoot > tr > th, .totalTableTotalsOnly > thead > tr > td, .totalTableTotalsOnly > thead > tr > th {
-  width: 33.33%;
-  border-top: none; }
+  .totalTablePercentagesOnly > tbody > tr > td, .totalTablePercentagesOnly > tbody > tr > th, .totalTablePercentagesOnly > tfoot > tr > td, .totalTablePercentagesOnly > tfoot > tr > th, .totalTablePercentagesOnly > thead > tr > td, .totalTablePercentagesOnly > thead > tr > th, .totalTableTotalsOnly > tbody > tr > td, .totalTableTotalsOnly > tbody > tr > th, .totalTableTotalsOnly > tfoot > tr > td, .totalTableTotalsOnly > tfoot > tr > th, .totalTableTotalsOnly > thead > tr > td, .totalTableTotalsOnly > thead > tr > th {
+    width: 33.33%;
+    border-top: none; }
 
 @media (min-width: 768px) {
   .totalTable.fullTable {

@@ -54,7 +54,7 @@ const api = {
         cryptoRow.market_cap_usd = Number(cryptoRow.market_cap_usd);
         cryptoRow.market_cap_usd_formatted = addCommas(cryptoRow.market_cap_usd);
         cryptoRow.percentage = '';
-        cryptoRow.count = 0;
+        cryptoRow.count = '';
         cryptoRow.coinUSD = '';
         cryptoRow.formattedCoinUSD = '';
         cryptoRow.coinBTC = '';
@@ -66,6 +66,8 @@ const api = {
         const annoyingIdentifier = '24h_volume_usd';
         cryptoRow.twentyfour_volume_usd = Number(cryptoRow[annoyingIdentifier]);
         cryptoRow.formattedTwentyfour_volume_usd = addCommas(cryptoRow.twentyfour_volume_usd);
+        cryptoRow.flag = false;
+        cryptoRow.flagStyle = {};
 
         //Compute Weighted volume
         cryptoRow.weightedVolume = ((cryptoRow.twentyfour_volume_usd * 100) / cryptoRow.market_cap_usd).toFixed(2);

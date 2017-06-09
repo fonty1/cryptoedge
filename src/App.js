@@ -10,12 +10,17 @@ import AppHeader from './components/AppHeader/AppHeaderContainer';
 import CoinList from './components/CoinList/CoinListContainer';
 import Portfolio from './components/Portfolio/PortfolioContainer';
 import TotalPortfolio from './components/TotalPortfolio/TotalPortfolioContainer';
+import FlagModal from './components/FlagModal/FlagModalContainer';
 import { combineReducers } from 'redux';
 import coinListPortfolio from './reducers/coinListPortfolioReducer';
+import conditions from './reducers/conditionsReducer';
+import ui from './reducers/uiReducer';
 import {persistStore, autoRehydrate} from 'redux-persist'
 
 const rootReducer = combineReducers({
-  coinListPortfolio
+  coinListPortfolio,
+  conditions,
+  ui
 });
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
@@ -57,10 +62,11 @@ class App extends Component {
           <div className="app">
             <AppHeader/>
             <div className="app__content">
+              <FlagModal/>
               <Portfolio/>
               <TotalPortfolio/>
               <CoinList/>
-              <p>Cryptoedge is used at the user's own risk.
+              <p className="terms">Cryptoedge is used at the user's own risk.
                 Cryptoedge is currently in beta testing and there may be bugs in prices or calculations.
                 Cryptoedge takes no responsibility for it's user's actions. Nothing on Cryptoedge should be considered as trading advice.</p>
             </div>

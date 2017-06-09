@@ -51,7 +51,10 @@ class CoinList extends React.Component {
      if (listFilled) {
         return (
           <div className="LeaderboardList">
-              <h6>Coin List</h6>
+            <div className="coinlistHeader">
+              Coin List
+              <i className="fa fa-times closeTable hide" aria-hidden="true"></i>
+            </div>
               <Table responsive striped className="cryptotable coinList" id="coinList">
               <thead>
                  <tr>
@@ -60,65 +63,62 @@ class CoinList extends React.Component {
                         <i className="fa fa-cog" aria-hidden="true"></i>
                       </button>
                     </th>
+                    <th className="flagColumn">
+                      Flags
+                    </th>
                     <th className="capColumn">
-                      Cap
                       <button onClick={() => this.sortByRank()} className="sortByButton">
-                        <i className="fa fa-sort" aria-hidden="true"></i>
+                        Cap <i className="fa fa-sort" aria-hidden="true"></i>
                       </button>
                     </th>
                     <th className="nameColumn">
                       Crypto
                     </th>
-
                     <th className="cryptoPrice">
-                      USD
                       <button onClick={() => this.sortByPriceUSD()} className="sortByButton">
-                        <i className="fa fa-sort" aria-hidden="true"></i>
+                        USD <i className="fa fa-sort" aria-hidden="true"></i>
                       </button>
                     </th>
                     <th>
-                      1 Hr
                       <button onClick={() => this.sortByOneHour()} className="sortByButton">
-                        <i className="fa fa-sort" aria-hidden="true"></i>
+                        1 Hr <i className="fa fa-sort" aria-hidden="true"></i>
                       </button>
                     </th>
                     <th>
-                      24 Hrs
                       <button onClick={() => this.sortByTwentyFourHours()} className="sortByButton">
-                        <i className="fa fa-sort" aria-hidden="true"></i>
+                        24 Hrs <i className="fa fa-sort" aria-hidden="true"></i>
                       </button>
                     </th>
                     <th>
-                      7 Days
                       <button onClick={() => this.sortBySevenDays()} className="sortByButton">
-                        <i className="fa fa-sort" aria-hidden="true"></i>
+                        7 Days <i className="fa fa-sort" aria-hidden="true"></i>
                       </button>
                     </th>
                     <th className="marketCapColumn">
-                      Market Cap
                       <button onClick={() => this.sortByCap()} className="sortByButton">
-                        <i className="fa fa-sort" aria-hidden="true"></i>
+                        Market Cap <i className="fa fa-sort" aria-hidden="true"></i>
                       </button>
                     </th>
                     <th className="volume cryptoPrice">
-                      24hr Vol
                       <button onClick={() => this.sortByVolume()} className="sortByButton">
-                        <i className="fa fa-sort" aria-hidden="true"></i>
+                        24hr Vol <i className="fa fa-sort" aria-hidden="true"></i>
                       </button>
                     </th>
                     <th className="volume cryptoPrice">
-                      Weighted Vol
                       <button onClick={() => this.sortByWeightedVolume()} className="sortByButton">
-                        <i className="fa fa-sort" aria-hidden="true"></i>
+                        Weighted Vol <i className="fa fa-sort" aria-hidden="true"></i>
                       </button>
                     </th>
                     <th className="cryptoPrice">
-                      BTC
                       <button onClick={() => this.sortByPriceBTC()} className="sortByButton">
-                        <i className="fa fa-sort" aria-hidden="true"></i>
+                        BTC <i className="fa fa-sort" aria-hidden="true"></i>
                       </button>
                     </th>
-
+                    <th className="">
+                      <button className="sortByButton hide">
+                        <i className="fa fa-cog" aria-hidden="true"></i>
+                      </button>
+                    </th>
                  </tr>
                </thead>
                <tbody>
@@ -129,6 +129,11 @@ class CoinList extends React.Component {
                              <button onClick={() => this.props.actions.addCoinToPortfolio(crypto)} className="addCoinToPortfolio">
                                  <i className="fa fa-plus-square-o" aria-hidden="true"></i>
                              </button>
+                         </td>
+                         <td className="flagColumn">
+                          <span style={crypto.flagStyle}>
+                            <i className="fa fa-flag" aria-hidden="true"></i>
+                          </span>
                          </td>
                          <td className="capColumn">{crypto.rank}</td>
                          <td className="nameColumn">
@@ -144,7 +149,7 @@ class CoinList extends React.Component {
                          <td className="volColumn">${crypto.formattedTwentyfour_volume_usd}</td>
                          <td className="weightedVolColumn">{crypto.weightedVolume}</td>
                          <td className="priceBTCColumn">{crypto.price_btc}</td>
-
+                         <td className=""></td>
                      </tr>
                    ) }, this )}
                </tbody>

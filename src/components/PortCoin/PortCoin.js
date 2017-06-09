@@ -65,6 +65,8 @@ const PortCoin = ( { actions, crypto, index, totalUSD, totalBTC, portfolio, BTCP
         actions.removeCoinFromPortfolio(index);
     }
 
+    // On Flag click - edit
+
     if (crypto.type !== "custom"){
         return (
             <tr className="" key={index}>
@@ -72,6 +74,11 @@ const PortCoin = ( { actions, crypto, index, totalUSD, totalBTC, portfolio, BTCP
                     <button onClick={() => preRemoveCoin()} className="removeCoinFromPortfolio">
                         <i className="fa fa-minus-square-o" aria-hidden="true"></i>
                     </button>
+                </td>
+                <td className="flagColumn">
+                  <span style={crypto.flagStyle}>
+                    <i className="fa fa-flag" aria-hidden="true"></i>
+                  </span>
                 </td>
                 <td className="capColumn">
                     {crypto.rank}
@@ -85,10 +92,7 @@ const PortCoin = ( { actions, crypto, index, totalUSD, totalBTC, portfolio, BTCP
                     <input
                         value={crypto.count}
                         onChange={onCoinNumberChange}
-                        type="number"
                         name={"coinNum-" + index}
-                        min="0"
-                        step="any"
                     />
                 </td>
                 <td className="USDHoldingColumn">
@@ -101,8 +105,6 @@ const PortCoin = ( { actions, crypto, index, totalUSD, totalBTC, portfolio, BTCP
                   <input
                       value={crypto.boughtAt}
                       onChange={onBoughtAtChange}
-                      type="number"
-                      min="0"
                       step="any"
                   />
                 </td>
@@ -123,6 +125,8 @@ const PortCoin = ( { actions, crypto, index, totalUSD, totalBTC, portfolio, BTCP
                     {crypto.percent_change_24h}%</td>
                 <td className="sevenDaysColumn percentage__changes" style={crypto.sevenDayStyles}>
                     {crypto.percent_change_7d}%</td>
+                <td className="">
+                </td>
             </tr>
         )
     } else {
@@ -132,6 +136,11 @@ const PortCoin = ( { actions, crypto, index, totalUSD, totalBTC, portfolio, BTCP
                   <button onClick={() => preRemoveCoin()} className="removeCoinFromPortfolio">
                       <i className="fa fa-minus-square-o" aria-hidden="true"></i>
                   </button>
+              </td>
+              <td className="flagColumn">
+                <span style={crypto.flagStyle}>
+                  <i className="fa fa-flag" aria-hidden="true"></i>
+                </span>
               </td>
               <td className="capColumn">
               </td>
@@ -147,9 +156,7 @@ const PortCoin = ( { actions, crypto, index, totalUSD, totalBTC, portfolio, BTCP
                   <input
                       value={crypto.count}
                       onChange={onCoinNumberChange}
-                      type="number"
                       name={"coinNum-" + index}
-                      min="0"
                       step="any"
                   />
               </td>
@@ -163,9 +170,7 @@ const PortCoin = ( { actions, crypto, index, totalUSD, totalBTC, portfolio, BTCP
                 <input
                     value={crypto.boughtAt}
                     onChange={onBoughtAtChange}
-                    type="number"
                     name={"coinNum-" + index}
-                    min="0"
                     step="any"
                 />
               </td>
@@ -197,6 +202,8 @@ const PortCoin = ( { actions, crypto, index, totalUSD, totalBTC, portfolio, BTCP
               <td className="twentyFourHoursColumn percentage__changes" style={crypto.twentyFourHourStyles}>
               </td>
               <td className="sevenDaysColumn percentage__changes" style={crypto.sevenDayStyles}>
+              </td>
+              <td className="">
               </td>
           </tr>
         )

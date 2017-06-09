@@ -17,9 +17,11 @@ import { UPDATE_CUSTOM_USD } from '../constants/actionTypes';
 import { UPDATE_INDIVIDUAL_TOTALS } from '../constants/actionTypes';
 import { SORTLIST } from '../constants/actionTypes';
 import { CALCULATE_PORTFOLIO_TOTAL_PERCENTAGES } from '../constants/actionTypes';
+import { EVALUATE_FLAGS } from '../constants/actionTypes';
+import { ADD_FLAG } from '../constants/actionTypes';
+import { REMOVE_FLAG } from '../constants/actionTypes';
 
 export function sortList(column, list) {
-  //How to do sortToggle?
   return {
     type: SORTLIST,
     column,
@@ -97,6 +99,9 @@ export function downloadCoins() {
         });
         dispatch({
           type: CALCULATE_PORTFOLIO_TOTAL_PERCENTAGES
+        });
+        dispatch({
+          type: EVALUATE_FLAGS
         });
       }
       catch (e) {
@@ -178,7 +183,7 @@ export function addCustomCoinToPortfolio() {
     logo: customCoinLogo,
     position: 0,
     percentage: '',
-    count: 0,
+    count: '',
     coinUSD: '',
     formattedCoinUSD: '',
     coinBTC: '',
@@ -186,7 +191,9 @@ export function addCustomCoinToPortfolio() {
     type: "custom",
     boughtAt: '',
     profitLoss: '',
-    formattedProfitLoss: ''
+    formattedProfitLoss: '',
+    flag: false,
+    flagStyle: {}
   };
   return {
     type: ADD_CUSTOM_COIN_TO_PORTFOLIO,
@@ -207,6 +214,29 @@ export function updateIndividualTotals(boughtAt, position) {
     type: UPDATE_INDIVIDUAL_TOTALS,
     boughtAt,
     position
+  };
+}
+
+export function evaluateFlags() {
+  return {
+    type: EVALUATE_FLAGS
+  };
+}
+
+export function addFlag(id, flagColour, condition, operator) {
+  return {
+    type: ADD_FLAG,
+    id,
+    condition,
+    operator,
+    flagColour
+  };
+}
+
+export function removeFlag(id) {
+  return {
+    type: REMOVE_FLAG,
+    id
   };
 }
 

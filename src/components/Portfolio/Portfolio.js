@@ -76,7 +76,10 @@ class Portfolio extends Component {
          if (portfolioFilled) {
            return (
                <div className="Portfolio">
-                  <h6>Portfolio</h6>
+                  <div className="portfolioHeader">
+                    Portfolio
+                    <i className="fa fa-times closeTable hide" aria-hidden="true"></i>
+                  </div>
                   <button onClick={() => this.toggleFullView()} className="fullViewButton">Full View</button>
                    <Table responsive striped className="cryptotable" id="portfolioTable">
                        <thead>
@@ -86,86 +89,81 @@ class Portfolio extends Component {
                                  <i className="fa fa-cog" aria-hidden="true"></i>
                                </button>
                              </th>
+                             <th className="flagColumn">
+                               Flags
+                             </th>
                              <th className="capColumn">
-                                 Cap
                                  <button onClick={() => this.sortByRank()} className="sortByButton">
-                                   <i className="fa fa-sort" aria-hidden="true"></i>
+                                   Cap <i className="fa fa-sort" aria-hidden="true"></i>
                                  </button>
                              </th>
                              <th className="nameColumn">
                                  Crypto
                              </th>
                              <th className="coinCountColumn">
-                                 Coins
                                  <button onClick={() => this.sortByCoinCount()} className="sortByButton">
-                                   <i className="fa fa-sort" aria-hidden="true"></i>
+                                   Coins <i className="fa fa-sort" aria-hidden="true"></i>
                                  </button>
                              </th>
                              <th className="USDHoldingColumn">
-                                 Total USD
                                  <button onClick={() => this.sortByUSDHoldingValue()} className="sortByButton">
-                                   <i className="fa fa-sort" aria-hidden="true"></i>
+                                   Total USD <i className="fa fa-sort" aria-hidden="true"></i>
                                  </button>
                              </th>
                              <th className="percentageHoldingColumn">
-                                 %
                                  <button onClick={() => this.sortByPercentage()} className="sortByButton">
-                                   <i className="fa fa-sort" aria-hidden="true"></i>
+                                   % <i className="fa fa-sort" aria-hidden="true"></i>
                                  </button>
                              </th>
                              <th className="boughtAtColumn">
-                                 Bought at USD
                                  <button onClick={() => this.sortByBoughtAt()} className="sortByButton">
-                                   <i className="fa fa-sort" aria-hidden="true"></i>
+                                   Bought at USD <i className="fa fa-sort" aria-hidden="true"></i>
                                  </button>
                              </th>
                              <th className="profitLossColumn">
-                                 Profit/Loss
                                  <button onClick={() => this.sortByProfitLoss()} className="sortByButton">
-                                   <i className="fa fa-sort" aria-hidden="true"></i>
+                                   Profit/Loss <i className="fa fa-sort" aria-hidden="true"></i>
                                  </button>
                              </th>
                              <th className="volColumn">
-                                 24hr Vol
                                  <button onClick={() => this.sortByVolume()} className="sortByButton">
-                                   <i className="fa fa-sort" aria-hidden="true"></i>
+                                   24hr Vol <i className="fa fa-sort" aria-hidden="true"></i>
                                  </button>
                              </th>
                              <th className="weightedVolColumn">
-                                 Weighted Vol
                                  <button onClick={() => this.sortByWeightedVolume()} className="sortByButton">
-                                   <i className="fa fa-sort" aria-hidden="true"></i>
+                                   Weighted Vol <i className="fa fa-sort" aria-hidden="true"></i>
                                  </button>
                              </th>
                              <th className="priceUSDColumn rightTableHeading">
-                                 USD
                                  <button onClick={() => this.sortByPriceUSD()} className="sortByButton">
-                                   <i className="fa fa-sort" aria-hidden="true"></i>
+                                   USD <i className="fa fa-sort" aria-hidden="true"></i>
                                  </button>
                              </th>
                              <th className="priceBTCColumn rightTableHeading">
-                                 BTC
                                  <button onClick={() => this.sortByPriceBTC()} className="sortByButton">
-                                   <i className="fa fa-sort" aria-hidden="true"></i>
+                                   BTC <i className="fa fa-sort" aria-hidden="true"></i>
                                  </button>
                              </th>
                              <th className="oneHourColumn">
-                                 1 Hr
                                  <button onClick={() => this.sortByOneHour()} className="sortByButton">
-                                   <i className="fa fa-sort" aria-hidden="true"></i>
+                                   1 Hr <i className="fa fa-sort" aria-hidden="true"></i>
                                  </button>
                              </th>
                              <th className="twentyFourHoursColumn">
-                                 24 Hrs
                                  <button onClick={() => this.sortByTwentyFourHours()} className="sortByButton">
-                                   <i className="fa fa-sort" aria-hidden="true"></i>
+                                   24 Hrs <i className="fa fa-sort" aria-hidden="true"></i>
                                  </button>
                              </th>
                              <th className="sevenDaysColumn">
-                                 7 Days
                                  <button onClick={() => this.sortBySevenDays()} className="sortByButton">
-                                   <i className="fa fa-sort" aria-hidden="true"></i>
+                                   7 Days <i className="fa fa-sort" aria-hidden="true"></i>
                                  </button>
+                             </th>
+                             <th className="">
+                               <button className="sortByButton hide">
+                                 <i className="fa fa-cog" aria-hidden="true"></i>
+                               </button>
                              </th>
                           </tr>
                         </thead>

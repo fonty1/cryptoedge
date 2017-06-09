@@ -12,7 +12,7 @@ header {
     position: relative;
     top: -35px;
     left: 79px;
-    font-size: 19px;
+    font-size: 16px;
     line-height: 1;
     padding: 0;
     text-transform: uppercase;
@@ -27,8 +27,8 @@ header {
 
     h1 {
       display: inline;
-      top: -17px;
-      left: 72px;
+      top: -16px;
+      left: 65px;
     }
   }
 }
@@ -44,76 +44,65 @@ header {
     margin: 0;
 }
 
-@media(min-width: 768px){
-  .primary-nav {
-      top: 15px;
-  }
-}
-
 .primary-nav {
     li {
       display: block;
       position: relative;
       min-width: 70px;
       top: 0;
-      padding: 0px 10px;
-      color: black;
+      padding: 0px 10px 0 10px;
       text-align: center;
-      color: black;
       transition: all 0.3s;
-      color: white;
 
-      i {
-        display: block;
-        font-size: 3rem;
-        padding-bottom: 5px;
-        color: white;
-
-        &:hover, &:focus {
-          color: #337ab7;
-          text-decoration: none;
-        }
-      }
-
-      &:hover, &:focus {
-        cursor: pointer;
-        color: #337ab7;
-        text-decoration: none;
+      &:last-child {
+        padding-right: 10px;
       }
 
       a {
-        color: black;
         transition: all 0.3s;
         display: block;
-        color: white;
+        color: #fff;
 
         i {
+          color: #337ab7;
+          color: white;
           display: block;
           font-size: 3rem;
           padding-bottom: 5px;
 
           &:hover, &:focus {
-            color: #337ab7;
-            text-decoration: none;
+            i {
+              color: #337ab7;
+            }
           }
         }
 
         &:hover, &:focus {
-          color: #337ab7;
+          i {
+            color: #337ab7;
+          }
+          cursor: pointer;
+          color: #fff;
           text-decoration: none;
         }
       }
-      i {
-        display: block;
-        font-size: 3rem;
-        padding-bottom: 5px;
-      }
+    }
+}
 
-      &:hover, &:focus {
-        color: #337ab7;
-        text-decoration: none;
+@media(min-width: 768px){
+  .primary-nav {
+        top: 15px;
+    li {
+      &:last-child {
+        padding-right: 30px;
       }
     }
+  }
+}
+
+.refresh {
+  padding: 0;
+  width: 65px;
 }
 
 .refresh.loading {
