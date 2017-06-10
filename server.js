@@ -9,7 +9,7 @@ var cors = require('cors')
 
 // Express
 var app = express();
-
+app.use(cors());
 app.use('/', function (req, res, next) {
   console.log('Time: %d', Date.now());
   res.setHeader('Access-Control-Allow-Origin', '*');

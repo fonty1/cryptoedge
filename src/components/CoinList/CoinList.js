@@ -58,6 +58,10 @@ class CoinList extends React.Component {
               <Table responsive striped className="cryptotable coinList" id="coinList">
               <thead>
                  <tr>
+                   <th className="">
+                     <button className="hide">
+                     </button>
+                   </th>
                     <th className="addCoinToPortfolioColumn">
                       <button className="sortByButton hide">
                         <i className="fa fa-cog" aria-hidden="true"></i>
@@ -125,6 +129,8 @@ class CoinList extends React.Component {
                  {this.props.cryptoList.map(function(crypto, index) {
                    return (
                      <tr className="coin" key={index}>
+                         <td>
+                         </td>
                          <td className="addCoinToPortfolioColumn">
                              <button onClick={() => this.props.actions.addCoinToPortfolio(crypto)} className="addCoinToPortfolio">
                                  <i className="fa fa-plus-square-o" aria-hidden="true"></i>

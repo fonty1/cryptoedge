@@ -84,6 +84,10 @@ class Portfolio extends Component {
                    <Table responsive striped className="cryptotable" id="portfolioTable">
                        <thead>
                           <tr>
+                            <th className="">
+                              <button className="hide">
+                              </button>
+                            </th>
                              <th className={"addCoinToPortfolioColumn " + (this.props.userRequestsFullView ? 'userRequestsFullView' : '')}>
                                <button className="sortByButton hide">
                                  <i className="fa fa-cog" aria-hidden="true"></i>
@@ -173,6 +177,8 @@ class Portfolio extends Component {
                               <PortCoin crypto={crypto} index={index} key={index} />
                           ) }, this )}
                           <tr className="customAddTr">
+                              <td>
+                              </td>
                               <td className="addCoinToPortfolioColumn customAddTd">
                                   <AddCustomButton/>
                               </td>

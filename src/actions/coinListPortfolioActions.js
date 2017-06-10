@@ -18,8 +18,6 @@ import { UPDATE_INDIVIDUAL_TOTALS } from '../constants/actionTypes';
 import { SORTLIST } from '../constants/actionTypes';
 import { CALCULATE_PORTFOLIO_TOTAL_PERCENTAGES } from '../constants/actionTypes';
 import { EVALUATE_FLAGS } from '../constants/actionTypes';
-import { ADD_FLAG } from '../constants/actionTypes';
-import { REMOVE_FLAG } from '../constants/actionTypes';
 
 export function sortList(column, list) {
   return {
@@ -220,23 +218,6 @@ export function updateIndividualTotals(boughtAt, position) {
 export function evaluateFlags() {
   return {
     type: EVALUATE_FLAGS
-  };
-}
-
-export function addFlag(id, flagColour, condition, operator) {
-  return {
-    type: ADD_FLAG,
-    id,
-    condition,
-    operator,
-    flagColour
-  };
-}
-
-export function removeFlag(id) {
-  return {
-    type: REMOVE_FLAG,
-    id
   };
 }
 

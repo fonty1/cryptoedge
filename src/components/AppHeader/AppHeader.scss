@@ -41,7 +41,7 @@ header {
     position: relative;
     top: 5px;
     padding: 0;
-    margin: 0;
+    margin: 0 10px 0 0;
 }
 
 .primary-nav {
@@ -53,10 +53,6 @@ header {
       padding: 0px 10px 0 10px;
       text-align: center;
       transition: all 0.3s;
-
-      &:last-child {
-        padding-right: 10px;
-      }
 
       a {
         transition: all 0.3s;
@@ -91,12 +87,9 @@ header {
 
 @media(min-width: 768px){
   .primary-nav {
-        top: 15px;
-    li {
-      &:last-child {
-        padding-right: 30px;
-      }
-    }
+    top: 15px;
+    margin-left: 10px;
+    margin-right: 20px;
   }
 }
 
