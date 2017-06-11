@@ -10,12 +10,12 @@ import AppHeader from './components/AppHeader/AppHeaderContainer';
 import CoinList from './components/CoinList/CoinListContainer';
 import Portfolio from './components/Portfolio/PortfolioContainer';
 import TotalPortfolio from './components/TotalPortfolio/TotalPortfolioContainer';
-import FlagModal from './components/FlagModal/FlagModalContainer';
+import IfThenModal from './components/IfThenModal/IfThenModalContainer';
 import { combineReducers } from 'redux';
 import coinListPortfolio from './reducers/coinListPortfolioReducer';
 import conditions from './reducers/conditionsReducer';
 import ui from './reducers/uiReducer';
-import {persistStore, autoRehydrate} from 'redux-persist'
+import {persistStore, autoRehydrate} from 'redux-persist';
 
 const rootReducer = combineReducers({
   coinListPortfolio,
@@ -36,20 +36,6 @@ const store = createStore(
   )
 )
 
-// begin periodically persisting the store
-
-// const rootReducer = combineReducers({
-//   coinListPortfolio
-// });
-//
-// const persistedState = loadState();
-//
-
-//
-// const store = createStore(rootReducer, persistedState, composeEnhancers(
-//     applyMiddleware(thunk)
-//   ));
-
 class App extends Component {
   componentWillMount() {
     persistStore(store);
@@ -62,7 +48,7 @@ class App extends Component {
           <div className="app">
             <AppHeader/>
             <div className="app__content">
-              <FlagModal/>
+              <IfThenModal/>
               <Portfolio/>
               <TotalPortfolio/>
               <CoinList/>

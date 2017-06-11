@@ -17,7 +17,9 @@ import { UPDATE_CUSTOM_USD } from '../constants/actionTypes';
 import { UPDATE_INDIVIDUAL_TOTALS } from '../constants/actionTypes';
 import { SORTLIST } from '../constants/actionTypes';
 import { CALCULATE_PORTFOLIO_TOTAL_PERCENTAGES } from '../constants/actionTypes';
-import { EVALUATE_FLAGS } from '../constants/actionTypes';
+import { ADD_CONDITION } from '../constants/actionTypes';
+import { REMOVE_CONDITION } from '../constants/actionTypes';
+import { EVALUATE_CONDITIONS } from '../constants/actionTypes';
 
 export function sortList(column, list) {
   return {
@@ -99,8 +101,10 @@ export function downloadCoins() {
           type: CALCULATE_PORTFOLIO_TOTAL_PERCENTAGES
         });
         dispatch({
-          type: EVALUATE_FLAGS
+          type: EVALUATE_CONDITIONS,
+          conditions: state.conditions
         });
+
       }
       catch (e) {
         console.log(e);
@@ -215,9 +219,33 @@ export function updateIndividualTotals(boughtAt, position) {
   };
 }
 
-export function evaluateFlags() {
+export function addCondition(coinIDTarget, selectedOperator, coinAttribTarget, userDefinedTargetValue, flagColour, conditionString) {
+  let newCondition = {
+    coinIDTarget,
+    selectedOperator,
+    coinAttribTarget,
+    userDefinedTargetValue,
+    flagColour,
+    conditionString,
+    active: true
+  };
   return {
-    type: EVALUATE_FLAGS
+    type: ADD_CONDITION,
+    newCondition
+  };
+}
+
+export function removeCondition(id) {
+  return {
+    type: REMOVE_CONDITION,
+    id
+  };
+}
+
+export function evaluateConditions() {
+  return {
+    type: EVALUATE_CONDITIONS,
+    conditions: state.conditions
   };
 }
 

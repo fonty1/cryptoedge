@@ -1,0 +1,5 @@
+.greaterThanOperatorButton.active, .lessThanOperatorButton.active {
+  background-color: blue; }
+
+.redFlagButton.active, .yellowFlagButton.active, .greenFlagButton.active {
+  background-color: blue; }

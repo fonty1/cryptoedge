@@ -6,26 +6,25 @@ header {
   font-family: 'Signika', sans-serif;
   text-align: left;
   background-color: #394050; }
-
-header h1 {
-  display: none;
-  position: relative;
-  top: -35px;
-  left: 79px;
-  font-size: 16px;
-  line-height: 1;
-  padding: 0;
-  text-transform: uppercase;
-  color: #fff; }
+  header h1 {
+    display: none;
+    position: relative;
+    top: -35px;
+    left: 79px;
+    font-size: 16px;
+    line-height: 1;
+    padding: 0;
+    text-transform: uppercase;
+    color: #fff; }
 
 @media (min-width: 768px) {
   header {
     height: 75px;
     padding: 0; }
-  header h1 {
-    display: inline;
-    top: -16px;
-    left: 65px; } }
+    header h1 {
+      display: inline;
+      top: -16px;
+      left: 65px; } }
 
 .primary-nav {
   height: 60px;
@@ -45,29 +44,24 @@ header h1 {
   padding: 0px 10px 0 10px;
   text-align: center;
   transition: all 0.3s; }
-
-.primary-nav li a {
-  transition: all 0.3s;
-  display: block;
-  color: #fff; }
-
-.primary-nav li a i {
-  color: #337ab7;
-  color: white;
-  display: block;
-  font-size: 3rem;
-  padding-bottom: 5px; }
-
-.primary-nav li a i:hover i, .primary-nav li a i:focus i {
-  color: #337ab7; }
-
-.primary-nav li a:hover, .primary-nav li a:focus {
-  cursor: pointer;
-  color: #fff;
-  text-decoration: none; }
-
-.primary-nav li a:hover i, .primary-nav li a:focus i {
-  color: #337ab7; }
+  .primary-nav li a {
+    transition: all 0.3s;
+    display: block;
+    color: #fff; }
+    .primary-nav li a i {
+      color: #337ab7;
+      color: white;
+      display: block;
+      font-size: 3rem;
+      padding-bottom: 5px; }
+      .primary-nav li a i:hover i, .primary-nav li a i:focus i {
+        color: #337ab7; }
+    .primary-nav li a:hover, .primary-nav li a:focus {
+      cursor: pointer;
+      color: #fff;
+      text-decoration: none; }
+      .primary-nav li a:hover i, .primary-nav li a:focus i {
+        color: #337ab7; }
 
 @media (min-width: 768px) {
   .primary-nav {
@@ -96,13 +90,12 @@ header h1 {
   position: relative;
   left: 0;
   padding: 5px; }
-
-.logo-container .edge-logo {
-  max-width: 40px;
-  left: 0;
-  top: 5px;
-  display: inline-block;
-  position: relative; }
+  .logo-container .edge-logo {
+    max-width: 40px;
+    left: 0;
+    top: 5px;
+    display: inline-block;
+    position: relative; }
 
 @media (min-width: 768px) {
   .logo-container {
@@ -110,6 +103,6 @@ header h1 {
     width: 115px;
     text-align: center;
     padding: 5px; }
-  .logo-container .edge-logo {
-    top: 0;
-    max-width: 45px; } }
+    .logo-container .edge-logo {
+      top: 0;
+      max-width: 45px; } }

@@ -1,6 +1,6 @@
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import * as conditionsActions from '../../actions/conditionsActions';
+import * as actions from '../../actions/coinListPortfolioActions';
 import ConditionGenerator from './ConditionGenerator';
 
 const mapStateToProps = (state, ownProps) => ({
@@ -9,7 +9,7 @@ const mapStateToProps = (state, ownProps) => ({
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    conditionsActions: bindActionCreators(conditionsActions, dispatch),
+    actions: bindActionCreators(actions, dispatch),
   };
 };
 

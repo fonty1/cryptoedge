@@ -1,13 +1,16 @@
 import React, { Component } from 'react';
 import { Modal, Button } from 'react-bootstrap';
 import ConditionGenerator from '../ConditionGenerator/ConditionGeneratorContainer';
-import './FlagModal.css';
+import './IfThenModal.css';
 
-const FlagModal = ({ uiActions, flagModalVisibility, conditionals }) => {
+const IfThenModal = ({ uiActions, flagModalVisibility, conditions }) => {
 
     const closeModal = () => {
       uiActions.hideFlagModal();
     }
+
+    //Rem Condition
+    //        this.props.actions.evaluateConditions();
 
     return (
         <div className="static-modal">
@@ -20,13 +23,18 @@ const FlagModal = ({ uiActions, flagModalVisibility, conditionals }) => {
                   <h4>Create If - Then expressions conditions that will generate coloured flags <i className="fa fa-flag" style={{color:'green'}} aria-hidden="true"></i> alongside Cryptocurrencies.</h4>
                   <ConditionGenerator/>
                   <h4>Active Conditions</h4>
-                  <ul className="listOfConditionals">
-                      {conditionals.map(function(condition, index) {
+                  <ul className="listOfConditions">
+                      {conditions.map(function(condition, index) {
                         return (
-                            <li className="Conditional">{condition}</li>
+                            <li className="Conditional">
+                              {condition.conditionString}
+                              <button onClick={(e) => this.props.conditionsActions.removeCondition()} className="createConditionButton hide">
+                                  Remove Condition <i className="fa fa-plus" aria-hidden="true"></i>
+                              </button>
+                            </li>
                         )
                         })
-                    }
+                      }
                   </ul>
                 </div>
             </Modal.Body>
@@ -38,4 +46,4 @@ const FlagModal = ({ uiActions, flagModalVisibility, conditionals }) => {
     )
 }
 
-export default FlagModal;
+export default IfThenModal;

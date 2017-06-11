@@ -16,20 +16,12 @@ import { UPDATE_CUSTOM_BTC } from '../constants/actionTypes';
 import { UPDATE_CUSTOM_USD } from '../constants/actionTypes';
 import { SORTLIST } from '../constants/actionTypes';
 import { CALCULATE_PORTFOLIO_TOTAL_PERCENTAGES } from '../constants/actionTypes';
+import { ADD_CONDITION } from '../constants/actionTypes';
+import { REMOVE_CONDITION } from '../constants/actionTypes';
 import { EVALUATE_FLAGS } from '../constants/actionTypes';
 
 export default function coinListPortfolioReducer(state = initialState.coinListPortfolio, action) {
   switch (action.type) {
-
-    case EVALUATE_FLAGS:
-      // evaluates state.conditions.conditionals
-      var testCondition = 2 < 1;
-      var conditionChecker = function(){ return testCondition };
-      console.log(conditionChecker());
-      return {
-        ...state,
-      };
-
     case SORTLIST:
       var colSort = action.column;
       var listSort = action.list;
@@ -202,6 +194,7 @@ export default function coinListPortfolioReducer(state = initialState.coinListPo
       };
 
     case ADD_CUSTOM_COIN_TO_PORTFOLIO:
+    debugger
       return {
         ...state,
         portfolio: state.portfolio.concat(action.customCoin)
@@ -340,6 +333,38 @@ export default function coinListPortfolioReducer(state = initialState.coinListPo
               percent_change_7d
             }
           };
+
+
+          case ADD_CONDITION:
+            return {
+              ...state,
+              conditions: state.conditions.concat(action.newCondition)
+            };
+
+          case REMOVE_CONDITION:
+            //   let portfolioTemp2 = state.portfolio.slice(action.position + 1);
+            //   let portfolioNew = portfolioTemp1.concat(portfolioTemp2);
+            //
+            //   return {
+            //     ...state,
+            //     portfolio: portfolioNew
+            //   };
+            return {
+              ...state
+            };
+
+
+          case EVALUATE_FLAGS:
+            // evaluates conditionsState.conditions
+            var testCondition = 2 < 1;
+            var conditionChecker = function(){ return testCondition };
+            console.log(conditionChecker());
+            // var flagStyle = {
+            //   color: action.flagColour
+            // };
+            return {
+              ...state,
+            };
 
     default:
       return state;
