@@ -1,7 +1,8 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: sans-serif;
+  font-family: 'Signika', sans-serif;
+  font-size: 16px;
   min-height: 100vh; }
 
 .hide {
@@ -20,19 +21,33 @@ body {
   padding: 30px;
   text-align: center; }
 
+.bold {
+  font-weight: bold; }
+
+.Red {
+  color: #b71f1f; }
+
+.Purple {
+  color: #d042e6; }
+
+.Green {
+  color: #3f9418; }
+
 .app__content {
   margin: 0 auto; }
-  .app__content h2 {
-    text-align: left;
-    text-transform: uppercase;
-    font-size: 2.2rem; }
-  .app__content h6 {
-    text-align: left;
-    text-transform: uppercase;
-    font-weight: bold;
-    padding-left: 5px;
-    font-size: 1.6rem;
-    display: none; }
+
+.app__content h2 {
+  text-align: left;
+  text-transform: uppercase;
+  font-size: 2.2rem; }
+
+.app__content h6 {
+  text-align: left;
+  text-transform: uppercase;
+  font-weight: bold;
+  padding-left: 5px;
+  font-size: 1.6rem;
+  display: none; }
 
 @media (min-width: 768px) {
   .app__content h6 {

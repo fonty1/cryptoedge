@@ -4,96 +4,125 @@
 
 .table.cryptotable {
   margin: 0 auto; }
-  .table.cryptotable > tbody > tr > td {
-    vertical-align: middle; }
-  .table.cryptotable > thead > tr > th {
-    border-bottom: none;
-    background-color: #efefef; }
-    .table.cryptotable > thead > tr > th:empty {
-      background-color: #fff; }
-  .table.cryptotable th {
-    text-align: center;
-    vertical-align: bottom;
-    height: 40px;
-    font-size: 1.2rem;
-    padding-right: 0; }
-  .table.cryptotable > tbody > tr:nth-of-type(odd) {
-    background-color: #f5f5f5; }
-  .table.cryptotable > tbody > tr > td {
-    border-top: 0; }
-  .table.cryptotable th span {
-    font-size: 1rem;
-    display: block;
-    color: #CCC;
-    font-weight: normal;
-    height: 30px; }
-  .table.cryptotable img {
-    max-width: 24px;
-    margin-right: 10px; }
-  .table.cryptotable input {
-    background-color: transparent;
-    border: none;
-    border-bottom: 2px solid #dddddd;
-    position: relative;
-    text-align: right; }
-    .table.cryptotable input:focus {
-      outline: none;
-      border-bottom: 2px solid #7398c1; }
-  .table.cryptotable .rightTableHeading {
-    text-align: right !important;
-    padding-right: 22px !important; }
-  .table.cryptotable > tbody > tr > td.bold {
-    font-size: 1.4rem;
-    text-align: right;
-    padding-right: 10px; }
-  .table.cryptotable .sortByButton {
-    font-size: 1.2rem;
-    color: black;
-    background: transparent;
-    border: 0; }
-    .table.cryptotable .sortByButton i {
-      color: #BBB; }
-    .table.cryptotable .sortByButton:hover i {
-      color: #7398c1; }
-  .table.cryptotable th.idColumn {
-    min-width: 100px;
-    text-align: left; }
-  .table.cryptotable .cryptoNameFull {
-    position: relative;
-    display: inline;
-    font-weight: bold;
-    top: 2px; }
-  .table.cryptotable .cryptoSymbol {
-    position: relative;
-    font-size: 1.2rem;
-    top: 2px;
-    font-weight: normal;
-    color: #999; }
-  .table.cryptotable .USDHoldingColumn, .table.cryptotable .percentageHoldingColumn, .table.cryptotable .marketCapColumn {
-    text-align: right; }
-  .table.cryptotable .boughtAtColumn, .table.cryptotable .coinCountColumn {
-    text-align: right; }
-    .table.cryptotable .boughtAtColumn input, .table.cryptotable .coinCountColumn input {
-      width: 100%; }
-  .table.cryptotable .coinCountColumn {
-    min-width: 80px; }
-  .table.cryptotable .boughtAtColumn {
-    min-width: 120px;
-    max-width: 140px; }
-  .table.cryptotable .profitLossColumn {
-    min-width: 92px; }
-  .table.cryptotable .oneHourColumn, .table.cryptotable .twentyFourHoursColumn, .table.cryptotable .sevenDaysColumn {
-    min-width: 90px; }
-  .table.cryptotable .flagColumn {
-    text-align: center; }
-  .table.cryptotable .capColumn {
-    text-align: center;
-    width: 55px; }
-  .table.cryptotable .priceBTCColumn, .table.cryptotable .priceUSDColumn {
-    text-align: right;
-    width: 80px; }
-    .table.cryptotable .priceBTCColumn .price, .table.cryptotable .priceUSDColumn .price {
-      padding-right: 14px; }
+
+.table.cryptotable > tbody > tr > td {
+  vertical-align: middle; }
+
+.table.cryptotable > thead > tr > th {
+  border-bottom: none;
+  background-color: #efefef; }
+
+.table.cryptotable > thead > tr > th:empty {
+  background-color: #fff; }
+
+.table.cryptotable th {
+  text-align: center;
+  vertical-align: bottom;
+  height: 40px;
+  font-size: 1.2rem;
+  padding-right: 0; }
+
+.table.cryptotable > tbody > tr:nth-of-type(odd) {
+  background-color: #f5f5f5; }
+
+.table.cryptotable > tbody > tr > td {
+  border-top: 0; }
+
+.table.cryptotable th span {
+  font-size: 1rem;
+  display: block;
+  color: #CCC;
+  font-weight: normal;
+  height: 30px; }
+
+.table.cryptotable img {
+  max-width: 24px;
+  margin-right: 10px; }
+
+.table.cryptotable input {
+  background-color: transparent;
+  border: none;
+  border-bottom: 2px solid #dddddd;
+  position: relative;
+  text-align: right; }
+
+.table.cryptotable input:focus {
+  outline: none;
+  border-bottom: 2px solid #7398c1; }
+
+.table.cryptotable .rightTableHeading {
+  text-align: right !important;
+  padding-right: 22px !important; }
+
+.table.cryptotable > tbody > tr > td.bold {
+  font-size: 1.4rem;
+  text-align: right;
+  padding-right: 10px; }
+
+.table.cryptotable .sortByButton {
+  font-size: 1.2rem;
+  color: black;
+  background: transparent;
+  border: 0; }
+
+.table.cryptotable .sortByButton i {
+  color: #BBB; }
+
+.table.cryptotable .sortByButton:hover i {
+  color: #7398c1; }
+
+.table.cryptotable th.idColumn {
+  min-width: 100px;
+  text-align: left; }
+
+.table.cryptotable .cryptoNameFull {
+  position: relative;
+  display: inline;
+  font-weight: bold;
+  top: 2px; }
+
+.table.cryptotable .cryptoSymbol {
+  position: relative;
+  font-size: 1.2rem;
+  top: 2px;
+  font-weight: normal;
+  color: #999; }
+
+.table.cryptotable .USDHoldingColumn, .table.cryptotable .percentageHoldingColumn, .table.cryptotable .marketCapColumn {
+  text-align: right; }
+
+.table.cryptotable .boughtAtColumn, .table.cryptotable .coinCountColumn {
+  text-align: right; }
+
+.table.cryptotable .boughtAtColumn input, .table.cryptotable .coinCountColumn input {
+  width: 100%; }
+
+.table.cryptotable .coinCountColumn {
+  min-width: 80px; }
+
+.table.cryptotable .boughtAtColumn {
+  min-width: 120px;
+  max-width: 140px; }
+
+.table.cryptotable .profitLossColumn {
+  min-width: 92px; }
+
+.table.cryptotable .oneHourColumn, .table.cryptotable .twentyFourHoursColumn, .table.cryptotable .sevenDaysColumn {
+  min-width: 90px; }
+
+.table.cryptotable .flagColumn {
+  text-align: center; }
+
+.table.cryptotable .capColumn {
+  text-align: center;
+  width: 55px; }
+
+.table.cryptotable .priceBTCColumn, .table.cryptotable .priceUSDColumn {
+  text-align: right;
+  width: 80px; }
+
+.table.cryptotable .priceBTCColumn .price, .table.cryptotable .priceUSDColumn .price {
+  padding-right: 14px; }
 
 .cryptotable th.nameColumn {
   text-align: left; }
@@ -110,8 +139,9 @@
 
 .cryptotable .priceUSDColumn, .priceBTCColumn {
   width: 80px; }
-  .cryptotable .priceUSDColumn input, .priceBTCColumn input {
-    text-align: right; }
+
+.cryptotable .priceUSDColumn input, .priceBTCColumn input {
+  text-align: right; }
 
 .table.cryptotable .cryptoPrice, .profitLoss {
   text-align: right; }
@@ -121,10 +151,11 @@
 
 .table.cryptotable .nameColumn {
   min-width: 180px; }
-  .table.cryptotable .nameColumn input {
-    font-weight: bold;
-    text-align: left;
-    width: calc(100% - 40px); }
+
+.table.cryptotable .nameColumn input {
+  font-weight: bold;
+  text-align: left;
+  width: calc(100% - 40px); }
 
 .LeaderboardList {
   margin-top: 0; }
@@ -135,27 +166,35 @@
 .Portfolio .portfolioHeader {
   width: 100%;
   height: 40px;
-  background: #b1c2d0;
+  background: rgba(177, 194, 208, 0.59);
   color: #394050;
   display: flex;
   line-height: 40px;
-  padding-left: 35px;
+  padding-left: 15px;
   font-weight: bold; }
-  .Portfolio .portfolioHeader .closeTable {
-    align-self: flex-end; }
+
+.Portfolio .portfolioHeader .closeTable {
+  align-self: flex-end; }
 
 .coinlistHeader {
   width: 100%;
   height: 40px;
-  background: #b1c2d0;
+  background: rgba(177, 194, 208, 0.59);
   color: #394050;
   display: flex;
   line-height: 40px;
-  padding-left: 35px;
+  padding-left: 15px;
   font-weight: bold; }
-  .coinlistHeader .closeTable {
-    align-self: flex-end;
-    display: inline-block; }
+
+.coinlistHeader .closeTable {
+  align-self: flex-end;
+  display: inline-block; }
+
+@media (min-width: 768px) {
+  .Portfolio .portfolioHeader {
+    padding-left: 35px; }
+  .coinlistHeader {
+    padding-left: 35px; } }
 
 .yourCoinNumber input, .boughtAt input {
   width: 90px;
@@ -173,12 +212,14 @@
   background: transparent;
   border: 0;
   height: 30px; }
-  .addCoinToPortfolio i, .removeCoinFromPortfolio i {
-    font-size: 2.2rem;
-    font-weight: normal;
-    padding-right: 10px; }
-  .addCoinToPortfolio:hover, .removeCoinFromPortfolio:hover {
-    color: #394050; }
+
+.addCoinToPortfolio i, .removeCoinFromPortfolio i {
+  font-size: 2.2rem;
+  font-weight: normal;
+  padding-right: 10px; }
+
+.addCoinToPortfolio:hover, .removeCoinFromPortfolio:hover {
+  color: #394050; }
 
 .customAddTd, .customAddTr {
   border: none !important;
@@ -212,9 +253,12 @@
 
 .Portfolio .addCoinToPortfolio {
   font-size: 1.4rem;
-  font-weight: bold; }
-  .Portfolio .addCoinToPortfolio i:before {
-    position: relative;
-    top: 3px; }
-  .Portfolio .addCoinToPortfolio:hover {
-    color: #7398c1; }
+  font-weight: bold;
+  margin-left: 20px; }
+
+.Portfolio .addCoinToPortfolio i:before {
+  position: relative;
+  top: 3px; }
+
+.Portfolio .addCoinToPortfolio:hover {
+  color: #7398c1; }

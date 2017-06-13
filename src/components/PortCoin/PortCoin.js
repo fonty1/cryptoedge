@@ -77,8 +77,8 @@ const PortCoin = ( { actions, crypto, index, totalUSD, totalBTC, portfolio, BTCP
                         <i className="fa fa-minus-square-o" aria-hidden="true"></i>
                     </button>
                 </td>
-                <td className="flagColumn">
-                  <span style={crypto.flagStyle}>
+                <td className="flagColumn" >
+                  <span className={" " + (crypto.flag ? crypto.flagColor : ' hide')}>
                     <i className="fa fa-flag" aria-hidden="true"></i>
                   </span>
                 </td>
@@ -94,6 +94,7 @@ const PortCoin = ( { actions, crypto, index, totalUSD, totalBTC, portfolio, BTCP
                     <input
                         value={crypto.count}
                         onChange={onCoinNumberChange}
+                        type="number"
                         name={"coinNum-" + index}
                     />
                 </td>
@@ -111,7 +112,7 @@ const PortCoin = ( { actions, crypto, index, totalUSD, totalBTC, portfolio, BTCP
                   />
                 </td>
                 <td className="profitLossColumn">
-                  <span className="profitLoss">${crypto.formattedProfitLoss}</span>
+                  <span className="profitLoss">{crypto.formattedProfitLoss}</span>
                 </td>
                 <td className="volColumn">${crypto.formattedTwentyfour_volume_usd}</td>
                 <td className="weightedVolColumn">{crypto.weightedVolume}</td>
@@ -142,7 +143,7 @@ const PortCoin = ( { actions, crypto, index, totalUSD, totalBTC, portfolio, BTCP
                   </button>
               </td>
               <td className="flagColumn">
-                <span style={crypto.flagStyle}>
+                <span className={" " + (crypto.flag ? crypto.flagColor : ' hide')}>
                   <i className="fa fa-flag" aria-hidden="true"></i>
                 </span>
               </td>
@@ -161,6 +162,7 @@ const PortCoin = ( { actions, crypto, index, totalUSD, totalBTC, portfolio, BTCP
                       value={crypto.count}
                       onChange={onCoinNumberChange}
                       name={"coinNum-" + index}
+                      type="number"
                       step="any"
                   />
               </td>

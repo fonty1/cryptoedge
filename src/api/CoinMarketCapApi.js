@@ -67,7 +67,7 @@ const api = {
         cryptoRow.twentyfour_volume_usd = Number(cryptoRow[annoyingIdentifier]);
         cryptoRow.formattedTwentyfour_volume_usd = addCommas(cryptoRow.twentyfour_volume_usd);
         cryptoRow.flag = false;
-        cryptoRow.flagStyle = {};
+        cryptoRow.flagColor = 'black';
 
         //Compute Weighted volume
         cryptoRow.weightedVolume = ((cryptoRow.twentyfour_volume_usd * 100) / cryptoRow.market_cap_usd).toFixed(2);
@@ -220,7 +220,7 @@ const api = {
       var colorWithOpacity = 'rgba('+ colorGreenOrRed + ',' + opacity + ')';
 
       var styleObject = {
-        borderBottom: '3px solid ' + colorWithOpacity,
+        // borderBottom: '3px solid ' + colorWithOpacity,
         color: 'rgb(' + colorGreenOrRed + ')'
       }
 

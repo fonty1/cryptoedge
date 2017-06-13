@@ -60,6 +60,10 @@ class Portfolio extends Component {
       this.props.actions.sortList('market_cap_usd','portfolio');
     }
 
+    sortByFlag() {
+      this.props.actions.sortList('flag','portfolio');
+    }
+
     toggleFullView() {
       let portfolioTable = document.getElementById('portfolioTable');
       let coinlistTable = document.getElementById('coinlistTable');
@@ -77,7 +81,7 @@ class Portfolio extends Component {
            return (
                <div className="Portfolio">
                   <div className="portfolioHeader">
-                    Portfolio
+                    PORTFOLIO
                     <i className="fa fa-times closeTable hide" aria-hidden="true"></i>
                   </div>
                   <button onClick={() => this.toggleFullView()} className="fullViewButton">Full View</button>
@@ -94,7 +98,9 @@ class Portfolio extends Component {
                                </button>
                              </th>
                              <th className="flagColumn">
-                               Flags
+                               <button onClick={() => this.sortByFlag()} className="sortByButton">
+                                 Flag <i className="fa fa-sort" aria-hidden="true"></i>
+                               </button>
                              </th>
                              <th className="capColumn">
                                  <button onClick={() => this.sortByRank()} className="sortByButton">

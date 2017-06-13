@@ -5,24 +5,24 @@ class ConditionGenerator extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            coinIDTarget: '',
-            coinAttribTarget: '',
+            coinIDTarget: 'Bitcoin',
+            coinAttribTarget: 'price_usd',
             greaterThan: true,
             lessThan: false,
-            userDefinedTargetValue: '',
-            flagColour: '',
-            redFlag: true,
-            yellowFlag: false,
+            userDefinedTargetValue: '2000',
+            flagColor: '',
+            selectedOperator: '>',
+            redFlag: false,
+            purpleFlag: false,
             greenFlag: false,
         }
         this.onChangeCoinIDTarget = this.onChangeCoinIDTarget.bind(this);
         this.onChangeCoinAttribTarget = this.onChangeCoinAttribTarget.bind(this);
         this.onChangeUserDefinedValue = this.onChangeUserDefinedValue.bind(this);
         this.createCondition = this.createCondition.bind(this);
-        this.greaterThanOperator = this.greaterThanOperator.bind(this);
-        this.lessThanOperator = this.lessThanOperator.bind(this);
+        this.changeOperator = this.changeOperator.bind(this);
         this.redFlag = this.redFlag.bind(this);
-        this.yellowFlag = this.yellowFlag.bind(this);
+        this.purpleFlag = this.purpleFlag.bind(this);
         this.greenFlag = this.greenFlag.bind(this);
     }
 
@@ -38,7 +38,7 @@ class ConditionGenerator extends Component {
         this.state.coinAttribTarget + ' ' +
         selectedOperator + ' ' +
         this.state.userDefinedTargetValue + ' = ' +
-        this.state.flagColour + ' flag';
+        this.state.flagColor + ' flag';
       console.log(conditionString);
 
       this.props.actions.addCondition(
@@ -46,7 +46,7 @@ class ConditionGenerator extends Component {
             selectedOperator,
             this.state.coinAttribTarget,
             this.state.userDefinedTargetValue,
-            this.state.flagColour,
+            this.state.flagColor,
             conditionString
         );
         this.props.actions.evaluateConditions();
@@ -67,37 +67,38 @@ class ConditionGenerator extends Component {
         this.setState({userDefinedTargetValue: newVal});
     }
 
-    greaterThanOperator(e) {
+    changeOperator(e) {
       e.preventDefault();
-      this.setState({
-          greaterThan: true,
-          lessThan: false
-      });
-    }
-
-    lessThanOperator(e) {
-      e.preventDefault();
-      this.setState({
-          greaterThan: false,
-          lessThan: true
-      });
+      if(this.state.lessThan === true) {
+          this.setState({
+              greaterThan: true,
+              lessThan: false,
+              selectedOperator: '>'
+          });
+      } else {
+          this.setState({
+              greaterThan: false,
+              lessThan: true,
+              selectedOperator: '<'
+          });
+      }
     }
 
     redFlag(e) {
       e.preventDefault();
       this.setState({
-          flagColour: 'Red',
-          yellowFlag: false,
+          flagColor: 'Red',
+          purpleFlag: false,
           redFlag: true,
           greenFlag: false
       });
     }
 
-    yellowFlag(e) {
+    purpleFlag(e) {
       e.preventDefault();
       this.setState({
-          flagColour: 'Yellow',
-          yellowFlag: true,
+          flagColor: 'Purple',
+          purpleFlag: true,
           redFlag: false,
           greenFlag: false
       });
@@ -106,8 +107,8 @@ class ConditionGenerator extends Component {
     greenFlag(e) {
       e.preventDefault();
       this.setState({
-          flagColour: 'Green',
-          yellowFlag: false,
+          flagColor: 'Green',
+          purpleFlag: false,
           redFlag: false,
           greenFlag: true
       });
@@ -116,37 +117,39 @@ class ConditionGenerator extends Component {
     render() {
         return (
             <div>
-              <span>Crypto: </span>
-              <input
-                  value={this.state.coinIDTarget}
-                  onChange={this.onChangeCoinIDTarget}
-                  type="text"
-              />
+              <div>
+                <span>Crypto: </span>
+                <input
+                    value={this.state.coinIDTarget}
+                    onChange={this.onChangeCoinIDTarget}
+                    type="text"
+                />
+              </div>
               <input
                   value={this.state.coinAttribTarget}
                   onChange={this.onChangeCoinAttribTarget}
                   type="text"
               />
-              <button onClick={(e) => this.greaterThanOperator(e)} className={"greaterThanOperatorButton " + (this.state.greaterThan ? "active" : "")}>
-                  GT
-              </button>
-              <button onClick={(e) => this.lessThanOperator(e)} className={"lessThanOperatorButton " + (this.state.lessThan ? "active" : "")}>
-                  LT
+              <button onClick={(e) => this.changeOperator(e)} className="changeOperatorButton">
+                  {this.state.selectedOperator}
               </button>
               <input
                   value={this.state.userDefinedValue}
                   onChange={this.onChangeUserDefinedValue}
                   type="text"
               />
-              <button onClick={(e) => this.redFlag(e)} className={"redFlagButton " + (this.state.redFlag ? "active" : "")}>
-                <i className="fa fa-flag" style={{color:'red'}} aria-hidden="true"></i>
-              </button>
-              <button onClick={(e) => this.yellowFlag(e)} className={"yellowFlagButton " + (this.state.yellowFlag ? "active" : "")}>
-                <i className="fa fa-flag" style={{color:'yellow'}} aria-hidden="true"></i>
-              </button>
-              <button onClick={(e) => this.greenFlag(e)} className={"greenFlagButton " + (this.state.greenFlag ? "active" : "")}>
-                <i className="fa fa-flag" style={{color:'green'}} aria-hidden="true"></i>
-              </button>
+              <div>
+                  <button onClick={(e) => this.redFlag(e)} className={"redFlagButton " + (this.state.redFlag ? "active" : "")}>
+                    <i className="fa fa-flag" style={{color:'red'}} aria-hidden="true"></i>
+                  </button>
+                  <button onClick={(e) => this.purpleFlag(e)} className={"purpleFlagButton " + (this.state.purpleFlag ? "active" : "")}>
+                    <i className="fa fa-flag" style={{color:'purple'}} aria-hidden="true"></i>
+                  </button>
+                  <button onClick={(e) => this.greenFlag(e)} className={"greenFlagButton " + (this.state.greenFlag ? "active" : "")}>
+                    <i className="fa fa-flag" style={{color:'green'}} aria-hidden="true"></i>
+                  </button>
+              </div>
+
               <button onClick={(e) => this.createCondition(e)} className="createConditionButton">
                   Create Condition <i className="fa fa-plus" aria-hidden="true"></i>
               </button>

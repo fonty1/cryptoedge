@@ -1,7 +1,8 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: sans-serif;
+  font-family: 'Signika', sans-serif;
+  font-size: 16px;
   min-height: 100vh;
 }
 
@@ -23,6 +24,22 @@ body {
   margin: 0 auto;
   padding: 30px;
   text-align: center;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.Red {
+  color: rgb(183, 31, 31);
+}
+
+.Purple {
+  color: #d042e6;
+}
+
+.Green {
+  color: rgb(63, 148, 24);
 }
 
 .app__content {

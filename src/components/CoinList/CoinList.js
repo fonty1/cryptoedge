@@ -46,13 +46,17 @@ class CoinList extends React.Component {
     this.props.actions.sortList('market_cap_usd','coins');
   }
 
+  sortByFlag() {
+    this.props.actions.sortList('flag','coins');
+  }
+
   render() {
     const listFilled = this.props.cryptoList.length > 0;
      if (listFilled) {
         return (
           <div className="LeaderboardList">
             <div className="coinlistHeader">
-              Coin List
+              COIN LIST
               <i className="fa fa-times closeTable hide" aria-hidden="true"></i>
             </div>
               <Table responsive striped className="cryptotable coinList" id="coinList">
@@ -68,7 +72,9 @@ class CoinList extends React.Component {
                       </button>
                     </th>
                     <th className="flagColumn">
-                      Flags
+                      <button onClick={() => this.sortByFlag()} className="sortByButton">
+                        Flag <i className="fa fa-sort" aria-hidden="true"></i>
+                      </button>
                     </th>
                     <th className="capColumn">
                       <button onClick={() => this.sortByRank()} className="sortByButton">
@@ -137,7 +143,7 @@ class CoinList extends React.Component {
                              </button>
                          </td>
                          <td className="flagColumn">
-                          <span style={crypto.flagStyle}>
+                          <span className={" " + (crypto.flag ? crypto.flagColor : ' hide')}>
                             <i className="fa fa-flag" aria-hidden="true"></i>
                           </span>
                          </td>

@@ -42,7 +42,7 @@ function heatmapChangeCalc(changeValue) {
   var colorWithOpacity = 'rgba('+ colorGreenOrRed + ',' + opacity + ')';
 
   var styleObject = {
-    borderBottom: '3px solid ' + colorWithOpacity,
+    // borderBottom: '3px solid ' + colorWithOpacity,
     color: 'rgb(' + colorGreenOrRed + ')'
   }
 

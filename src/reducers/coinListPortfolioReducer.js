@@ -18,7 +18,8 @@ import { SORTLIST } from '../constants/actionTypes';
 import { CALCULATE_PORTFOLIO_TOTAL_PERCENTAGES } from '../constants/actionTypes';
 import { ADD_CONDITION } from '../constants/actionTypes';
 import { REMOVE_CONDITION } from '../constants/actionTypes';
-import { EVALUATE_FLAGS } from '../constants/actionTypes';
+import { EVALUATE_CONDITIONS } from '../constants/actionTypes';
+import mathjs from 'mathjs';
 
 export default function coinListPortfolioReducer(state = initialState.coinListPortfolio, action) {
   switch (action.type) {
@@ -274,7 +275,7 @@ export default function coinListPortfolioReducer(state = initialState.coinListPo
                 //var formattedCoinUSD = '';
               } else {
                 var profitLoss = ((item.price_usd - correctBoughtAt) * item.count).toFixed(2) * 10000 / 10000;
-                var formattedProfitLoss = addCommas(Math.round(((item.price_usd - correctBoughtAt) * item.count).toFixed(2) * 10000) / 10000);
+                var formattedProfitLoss = '$' + addCommas(Math.round(((item.price_usd - correctBoughtAt) * item.count).toFixed(2) * 10000) / 10000);
               }
               var formattedCoinUSD = addCommas(Math.round((item.count * item.price_usd).toFixed(2) * 10000) / 10000);
 
@@ -342,28 +343,71 @@ export default function coinListPortfolioReducer(state = initialState.coinListPo
             };
 
           case REMOVE_CONDITION:
-            //   let portfolioTemp2 = state.portfolio.slice(action.position + 1);
-            //   let portfolioNew = portfolioTemp1.concat(portfolioTemp2);
-            //
-            //   return {
-            //     ...state,
-            //     portfolio: portfolioNew
-            //   };
+              let conditionTemp1 = state.conditions.slice(0,action.position);
+              let conditionTemp2 = state.conditions.slice(action.position + 1);
+              let conditionsNew = conditionTemp1.concat(conditionTemp2);
+
+              return {
+                ...state,
+                conditions: conditionsNew
+              };
             return {
               ...state
             };
 
 
-          case EVALUATE_FLAGS:
-            // evaluates conditionsState.conditions
-            var testCondition = 2 < 1;
-            var conditionChecker = function(){ return testCondition };
-            console.log(conditionChecker());
-            // var flagStyle = {
-            //   color: action.flagColour
-            // };
+          case EVALUATE_CONDITIONS:
+            let conditionsList = state.conditions;
+            let conditionsPortfolio = state.portfolio;
+            let conditionsCoinList = state.coins;
+
+            if(conditionsList.length === 0) {
+              conditionsPortfolio = conditionsPortfolio.map( (cryptoItem, index) => {
+                  cryptoItem.flag = false;
+                  return {
+                      ...cryptoItem
+                    }
+                });
+
+              conditionsCoinList = conditionsCoinList.map( (cryptoItem, index) => {
+                  cryptoItem.flag = false;
+                  return {
+                      ...cryptoItem
+                    }
+                });
+            }
+
+            conditionsList.map( (condition, index) => {
+              conditionsPortfolio = conditionsPortfolio.map( (cryptoItem, index) => {
+                  if (condition.coinIDTarget === cryptoItem.name) {
+                    let coinAttribTarget = condition.coinAttribTarget;
+                    let mathExpression = cryptoItem[coinAttribTarget] + ' ' + condition.selectedOperator + ' ' + condition.userDefinedTargetValue;
+                    let validFlag = mathjs.eval(mathExpression);
+                    cryptoItem.flag = validFlag;
+                    cryptoItem.flagColor = condition.flagColor;
+                  }
+                  return {
+                      ...cryptoItem
+                    }
+                });
+
+              conditionsCoinList = conditionsCoinList.map( (cryptoItem, index) => {
+                  if (condition.coinIDTarget === cryptoItem.name) {
+                    let coinAttribTarget = condition.coinAttribTarget;
+                    let mathExpression = cryptoItem[coinAttribTarget] + ' ' + condition.selectedOperator + ' ' + condition.userDefinedTargetValue;
+                    var validFlag = mathjs.eval(mathExpression);
+                    cryptoItem.flag = validFlag;
+                    cryptoItem.flagColor = condition.flagColor;
+                  }
+                  return {
+                      ...cryptoItem
+                    }
+                });
+            });
             return {
               ...state,
+              portfolio: conditionsPortfolio,
+              coins: conditionsCoinList
             };
 
     default:

@@ -13,13 +13,11 @@ import TotalPortfolio from './components/TotalPortfolio/TotalPortfolioContainer'
 import IfThenModal from './components/IfThenModal/IfThenModalContainer';
 import { combineReducers } from 'redux';
 import coinListPortfolio from './reducers/coinListPortfolioReducer';
-import conditions from './reducers/conditionsReducer';
 import ui from './reducers/uiReducer';
 import {persistStore, autoRehydrate} from 'redux-persist';
 
 const rootReducer = combineReducers({
   coinListPortfolio,
-  conditions,
   ui
 });
 

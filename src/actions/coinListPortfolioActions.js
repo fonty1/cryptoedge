@@ -26,13 +26,19 @@ export function sortList(column, list) {
     type: SORTLIST,
     column,
     list
-  };
+  }
 }
 
 export function addCoinToPortfolio(coin) {
-  return {
-    type: ADD_COIN_TO_PORTFOLIO,
-    coin
+  return (dispatch) => {
+    dispatch({
+      type: ADD_COIN_TO_PORTFOLIO,
+      coin
+    });
+
+    dispatch({
+      type: EVALUATE_CONDITIONS
+    });
   };
 }
 
@@ -101,8 +107,7 @@ export function downloadCoins() {
           type: CALCULATE_PORTFOLIO_TOTAL_PERCENTAGES
         });
         dispatch({
-          type: EVALUATE_CONDITIONS,
-          conditions: state.conditions
+          type: EVALUATE_CONDITIONS
         });
 
       }
@@ -195,7 +200,7 @@ export function addCustomCoinToPortfolio() {
     profitLoss: '',
     formattedProfitLoss: '',
     flag: false,
-    flagStyle: {}
+    flagColor: {}
   };
   return {
     type: ADD_CUSTOM_COIN_TO_PORTFOLIO,
@@ -219,33 +224,45 @@ export function updateIndividualTotals(boughtAt, position) {
   };
 }
 
-export function addCondition(coinIDTarget, selectedOperator, coinAttribTarget, userDefinedTargetValue, flagColour, conditionString) {
+export function addCondition(coinIDTarget, selectedOperator, coinAttribTarget, userDefinedTargetValue, flagColor, conditionString) {
   let newCondition = {
     coinIDTarget,
     selectedOperator,
     coinAttribTarget,
     userDefinedTargetValue,
-    flagColour,
+    flagColor,
     conditionString,
     active: true
   };
-  return {
-    type: ADD_CONDITION,
-    newCondition
+
+  return (dispatch) => {
+    dispatch({
+      type: ADD_CONDITION,
+      newCondition
+    });
+
+    dispatch({
+      type: EVALUATE_CONDITIONS
+    });
   };
 }
 
-export function removeCondition(id) {
-  return {
-    type: REMOVE_CONDITION,
-    id
+export function removeCondition(position) {
+  return (dispatch) => {
+    dispatch({
+      type: REMOVE_CONDITION,
+      position
+    });
+
+    dispatch({
+      type: EVALUATE_CONDITIONS
+    });
   };
 }
 
 export function evaluateConditions() {
   return {
-    type: EVALUATE_CONDITIONS,
-    conditions: state.conditions
+    type: EVALUATE_CONDITIONS
   };
 }
 

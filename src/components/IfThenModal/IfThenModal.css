@@ -1,3 +1,24 @@
-@media (min-width: 768px) {
-  .modal-dialog {
-    width: 1000px; } }
+.listOfConditions {
+  list-style: none; }
+
+.ifThenBody {
+  text-align: center; }
+
+.condition {
+  text-align: left;
+  font-weight: bold;
+  font-family: 'Signika', sans-serif; }
+
+.modal-header {
+  border-bottom: none;
+  text-align: center; }
+
+.modal-header .modal-title {
+  text-transform: uppercase;
+  font-weight: normal;
+  font-family: 'Signika', sans-serif;
+  font-size: 24px;
+  color: #586168; }
+
+.modal-footer {
+  border-top: none; }
