@@ -377,33 +377,39 @@ export default function coinListPortfolioReducer(state = initialState.coinListPo
                 });
             }
 
-            conditionsList.map( (condition, index) => {
+
               conditionsPortfolio = conditionsPortfolio.map( (cryptoItem, index) => {
-                  if (condition.coinIDTarget === cryptoItem.name) {
-                    let coinAttribTarget = condition.coinAttribTarget;
-                    let mathExpression = cryptoItem[coinAttribTarget] + ' ' + condition.selectedOperator + ' ' + condition.userDefinedTargetValue;
-                    let validFlag = mathjs.eval(mathExpression);
-                    cryptoItem.flag = validFlag;
-                    cryptoItem.flagColor = condition.flagColor;
-                  }
+                  cryptoItem.flag = false;
+                  conditionsList.map( (condition, index) => {
+                    if (condition.coinIDTarget === cryptoItem.name) {
+                        let coinAttribTarget = condition.coinAttribTarget;
+                        let mathExpression = cryptoItem[coinAttribTarget] + ' ' + condition.selectedOperator + ' ' + condition.userDefinedTargetValue;
+                        let validFlag = mathjs.eval(mathExpression);
+                        cryptoItem.flag = validFlag;
+                        cryptoItem.flagColor = condition.flagColor;
+                    }
+                  });
                   return {
                       ...cryptoItem
-                    }
+                  }
                 });
 
               conditionsCoinList = conditionsCoinList.map( (cryptoItem, index) => {
-                  if (condition.coinIDTarget === cryptoItem.name) {
-                    let coinAttribTarget = condition.coinAttribTarget;
-                    let mathExpression = cryptoItem[coinAttribTarget] + ' ' + condition.selectedOperator + ' ' + condition.userDefinedTargetValue;
-                    var validFlag = mathjs.eval(mathExpression);
-                    cryptoItem.flag = validFlag;
-                    cryptoItem.flagColor = condition.flagColor;
-                  }
-                  return {
-                      ...cryptoItem
+                  cryptoItem.flag = false;
+                  conditionsList.map( (condition, index) => {
+                    if (condition.coinIDTarget === cryptoItem.name) {
+                        let coinAttribTarget = condition.coinAttribTarget;
+                        let mathExpression = cryptoItem[coinAttribTarget] + ' ' + condition.selectedOperator + ' ' + condition.userDefinedTargetValue;
+                        var validFlag = mathjs.eval(mathExpression);
+                        cryptoItem.flag = validFlag;
+                        cryptoItem.flagColor = condition.flagColor;
                     }
-                });
-            });
+                  });
+                  return {
+                        ...cryptoItem
+                  }
+              });
+
             return {
               ...state,
               portfolio: conditionsPortfolio,
