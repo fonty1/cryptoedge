@@ -15,6 +15,7 @@ import { combineReducers } from 'redux';
 import coinListPortfolio from './reducers/coinListPortfolioReducer';
 import ui from './reducers/uiReducer';
 import {persistStore, autoRehydrate} from 'redux-persist';
+import injectTapEventPlugin from 'react-tap-event-plugin';
 
 const rootReducer = combineReducers({
   coinListPortfolio,
@@ -37,6 +38,7 @@ const store = createStore(
 class App extends Component {
   componentWillMount() {
     persistStore(store);
+    injectTapEventPlugin();
   }
 
   render() {

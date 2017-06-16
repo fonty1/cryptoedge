@@ -1,5 +1,106 @@
-.greaterThanOperatorButton.active, .lessThanOperatorButton.active {
-  background-color: blue; }
+.conditionGenerator {
+  position: relative;
+  border-radius: 10px;
+  border: 4px solid rgba(177, 194, 208, 0.59);
+  margin: 0 20px 50px 20px;
+  padding: 20px 20px 50px 20px; }
 
-.redFlagButton.active, .purpleFlagButton.active, .greenFlagButton.active {
-  background-color: blue; }
+@media (min-width: 768px) {
+  .conditionGenerator {
+    padding: 0 0 50px 0; } }
+
+.cryptoContainer, .flagContainer, .expressionContainer {
+  margin: 25px 0 25px 0; }
+
+.flagContainer {
+  margin: 15px 0 0 0; }
+  .flagContainer span {
+    display: block;
+    color: #757575; }
+
+.redFlagButton, .purpleFlagButton, .greenFlagButton {
+  font-size: 4rem;
+  transition: opacity .25s ease-in-out;
+  -moz-transition: opacity .25s ease-in-out;
+  -webkit-transition: opacity .25s ease-in-out; }
+  .redFlagButton i.fa.fa-flag, .purpleFlagButton i.fa.fa-flag, .greenFlagButton i.fa.fa-flag {
+    opacity: 0.3; }
+  .redFlagButton.active i.fa.fa-flag, .purpleFlagButton.active i.fa.fa-flag, .greenFlagButton.active i.fa.fa-flag {
+    opacity: 1; }
+
+.conditionGenerator button {
+  background: none;
+  border: none; }
+
+.conditionGenerator input {
+  background-color: transparent;
+  border: none;
+  border-bottom: 2px solid #dddddd;
+  padding-left: 5px;
+  position: relative;
+  text-align: left; }
+  .conditionGenerator input:focus {
+    outline: none;
+    border-bottom: 2px solid #7398c1; }
+
+.cryptoContainer input {
+  min-width: 200px; }
+
+.expressionContainer .changeOperatorButton {
+  display: block;
+  border-radius: 4px;
+  margin: 20px auto 0 auto;
+  padding: 10px 15px;
+  background-color: rgba(177, 194, 208, 0.59); }
+
+@media (min-width: 768px) {
+  .expressionContainer .changeOperatorButton {
+    display: inline-block;
+    padding: 10px;
+    margin: 15px; } }
+
+.conditionGenerator .createConditionButton {
+  margin: 10px;
+  font-size: 1.8rem;
+  padding: 15px;
+  border-radius: 4px;
+  background-color: #b1c2d0;
+  position: absolute;
+  margin: 0 auto;
+  left: 0;
+  right: 0;
+  width: 200px;
+  bottom: -29px; }
+  .conditionGenerator .createConditionButton:hover {
+    background-color: #89a1b5; }
+
+.activeConditionsTitle {
+  text-align: left;
+  padding: 20px 0 0 10px;
+  margin: 20px;
+  border-top: 4px solid rgba(177, 194, 208, 0.59); }
+
+.conditionsList {
+  padding: 0 30px; }
+  .conditionsList .condition {
+    padding-bottom: 10px; }
+
+.noCondition {
+  text-align: left;
+  font-size: 1.4rem;
+  color: #444; }
+
+.inputNameContainer {
+  width: 100%; }
+
+.inputAttributeContainer, .inputValueContainer {
+  width: 100%;
+  display: block; }
+
+@media (min-width: 768px) {
+  .inputNameContainer {
+    width: 300px;
+    margin: 0 auto; }
+  .inputAttributeContainer, .inputValueContainer {
+    width: 150px;
+    display: inline-block; } }

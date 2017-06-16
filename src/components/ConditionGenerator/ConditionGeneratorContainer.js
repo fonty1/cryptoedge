@@ -4,7 +4,9 @@ import * as actions from '../../actions/coinListPortfolioActions';
 import ConditionGenerator from './ConditionGenerator';
 
 const mapStateToProps = (state, ownProps) => ({
-    ...ownProps
+    ...ownProps,
+    coinListNames: state.coinListPortfolio.coinListNames,
+    coinListAttributes: state.coinListPortfolio.coinListAttributes
 });
 
 const mapDispatchToProps = (dispatch) => {

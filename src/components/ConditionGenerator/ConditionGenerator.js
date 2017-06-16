@@ -1,20 +1,25 @@
 import React, { Component } from 'react';
 import './ConditionGenerator.css';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import AutoComplete from 'material-ui/AutoComplete';
 
 class ConditionGenerator extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            coinIDTarget: 'Bitcoin',
-            coinAttribTarget: 'price_usd',
+            coinIDTarget: '',
+            coinAttribTarget: '',
             greaterThan: true,
             lessThan: false,
-            userDefinedTargetValue: '2000',
+            userDefinedTargetValue: '',
             flagColor: '',
             selectedOperator: '>',
             redFlag: false,
             purpleFlag: false,
             greenFlag: false,
+            dataSource: [],
+            coinListNames: this.props.coinListNames,
+            coinListAttributes: this.props.coinListAttributes
         }
         this.onChangeCoinIDTarget = this.onChangeCoinIDTarget.bind(this);
         this.onChangeCoinAttribTarget = this.onChangeCoinAttribTarget.bind(this);
@@ -52,18 +57,18 @@ class ConditionGenerator extends Component {
         this.props.actions.evaluateConditions();
     }
 
-    onChangeCoinIDTarget (e) {
-        let newVal = e.target.value;
+    onChangeCoinIDTarget (value) {
+        let newVal = value;
         this.setState({coinIDTarget: newVal});
     }
 
-    onChangeCoinAttribTarget (e) {
-        let newVal = e.target.value;
+    onChangeCoinAttribTarget (value) {
+        let newVal = value;
         this.setState({coinAttribTarget: newVal});
     }
 
-    onChangeUserDefinedValue (e) {
-        let newVal = e.target.value;
+    onChangeUserDefinedValue (value) {
+        let newVal = value;
         this.setState({userDefinedTargetValue: newVal});
     }
 
@@ -116,43 +121,75 @@ class ConditionGenerator extends Component {
 
     render() {
         return (
-            <div>
-              <div>
-                <span>Crypto: </span>
-                <input
-                    value={this.state.coinIDTarget}
-                    onChange={this.onChangeCoinIDTarget}
-                    type="text"
-                />
-              </div>
-              <input
-                  value={this.state.coinAttribTarget}
-                  onChange={this.onChangeCoinAttribTarget}
-                  type="text"
-              />
-              <button onClick={(e) => this.changeOperator(e)} className="changeOperatorButton">
-                  {this.state.selectedOperator}
-              </button>
-              <input
-                  value={this.state.userDefinedValue}
-                  onChange={this.onChangeUserDefinedValue}
-                  type="text"
-              />
-              <div>
-                  <button onClick={(e) => this.redFlag(e)} className={"redFlagButton " + (this.state.redFlag ? "active" : "")}>
-                    <i className="fa fa-flag" style={{color:'red'}} aria-hidden="true"></i>
-                  </button>
-                  <button onClick={(e) => this.purpleFlag(e)} className={"purpleFlagButton " + (this.state.purpleFlag ? "active" : "")}>
-                    <i className="fa fa-flag" style={{color:'purple'}} aria-hidden="true"></i>
-                  </button>
-                  <button onClick={(e) => this.greenFlag(e)} className={"greenFlagButton " + (this.state.greenFlag ? "active" : "")}>
-                    <i className="fa fa-flag" style={{color:'green'}} aria-hidden="true"></i>
-                  </button>
-              </div>
+            <div className="conditionGenerator">
 
-              <button onClick={(e) => this.createCondition(e)} className="createConditionButton">
-                  Create Condition <i className="fa fa-plus" aria-hidden="true"></i>
-              </button>
+                  <div className="cryptoContainer">
+                    <div className="inputNameContainer">
+                        <MuiThemeProvider>
+                          <AutoComplete
+                            hintText="Target Cryptocurrency"
+                            dataSource={this.state.coinListNames}
+                            onUpdateInput={this.onChangeCoinIDTarget}
+                            floatingLabelText="Target Cryptocurrency"
+                            openOnFocus={true}
+                            fullWidth={true}
+                            menuStyle={{maxHeight:"40vh"}}
+                            filter={AutoComplete.caseInsensitiveFilter}
+                            />
+                        </MuiThemeProvider>
+                    </div>
+                  </div>
+
+                  <div className="expressionContainer">
+                      <div className="inputAttributeContainer">
+                          <MuiThemeProvider>
+                          <AutoComplete
+                            hintText="Attribute"
+                            dataSource={this.state.coinListAttributes}
+                            onUpdateInput={this.onChangeCoinAttribTarget}
+                            floatingLabelText="Attribute"
+                            openOnFocus={true}
+                            fullWidth={true}
+                            menuStyle={{maxHeight:"40vh"}}
+                            filter={AutoComplete.caseInsensitiveFilter}
+                          />
+                          </MuiThemeProvider>
+                      </div>
+                      <button onClick={(e) => this.changeOperator(e)} className="changeOperatorButton">
+                          {this.state.selectedOperator}
+                      </button>
+                      <div className="inputValueContainer">
+                          <MuiThemeProvider>
+                          <AutoComplete
+                            hintText="Value"
+                            dataSource={this.state.dataSource}
+                            onUpdateInput={this.onChangeUserDefinedValue}
+                            floatingLabelText="Value"
+                            openOnFocus={true}
+                            fullWidth={true}
+                            menuStyle={{maxHeight:"40vh"}}
+                          />
+                          </MuiThemeProvider>
+                      </div>
+                  </div>
+
+                  <div className="flagContainer">
+                      <span>Pick the colour of Flag to display when this condition is true.</span>
+                      <button onClick={(e) => this.redFlag(e)} className={"redFlagButton " + (this.state.redFlag ? "active" : "")}>
+                        <i className="fa fa-flag" style={{color:'red'}} aria-hidden="true"></i>
+                      </button>
+                      <button onClick={(e) => this.purpleFlag(e)} className={"purpleFlagButton " + (this.state.purpleFlag ? "active" : "")}>
+                        <i className="fa fa-flag" style={{color:'purple'}} aria-hidden="true"></i>
+                      </button>
+                      <button onClick={(e) => this.greenFlag(e)} className={"greenFlagButton " + (this.state.greenFlag ? "active" : "")}>
+                        <i className="fa fa-flag" style={{color:'green'}} aria-hidden="true"></i>
+                      </button>
+                  </div>
+
+                  <button onClick={(e) => this.createCondition(e)} className="createConditionButton">
+                      Create Condition <i className="fa fa-plus" aria-hidden="true"></i>
+                  </button>
+
             </div>
         )
     }

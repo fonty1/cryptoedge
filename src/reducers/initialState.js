@@ -1,5 +1,7 @@
 export default {
   coinListPortfolio: {
+      coinListNames: [],
+      coinListAttributes: [],
       conditions: [],
       coins: [],
       portfolio: [],

@@ -20,6 +20,13 @@ import { CALCULATE_PORTFOLIO_TOTAL_PERCENTAGES } from '../constants/actionTypes'
 import { ADD_CONDITION } from '../constants/actionTypes';
 import { REMOVE_CONDITION } from '../constants/actionTypes';
 import { EVALUATE_CONDITIONS } from '../constants/actionTypes';
+import { GENERATE_READABLE_LISTS } from '../constants/actionTypes';
+
+export function generateReadableLists() {
+  return {
+    type: GENERATE_READABLE_LISTS
+  }
+}
 
 export function sortList(column, list) {
   return {
@@ -108,6 +115,9 @@ export function downloadCoins() {
         });
         dispatch({
           type: EVALUATE_CONDITIONS
+        });
+        dispatch({
+          type: GENERATE_READABLE_LISTS
         });
 
       }

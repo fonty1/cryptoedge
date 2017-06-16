@@ -1,45 +1,47 @@
 import React, { Component } from 'react';
 import { Modal, Button } from 'react-bootstrap';
 import ConditionGenerator from '../ConditionGenerator/ConditionGeneratorContainer';
+import ActiveConditions from '../ActiveConditions/ActiveConditionsContainer';
 import './IfThenModal.css';
 
-const IfThenModal = ({ uiActions, actions, flagModalVisibility, conditions }) => {
+class IfThenModal extends Component {
 
-    const closeModal = () => {
-      uiActions.hideFlagModal();
+    closeModal() {
+      this.props.uiActions.hideFlagModal();
     }
 
-    return (
-        <div className="static-modal">
-          <Modal show={flagModalVisibility} onHide={() =>closeModal()}>
-            <Modal.Header closeButton>
-              <Modal.Title className="bold">If-Then Conditions</Modal.Title>
-            </Modal.Header>
-            <Modal.Body>
-                <div className="ifThenBody">
-                  <ConditionGenerator/>
-                  <h4>ACTIVE CONDITIONS</h4>
-                  <ul className="listOfConditions">
-                      {conditions.map(function(condition, index) {
-                        return (
-                            <li className="condition" key={index}>
-                              {condition.conditionString}
-                              <button onClick={(e) => actions.removeCondition(index)} className="createConditionButton">
-                                  <i className="fa fa-minus" aria-hidden="true"></i>
-                              </button>
-                            </li>
-                        )
-                        })
-                      }
-                  </ul>
-                </div>
-            </Modal.Body>
-            <Modal.Footer>
-              <Button onClick={() =>closeModal()}>Close</Button>
-            </Modal.Footer>
-          </Modal>
-        </div>
-    )
+    render() {
+        if (this.props.conditions.length === 0) {
+            var noCondition = 'There are no If-Then conditions that have been created yet.';
+        } else {
+            var noCondition = '';
+        }
+
+        return (
+            <div className="static-modal">
+              <Modal show={this.props.flagModalVisibility} onHide={() =>this.closeModal()}>
+                <Modal.Header closeButton>
+                  <Modal.Title className="ifThenTitle">If-Then Conditions</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    <div className="ifThenBody">
+                      <ConditionGenerator/>
+                      <h4 className="activeConditionsTitle">ACTIVE CONDITIONS</h4>
+                      <ul className="listOfConditions">
+                        <li className="noCondition">{ noCondition }</li>
+                        { this.props.conditions.map(function(condition, index) {
+                              return (
+                                  <ActiveConditions condition={condition} index={index} key={index}/>
+                              )
+                            }
+                        )}
+                      </ul>
+                    </div>
+                </Modal.Body>
+              </Modal>
+            </div>
+        )
+    }
 }
 
 export default IfThenModal;

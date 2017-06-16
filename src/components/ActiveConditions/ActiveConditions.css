@@ -1,0 +1,13 @@
+.deleteConditionButton {
+  border: none;
+  background-color: rgba(255, 179, 179, 0.74);
+  border-radius: 4px;
+  padding: 1px 5px;
+  color: white;
+  font-size: 1rem;
+  margin: 0 10px; }
+  .deleteConditionButton:hover {
+    background-color: #ffb3b3; }
+
+.condition {
+  padding-bottom: 10px; }

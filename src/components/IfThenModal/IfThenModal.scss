@@ -1,6 +1,5 @@
 .listOfConditions {
   list-style: none;
-
 }
 
 .ifThenBody {
@@ -16,6 +15,8 @@
 .modal-header {
   border-bottom: none;
   text-align: center;
+  padding: 30px;
+  padding-bottom: 5px;;
 
   .modal-title {
       text-transform: uppercase;

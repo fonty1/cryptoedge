@@ -19,10 +19,30 @@ import { CALCULATE_PORTFOLIO_TOTAL_PERCENTAGES } from '../constants/actionTypes'
 import { ADD_CONDITION } from '../constants/actionTypes';
 import { REMOVE_CONDITION } from '../constants/actionTypes';
 import { EVALUATE_CONDITIONS } from '../constants/actionTypes';
+import { GENERATE_READABLE_LISTS } from '../constants/actionTypes';
 import mathjs from 'mathjs';
 
 export default function coinListPortfolioReducer(state = initialState.coinListPortfolio, action) {
   switch (action.type) {
+
+    case GENERATE_READABLE_LISTS: {
+      let coinList = state.coins;
+      var coinListNames = [];
+      var coinListAttributes = [];
+      coinListAttributes[0] = 'price_usd';
+      coinListAttributes[1] = 'price_btc';
+
+      coinList.map( (item, index) => {
+        coinListNames[index] = item.name
+      });
+
+      return {
+        ...state,
+        coinListNames,
+        coinListAttributes
+      }
+    }
+
     case SORTLIST:
       var colSort = action.column;
       var listSort = action.list;
