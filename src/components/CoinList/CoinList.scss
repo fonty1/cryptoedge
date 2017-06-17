@@ -130,7 +130,7 @@
     }
 
     .profitLossColumn {
-      min-width: 92px;
+      min-width: 100px;
     }
 
     .oneHourColumn, .twentyFourHoursColumn, .sevenDaysColumn {
@@ -139,6 +139,7 @@
 
     .flagColumn {
       text-align: center;
+      min-width: 60px;
     }
 
     .capColumn {
@@ -225,7 +226,7 @@
     display: flex;
     line-height: 40px;
     padding-left: 15px;
-    font-weight: bold;
+    font-family: signika;
 
     .closeTable {
       align-self: flex-end;
@@ -241,7 +242,7 @@
   display: flex;
   line-height: 40px;
   padding-left: 15px;
-  font-weight: bold;
+  font-family: signika;
 
   .closeTable {
     align-self: flex-end;
@@ -258,6 +259,8 @@
 
   .coinlistHeader {
     padding-left: 35px;
+    justify-content: space-between;
+    padding-right: 25px;
   }
 }
 
@@ -353,6 +356,14 @@
   }
 }
 
-
-// Code for horizontal background visualisation
-// background: -webkit-linear-gradient(left, rgba(84, 193, 245, 0.32) 20%, transparent 20%);
+.marketDataContainer {
+  .marketCap{
+    padding: 0 10px;
+  }
+  .marketVolume{
+    padding: 0 10px;
+  }
+  .btcDominance{
+    padding: 0 10px;
+  }
+}

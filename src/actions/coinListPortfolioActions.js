@@ -21,6 +21,26 @@ import { ADD_CONDITION } from '../constants/actionTypes';
 import { REMOVE_CONDITION } from '../constants/actionTypes';
 import { EVALUATE_CONDITIONS } from '../constants/actionTypes';
 import { GENERATE_READABLE_LISTS } from '../constants/actionTypes';
+import { DOWNLOAD_MARKETDATA } from '../constants/actionTypes';
+
+
+
+export function downloadMarketData() {
+  return async (dispatch) => {
+      try {
+        const marketDataReceived = await CoinMarketCapApi.downloadMarketData();
+        dispatch({
+          type: DOWNLOAD_MARKETDATA,
+          marketData: marketDataReceived.data
+        });
+      }
+      catch (e) {
+        console.log(e);
+        const error = JSON.parse(e.error).error;
+        console.log(error);
+      };
+    }
+}
 
 export function generateReadableLists() {
   return {

@@ -20,10 +20,22 @@ import { ADD_CONDITION } from '../constants/actionTypes';
 import { REMOVE_CONDITION } from '../constants/actionTypes';
 import { EVALUATE_CONDITIONS } from '../constants/actionTypes';
 import { GENERATE_READABLE_LISTS } from '../constants/actionTypes';
+import { DOWNLOAD_MARKETDATA } from '../constants/actionTypes';
+
 import mathjs from 'mathjs';
 
 export default function coinListPortfolioReducer(state = initialState.coinListPortfolio, action) {
   switch (action.type) {
+
+    case DOWNLOAD_MARKETDATA: {
+      
+      let marketData = action.marketData;
+
+      return {
+        ...state,
+        marketData
+      }
+    }
 
     case GENERATE_READABLE_LISTS: {
       let coinList = state.coins;

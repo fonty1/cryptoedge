@@ -1,5 +1,6 @@
 export default {
   coinListPortfolio: {
+      marketData: {},
       coinListNames: [],
       coinListAttributes: [],
       conditions: [],

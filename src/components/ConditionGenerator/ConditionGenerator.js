@@ -15,7 +15,7 @@ class ConditionGenerator extends Component {
             flagColor: '',
             selectedOperator: '>',
             redFlag: false,
-            purpleFlag: false,
+            orangeFlag: false,
             greenFlag: false,
             dataSource: [],
             coinListNames: this.props.coinListNames,
@@ -27,7 +27,7 @@ class ConditionGenerator extends Component {
         this.createCondition = this.createCondition.bind(this);
         this.changeOperator = this.changeOperator.bind(this);
         this.redFlag = this.redFlag.bind(this);
-        this.purpleFlag = this.purpleFlag.bind(this);
+        this.orangeFlag = this.orangeFlag.bind(this);
         this.greenFlag = this.greenFlag.bind(this);
     }
 
@@ -58,7 +58,11 @@ class ConditionGenerator extends Component {
     }
 
     onChangeCoinIDTarget (value) {
-        let newVal = value;
+        const capitalize = (string = '') => [...string].map(    //convert to array with each item is a char of string by using spread operator (...)
+            (char, index) => index ? char : char.toUpperCase()  // index true means not equal 0 , so (!index) is the first char which is capitalized by `toUpperCase()` method
+        ).join('');
+
+        let newVal = capitalize(value);
         this.setState({coinIDTarget: newVal});
     }
 
@@ -93,17 +97,17 @@ class ConditionGenerator extends Component {
       e.preventDefault();
       this.setState({
           flagColor: 'Red',
-          purpleFlag: false,
+          orangeFlag: false,
           redFlag: true,
           greenFlag: false
       });
     }
 
-    purpleFlag(e) {
+    orangeFlag(e) {
       e.preventDefault();
       this.setState({
-          flagColor: 'Purple',
-          purpleFlag: true,
+          flagColor: 'Orange',
+          orangeFlag: true,
           redFlag: false,
           greenFlag: false
       });
@@ -113,7 +117,7 @@ class ConditionGenerator extends Component {
       e.preventDefault();
       this.setState({
           flagColor: 'Green',
-          purpleFlag: false,
+          orangeFlag: false,
           redFlag: false,
           greenFlag: true
       });
@@ -178,8 +182,8 @@ class ConditionGenerator extends Component {
                       <button onClick={(e) => this.redFlag(e)} className={"redFlagButton " + (this.state.redFlag ? "active" : "")}>
                         <i className="fa fa-flag" style={{color:'red'}} aria-hidden="true"></i>
                       </button>
-                      <button onClick={(e) => this.purpleFlag(e)} className={"purpleFlagButton " + (this.state.purpleFlag ? "active" : "")}>
-                        <i className="fa fa-flag" style={{color:'purple'}} aria-hidden="true"></i>
+                      <button onClick={(e) => this.orangeFlag(e)} className={"orangeFlagButton " + (this.state.orangeFlag ? "active" : "")}>
+                        <i className="fa fa-flag" style={{color:'orange'}} aria-hidden="true"></i>
                       </button>
                       <button onClick={(e) => this.greenFlag(e)} className={"greenFlagButton " + (this.state.greenFlag ? "active" : "")}>
                         <i className="fa fa-flag" style={{color:'green'}} aria-hidden="true"></i>

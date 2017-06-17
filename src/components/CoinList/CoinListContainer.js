@@ -5,7 +5,8 @@ import CoinList from './CoinList';
 
 const mapStateToProps = (state, ownProps) => ({
     ...ownProps,
-    cryptoList: state.coinListPortfolio.coins
+    cryptoList: state.coinListPortfolio.coins,
+    marketData: state.coinListPortfolio.marketData
 });
 
 const mapDispatchToProps = (dispatch) => {

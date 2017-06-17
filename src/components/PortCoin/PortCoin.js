@@ -181,7 +181,7 @@ const PortCoin = ( { actions, crypto, index, totalUSD, totalBTC, portfolio, BTCP
                 />
               </td>
               <td className="profitLossColumn">
-                  <span className="profitLoss">${crypto.formattedProfitLoss}</span>
+                  <span className="profitLoss">{crypto.formattedProfitLoss}</span>
               </td>
               <td className="volColumn"></td>
               <td className="weightedVolColumn"></td>

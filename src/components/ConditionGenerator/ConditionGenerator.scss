@@ -25,7 +25,7 @@
   }
 }
 
-.redFlagButton, .purpleFlagButton, .greenFlagButton {
+.redFlagButton, .orangeFlagButton, .greenFlagButton {
 
   i.fa.fa-flag {
     opacity: 0.3;
@@ -83,7 +83,6 @@
   .expressionContainer {
     .changeOperatorButton {
       display: inline-block;
-      padding: 10px;
       margin: 15px;
     }
   }
@@ -126,7 +125,8 @@
 .noCondition {
   text-align: left;
   font-size: 1.4rem;
-  color: #444;
+  color: #999;
+  margin-top: -10px;
 }
 
 .inputNameContainer {
