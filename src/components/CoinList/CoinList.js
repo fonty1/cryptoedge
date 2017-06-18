@@ -6,7 +6,7 @@ import './CoinList.css';
 
 class CoinList extends React.Component {
 
-  componentWillMount() {
+  componentDidMount() {
     this.props.actions.downloadCoins();
     this.props.actions.downloadMarketData();
   }
@@ -60,8 +60,8 @@ class CoinList extends React.Component {
               COIN LIST
               <i className="fa fa-times closeTable hide" aria-hidden="true"></i>
               <div className="marketDataContainer">
-                <span className="marketCap">Market Cap: ${addCommas(this.props.marketData.total_market_cap_usd)}</span>
-                <span className="marketVolume">Market Vol: ${addCommas(this.props.marketData.total_24h_volume_usd)}</span>
+                <span className="marketCap">Market Cap: ${this.props.marketData.formattedMarketCap}</span>
+                <span className="marketVolume">Market Vol: ${this.props.marketData.formattedMarketVolume}</span>
                 <span className="btcDominance">BTC Dominance: {this.props.marketData.bitcoin_percentage_of_market_cap}%</span>
               </div>
             </div>

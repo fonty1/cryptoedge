@@ -10,7 +10,7 @@
     padding: 0 0 50px 0; } }
 
 .cryptoContainer, .flagContainer, .expressionContainer {
-  margin: 25px 0 25px 0; }
+  margin: 0 0 0 0; }
 
 .flagContainer {
   margin: 15px 0 0 0; }
@@ -25,6 +25,8 @@
   -webkit-transition: opacity .25s ease-in-out; }
   .redFlagButton i.fa.fa-flag, .orangeFlagButton i.fa.fa-flag, .greenFlagButton i.fa.fa-flag {
     opacity: 0.3; }
+    .redFlagButton i.fa.fa-flag:hover, .orangeFlagButton i.fa.fa-flag:hover, .greenFlagButton i.fa.fa-flag:hover {
+      opacity: 0.7; }
   .redFlagButton.active i.fa.fa-flag, .orangeFlagButton.active i.fa.fa-flag, .greenFlagButton.active i.fa.fa-flag {
     opacity: 1; }
 

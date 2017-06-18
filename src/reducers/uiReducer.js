@@ -1,6 +1,7 @@
 import initialState from './initialState';
 import { SHOW_FLAG_MODAL } from '../constants/actionTypes';
-import { HIDE_FLAG_MODAL } from '../constants/actionTypes';
+import { SHOW_TIPJAR_MODAL } from '../constants/actionTypes';
+import { HIDE_MODALS } from '../constants/actionTypes';
 
 export default function uiReducer(state = initialState.ui, action) {
   switch (action.type) {
@@ -11,10 +12,17 @@ export default function uiReducer(state = initialState.ui, action) {
         flagModalVisibility: true
       };
 
-    case HIDE_FLAG_MODAL:
+    case SHOW_TIPJAR_MODAL:
       return {
         ...state,
-        flagModalVisibility: false
+        tipJarModalVisibility : true
+      };
+
+    case HIDE_MODALS:
+      return {
+        ...state,
+        flagModalVisibility: false,
+        tipJarModalVisibility : false
       };
 
     default:

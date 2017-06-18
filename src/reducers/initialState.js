@@ -14,7 +14,7 @@ export default {
       totalBTC: 0,
       BTCPriceMarker: 0,
       ETHPriceMarker: 0,
-      coinsLoading: false,
+      coinsLoading: true,
       totalPercentChangeOneHour: '',
       change_1h_value: '',
       totalPercentChangeTwentyFourHours: '',
@@ -56,6 +56,7 @@ export default {
       userRequestsFullView: false,
   },
   ui: {
-      flagModalVisibility: false
+      flagModalVisibility: false,
+      tipJarModalVisibility: false
   }
 }

@@ -11,6 +11,7 @@ import CoinList from './components/CoinList/CoinListContainer';
 import Portfolio from './components/Portfolio/PortfolioContainer';
 import TotalPortfolio from './components/TotalPortfolio/TotalPortfolioContainer';
 import IfThenModal from './components/IfThenModal/IfThenModalContainer';
+import TipJarModal from './components/TipJarModal/TipJarModalContainer';
 import { combineReducers } from 'redux';
 import coinListPortfolio from './reducers/coinListPortfolioReducer';
 import ui from './reducers/uiReducer';
@@ -37,7 +38,9 @@ const store = createStore(
 
 class App extends Component {
   componentWillMount() {
-    persistStore(store);
+    persistStore(store, {blacklist: ['coinListPortfolio.coinsLoading', 'ui']}, () => {
+      console.log('rehydration complete')
+    })
     injectTapEventPlugin();
   }
 
@@ -49,6 +52,7 @@ class App extends Component {
             <AppHeader/>
             <div className="app__content">
               <IfThenModal/>
+              <TipJarModal/>
               <Portfolio/>
               <TotalPortfolio/>
               <CoinList/>

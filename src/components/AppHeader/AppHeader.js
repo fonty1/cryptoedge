@@ -15,6 +15,11 @@ const AppHeader = ( { coinListPortfolioActions, uiActions, coinsLoading } ) => {
     uiActions.showFlagModal();
   }
 
+  const tipJarModalClick = e => {
+    e.preventDefault();
+    uiActions.showTipJarModal();
+  }
+
   return (
       <header>
         <nav>
@@ -41,10 +46,10 @@ const AppHeader = ( { coinListPortfolioActions, uiActions, coinsLoading } ) => {
                 Sign Up
               </a>
             </li>
-            <li className="right hide">
+            <li className="right" onClick={tipJarModalClick}>
               <a>
                 <i className="fa fa-btc" aria-hidden="true"></i>
-                Donate
+                Tip Jar
               </a>
             </li>
             <li className="right hide">

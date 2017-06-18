@@ -28,8 +28,10 @@ export default function coinListPortfolioReducer(state = initialState.coinListPo
   switch (action.type) {
 
     case DOWNLOAD_MARKETDATA: {
-      
+
       let marketData = action.marketData;
+      marketData.formattedMarketCap = addCommas(action.marketData.total_market_cap_usd);
+      marketData.formattedMarketVolume = addCommas(action.marketData.total_24h_volume_usd);
 
       return {
         ...state,
