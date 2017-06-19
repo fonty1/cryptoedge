@@ -4,6 +4,7 @@ import { REMOVE_COIN_FROM_PORTFOLIO } from '../constants/actionTypes';
 import { ADD_COIN_TO_PORTFOLIO } from '../constants/actionTypes';
 import { DOWNLOAD_COINS_PENDING } from '../constants/actionTypes';
 import { DOWNLOAD_COINS_FULFILLED } from '../constants/actionTypes';
+import { API_ERROR } from '../constants/actionTypes';
 import { SET_PRICE_MARKERS } from '../constants/actionTypes';
 import { UPDATE_PORTFOLIOCOIN_COUNT } from '../constants/actionTypes';
 import { UPDATE_PORTFOLIO_TOTALS } from '../constants/actionTypes';
@@ -26,6 +27,15 @@ import mathjs from 'mathjs';
 
 export default function coinListPortfolioReducer(state = initialState.coinListPortfolio, action) {
   switch (action.type) {
+
+    case API_ERROR: {
+
+      return {
+        ...state,
+        coinsLoading: false,
+        apiErrored: true
+      }
+    }
 
     case DOWNLOAD_MARKETDATA: {
 
@@ -99,7 +109,8 @@ export default function coinListPortfolioReducer(state = initialState.coinListPo
       return {
         ...state,
         coins: action.coins,
-        coinsLoading: false
+        coinsLoading: false,
+        apiErrored: false
       };
 
     case SET_PRICE_MARKERS:

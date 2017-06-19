@@ -12,11 +12,14 @@ import Portfolio from './components/Portfolio/PortfolioContainer';
 import TotalPortfolio from './components/TotalPortfolio/TotalPortfolioContainer';
 import IfThenModal from './components/IfThenModal/IfThenModalContainer';
 import TipJarModal from './components/TipJarModal/TipJarModalContainer';
+import AboutModal from './components/AboutModal/AboutModalContainer';
+import Warning from './components/Warning/WarningContainer';
 import { combineReducers } from 'redux';
 import coinListPortfolio from './reducers/coinListPortfolioReducer';
 import ui from './reducers/uiReducer';
 import {persistStore, autoRehydrate} from 'redux-persist';
 import injectTapEventPlugin from 'react-tap-event-plugin';
+import { createBlacklistFilter } from 'redux-persist-transform-filter';
 
 const rootReducer = combineReducers({
   coinListPortfolio,
@@ -32,15 +35,25 @@ const store = createStore(
   compose(
     applyMiddleware(thunk),
     autoRehydrate(),
+    // If prod no compose
     composeEnhancers()
   )
 )
 
+const saveSubsetBlacklistFilter = createBlacklistFilter(
+  'coinListPortfolio',
+  ['coinsLoading', 'apiErrored']
+);
+
 class App extends Component {
   componentWillMount() {
-    persistStore(store, {blacklist: ['coinListPortfolio.coinsLoading', 'ui']}, () => {
-      console.log('rehydration complete')
-    })
+    // persistStore(store, {blacklist: ['ui']}, () => {
+    // })
+    persistStore(store, {
+        transforms: [
+          saveSubsetBlacklistFilter
+        ]
+    });
     injectTapEventPlugin();
   }
 
@@ -53,6 +66,8 @@ class App extends Component {
             <div className="app__content">
               <IfThenModal/>
               <TipJarModal/>
+              <AboutModal/>
+              <Warning/>
               <Portfolio/>
               <TotalPortfolio/>
               <CoinList/>

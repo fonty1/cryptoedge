@@ -20,6 +20,11 @@ const AppHeader = ( { coinListPortfolioActions, uiActions, coinsLoading } ) => {
     uiActions.showTipJarModal();
   }
 
+  const aboutModalClick = e => {
+    e.preventDefault();
+    uiActions.showAboutModal();
+  }
+
   return (
       <header>
         <nav>
@@ -34,7 +39,7 @@ const AppHeader = ( { coinListPortfolioActions, uiActions, coinsLoading } ) => {
                 Feedback
               </a>
             </li>
-            <li className="right hide">
+            <li className="right" onClick={aboutModalClick}>
               <a target="blank_" href="https://docs.google.com/forms/d/e/1FAIpQLSeU1ICsh-USOAy2pjJqn9CWRxMf5NdhlIfztBpkExbv4YJbQw/viewform?usp=sf_link">
                 <i className="fa fa-info" aria-hidden="true"></i>
                 About

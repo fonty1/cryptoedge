@@ -15,6 +15,7 @@ export default {
       BTCPriceMarker: 0,
       ETHPriceMarker: 0,
       coinsLoading: true,
+      apiErrored: false,
       totalPercentChangeOneHour: '',
       change_1h_value: '',
       totalPercentChangeTwentyFourHours: '',
@@ -57,6 +58,7 @@ export default {
   },
   ui: {
       flagModalVisibility: false,
-      tipJarModalVisibility: false
+      tipJarModalVisibility: false,
+      aboutModalVisibility: false
   }
 }

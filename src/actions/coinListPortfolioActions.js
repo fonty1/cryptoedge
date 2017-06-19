@@ -22,6 +22,7 @@ import { REMOVE_CONDITION } from '../constants/actionTypes';
 import { EVALUATE_CONDITIONS } from '../constants/actionTypes';
 import { GENERATE_READABLE_LISTS } from '../constants/actionTypes';
 import { DOWNLOAD_MARKETDATA } from '../constants/actionTypes';
+import { API_ERROR } from '../constants/actionTypes';
 
 export function downloadMarketData() {
   return async (dispatch) => {
@@ -140,6 +141,9 @@ export function downloadCoins() {
 
       }
       catch (e) {
+        dispatch({
+          type: API_ERROR
+        });
         console.log(e);
         const error = JSON.parse(e.error).error;
         console.log(error);

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Table } from 'react-bootstrap';
 import './Portfolio.css';
 import PortCoin from '../PortCoin/PortCoinContainer';
+import MobilePortCoin from '../MobilePortCoin/MobilePortCoinContainer';
 import AddCustomButton from '../AddCustomButton/AddCustomButtonContainer';
 class Portfolio extends Component {
     sortByRank() {
@@ -80,6 +81,14 @@ class Portfolio extends Component {
          if (portfolioFilled) {
            return (
                <div className="Portfolio">
+                 <div className="mobilePortCoinContainer hide">
+                   {/* Building a row in a container */}
+                   {this.props.portfolioCryptoList.map(function(crypto, index){
+                     return (
+                         <MobilePortCoin crypto={crypto} index={index} key={index} />
+                     ) }, this )}
+                 </div>
+
                   <div className="portfolioHeader">
                     PORTFOLIO
                     <i className="fa fa-times closeTable hide" aria-hidden="true"></i>

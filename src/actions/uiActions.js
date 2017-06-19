@@ -1,5 +1,6 @@
 import { SHOW_FLAG_MODAL } from '../constants/actionTypes';
 import { SHOW_TIPJAR_MODAL } from '../constants/actionTypes';
+import { SHOW_ABOUT_MODAL } from '../constants/actionTypes';
 import { HIDE_MODALS } from '../constants/actionTypes';
 
 export function hideModals() {
@@ -11,6 +12,12 @@ export function hideModals() {
 export function showFlagModal() {
   return {
     type: SHOW_FLAG_MODAL
+  };
+}
+
+export function showAboutModal() {
+  return {
+    type: SHOW_ABOUT_MODAL
   };
 }
 

@@ -26,6 +26,8 @@ class IfThenModal extends Component {
             modal={false}
             open={this.props.flagModalVisibility}
             onRequestClose={() =>this.closeModal()}
+            contentClassName='ifThenModal'
+            autoScrollBodyContent={true}
           >
             <div className="ifThenBody">
               <ConditionGenerator/>
