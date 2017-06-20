@@ -66,98 +66,105 @@ const PortCoin = ( { actions, crypto, index, totalUSD, totalBTC, portfolio, BTCP
     }
 
     // On Flag click - edit
+    //
+    //                 <div class="table-row">
+    //                    <div class="column index">1</div>
+    //                    <div class="name">john</div>
+    //                  </div>
+
 
     if (crypto.type !== "custom"){
         return (
-            <tr className="" key={index}>
-                <td className="">
-                </td>
-                <td className="removeCoinFromPortfolioColumn">
+            <div className="table-row" key={index}>
+                <div className="removeCoinFromPortfolioColumn column">
                     <button onClick={() => preRemoveCoin()} className="removeCoinFromPortfolio">
                         <i className="fa fa-minus-square-o" aria-hidden="true"></i>
                     </button>
-                </td>
-                <td className="flagColumn" >
+                </div>
+                <div className="flagColumn column" >
                   <span className={" " + (crypto.flag ? crypto.flagColor : ' hide')}>
                     <i className="fa fa-flag" aria-hidden="true"></i>
                   </span>
-                </td>
-                <td className="capColumn">
-                    {crypto.rank}
-                </td>
-                <td className="nameColumn">
+                </div>
+                <div className="capColumn column">
+                    <span>{crypto.rank}</span>
+                </div>
+                <div className="nameColumn column">
                     <img alt={crypto.symbol} src={crypto.logo}/>
                     <span className="cryptoNameFull">{crypto.name + " "}</span>
                     <span className="cryptoSymbol">{crypto.symbol}</span>
-                </td>
-                <td className="coinCountColumn">
+                </div>
+                <div className="coinCountColumn column">
                     <input
                         value={crypto.count}
                         onChange={onCoinNumberChange}
                         type="number"
                         name={"coinNum-" + index}
                     />
-                </td>
-                <td className="USDHoldingColumn">
-                    ${crypto.formattedCoinUSD}
-                </td>
-                <td className="percentageHoldingColumn">
-                    {crypto.percentage}%
-                </td>
-                <td className="boughtAtColumn">
+                </div>
+                <div className="USDHoldingColumn column">
+                    <span>${crypto.formattedCoinUSD}</span>
+                </div>
+                <div className="percentageHoldingColumn column">
+                    <span>{crypto.percentage}%</span>
+                </div>
+                <div className="boughtAtColumn column">
                   <input
                       value={crypto.boughtAt}
                       onChange={onBoughtAtChange}
                       step="any"
                   />
-                </td>
-                <td className="profitLossColumn">
+                </div>
+                <div className="profitLossColumn column">
                   <span className="profitLoss">{crypto.formattedProfitLoss}</span>
-                </td>
-                <td className="volColumn">${crypto.formattedTwentyfour_volume_usd}</td>
-                <td className="weightedVolColumn">{crypto.weightedVolume}</td>
-                <td className="priceUSDColumn">
+                </div>
+                <div className="volColumn column">
+                    <span>${crypto.formattedTwentyfour_volume_usd}</span>
+                </div>
+                <div className="weightedVolColumn column">
+                    <span>{crypto.weightedVolume}</span>
+                </div>
+                <div className="priceUSDColumn column">
                     <span className="price">${crypto.formatted_price_usd}</span>
-                </td>
-                <td className="priceBTCColumn">
+                </div>
+                <div className="priceBTCColumn column">
                     <span className="price">{crypto.price_btc}</span>
-                </td>
-                <td className="oneHourColumn percentage__changes" style={crypto.oneHourStyles}>
-                    {crypto.percent_change_1h}%</td>
-                <td className="twentyFourHoursColumn percentage__changes" style={crypto.twentyFourHourStyles}>
-                    {crypto.percent_change_24h}%</td>
-                <td className="sevenDaysColumn percentage__changes" style={crypto.sevenDayStyles}>
-                    {crypto.percent_change_7d}%</td>
-                <td className="">
-                </td>
-            </tr>
+                </div>
+                <div className="oneHourColumn percentage__changes column" style={crypto.oneHourStyles}>
+                    <span>{crypto.percent_change_1h}%</span>
+                </div>
+                <div className="twentyFourHoursColumn percentage__changes column" style={crypto.twentyFourHourStyles}>
+                    <span>{crypto.percent_change_24h}%</span>
+                </div>
+                <div className="sevenDaysColumn percentage__changes column" style={crypto.sevenDayStyles}>
+                    <span>{crypto.percent_change_7d}%</span>
+                </div>
+            </div>
         )
     } else {
         return (
-          <tr className="customCoin" key={index}>
-              <td className="">
-              </td>
-              <td className="removeCoinFromPortfolioColumn">
+          <div className="table-row customCoin" key={index}>
+              <div className="removeCoinFromPortfolioColumn column">
                   <button onClick={() => preRemoveCoin()} className="removeCoinFromPortfolio">
                       <i className="fa fa-minus-square-o" aria-hidden="true"></i>
                   </button>
-              </td>
-              <td className="flagColumn">
+              </div>
+              <div className="flagColumn column">
                 <span className={" " + (crypto.flag ? crypto.flagColor : ' hide')}>
                   <i className="fa fa-flag" aria-hidden="true"></i>
                 </span>
-              </td>
-              <td className="capColumn">
-              </td>
-              <td className="nameColumn">
+              </div>
+              <div className="capColumn column">
+              </div>
+              <div className="nameColumn column">
                   <img alt={crypto.symbol} src={crypto.logo}/>
                   <input
                       value={crypto.name}
                       onChange={onChangeName}
                       type="text"
                   />
-              </td>
-              <td className="coinCountColumn">
+              </div>
+              <div className="coinCountColumn column">
                   <input
                       value={crypto.count}
                       onChange={onCoinNumberChange}
@@ -165,27 +172,27 @@ const PortCoin = ( { actions, crypto, index, totalUSD, totalBTC, portfolio, BTCP
                       type="number"
                       step="any"
                   />
-              </td>
-              <td className="USDHoldingColumn">
+              </div>
+              <div className="USDHoldingColumn column">
                   ${crypto.formattedCoinUSD}
-              </td>
-              <td className="percentageHoldingColumn">
+              </div>
+              <div className="percentageHoldingColumn column">
                   {crypto.percentage}%
-              </td>
-              <td className="boughtAtColumn">
+              </div>
+              <div className="boughtAtColumn column">
                 <input
                     value={crypto.boughtAt}
                     onChange={onBoughtAtChange}
                     name={"coinNum-" + index}
                     step="any"
                 />
-              </td>
-              <td className="profitLossColumn">
+              </div>
+              <div className="profitLossColumn column">
                   <span className="profitLoss">{crypto.formattedProfitLoss}</span>
-              </td>
-              <td className="volColumn"></td>
-              <td className="weightedVolColumn"></td>
-              <td className="priceUSDColumn">
+              </div>
+              <div className="volColumn column"></div>
+              <div className="weightedVolColumn column"></div>
+              <div className="priceUSDColumn column">
                   <input
                       value={crypto.price_usd}
                       onChange={onChangeUSDPrice}
@@ -193,8 +200,8 @@ const PortCoin = ( { actions, crypto, index, totalUSD, totalBTC, portfolio, BTCP
                       min="0"
                       step="1"
                   />
-              </td>
-              <td className="priceBTCColumn">
+              </div>
+              <div className="priceBTCColumn column">
                 <input
                     value={crypto.price_btc}
                     onChange={onChangeBTCPrice}
@@ -202,16 +209,14 @@ const PortCoin = ( { actions, crypto, index, totalUSD, totalBTC, portfolio, BTCP
                     min="0"
                     step=".1"
                 />
-              </td>
-              <td className="oneHourColumn percentage__changes" style={crypto.oneHourStyles}>
-              </td>
-              <td className="twentyFourHoursColumn percentage__changes" style={crypto.twentyFourHourStyles}>
-              </td>
-              <td className="sevenDaysColumn percentage__changes" style={crypto.sevenDayStyles}>
-              </td>
-              <td className="">
-              </td>
-          </tr>
+              </div>
+              <div className="oneHourColumn percentage__changes column" style={crypto.oneHourStyles}>
+              </div>
+              <div className="twentyFourHoursColumn percentage__changes column" style={crypto.twentyFourHourStyles}>
+              </div>
+              <div className="sevenDaysColumn percentage__changes column" style={crypto.sevenDayStyles}>
+              </div>
+          </div>
         )
     }
 }

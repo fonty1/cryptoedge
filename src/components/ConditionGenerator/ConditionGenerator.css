@@ -15,25 +15,21 @@
 
 .flagContainer {
   margin: 15px 0 0 0; }
-
-.flagContainer span {
-  display: block;
-  color: #757575; }
+  .flagContainer span {
+    display: block;
+    color: #757575; }
 
 .redFlagButton, .orangeFlagButton, .greenFlagButton {
   font-size: 4rem;
   transition: opacity .25s ease-in-out;
   -moz-transition: opacity .25s ease-in-out;
   -webkit-transition: opacity .25s ease-in-out; }
-
-.redFlagButton i.fa.fa-flag, .orangeFlagButton i.fa.fa-flag, .greenFlagButton i.fa.fa-flag {
-  opacity: 0.3; }
-
-.redFlagButton i.fa.fa-flag:hover, .orangeFlagButton i.fa.fa-flag:hover, .greenFlagButton i.fa.fa-flag:hover {
-  opacity: 0.7; }
-
-.redFlagButton.active i.fa.fa-flag, .orangeFlagButton.active i.fa.fa-flag, .greenFlagButton.active i.fa.fa-flag {
-  opacity: 1; }
+  .redFlagButton i.fa.fa-flag, .orangeFlagButton i.fa.fa-flag, .greenFlagButton i.fa.fa-flag {
+    opacity: 0.3; }
+    .redFlagButton i.fa.fa-flag:hover, .orangeFlagButton i.fa.fa-flag:hover, .greenFlagButton i.fa.fa-flag:hover {
+      opacity: 0.7; }
+  .redFlagButton.active i.fa.fa-flag, .orangeFlagButton.active i.fa.fa-flag, .greenFlagButton.active i.fa.fa-flag {
+    opacity: 1; }
 
 .conditionGenerator button {
   background: none;
@@ -46,10 +42,9 @@
   padding-left: 5px;
   position: relative;
   text-align: left; }
-
-.conditionGenerator input:focus {
-  outline: none;
-  border-bottom: 2px solid #7398c1; }
+  .conditionGenerator input:focus {
+    outline: none;
+    border-bottom: 2px solid #7398c1; }
 
 .cryptoContainer input {
   min-width: 200px; }
@@ -78,9 +73,8 @@
   right: 0;
   width: 200px;
   bottom: -29px; }
-
-.conditionGenerator .createConditionButton:hover {
-  background-color: #89a1b5; }
+  .conditionGenerator .createConditionButton:hover {
+    background-color: #89a1b5; }
 
 .activeConditionsTitle {
   text-align: left;
@@ -90,9 +84,8 @@
 
 .conditionsList {
   padding: 0 30px; }
-
-.conditionsList .condition {
-  padding-bottom: 10px; }
+  .conditionsList .condition {
+    padding-bottom: 10px; }
 
 .noCondition {
   text-align: left;

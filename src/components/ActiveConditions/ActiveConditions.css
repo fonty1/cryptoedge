@@ -6,9 +6,8 @@
   color: white;
   font-size: 1rem;
   margin: 0 10px; }
-
-.deleteConditionButton:hover {
-  background-color: #ffb3b3; }
+  .deleteConditionButton:hover {
+    background-color: #ffb3b3; }
 
 .condition {
   padding-bottom: 10px; }

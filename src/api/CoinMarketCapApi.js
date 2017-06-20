@@ -32,8 +32,8 @@ import waves from '../img/waves.png';
 import unknown from '../img/unknown.png';
 
 //const url = "https://cors-anywhere.herokuapp.com/https://api.coinmarketcap.com/v1/ticker/?limit=10";
-const url = "https://cors-anywhere.herokuapp.com/https://api.coinmarketcap.com/v1/ticker/?limit=200";
-const marketDataUrl = "https://cors-anywhere.herokuapp.com/https://api.coinmarketcap.com/v1/global/";
+const url = "https://api.coinmarketcap.com/v1/ticker/?limit=200";
+const marketDataUrl = "https://api.coinmarketcap.com/v1/global/";
 
 const api = {
   downloadMarketData: () => {

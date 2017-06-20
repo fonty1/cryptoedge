@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
-import { Table } from 'react-bootstrap';
-import './Portfolio.css';
+import './flexTable.css';
 import PortCoin from '../PortCoin/PortCoinContainer';
-import MobilePortCoin from '../MobilePortCoin/MobilePortCoinContainer';
 import AddCustomButton from '../AddCustomButton/AddCustomButtonContainer';
+
 class Portfolio extends Component {
     sortByRank() {
       this.props.actions.sortList('rank','portfolio');
@@ -75,155 +74,119 @@ class Portfolio extends Component {
       portfolioTable.classList.toggle('fullView');
     }
 
+    // <button onClick={() => this.toggleFullView()} className="fullViewButton">Full View</button>
+
     render() {
         const portfolioFilled = this.props.portfolioCryptoList.length > 0;
 
          if (portfolioFilled) {
            return (
                <div className="Portfolio">
-                 <div className="mobilePortCoinContainer hide">
-                   {/* Building a row in a container */}
-                   {this.props.portfolioCryptoList.map(function(crypto, index){
-                     return (
-                         <MobilePortCoin crypto={crypto} index={index} key={index} />
-                     ) }, this )}
-                 </div>
+                   {/* <div className="portfolioHeader">
+                     PORTFOLIO
+                     <i className="fa fa-times closeTable hide" aria-hidden="true"></i>
+                   </div> */}
+                    <div className="flexTable">
+                     <div className="table-row header">
+                       <div className={"addCoinToPortfolioColumn column " + (this.props.userRequestsFullView ? 'userRequestsFullView' : '')}>
+                         <button className="sortByButton hide">
+                           <i className="fa fa-cog" aria-hidden="true"></i>
+                         </button>
+                        </div>
+                        <div className="flagColumn column">
+                          <button onClick={() => this.sortByFlag()} className="sortByButton">
+                            Flag <i className="fa fa-sort" aria-hidden="true"></i>
+                          </button>
+                        </div>
+                        <div className="capColumn column">
+                            <button onClick={() => this.sortByRank()} className="sortByButton">
+                              Cap <i className="fa fa-sort" aria-hidden="true"></i>
+                            </button>
+                        </div>
+                        <div className="nameColumn column">
+                            Crypto
+                        </div>
+                        <div className="coinCountColumn column">
+                            <button onClick={() => this.sortByCoinCount()} className="sortByButton">
+                              Coins <i className="fa fa-sort" aria-hidden="true"></i>
+                            </button>
+                        </div>
+                        <div className="USDHoldingColumn column">
+                            <button onClick={() => this.sortByUSDHoldingValue()} className="sortByButton">
+                              Total USD <i className="fa fa-sort" aria-hidden="true"></i>
+                            </button>
+                        </div>
+                        <div className="percentageHoldingColumn column">
+                            <button onClick={() => this.sortByPercentage()} className="sortByButton">
+                              % <i className="fa fa-sort" aria-hidden="true"></i>
+                            </button>
+                        </div>
+                        <div className="boughtAtColumn column">
+                            <button onClick={() => this.sortByBoughtAt()} className="sortByButton">
+                              Bought at USD <i className="fa fa-sort" aria-hidden="true"></i>
+                            </button>
+                        </div>
+                        <div className="profitLossColumn column">
+                            <button onClick={() => this.sortByProfitLoss()} className="sortByButton">
+                              Profit/Loss <i className="fa fa-sort" aria-hidden="true"></i>
+                            </button>
+                        </div>
+                        <div className="volColumn column">
+                            <button onClick={() => this.sortByVolume()} className="sortByButton">
+                              24hr Vol <i className="fa fa-sort" aria-hidden="true"></i>
+                            </button>
+                        </div>
+                        <div className="weightedVolColumn column">
+                            <button onClick={() => this.sortByWeightedVolume()} className="sortByButton">
+                              Weighted Vol <i className="fa fa-sort" aria-hidden="true"></i>
+                            </button>
+                        </div>
+                        <div className="priceUSDColumn rightTableHeading column">
+                            <button onClick={() => this.sortByPriceUSD()} className="sortByButton">
+                              USD <i className="fa fa-sort" aria-hidden="true"></i>
+                            </button>
+                        </div>
+                        <div className="priceBTCColumn rightTableHeading column">
+                            <button onClick={() => this.sortByPriceBTC()} className="sortByButton">
+                              BTC <i className="fa fa-sort" aria-hidden="true"></i>
+                            </button>
+                        </div>
+                        <div className="oneHourColumn column">
+                            <button onClick={() => this.sortByOneHour()} className="sortByButton">
+                              1 Hr <i className="fa fa-sort" aria-hidden="true"></i>
+                            </button>
+                        </div>
+                        <div className="twentyFourHoursColumn column">
+                            <button onClick={() => this.sortByTwentyFourHours()} className="sortByButton">
+                              24 Hrs <i className="fa fa-sort" aria-hidden="true"></i>
+                            </button>
+                        </div>
+                        <div className="sevenDaysColumn column">
+                            <button onClick={() => this.sortBySevenDays()} className="sortByButton">
+                              7 Days <i className="fa fa-sort" aria-hidden="true"></i>
+                            </button>
+                        </div>
+                    </div>
 
-                  <div className="portfolioHeader">
-                    PORTFOLIO
-                    <i className="fa fa-times closeTable hide" aria-hidden="true"></i>
+                 {/* {Table body} */}
+                 {this.props.portfolioCryptoList.map(function(crypto, index){
+                   return (
+                       <PortCoin crypto={crypto} index={index} key={index} />
+                   ) }, this )}
+
+                  <div className="addCoinToPortfolioColumn customAddTd">
+                    <AddCustomButton/>
                   </div>
-                  <button onClick={() => this.toggleFullView()} className="fullViewButton">Full View</button>
-                   <Table responsive striped className="cryptotable" id="portfolioTable">
-                       <thead>
-                          <tr>
-                            <th className="">
-                              <button className="hide">
-                              </button>
-                            </th>
-                             <th className={"addCoinToPortfolioColumn " + (this.props.userRequestsFullView ? 'userRequestsFullView' : '')}>
-                               <button className="sortByButton hide">
-                                 <i className="fa fa-cog" aria-hidden="true"></i>
-                               </button>
-                             </th>
-                             <th className="flagColumn">
-                               <button onClick={() => this.sortByFlag()} className="sortByButton">
-                                 Flag <i className="fa fa-sort" aria-hidden="true"></i>
-                               </button>
-                             </th>
-                             <th className="capColumn">
-                                 <button onClick={() => this.sortByRank()} className="sortByButton">
-                                   Cap <i className="fa fa-sort" aria-hidden="true"></i>
-                                 </button>
-                             </th>
-                             <th className="nameColumn">
-                                 Crypto
-                             </th>
-                             <th className="coinCountColumn">
-                                 <button onClick={() => this.sortByCoinCount()} className="sortByButton">
-                                   Coins <i className="fa fa-sort" aria-hidden="true"></i>
-                                 </button>
-                             </th>
-                             <th className="USDHoldingColumn">
-                                 <button onClick={() => this.sortByUSDHoldingValue()} className="sortByButton">
-                                   Total USD <i className="fa fa-sort" aria-hidden="true"></i>
-                                 </button>
-                             </th>
-                             <th className="percentageHoldingColumn">
-                                 <button onClick={() => this.sortByPercentage()} className="sortByButton">
-                                   % <i className="fa fa-sort" aria-hidden="true"></i>
-                                 </button>
-                             </th>
-                             <th className="boughtAtColumn">
-                                 <button onClick={() => this.sortByBoughtAt()} className="sortByButton">
-                                   Bought at USD <i className="fa fa-sort" aria-hidden="true"></i>
-                                 </button>
-                             </th>
-                             <th className="profitLossColumn">
-                                 <button onClick={() => this.sortByProfitLoss()} className="sortByButton">
-                                   Profit/Loss <i className="fa fa-sort" aria-hidden="true"></i>
-                                 </button>
-                             </th>
-                             <th className="volColumn">
-                                 <button onClick={() => this.sortByVolume()} className="sortByButton">
-                                   24hr Vol <i className="fa fa-sort" aria-hidden="true"></i>
-                                 </button>
-                             </th>
-                             <th className="weightedVolColumn">
-                                 <button onClick={() => this.sortByWeightedVolume()} className="sortByButton">
-                                   Weighted Vol <i className="fa fa-sort" aria-hidden="true"></i>
-                                 </button>
-                             </th>
-                             <th className="priceUSDColumn rightTableHeading">
-                                 <button onClick={() => this.sortByPriceUSD()} className="sortByButton">
-                                   USD <i className="fa fa-sort" aria-hidden="true"></i>
-                                 </button>
-                             </th>
-                             <th className="priceBTCColumn rightTableHeading">
-                                 <button onClick={() => this.sortByPriceBTC()} className="sortByButton">
-                                   BTC <i className="fa fa-sort" aria-hidden="true"></i>
-                                 </button>
-                             </th>
-                             <th className="oneHourColumn">
-                                 <button onClick={() => this.sortByOneHour()} className="sortByButton">
-                                   1 Hr <i className="fa fa-sort" aria-hidden="true"></i>
-                                 </button>
-                             </th>
-                             <th className="twentyFourHoursColumn">
-                                 <button onClick={() => this.sortByTwentyFourHours()} className="sortByButton">
-                                   24 Hrs <i className="fa fa-sort" aria-hidden="true"></i>
-                                 </button>
-                             </th>
-                             <th className="sevenDaysColumn">
-                                 <button onClick={() => this.sortBySevenDays()} className="sortByButton">
-                                   7 Days <i className="fa fa-sort" aria-hidden="true"></i>
-                                 </button>
-                             </th>
-                             <th className="">
-                               <button className="sortByButton hide">
-                                 <i className="fa fa-cog" aria-hidden="true"></i>
-                               </button>
-                             </th>
-                          </tr>
-                        </thead>
-                    <tbody>
-                        {this.props.portfolioCryptoList.map(function(crypto, index){
-                          return (
-                              <PortCoin crypto={crypto} index={index} key={index} />
-                          ) }, this )}
-                          <tr className="customAddTr">
-                              <td>
-                              </td>
-                              <td className="addCoinToPortfolioColumn customAddTd">
-                                  <AddCustomButton/>
-                              </td>
-                          </tr>
-                    </tbody>
-                   </Table>
-               </div>
+             </div>
+            </div>
            );
            } else {
              return (
                  <div className="Portfolio hide">
-                     <Table responsive striped className="cryptotable">
-                         <thead>
-                            <tr>
-                               <th></th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                                <tr className="customAddTr">
-                                    <td className="addCoinToPortfolioColumn customAddTd">
-                                        <p>Welcome to CryptoEdge! </p>
-                                        <AddCustomButton/>
-                                    </td>
-                                </tr>
-                          </tbody>
-                     </Table>
                  </div>
-             );
+             )
             }
-    }
+        }
 }
 
 export default Portfolio;

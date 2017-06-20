@@ -240,7 +240,6 @@ export default function coinListPortfolioReducer(state = initialState.coinListPo
       };
 
     case ADD_CUSTOM_COIN_TO_PORTFOLIO:
-    debugger
       return {
         ...state,
         portfolio: state.portfolio.concat(action.customCoin)

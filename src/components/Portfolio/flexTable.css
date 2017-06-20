@@ -1,0 +1,293 @@
+.Portfolio, .LeaderboardList, .totalTables {
+  overflow-x: auto; }
+
+.flexTable {
+  display: table;
+  width: 100%; }
+  .flexTable .table-row.header {
+    background-color: #efefef;
+    height: 46px; }
+  .flexTable .table-row.header .column {
+    text-align: center;
+    vertical-align: bottom;
+    font-size: 1.2rem;
+    padding-right: 0; }
+  .flexTable .table-row.header .column span {
+    font-size: 1rem;
+    display: block;
+    color: #CCC;
+    font-weight: normal;
+    height: 30px; }
+  .flexTable .table-row {
+    display: flex;
+    display: -webkit-flex;
+    flex-direction: row;
+    -webkit-flex-direction: row;
+    flex-wrap: nowrap;
+    width: 100%;
+    padding-left: 15px;
+    vertical-align: middle; }
+  .flexTable .table-row:nth-of-type(odd) {
+    background-color: #f5f5f5; }
+  .flexTable .table-row.header .nameColumn {
+    text-align: left;
+    padding-left: 30px;
+    padding-top: 2px; }
+  .flexTable .column {
+    flex-grow: 1;
+    -webkit-flex-grow: 1;
+    flex-shrink: 1;
+    -webkit-flex-shrink: 1;
+    vertical-align: bottom;
+    padding: 14px 2px 0 2px; }
+  .flexTable .nameColumn {
+    order: 1;
+    width: 150px;
+    text-align: left; }
+  .flexTable .priceUSDColumn {
+    order: 2;
+    width: 80px;
+    text-align: right; }
+  .flexTable .oneHourColumn {
+    order: 3;
+    width: 60px; }
+  .flexTable .twentyFourHoursColumn {
+    order: 4;
+    width: 60px; }
+  .flexTable .sevenDaysColumn {
+    order: 5;
+    width: 60px; }
+  .flexTable .priceBTCColumn {
+    order: 6;
+    width: 100px;
+    text-align: right; }
+  .flexTable .flagColumn {
+    order: 7;
+    text-align: center;
+    width: 48px; }
+  .flexTable .capColumn {
+    order: 8;
+    text-align: center;
+    width: 48px; }
+  .flexTable .coinCountColumn {
+    order: 9;
+    width: 80px; }
+  .flexTable .USDHoldingColumn {
+    order: 10;
+    text-align: right;
+    width: 100px; }
+  .flexTable .percentageHoldingColumn {
+    order: 11;
+    text-align: right;
+    width: 80px; }
+  .flexTable .boughtAtColumn {
+    order: 12;
+    width: 120px; }
+  .flexTable .profitLossColumn {
+    order: 13;
+    width: 100px; }
+  .flexTable .volColumn {
+    order: 14;
+    width: 120px;
+    text-align: right; }
+  .flexTable .weightedVolColumn {
+    order: 15;
+    width: 80px;
+    text-align: right; }
+  .flexTable .marketCapColumn {
+    order: 16;
+    width: 80px;
+    text-align: right; }
+  .flexTable .removeCoinFromPortfolioColumn, .flexTable .addCoinToPortfolioColumn {
+    order: 17;
+    width: 1px;
+    text-align: right; }
+  @media (min-width: 768px) {
+    .flexTable .column {
+      flex-grow: 1;
+      -webkit-flex-grow: 1;
+      flex-shrink: 1;
+      -webkit-flex-shrink: 1;
+      padding: 14px 12px 0 12px;
+      line-height: 1; }
+    .flexTable .removeCoinFromPortfolioColumn, .flexTable .addCoinToPortfolioColumn {
+      order: 1;
+      text-align: right; }
+    .flexTable .flagColumn {
+      order: 2;
+      text-align: center; }
+    .flexTable .capColumn {
+      order: 3;
+      text-align: center; }
+    .flexTable .nameColumn {
+      order: 4;
+      width: 180px;
+      text-align: left; }
+    .flexTable .coinCountColumn {
+      order: 4;
+      width: 80px;
+      text-align: right; }
+    .flexTable .USDHoldingColumn {
+      order: 5;
+      text-align: right;
+      width: 100px; }
+    .flexTable .percentageHoldingColumn {
+      order: 6;
+      text-align: right;
+      width: 80px; }
+    .flexTable .boughtAtColumn {
+      order: 7;
+      width: 120px; }
+    .flexTable .profitLossColumn {
+      order: 8;
+      width: 100px; }
+    .flexTable .volColumn {
+      order: 9;
+      width: 120px;
+      text-align: right; }
+    .flexTable .weightedVolColumn {
+      order: 10;
+      width: 80px;
+      text-align: right; }
+    .flexTable .marketCapColumn {
+      order: 11;
+      width: 80px;
+      text-align: right; }
+    .flexTable .priceUSDColumn {
+      order: 12;
+      width: 100px;
+      text-align: right; }
+    .flexTable .priceBTCColumn {
+      order: 13;
+      width: 100px;
+      text-align: right; }
+    .flexTable .oneHourColumn {
+      order: 15;
+      width: 90px; }
+    .flexTable .twentyFourHoursColumn {
+      order: 16;
+      width: 90px; }
+    .flexTable .sevenDaysColumn {
+      order: 17;
+      width: 90px; } }
+  .flexTable .column img {
+    max-width: 20px;
+    margin-right: 10px;
+    margin-top: -6px; }
+  .flexTable .column input {
+    height: 26px;
+    width: 100%;
+    background-color: transparent;
+    border: none;
+    border-bottom: 2px solid #dddddd;
+    position: relative;
+    text-align: right; }
+    .flexTable .column input:focus {
+      outline: none;
+      border-bottom: 2px solid #7398c1; }
+  @media (min-width: 768px) {
+    .flexTable .column input {
+      height: auto; }
+    .flexTable .column img {
+      max-width: 24px;
+      margin-right: 10px;
+      margin-top: -5px; } }
+  .flexTable .table-row.header .sortByButton {
+    font-size: 1.2rem;
+    color: black;
+    background: transparent;
+    border: 0; }
+    .flexTable .table-row.header .sortByButton i {
+      color: #BBB; }
+    .flexTable .table-row.header .sortByButton:hover i {
+      color: #7398c1; }
+  .flexTable .nameColumn input {
+    font-weight: bold;
+    text-align: left;
+    width: calc(100% - 80px);
+    margin-top: -10px; }
+  .flexTable .cryptoNameFull {
+    position: relative;
+    display: inline;
+    font-weight: bold;
+    top: 2px; }
+  .flexTable .cryptoSymbol {
+    position: relative;
+    font-size: 1.2rem;
+    top: 2px;
+    font-weight: normal;
+    color: #999;
+    display: none; }
+  @media (min-width: 768px) {
+    .flexTable .cryptoSymbol {
+      display: inline; } }
+  .flexTable .boughtAtColumn, .flexTable .coinCountColumn {
+    text-align: right; }
+    .flexTable .boughtAtColumn input, .flexTable .coinCountColumn input {
+      width: 100%; }
+
+.priceUSDColumn input, .priceBTCColumn input {
+  text-align: right; }
+
+.percentage__changes {
+  text-align: center; }
+
+.cryptoPrice, .profitLoss {
+  text-align: right; }
+
+.profitLossColumn {
+  text-align: right; }
+
+.yourCoinNumber input, .boughtAt input {
+  width: 90px;
+  text-align: right; }
+
+.formatted_price_usd, .yourCoinUsd, .yourCoinPercentage, .yourCoinNumber, .boughtAt {
+  text-align: center; }
+
+.addCoinToPortfolio, .removeCoinFromPortfolio {
+  color: rgba(57, 64, 80, 0.8);
+  background: transparent;
+  border: 0;
+  height: 30px; }
+  .addCoinToPortfolio i, .removeCoinFromPortfolio i {
+    font-size: 2.2rem;
+    font-weight: normal;
+    padding-right: 10px; }
+  .addCoinToPortfolio:hover, .removeCoinFromPortfolio:hover {
+    color: #394050; }
+
+.customAddTd, .customAddTr {
+  border: none !important;
+  background-color: transparent !important; }
+
+.table-row.header .rightTableHeading {
+  text-align: right !important;
+  padding-right: 22px !important; }
+
+.wrapper {
+  display: flex;
+  display: -webkit-flex;
+  flex-direction: row;
+  -webkit-flex-direction: row; }
+
+.Portfolio .volColumn, .Portfolio .weightedVolColumn {
+  display: none; }
+
+.Portfolio .customAddTr {
+  height: 50px; }
+
+.Portfolio .addCoinToPortfolioColumn.customAddTd {
+  white-space: nowrap;
+  height: 50px; }
+
+.Portfolio .addCoinToPortfolio {
+  font-size: 1.4rem;
+  font-weight: bold;
+  margin-left: 5px;
+  margin-top: 10px; }
+  .Portfolio .addCoinToPortfolio i:before {
+    position: relative;
+    top: 3px; }
+  .Portfolio .addCoinToPortfolio:hover {
+    color: #7398c1; }

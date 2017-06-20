@@ -24,8 +24,9 @@ header h1 {
     padding: 0; }
   header h1 {
     display: inline;
+    font-size: 16px;
     top: -17px;
-    left: 65px; } }
+    left: 70px; } }
 
 .primary-nav {
   height: 60px;

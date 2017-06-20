@@ -16,16 +16,14 @@
   border-bottom: none;
   text-align: left;
   padding: 30px 30px 5px 45px; }
-
-.modal-header .close {
-  font-size: 4rem; }
-
-.modal-header .modal-title {
-  text-transform: uppercase;
-  font-weight: normal;
-  font-family: 'Signika', sans-serif;
-  font-size: 24px;
-  color: #586168; }
+  .modal-header .close {
+    font-size: 4rem; }
+  .modal-header .modal-title {
+    text-transform: uppercase;
+    font-weight: normal;
+    font-family: 'Signika', sans-serif;
+    font-size: 24px;
+    color: #586168; }
 
 .modal-footer {
   border-top: none; }
