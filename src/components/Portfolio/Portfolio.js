@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import './flexTable.css';
 import PortCoin from '../PortCoin/PortCoinContainer';
 import AddCustomButton from '../AddCustomButton/AddCustomButtonContainer';
+import './PortfolioFlexTable.css';
+import './PortfolioTab.css';
 
 class Portfolio extends Component {
     sortByRank() {
@@ -141,12 +142,12 @@ class Portfolio extends Component {
                               Weighted Vol <i className="fa fa-sort" aria-hidden="true"></i>
                             </button>
                         </div>
-                        <div className="priceUSDColumn rightTableHeading column">
+                        <div className="priceUSDColumn column">
                             <button onClick={() => this.sortByPriceUSD()} className="sortByButton">
                               USD <i className="fa fa-sort" aria-hidden="true"></i>
                             </button>
                         </div>
-                        <div className="priceBTCColumn rightTableHeading column">
+                        <div className="priceBTCColumn column">
                             <button onClick={() => this.sortByPriceBTC()} className="sortByButton">
                               BTC <i className="fa fa-sort" aria-hidden="true"></i>
                             </button>
@@ -182,7 +183,11 @@ class Portfolio extends Component {
            );
            } else {
              return (
-                 <div className="Portfolio hide">
+                 <div className="emptyPortfolio">
+                   <p>To start building your Portfolio, tap the plus sign beside the coin you want to add, inside the Coin List. Or tap the button below to add a custom entry.</p>
+                   <div className="addCoinToPortfolioColumn customAddTd">
+                     <AddCustomButton/>
+                   </div>
                  </div>
              )
             }

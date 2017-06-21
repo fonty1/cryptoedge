@@ -6,7 +6,7 @@ body {
   min-height: 100vh;
 }
 
-@media(min-width: 768px) {
+@media(min-width: 1023px) {
   body {
     font-size: 16px;
   }
@@ -25,7 +25,6 @@ body {
 }
 
 .terms {
-  font-weight: bold;
   max-width: 600px;
   margin: 0 auto;
   padding: 30px;

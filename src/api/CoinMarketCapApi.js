@@ -23,7 +23,7 @@ import pivx from '../img/pivx.png';
 import zec from '../img/zec.png';
 import gnt from '../img/gnt.png';
 import round from '../img/round.png';
-import sia from '../img/sia.png';
+import sc from '../img/sc.png';
 import steem from '../img/steem.png';
 import strat from '../img/strat.png';
 import tkn from '../img/tkn.png';
@@ -167,8 +167,8 @@ const api = {
           case "ROUND":
               cryptoRow.logo = round;
               break;
-          case "SIA":
-              cryptoRow.logo = sia;
+          case "SC":
+              cryptoRow.logo = sc;
               break;
           case "STEEM":
               cryptoRow.logo = steem;

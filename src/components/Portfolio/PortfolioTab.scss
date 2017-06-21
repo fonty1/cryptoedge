@@ -1,0 +1,13 @@
+.emptyPortfolio {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 30px;
+  text-align: center;
+
+  .customAddTd, .customAddTr {
+    button {
+      border: none !important;
+      background-color: transparent !important;
+    }
+  }
+}

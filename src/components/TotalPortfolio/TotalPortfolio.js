@@ -1,5 +1,4 @@
 import React from 'react';
-import { Table } from 'react-bootstrap';
 import './TotalPortfolio.css';
 
 const TotalPortfolio = ( { cryptoPortfolio, formattedTotalUSD, totalBTC, formattedTotalProfitLoss,
@@ -8,91 +7,81 @@ const TotalPortfolio = ( { cryptoPortfolio, formattedTotalUSD, totalBTC, formatt
                            change_1h_value, change_24h_value, change_7d_value } ) => {
     if (cryptoPortfolio.length > 0) {
         return (
-              <div className="totalTables">
-                <Table responsive className="totalTable fullTable">
-                      <thead>
-                         <tr className="headings">
-                            <th>USD</th>
-                            <th>BTC</th>
-                            <th>Profit/Loss USD</th>
-                            <th>
+              <div className="totalTable">
+                      <div className="flexTable desktop">
+                         <div className="table-row header">
+                            <div className="totalUSDcolumn column">USD</div>
+                            <div className="totalBTCcolumn column">BTC</div>
+                            <div className="totalPLColumn column">Profit/Loss USD</div>
+                            <div className="oneHourColumn column">
                                 1 Hr
-                            </th>
-                            <th>
+                            </div>
+                            <div className="twentyFourHoursColumn column">
                                 24 Hrs
-                            </th>
-                            <th>
+                            </div>
+                            <div className="sevenDaysColumn column">
                                 7 Days
-                            </th>
-                         </tr>
-                       </thead>
-                     <tbody>
-                           <tr className="portfolioTotals" >
-                              <td>
+                            </div>
+                         </div>
+                           <div className="table-row" >
+                              <div className="totalUSDcolumn column">
                                 ${ formattedTotalUSD }
-                              </td>
-                              <td>
+                              </div>
+                              <div className="totalBTCcolumn column">
                                 { totalBTC }
-                              </td>
-                              <td>
+                              </div>
+                              <div className="totalPLColumn column">
                                ${ formattedTotalProfitLoss }
-                              </td>
-                              <td className="percentage__changes" style={oneHourStyles}>
-                                  {totalPercentChangeOneHour}% &nbsp;&nbsp; <span className="changeValue">${change_1h_value}</span></td>
-                              <td className="percentage__changes" style={twentyFourHourStyles}>
-                                  {totalPercentChangeTwentyFourHours}% &nbsp;&nbsp; <span className="changeValue">${change_24h_value}</span></td>
-                              <td className="percentage__changes" style={sevenDayStyles}>
-                                  {totalPercentChangeSevenDays}% &nbsp;&nbsp; <span className="changeValue">${change_7d_value}</span></td>
-                          </tr>
-                     </tbody>
-                </Table>
-                <Table responsive className="totalTable totalTableTotalsOnly">
-                      <thead>
-                          <tr className="headings">
-                             <th>USD</th>
-                             <th>BTC</th>
-                             <th>Profit/Loss USD</th>
-                          </tr>
-                       </thead>
-                     <tbody>
-                           <tr className="portfolioTotals" >
-                               <td>
+                              </div>
+                              <div className="oneHourColumn column" style={oneHourStyles}>
+                                  {totalPercentChangeOneHour}% &nbsp;&nbsp; <span className="changeValue">${change_1h_value}</span></div>
+                              <div className="twentyFourHoursColumn column" style={twentyFourHourStyles}>
+                                  {totalPercentChangeTwentyFourHours}% &nbsp;&nbsp; <span className="changeValue">${change_24h_value}</span></div>
+                              <div className="sevenDaysColumn column" style={sevenDayStyles}>
+                                  {totalPercentChangeSevenDays}% &nbsp;&nbsp; <span className="changeValue">${change_7d_value}</span></div>
+                          </div>
+                        </div>
+
+                        <div className="flexTable mobile">
+                          <div className="table-row header">
+                             <div className="totalUSDcolumn column">USD</div>
+                             <div className="totalBTCcolumn column">BTC</div>
+                             <div className="totalPLColumn column">Profit/Loss USD</div>
+                          </div>
+                           <div className="table-row" >
+                               <div className="totalUSDcolumn column">
                                  ${ formattedTotalUSD }
-                               </td>
-                               <td>
+                               </div>
+                               <div className="totalBTCcolumn column">
                                  { totalBTC }
-                               </td>
-                               <td>
+                               </div>
+                               <div className="totalPLColumn column">
                                 ${ formattedTotalProfitLoss }
-                               </td>
-                          </tr>
-                     </tbody>
-                </Table>
-                <Table responsive className="totalTable totalTablePercentagesOnly">
-                      <thead>
-                         <tr className="headings">
-                            <th>
+                               </div>
+                          </div>
+                        </div>
+
+                        <div className="flexTable mobile">
+                         <div className="table-row header">
+                            <div className="oneHourColumn column">
                                 1 Hr
-                            </th>
-                            <th>
+                            </div>
+                            <div className="twentyFourHoursColumn column">
                                 24 Hrs
-                            </th>
-                            <th>
+                            </div>
+                            <div className="sevenDaysColumn column">
                                 7 Days
-                            </th>
-                         </tr>
-                       </thead>
-                     <tbody>
-                           <tr className="portfolioTotals" >
-                               <td className="percentage__changes" style={oneHourStyles}>
-                                   {totalPercentChangeOneHour}% &nbsp;&nbsp; <span className="changeValue">${change_1h_value}</span></td>
-                               <td className="percentage__changes" style={twentyFourHourStyles}>
-                                   {totalPercentChangeTwentyFourHours}% &nbsp;&nbsp; <span className="changeValue">${change_24h_value}</span></td>
-                               <td className="percentage__changes" style={sevenDayStyles}>
-                                   {totalPercentChangeSevenDays}% &nbsp;&nbsp; <span className="changeValue">${change_7d_value}</span></td>
-                          </tr>
-                     </tbody>
-                </Table>
+                            </div>
+                         </div>
+                           <div className="table-row" >
+                               <div className="oneHourColumn column" style={oneHourStyles}>
+                                   {totalPercentChangeOneHour}% &nbsp;&nbsp; <span className="changeValue">${change_1h_value}</span></div>
+                               <div className="twentyFourHoursColumn column" style={twentyFourHourStyles}>
+                                   {totalPercentChangeTwentyFourHours}% &nbsp;&nbsp; <span className="changeValue">${change_24h_value}</span></div>
+                               <div className="sevenDaysColumn column" style={sevenDayStyles}>
+                                   {totalPercentChangeSevenDays}% &nbsp;&nbsp; <span className="changeValue">${change_7d_value}</span></div>
+                          </div>
+                        </div>
               </div>
           )
     } else {

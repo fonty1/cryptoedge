@@ -7,13 +7,11 @@ import thunk from 'redux-thunk';
 import './App.css';
 import { Provider } from 'react-redux';
 import AppHeader from './components/AppHeader/AppHeaderContainer';
-import CoinList from './components/CoinList/CoinListContainer';
-import Portfolio from './components/Portfolio/PortfolioContainer';
-import TotalPortfolio from './components/TotalPortfolio/TotalPortfolioContainer';
 import IfThenModal from './components/IfThenModal/IfThenModalContainer';
 import TipJarModal from './components/TipJarModal/TipJarModalContainer';
 import AboutModal from './components/AboutModal/AboutModalContainer';
 import Warning from './components/Warning/WarningContainer';
+import CryptoTabs from './components/CryptoTabs/CryptoTabsContainer';
 import { combineReducers } from 'redux';
 import coinListPortfolio from './reducers/coinListPortfolioReducer';
 import ui from './reducers/uiReducer';
@@ -36,7 +34,7 @@ const store = createStore(
     applyMiddleware(thunk),
     autoRehydrate(),
     // If prod no compose
-    composeEnhancers()
+    //composeEnhancers()
   )
 )
 
@@ -68,9 +66,7 @@ class App extends Component {
               <TipJarModal/>
               <AboutModal/>
               <Warning/>
-              <Portfolio/>
-              <TotalPortfolio/>
-              <CoinList/>
+              <CryptoTabs/>
               <p className="terms">Cryptoedge is used at the user's own risk.
                 Cryptoedge is currently in beta testing and there may be bugs in prices or calculations.
                 Cryptoedge takes no responsibility for it's user's actions. Nothing on Cryptoedge should be considered as trading advice.</p>

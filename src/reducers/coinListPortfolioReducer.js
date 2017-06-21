@@ -141,6 +141,7 @@ export default function coinListPortfolioReducer(state = initialState.coinListPo
             portItem.percent_change_24h = coinItem.percent_change_24h;
             portItem.percent_change_7d = coinItem.percent_change_7d;
             portItem.coinUSD = portItem.count * coinItem.price_usd;
+            portItem.logo = coinItem.logo;
           }
           return false
         });

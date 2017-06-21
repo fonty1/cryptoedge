@@ -1,50 +1,122 @@
 .totalTable {
-  text-align: center;
-  border: none;
+  margin-bottom: 50px;
 
-  >thead>tr>th {
-    border: none;
+  .flexTable {
+    //
+    // Table Level
+    //
+    width: 100%;
+    margin-bottom: 10px;
+
+    &.desktop {
+      display: none;
+    }
+
+    &.mobile {
+      display: table;
+    }
+
+    //
+    // Header Level
+    //
+
+    .table-row.header {
+      background-color: #efefef;
+      height: 46px;
+    }
+
+    .table-row.header .column {
+      text-align: center;
+      vertical-align: bottom;
+      font-size: 1.2rem;
+      padding-right: 0;
+    }
+
+    .table-row.header .column span {
+      font-size: 1rem;
+      display: block;
+      color: #CCC;
+      font-weight: normal;
+      height: 30px;
+    }
+
+    //
+    // Row Level
+    //
+
+    .table-row {
+      display: flex;
+      display: -webkit-flex;
+      flex-direction: row;
+      -webkit-flex-direction: row;
+      flex-wrap: nowrap;
+      width: 100%;
+      padding-left: 15px;
+      vertical-align: middle;
+    }
+
+    .table-row:nth-of-type(odd) {
+      background-color: #f5f5f5;
+    }
+
+    //
+    // Column Level
+    //
+
+    .column {
+      flex-grow: 1;
+      -webkit-flex-grow: 1;
+      flex-shrink: 1;
+      -webkit-flex-shrink: 1;
+      vertical-align: bottom;
+      padding: 14px 2px 3px 2px;
+      text-align: center;
+    }
+
+    .totalUSDcolumn {
+      width: 100px;
+    }
+
+    .totalBTCcolumn {
+      width: 100px;
+    }
+
+    .totalPLColumn {
+      width: 100px;
+    }
+
+    .oneHourColumn {
+      width: 100px;
+    }
+
+    .twentyFourHoursColumn {
+      width: 100px;
+    }
+
+    .sevenDaysColumn {
+      width: 100px;
+    }
+
+    @media(min-width: 768px) {
+      .column {
+        flex-grow: 1;
+        -webkit-flex-grow: 1;
+        flex-shrink: 1;
+        -webkit-flex-shrink: 1;
+        padding: 14px 12px 3px 12px;
+        line-height: 1;
+      }
+
+    }
   }
 
-  .headings th {
-    background-color: #f5f5f5;
-    text-align: center;
+  @media(min-width: 768px) {
+      .flexTable.desktop {
+        display: table;
+      }
+      .flexTable.mobile {
+        display: none;
+      }
   }
 
-  .portfolioTotals {
-    text-align: center;
-    font-weight: bold;
-  }
-
-  >tbody>tr>td, >tbody>tr>th, >tfoot>tr>td, >tfoot>tr>th, >thead>tr>td, >thead>tr>th {
-    width: 16.67%;
-    border-top: none;
-  }
-}
-
-.changeValue {
-  font-weight: bold;
-}
-
-.totalTable.fullTable {
-  display: none;
-}
-
-.totalTablePercentagesOnly, .totalTableTotalsOnly {
-  display: table;
-
-  >tbody>tr>td, >tbody>tr>th, >tfoot>tr>td, >tfoot>tr>th, >thead>tr>td, >thead>tr>th {
-    width: 33.33%;
-    border-top: none;
-  }
-}
-
-@media(min-width: 768px) {
-  .totalTable.fullTable {
-    display: table;
-  }
-
-  .totalTablePercentagesOnly, .totalTableTotalsOnly {
-    display: none;
-  }
 }
