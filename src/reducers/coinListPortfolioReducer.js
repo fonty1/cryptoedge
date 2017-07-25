@@ -22,6 +22,7 @@ import { REMOVE_CONDITION } from '../constants/actionTypes';
 import { EVALUATE_CONDITIONS } from '../constants/actionTypes';
 import { GENERATE_READABLE_LISTS } from '../constants/actionTypes';
 import { DOWNLOAD_MARKETDATA } from '../constants/actionTypes';
+import { FILTER_LIST } from '../constants/actionTypes';
 
 import mathjs from 'mathjs';
 
@@ -37,8 +38,15 @@ export default function coinListPortfolioReducer(state = initialState.coinListPo
       }
     }
 
-    case DOWNLOAD_MARKETDATA: {
+    case FILTER_LIST: {
+      //The filter() method creates a new array with all elements that pass the test implemented by the provided function.
+      // coinListNumberVisible
+      return {
+        ...state
+      }
+    }
 
+    case DOWNLOAD_MARKETDATA: {
       let marketData = action.marketData;
       marketData.formattedMarketCap = addCommas(action.marketData.total_market_cap_usd);
       marketData.formattedMarketVolume = addCommas(action.marketData.total_24h_volume_usd);
@@ -271,8 +279,8 @@ export default function coinListPortfolioReducer(state = initialState.coinListPo
             } else {
               return {
                   ...item,
-                  price_usd: Number(action.price_usd).toFixed(6),
-                  price_btc: Number(action.price_btc).toFixed(6)
+                  price_usd: Number(action.price_usd).toFixed(4),
+                  price_btc: action.price_btc
               };
             }
         });
@@ -289,7 +297,7 @@ export default function coinListPortfolioReducer(state = initialState.coinListPo
             } else {
               return {
                   ...item,
-                  price_usd: Number(action.price_usd).toFixed(6),
+                  price_usd: action.price_usd,
                   price_btc: Number(action.price_btc).toFixed(6)
               };
             }

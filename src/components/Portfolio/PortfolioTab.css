@@ -1,9 +1,9 @@
+.addCustomButton {
+  margin-left: 20px;
+  margin-top: 15px; }
+
 .emptyPortfolio {
   max-width: 600px;
   margin: 0 auto;
   padding: 30px;
   text-align: center; }
-
-.emptyPortfolio .customAddTd button, .emptyPortfolio .customAddTr button {
-  border: none !important;
-  background-color: transparent !important; }

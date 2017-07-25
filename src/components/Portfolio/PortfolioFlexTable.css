@@ -83,8 +83,8 @@
 
 .Portfolio .flexTable .flagColumn {
   order: 7;
-  text-align: center;
-  width: 60px; }
+  text-align: right;
+  max-width: 60px; }
 
 .Portfolio .flexTable .capColumn {
   order: 8;
@@ -130,9 +130,9 @@
 
 .Portfolio .flexTable .removeCoinFromPortfolioColumn, .Portfolio .flexTable .addCoinToPortfolioColumn {
   order: 17;
-  width: auto;
+  width: 40px;
   text-align: right;
-  padding-top: 7px; }
+  padding: 0; }
 
 @media (min-width: 768px) {
   .Portfolio .flexTable .column {
@@ -140,16 +140,17 @@
     -webkit-flex-grow: 1;
     flex-shrink: 1;
     -webkit-flex-shrink: 1;
-    padding: 14px 12px 3px 12px;
+    padding: 16px 12px 0px 12px;
     line-height: 1; }
   .Portfolio .flexTable .removeCoinFromPortfolioColumn, .Portfolio .flexTable .addCoinToPortfolioColumn {
     order: 1;
-    width: 1px;
+    width: 40px;
     text-align: right;
-    padding-top: 7px; }
+    padding: 0; }
   .Portfolio .flexTable .flagColumn {
-    order: 2;
-    text-align: center; }
+    order: 7;
+    text-align: right;
+    max-width: 60px; }
   .Portfolio .flexTable .capColumn {
     order: 3;
     text-align: center; }
@@ -208,7 +209,7 @@
 .Portfolio .flexTable .column img {
   max-width: 20px;
   margin-right: 10px;
-  margin-top: -6px; }
+  margin-top: -3px; }
 
 .Portfolio .flexTable .column input {
   height: 26px;
@@ -303,10 +304,6 @@
 .addCoinToPortfolio:hover, .removeCoinFromPortfolio:hover {
   color: #394050; }
 
-.customAddTd, .customAddTr {
-  border: none !important;
-  background-color: transparent !important; }
-
 .wrapper {
   display: flex;
   display: -webkit-flex;
@@ -332,7 +329,7 @@
 .Portfolio .customAddTr {
   height: 50px; }
 
-.Portfolio .addCoinToPortfolioColumn.customAddTd {
+.Portfolio .addCoinToPortfolioColumn.customAddRow {
   text-align: left;
   white-space: nowrap;
   height: 66px; }

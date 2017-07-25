@@ -1,5 +1,7 @@
 import React from 'react';
 import { addCommas } from '../../helpers';
+import IconButton from 'material-ui/IconButton';
+import ContentRemove from 'material-ui/svg-icons/content/remove-circle';
 
 const PortCoin = ( { actions, crypto, index, totalUSD, totalBTC, portfolio, BTCPriceMarker } ) => {
     const onCoinNumberChange = e => {
@@ -55,7 +57,7 @@ const PortCoin = ( { actions, crypto, index, totalUSD, totalBTC, portfolio, BTCP
 
     const onBoughtAtChange = e => {
         e.preventDefault()
-        let newboughtAtUSDPriceVal = Number(e.target.value);
+        let newboughtAtUSDPriceVal = e.target.value;
 
         actions.updateIndividualTotals(newboughtAtUSDPriceVal, index);
         actions.updatePortfolioTotals();
@@ -77,9 +79,13 @@ const PortCoin = ( { actions, crypto, index, totalUSD, totalBTC, portfolio, BTCP
         return (
             <div className="table-row" key={index}>
                 <div className="removeCoinFromPortfolioColumn column">
-                    <button onClick={() => preRemoveCoin()} className="removeCoinFromPortfolio">
-                        <i className="fa fa-minus-square-o" aria-hidden="true"></i>
-                    </button>
+                    <IconButton
+                      onClick={() => preRemoveCoin()}
+                      className="removeCoinFromPortfolio"
+                      tooltip={"Remove " + crypto.symbol + " from Portfolio"}
+                      tooltipPosition="top-right">
+                      <ContentRemove />
+                    </IconButton>
                 </div>
                 <div className="flagColumn column" >
                   <span className={" " + (crypto.flag ? crypto.flagColor : ' hide')}>
@@ -112,7 +118,6 @@ const PortCoin = ( { actions, crypto, index, totalUSD, totalBTC, portfolio, BTCP
                   <input
                       value={crypto.boughtAt}
                       onChange={onBoughtAtChange}
-                      step="any"
                   />
                 </div>
                 <div className="profitLossColumn column">
@@ -145,9 +150,13 @@ const PortCoin = ( { actions, crypto, index, totalUSD, totalBTC, portfolio, BTCP
         return (
           <div className="table-row customCoin" key={index}>
               <div className="removeCoinFromPortfolioColumn column">
-                  <button onClick={() => preRemoveCoin()} className="removeCoinFromPortfolio">
-                      <i className="fa fa-minus-square-o" aria-hidden="true"></i>
-                  </button>
+                  <IconButton
+                    onClick={() => preRemoveCoin()}
+                    className="removeCoinFromPortfolio"
+                    tooltip={"Remove " + crypto.name + " from Portfolio"}
+                    tooltipPosition="top-right">
+                    <ContentRemove />
+                  </IconButton>
               </div>
               <div className="flagColumn column">
                 <span className={" " + (crypto.flag ? crypto.flagColor : ' hide')}>
@@ -184,7 +193,6 @@ const PortCoin = ( { actions, crypto, index, totalUSD, totalBTC, portfolio, BTCP
                     value={crypto.boughtAt}
                     onChange={onBoughtAtChange}
                     name={"coinNum-" + index}
-                    step="any"
                 />
               </div>
               <div className="profitLossColumn column">
@@ -196,18 +204,12 @@ const PortCoin = ( { actions, crypto, index, totalUSD, totalBTC, portfolio, BTCP
                   <input
                       value={crypto.price_usd}
                       onChange={onChangeUSDPrice}
-                      type="number"
-                      min="0"
-                      step="1"
                   />
               </div>
               <div className="priceBTCColumn column">
                 <input
                     value={crypto.price_btc}
                     onChange={onChangeBTCPrice}
-                    type="number"
-                    min="0"
-                    step=".1"
                 />
               </div>
               <div className="oneHourColumn percentage__changes column" style={crypto.oneHourStyles}>

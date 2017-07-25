@@ -175,7 +175,7 @@ class Portfolio extends Component {
                        <PortCoin crypto={crypto} index={index} key={index} />
                    ) }, this )}
 
-                  <div className="addCoinToPortfolioColumn customAddTd">
+                  <div className="addCoinToPortfolioColumn customAddRow">
                     <AddCustomButton/>
                   </div>
              </div>
@@ -185,7 +185,7 @@ class Portfolio extends Component {
              return (
                  <div className="emptyPortfolio">
                    <p>To start building your Portfolio, tap the plus sign beside the coin you want to add, inside the Coin List. Or tap the button below to add a custom entry.</p>
-                   <div className="addCoinToPortfolioColumn customAddTd">
+                   <div className="addCoinToPortfolioColumn customAddRow">
                      <AddCustomButton/>
                    </div>
                  </div>

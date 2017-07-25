@@ -32,6 +32,7 @@
 }
 
 .marketDataContainer {
+  padding-top: 7px;
   .marketCap, .marketVolume, .btcDominance {
     display: block;
     padding: 3px;
@@ -44,4 +45,12 @@
       display: inline-block;
     }
   }
+}
+
+.openChartButton {
+  padding: 0 !important;
+  margin: 0 !important;
+  width: auto !important;
+  height: auto !important;
+  display: none !important;
 }

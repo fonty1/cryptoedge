@@ -3,6 +3,9 @@ import { addCommas } from '../../helpers';
 import * as actions from '../../actions/coinListPortfolioActions';
 import './CoinListFlexTable.css';
 import './CoinList.css';
+import IconButton from 'material-ui/IconButton';
+import ContentAdd from 'material-ui/svg-icons/content/add-circle';
+import EditorChart from 'material-ui/svg-icons/editor/insert-chart';
 
 class CoinList extends React.Component {
 
@@ -126,9 +129,12 @@ class CoinList extends React.Component {
                      return (
                        <div className="table-row coin" key={index}>
                            <div className="addCoinToPortfolioColumn column">
-                               <button onClick={() => this.props.actions.addCoinToPortfolio(crypto)} className="addCoinToPortfolio">
-                                   <i className="fa fa-plus-square-o" aria-hidden="true"></i>
-                               </button>
+                              <IconButton
+                                onClick={() => this.props.actions.addCoinToPortfolio(crypto)}
+                                className="addCoinToPortfolio" tooltip={"Add " + crypto.symbol + " to Portfolio"}
+                                tooltipPosition="top-right">
+                                <ContentAdd />
+                              </IconButton>
                            </div>
                            <div className="flagColumn column">
                             <span className={" " + (crypto.flag ? crypto.flagColor : ' hide')}>
@@ -144,6 +150,12 @@ class CoinList extends React.Component {
                              <img alt={crypto.symbol} src={crypto.logo}/>
                              <span className="cryptoNameFull">{crypto.name + " "}</span>
                              <span className="cryptoSymbol">{crypto.symbol}</span>
+                             <IconButton
+                               onClick={() => this.props.actions.openChart(crypto)}
+                               className="openChartButton"
+                               >
+                               <EditorChart />
+                             </IconButton>
                            </div>
                            <div className="priceUSDColumn column">
                              <span>${crypto.formatted_price_usd}</span>

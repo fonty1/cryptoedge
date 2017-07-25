@@ -3,22 +3,29 @@ import { addCommas } from '../helpers';
 import * as actions from '../actions/coinListPortfolioActions';
 
 import bcap from '../img/bcap.png';
+import bcc from '../img/bcc.png';
 import bcn from '../img/bcn.png';
 import btc from '../img/btc.png';
 import bts from '../img/bts.png';
 import doge from '../img/doge.png';
 import dgb from '../img/dgb.png';
+import eos from '../img/eos.png';
 import eth from '../img/eth.png';
+import qtum from '../img/qtum.png';
 import gno from '../img/gno.png';
+import miota from '../img/miota.png';
 import ltc from '../img/ltc.png';
 import xrp from '../img/xrp.png';
 import dash from '../img/dash.png';
+import icn from '../img/icn.png';
+import lsk from '../img/lsk.png';
 import fct from '../img/fct.png';
 import xmr from '../img/xmr.png';
 import etc from '../img/etc.png';
 import xem from '../img/xem.png';
 import rep from '../img/rep.png';
 import maid from '../img/maid.png';
+import ans from '../img/ans.png';
 import pivx from '../img/pivx.png';
 import zec from '../img/zec.png';
 import gnt from '../img/gnt.png';
@@ -29,6 +36,8 @@ import strat from '../img/strat.png';
 import tkn from '../img/tkn.png';
 import xlm from '../img/xlm.png';
 import waves from '../img/waves.png';
+import veri from '../img/veri.png';
+import usdt from '../img/usdt.png';
 import unknown from '../img/unknown.png';
 
 //const url = "https://cors-anywhere.herokuapp.com/https://api.coinmarketcap.com/v1/ticker/?limit=10";
@@ -104,6 +113,9 @@ const api = {
 
     symbolMapping: (cryptoRow) => {
       switch (cryptoRow.symbol) {
+          case "BCC":
+              cryptoRow.logo = bcc;
+              break;
           case "BTC":
               cryptoRow.logo = btc;
               break;
@@ -122,11 +134,29 @@ const api = {
           case "DGB":
               cryptoRow.logo = dgb;
               break;
+          case "ICN":
+              cryptoRow.logo = icn;
+              break;
+          case "LSK":
+              cryptoRow.logo = lsk;
+              break;
+          case "EOS":
+              cryptoRow.logo = eos;
+              break;
           case "ETH":
               cryptoRow.logo = eth;
               break;
           case "GNO":
               cryptoRow.logo = gno;
+              break;
+          case "MIOTA":
+              cryptoRow.logo = miota;
+              break;
+          case "ANS":
+              cryptoRow.logo = ans;
+              break;
+          case "QTUM":
+              cryptoRow.logo = qtum;
               break;
           case "LTC":
               cryptoRow.logo = ltc;
@@ -181,6 +211,12 @@ const api = {
               break;
           case "WAVES":
               cryptoRow.logo = waves;
+              break;
+          case "VERI":
+              cryptoRow.logo = veri;
+              break;
+          case "USDT":
+              cryptoRow.logo = usdt;
               break;
           case "XLM":
               cryptoRow.logo = xlm;

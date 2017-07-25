@@ -19,6 +19,7 @@ import {persistStore, autoRehydrate} from 'redux-persist';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 import { createBlacklistFilter } from 'redux-persist-transform-filter';
 
+
 const rootReducer = combineReducers({
   coinListPortfolio,
   ui
@@ -33,8 +34,8 @@ const store = createStore(
   compose(
     applyMiddleware(thunk),
     autoRehydrate(),
-    // If prod no compose
-    //composeEnhancers()
+    // If prod don't compose
+    composeEnhancers()
   )
 )
 

@@ -55,7 +55,6 @@
       -webkit-flex-direction: row;
       flex-wrap: nowrap;
       width: 100%;
-      padding-left: 15px;
       vertical-align: middle;
     }
 
@@ -83,77 +82,77 @@
       min-height: 40px;
     }
 
-    .nameColumn {
+    .removeCoinFromPortfolioColumn, .addCoinToPortfolioColumn {
       order: 1;
+      width: 40px;
+      text-align: right;
+      padding: 0;
+    }
+
+    .nameColumn {
+      order: 2;
       width: 150px;
       text-align: left;
     }
 
     .priceUSDColumn {
-      order: 2;
+      order: 3;
       width: 90px;
       text-align: right;
     }
 
     .oneHourColumn {
-      order: 3;
-      width: 60px;
-      text-align: center;
-    }
-
-    .twentyFourHoursColumn {
       order: 4;
       width: 60px;
       text-align: center;
     }
 
-    .sevenDaysColumn {
+    .twentyFourHoursColumn {
       order: 5;
       width: 60px;
       text-align: center;
     }
 
-    .priceBTCColumn {
+    .sevenDaysColumn {
       order: 6;
+      width: 60px;
+      text-align: center;
+    }
+
+    .priceBTCColumn {
+      order: 7;
       width: 100px;
       text-align: right;
     }
 
     .flagColumn {
-      order: 7;
-      text-align: center;
-      width: 60px;
+      order: 8;
+      text-align: right;
+      max-width: 60px;
     }
 
     .capColumn {
-      order: 8;
+      order: 9;
       text-align: center;
       width: 60px;
     }
 
     .volColumn {
-      order: 9;
+      order: 10;
       width: 120px;
       text-align: right;
     }
 
     .weightedVolColumn {
-      order: 10;
+      order: 11;
       width: 100px;
       text-align: right;
     }
 
     .marketCapColumn {
-      order: 11;
+      order: 12;
       width: 120px;
       text-align: right;
-    }
-
-    .removeCoinFromPortfolioColumn, .addCoinToPortfolioColumn {
-      order: 12;
-      width: auto;
-      text-align: right;
-      padding-top: 7px;
     }
 
     @media(min-width: 768px) {
@@ -162,43 +161,44 @@
         -webkit-flex-grow: 1;
         flex-shrink: 1;
         -webkit-flex-shrink: 1;
-        padding: 14px 12px 3px 12px;
+        padding: 16px 12px 0px 12px;
         line-height: 1;
       }
 
       .removeCoinFromPortfolioColumn, .addCoinToPortfolioColumn  {
         order: 1;
-        width: 1px;
+        width: 40px;
         text-align: right;
-        padding-top: 7px;
+        padding-top: 0;
       }
 
-      .flagColumn {
+      .capColumn {
         order: 2;
         text-align: center;
       }
 
-      .capColumn {
-        order: 3;
-        text-align: center;
-      }
-
       .nameColumn {
-        order: 4;
+        order: 3;
         width: 180px;
         text-align: left;
       }
 
       .priceUSDColumn {
-        order: 5;
+        order: 4;
         width: 100px;
         text-align: right;
       }
 
       .priceBTCColumn {
-        order: 6;
+        order: 5;
         width: 100px;
         text-align: right;
+      }
+
+      .flagColumn {
+        order: 6;
+        text-align: right;
+        max-width: 60px;
       }
 
       .volColumn {
@@ -240,7 +240,7 @@
     .column img {
         max-width: 20px;
         margin-right: 10px;
-        margin-top: -6px;
+        margin-top: -3px;
     }
 
     @media(min-width: 768px) {
@@ -302,10 +302,4 @@
         color: rgb(57, 64, 80);
       }
     }
-
-    .customAddTd, .customAddTr {
-      border: none !important;
-      background-color: transparent !important;
-    }
-
 }

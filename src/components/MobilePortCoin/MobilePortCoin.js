@@ -108,7 +108,6 @@ const MobilePortCoin = ( { actions, crypto, index, totalUSD, totalBTC, portfolio
                   <input
                       value={crypto.boughtAt}
                       onChange={onBoughtAtChange}
-                      step="any"
                   />
                 </td>
                 <td className="profitLossColumn">
@@ -177,7 +176,6 @@ const MobilePortCoin = ( { actions, crypto, index, totalUSD, totalBTC, portfolio
                     value={crypto.boughtAt}
                     onChange={onBoughtAtChange}
                     name={"coinNum-" + index}
-                    step="any"
                 />
               </td>
               <td className="profitLossColumn">

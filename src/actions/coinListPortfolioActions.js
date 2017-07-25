@@ -23,6 +23,7 @@ import { EVALUATE_CONDITIONS } from '../constants/actionTypes';
 import { GENERATE_READABLE_LISTS } from '../constants/actionTypes';
 import { DOWNLOAD_MARKETDATA } from '../constants/actionTypes';
 import { API_ERROR } from '../constants/actionTypes';
+import { FILTER_LIST } from '../constants/actionTypes';
 
 export function downloadMarketData() {
   return async (dispatch) => {

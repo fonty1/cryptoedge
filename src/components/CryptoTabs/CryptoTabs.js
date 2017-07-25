@@ -18,7 +18,7 @@ class CryptoTabs extends Component {
         fontSize: 24,
         paddingTop: 16,
         marginBottom: 12,
-        fontWeight: 400,
+        fontWeight: 400
       }
     }
 
@@ -26,7 +26,11 @@ class CryptoTabs extends Component {
       <div>
         <MuiThemeProvider>
           <Tabs>
-            <Tab label="Coin List" >
+            <Tab
+              label="Coin List"
+              contentContainerClassName="cryptoTabContainer"
+              className="cryptoTab"
+              >
               <CoinList/>
             </Tab>
             <Tab
