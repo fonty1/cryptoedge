@@ -35,6 +35,9 @@ class AboutModal extends Component {
                 Crypto Tip I would be grateful! Include your email or feature request in the transaction description if you want to get my
                 attention :)
               </p>
+              <p>
+                Weighted Volume is an indicator that comes from calculating the 24hr Volume * 100 divided by the coin's market cap.
+              </p>
           </Dialog>
         </MuiThemeProvider>
       </div>

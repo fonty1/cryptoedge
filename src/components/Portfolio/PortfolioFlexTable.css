@@ -1,4 +1,4 @@
-.Portfolio, .coinList, .totalTables {
+.Portfolio, .totalTables {
   overflow-x: auto; }
 
 .Portfolio .flexTable {
@@ -7,7 +7,7 @@
 
 .Portfolio .flexTable .table-row.header {
   background-color: #efefef;
-  height: 46px; }
+  height: 50px; }
 
 .Portfolio .flexTable .table-row.header .column {
   text-align: right;
@@ -35,7 +35,6 @@
   -webkit-flex-direction: row;
   flex-wrap: nowrap;
   width: 100%;
-  padding-left: 15px;
   vertical-align: middle; }
 
 .Portfolio .flexTable .table-row:nth-of-type(odd) {
@@ -52,87 +51,87 @@
   flex-shrink: 1;
   -webkit-flex-shrink: 1;
   vertical-align: bottom;
-  padding: 14px 2px 0 3px; }
+  padding: 14px 2px 0 3px;
+  min-height: 40px; }
+
+.Portfolio .flexTable .removeCoinFromPortfolioColumn {
+  order: 1;
+  width: 40px;
+  text-align: right; }
 
 .Portfolio .flexTable .nameColumn {
-  order: 1;
+  order: 2;
   width: 150px;
   text-align: left; }
 
 .Portfolio .flexTable .priceUSDColumn {
-  order: 2;
+  order: 3;
   width: 90px;
   text-align: right; }
 
 .Portfolio .flexTable .oneHourColumn {
-  order: 3;
-  width: 60px; }
-
-.Portfolio .flexTable .twentyFourHoursColumn {
   order: 4;
   width: 60px; }
 
-.Portfolio .flexTable .sevenDaysColumn {
+.Portfolio .flexTable .twentyFourHoursColumn {
   order: 5;
   width: 60px; }
 
-.Portfolio .flexTable .priceBTCColumn {
+.Portfolio .flexTable .sevenDaysColumn {
   order: 6;
+  width: 60px; }
+
+.Portfolio .flexTable .priceBTCColumn {
+  order: 7;
   width: 100px;
   text-align: right; }
 
 .Portfolio .flexTable .flagColumn {
-  order: 7;
+  order: 8;
   text-align: right;
-  max-width: 60px; }
+  width: 60px; }
 
 .Portfolio .flexTable .capColumn {
-  order: 8;
+  order: 9;
   text-align: center;
   width: 60px; }
 
 .Portfolio .flexTable .coinCountColumn {
-  order: 9;
+  order: 10;
   width: 80px; }
 
 .Portfolio .flexTable .USDHoldingColumn {
-  order: 10;
+  order: 11;
   text-align: right;
   width: 100px; }
 
 .Portfolio .flexTable .percentageHoldingColumn {
-  order: 11;
+  order: 12;
   text-align: right;
   width: 80px; }
 
 .Portfolio .flexTable .boughtAtColumn {
-  order: 12;
+  order: 13;
   width: 120px; }
 
 .Portfolio .flexTable .profitLossColumn {
-  order: 13;
+  order: 14;
   width: 100px; }
 
 .Portfolio .flexTable .volColumn {
-  order: 14;
+  order: 15;
   width: 120px;
   text-align: right; }
 
 .Portfolio .flexTable .weightedVolColumn {
-  order: 15;
-  width: 80px;
-  text-align: right; }
-
-.Portfolio .flexTable .marketCapColumn {
   order: 16;
   width: 80px;
   text-align: right; }
 
-.Portfolio .flexTable .removeCoinFromPortfolioColumn, .Portfolio .flexTable .addCoinToPortfolioColumn {
+.Portfolio .flexTable .marketCapColumn {
   order: 17;
-  width: 40px;
-  text-align: right;
-  padding: 0; }
+  width: 80px;
+  text-align: right; }
 
 @media (min-width: 768px) {
   .Portfolio .flexTable .column {
@@ -148,9 +147,9 @@
     text-align: right;
     padding: 0; }
   .Portfolio .flexTable .flagColumn {
-    order: 7;
+    order: 2;
     text-align: right;
-    max-width: 60px; }
+    width: 60px; }
   .Portfolio .flexTable .capColumn {
     order: 3;
     text-align: center; }
@@ -159,41 +158,41 @@
     width: 180px;
     text-align: left; }
   .Portfolio .flexTable .coinCountColumn {
-    order: 4;
+    order: 5;
     width: 80px;
     text-align: right; }
   .Portfolio .flexTable .USDHoldingColumn {
-    order: 5;
+    order: 6;
     text-align: right;
     width: 100px; }
   .Portfolio .flexTable .percentageHoldingColumn {
-    order: 6;
+    order: 7;
     text-align: right;
     width: 80px; }
   .Portfolio .flexTable .boughtAtColumn {
-    order: 7;
+    order: 8;
     width: 120px; }
   .Portfolio .flexTable .profitLossColumn {
-    order: 8;
+    order: 9;
     width: 100px; }
   .Portfolio .flexTable .volColumn {
-    order: 9;
+    order: 10;
     width: 120px;
     text-align: right; }
   .Portfolio .flexTable .weightedVolColumn {
-    order: 10;
-    width: 80px;
-    text-align: right; }
-  .Portfolio .flexTable .marketCapColumn {
     order: 11;
     width: 80px;
     text-align: right; }
-  .Portfolio .flexTable .priceUSDColumn {
+  .Portfolio .flexTable .marketCapColumn {
     order: 12;
+    width: 80px;
+    text-align: right; }
+  .Portfolio .flexTable .priceUSDColumn {
+    order: 13;
     width: 100px;
     text-align: right; }
   .Portfolio .flexTable .priceBTCColumn {
-    order: 13;
+    order: 14;
     width: 100px;
     text-align: right; }
   .Portfolio .flexTable .oneHourColumn {
@@ -312,7 +311,7 @@
 
 .Portfolio .portfolioHeader {
   width: 100%;
-  height: 40px;
+  min-height: 40px;
   background: rgba(177, 194, 208, 0.59);
   color: #394050;
   display: flex;
@@ -325,9 +324,6 @@
 
 .Portfolio .volColumn, .Portfolio .weightedVolColumn {
   display: none; }
-
-.Portfolio .customAddTr {
-  height: 50px; }
 
 .Portfolio .addCoinToPortfolioColumn.customAddRow {
   text-align: left;

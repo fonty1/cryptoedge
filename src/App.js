@@ -19,7 +19,6 @@ import {persistStore, autoRehydrate} from 'redux-persist';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 import { createBlacklistFilter } from 'redux-persist-transform-filter';
 
-
 const rootReducer = combineReducers({
   coinListPortfolio,
   ui
