@@ -6,26 +6,27 @@ header {
   font-family: 'Signika', sans-serif;
   text-align: left;
   background-color: #394050; }
-  header h1 {
-    display: none;
-    position: relative;
-    top: -35px;
-    left: 79px;
-    font-size: 16px;
-    line-height: 1;
-    padding: 0;
-    text-transform: uppercase;
-    color: #fff; }
+
+header h1 {
+  display: none;
+  position: relative;
+  top: -35px;
+  left: 79px;
+  font-size: 16px;
+  line-height: 1;
+  padding: 0;
+  text-transform: uppercase;
+  color: #fff; }
 
 @media (min-width: 768px) {
   header {
     height: 75px;
     padding: 0; }
-    header h1 {
-      display: inline;
-      font-size: 18px;
-      top: -17px;
-      left: 70px; } }
+  header h1 {
+    display: inline;
+    font-size: 18px;
+    top: -17px;
+    left: 70px; } }
 
 .primary-nav {
   height: 60px;
@@ -41,55 +42,63 @@ header {
   display: block;
   position: relative;
   min-width: 50px;
-  font-size: 1.2rem;
+  font-size: 1em;
   top: 10px;
   padding: 0;
   text-align: center;
   transition: all 0.3s; }
-  .primary-nav li a {
-    transition: all 0.3s;
-    display: block;
-    color: #fff; }
-    .primary-nav li a i {
-      color: white;
-      display: block;
-      font-size: 2.2rem;
-      padding-bottom: 5px;
-      cursor: pointer;
-      text-decoration: none; }
-      .primary-nav li a i:hover {
-        text-decoration: none; }
-        .primary-nav li a i:hover i {
-          color: white; }
-      .primary-nav li a i:focus {
-        text-decoration: none; }
-    .primary-nav li a:hover {
-      text-decoration: none;
-      cursor: pointer; }
-      .primary-nav li a:hover i {
-        color: white; }
-    .primary-nav li a:focus {
-      text-decoration: none; }
+
+.primary-nav li a {
+  transition: all 0.3s;
+  display: block;
+  color: #fff !important; }
+
+.primary-nav li a i {
+  color: white !important;
+  display: block;
+  font-size: 1em;
+  padding-bottom: 5px;
+  cursor: pointer;
+  text-decoration: none; }
+
+.primary-nav li a i:hover {
+  text-decoration: none; }
+
+.primary-nav li a i:hover i {
+  color: white; }
+
+.primary-nav li a i:focus {
+  text-decoration: none; }
+
+.primary-nav li a:hover {
+  text-decoration: none;
+  cursor: pointer; }
+
+.primary-nav li a:hover i {
+  color: white; }
+
+.primary-nav li a:focus {
+  text-decoration: none; }
 
 @media (min-width: 768px) {
   .primary-nav {
     top: 15px;
     margin: 0 20px 0 10px; }
-    .primary-nav li {
-      min-width: 70px;
-      font-size: 1.6rem;
-      padding: 0px 10px 0 10px;
-      top: 0; }
-      .primary-nav li a {
-        color: #fff; }
-        .primary-nav li a i {
-          color: white;
-          font-size: 3rem;
-          padding-bottom: 5px; }
-          .primary-nav li a i:hover i {
-            color: #337ab7; }
-        .primary-nav li a:hover i {
-          color: #337ab7; } }
+  .primary-nav li {
+    min-width: 70px;
+    font-size: 1em;
+    padding: 0px 10px 0 10px;
+    top: 0; }
+  .primary-nav li a {
+    color: #fff; }
+  .primary-nav li a i {
+    color: white;
+    font-size: 1.8em;
+    padding-bottom: 5px; }
+  .primary-nav li a i:hover i {
+    color: #337ab7; }
+  .primary-nav li a:hover i {
+    color: #337ab7; } }
 
 .refresh {
   padding: 0;
@@ -112,12 +121,13 @@ header {
   position: relative;
   left: 0;
   padding: 5px; }
-  .logo-container .edge-logo {
-    max-width: 40px;
-    left: 0;
-    top: -5px;
-    display: inline-block;
-    position: relative; }
+
+.logo-container .edge-logo {
+  max-width: 40px;
+  left: 0;
+  top: -5px;
+  display: inline-block;
+  position: relative; }
 
 @media (min-width: 768px) {
   .logo-container {
@@ -125,6 +135,6 @@ header {
     width: 115px;
     text-align: center;
     padding: 5px; }
-    .logo-container .edge-logo {
-      top: 0;
-      max-width: 45px; } }
+  .logo-container .edge-logo {
+    top: 0;
+    max-width: 45px; } }

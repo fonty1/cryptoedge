@@ -1,67 +1,84 @@
 .totalTable {
   margin-bottom: 50px; }
-  .totalTable .flexTable {
-    width: 100%;
-    margin-bottom: 10px; }
-    .totalTable .flexTable.desktop {
-      display: none; }
-    .totalTable .flexTable.mobile {
-      display: table; }
-    .totalTable .flexTable .table-row.header {
-      background-color: #efefef;
-      height: 46px; }
-    .totalTable .flexTable .table-row.header .column {
-      text-align: center;
-      vertical-align: bottom;
-      font-size: 1.2rem;
-      padding-right: 0; }
-    .totalTable .flexTable .table-row.header .column span {
-      font-size: 1rem;
-      display: block;
-      color: #CCC;
-      font-weight: normal;
-      height: 30px; }
-    .totalTable .flexTable .table-row {
-      display: flex;
-      display: -webkit-flex;
-      flex-direction: row;
-      -webkit-flex-direction: row;
-      flex-wrap: nowrap;
-      width: 100%;
-      padding-left: 15px;
-      vertical-align: middle; }
-    .totalTable .flexTable .table-row:nth-of-type(odd) {
-      background-color: #f5f5f5; }
-    .totalTable .flexTable .column {
-      flex-grow: 1;
-      -webkit-flex-grow: 1;
-      flex-shrink: 1;
-      -webkit-flex-shrink: 1;
-      vertical-align: bottom;
-      padding: 14px 2px 3px 2px;
-      text-align: center; }
-    .totalTable .flexTable .totalUSDcolumn {
-      width: 100px; }
-    .totalTable .flexTable .totalBTCcolumn {
-      width: 100px; }
-    .totalTable .flexTable .totalPLColumn {
-      width: 100px; }
-    .totalTable .flexTable .oneHourColumn {
-      width: 100px; }
-    .totalTable .flexTable .twentyFourHoursColumn {
-      width: 100px; }
-    .totalTable .flexTable .sevenDaysColumn {
-      width: 100px; }
-    @media (min-width: 768px) {
-      .totalTable .flexTable .column {
-        flex-grow: 1;
-        -webkit-flex-grow: 1;
-        flex-shrink: 1;
-        -webkit-flex-shrink: 1;
-        padding: 14px 12px 3px 12px;
-        line-height: 1; } }
-  @media (min-width: 768px) {
-    .totalTable .flexTable.desktop {
-      display: table; }
-    .totalTable .flexTable.mobile {
-      display: none; } }
+
+.totalTable .flexTable {
+  width: 100%;
+  margin-bottom: 10px; }
+
+.totalTable .flexTable.desktop {
+  display: none; }
+
+.totalTable .flexTable.mobile {
+  display: table; }
+
+.totalTable .flexTable .table-row.header {
+  background-color: #efefef;
+  height: 46px; }
+
+.totalTable .flexTable .table-row.header .column {
+  text-align: center;
+  vertical-align: bottom;
+  font-size: 0.6em;
+  padding-right: 0; }
+
+.totalTable .flexTable .table-row.header .column span {
+  font-size: 1em;
+  display: block;
+  color: #CCC;
+  font-weight: normal;
+  height: 30px; }
+
+.totalTable .flexTable .table-row {
+  display: flex;
+  display: -webkit-flex;
+  flex-direction: row;
+  -webkit-flex-direction: row;
+  flex-wrap: nowrap;
+  width: 100%;
+  padding-left: 15px;
+  vertical-align: middle; }
+
+.totalTable .flexTable .table-row:nth-of-type(odd) {
+  background-color: #f5f5f5; }
+
+.totalTable .flexTable .column {
+  flex-grow: 1;
+  -webkit-flex-grow: 1;
+  flex-shrink: 1;
+  -webkit-flex-shrink: 1;
+  vertical-align: bottom;
+  padding: 14px 2px 3px 2px;
+  text-align: center; }
+
+.totalTable .flexTable .totalUSDcolumn {
+  width: 100px; }
+
+.totalTable .flexTable .totalBTCcolumn {
+  width: 100px; }
+
+.totalTable .flexTable .totalPLColumn {
+  width: 100px; }
+
+.totalTable .flexTable .oneHourColumn {
+  width: 100px; }
+
+.totalTable .flexTable .twentyFourHoursColumn {
+  width: 100px; }
+
+.totalTable .flexTable .sevenDaysColumn {
+  width: 100px; }
+
+@media (min-width: 768px) {
+  .totalTable .flexTable .column {
+    flex-grow: 1;
+    -webkit-flex-grow: 1;
+    flex-shrink: 1;
+    -webkit-flex-shrink: 1;
+    padding: 14px 12px 3px 12px;
+    line-height: 1; } }
+
+@media (min-width: 768px) {
+  .totalTable .flexTable.desktop {
+    display: table; }
+  .totalTable .flexTable.mobile {
+    display: none; } }

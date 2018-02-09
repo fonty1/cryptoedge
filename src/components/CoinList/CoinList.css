@@ -21,10 +21,9 @@
 
 .marketDataContainer {
   padding-top: 7px; }
-
-.marketDataContainer .marketCap, .marketDataContainer .marketVolume, .marketDataContainer .btcDominance {
-  display: block;
-  padding: 3px; }
+  .marketDataContainer .marketCap, .marketDataContainer .marketVolume, .marketDataContainer .btcDominance {
+    display: block;
+    padding: 3px; }
 
 @media (min-width: 768px) {
   .marketDataContainer .marketCap, .marketDataContainer .marketVolume, .marketDataContainer .btcDominance {

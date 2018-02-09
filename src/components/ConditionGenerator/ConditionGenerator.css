@@ -20,7 +20,7 @@
     color: #757575; }
 
 .redFlagButton, .orangeFlagButton, .greenFlagButton {
-  font-size: 4rem;
+  font-size: 4em;
   transition: opacity .25s ease-in-out;
   -moz-transition: opacity .25s ease-in-out;
   -webkit-transition: opacity .25s ease-in-out; }
@@ -63,7 +63,7 @@
 
 .conditionGenerator .createConditionButton {
   margin: 10px;
-  font-size: 1.8rem;
+  font-size: 1.8em;
   padding: 15px;
   border-radius: 4px;
   background-color: #b1c2d0;
@@ -89,7 +89,7 @@
 
 .noCondition {
   text-align: left;
-  font-size: 1.4rem;
+  font-size: 1.4em;
   color: #999;
   margin-top: -10px; }
 

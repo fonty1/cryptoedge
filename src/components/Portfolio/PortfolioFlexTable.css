@@ -12,7 +12,7 @@
 .Portfolio .flexTable .table-row.header .column {
   text-align: right;
   vertical-align: bottom;
-  font-size: 1.2rem;
+  font-size: 1em;
   padding-right: 0; }
 
 .Portfolio .flexTable .table-row.header .capColumn,
@@ -22,7 +22,7 @@
   text-align: center; }
 
 .Portfolio .flexTable .table-row.header .column span {
-  font-size: 1rem;
+  font-size: 0.8em;
   display: block;
   color: #CCC;
   font-weight: normal;
@@ -233,7 +233,7 @@
     margin-top: -5px; } }
 
 .Portfolio .flexTable .table-row.header .sortByButton {
-  font-size: 1.2rem;
+  font-size: 1em;
   color: black;
   background: transparent;
   border: 0; }
@@ -256,7 +256,7 @@
 
 .Portfolio .flexTable .cryptoSymbol {
   position: relative;
-  font-size: 1.2rem;
+  font-size: 0.6em;
   color: #999;
   display: none; }
 
@@ -296,7 +296,7 @@
   height: 30px; }
 
 .addCoinToPortfolio i, .removeCoinFromPortfolio i {
-  font-size: 2.2rem;
+  font-size: 2em;
   font-weight: normal;
   padding-right: 10px; }
 
@@ -331,7 +331,7 @@
   height: 66px; }
 
 .Portfolio .addCoinToPortfolio {
-  font-size: 1.4rem;
+  font-size: 1.4em;
   margin-left: 12px;
   margin-top: 10px; }
 
