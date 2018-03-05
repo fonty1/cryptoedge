@@ -12,7 +12,6 @@
 .coinList .flexTable .table-row.header .column {
   text-align: right;
   vertical-align: bottom;
-  font-size: 1.2em;
   padding-right: 0; }
 
 .coinList .flexTable .table-row.header .capColumn,
@@ -22,7 +21,6 @@
   text-align: center; }
 
 .coinList .flexTable .table-row.header .column span {
-  font-size: 1.2em;
   display: block;
   color: #CCC;
   font-weight: normal;
@@ -62,7 +60,7 @@
 
 .coinList .flexTable .nameColumn {
   order: 2;
-  width: 150px;
+  width: 180px;
   text-align: left; }
 
 .coinList .flexTable .priceUSDColumn {
@@ -133,7 +131,7 @@
     text-align: center; }
   .coinList .flexTable .nameColumn {
     order: 3;
-    width: 180px;
+    width: 200px;
     text-align: left; }
   .coinList .flexTable .priceUSDColumn {
     order: 4;
@@ -180,7 +178,6 @@
     margin-top: -5px; } }
 
 .coinList .table-row.header .sortByButton {
-  font-size: 0.6em;
   color: black;
   background: transparent;
   border: 0; }
@@ -193,7 +190,8 @@
 
 .coinList .cryptoNameFull {
   position: relative;
-  display: inline; }
+  display: inline;
+  font-size: 0.9em; }
 
 .coinList .cryptoSymbol {
   position: relative;

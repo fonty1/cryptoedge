@@ -15,11 +15,6 @@ const AppHeader = ( { coinListPortfolioActions, uiActions, coinsLoading } ) => {
     uiActions.showFlagModal();
   }
 
-  const tipJarModalClick = e => {
-    e.preventDefault();
-    uiActions.showTipJarModal();
-  }
-
   const aboutModalClick = e => {
     e.preventDefault();
     uiActions.showAboutModal();
@@ -45,40 +40,10 @@ const AppHeader = ( { coinListPortfolioActions, uiActions, coinsLoading } ) => {
                 About
               </a>
             </li>
-            <li className="right hide">
-              <a>
-                <i className="fa fa-user" aria-hidden="true"></i>
-                Sign Up
-              </a>
-            </li>
-            <li className="right" onClick={tipJarModalClick}>
-              <a>
-                <i className="fa fa-btc" aria-hidden="true"></i>
-                Tip Jar
-              </a>
-            </li>
-            <li className="right hide">
-              <a>
-                <i className="fa fa-share-alt" aria-hidden="true"></i>
-                Share
-              </a>
-            </li>
-            <li className="right hide">
-              <a>
-                <i className="fa fa-cog" aria-hidden="true"></i>
-                Settings
-              </a>
-            </li>
             <li className="right" onClick={flagModalClick}>
               <a>
                 <i className="fa fa-flag" aria-hidden="true"></i>
                 If - Then
-              </a>
-            </li>
-            <li className="right hide">
-              <a>
-                <i className="fa fa-calculator" aria-hidden="true"></i>
-                Converter
               </a>
             </li>
             <li className={"right refresh " + (coinsLoading ? 'loading' : '')} onClick={refreshClick}>

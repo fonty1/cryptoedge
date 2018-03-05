@@ -21,7 +21,6 @@
   .table-row.header .column {
     text-align: right;
     vertical-align: bottom;
-    font-size: 1em;
     padding-right: 0;
   }
 
@@ -33,17 +32,10 @@
   }
 
   .table-row.header .column span {
-    font-size: 0.8em;
     display: block;
     color: #CCC;
     font-weight: normal;
     height: 30px;
-  }
-
-  @media (min-width: 768px) {
-    .table-row.header {
-
-    }
   }
 
   //
@@ -327,7 +319,6 @@
   }
 
   .table-row.header .sortByButton {
-    font-size: 1em;
     color: black;
     background: transparent;
     border: 0;
@@ -355,6 +346,7 @@
   .cryptoNameFull {
     position: relative;
     display: inline;
+    font-size: 0.9em;
   }
 
   .cryptoSymbol {

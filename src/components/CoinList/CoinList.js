@@ -82,7 +82,9 @@ class CoinList extends React.Component {
                         </button>
                       </div>
                       <div className="nameColumn column">
-                        Crypto
+                        <button className="sortByButton">
+                          Crypto
+                        </button>
                       </div>
                       <div className="priceUSDColumn column">
                         <button onClick={() => this.sortByPriceUSD()} className="sortByButton">

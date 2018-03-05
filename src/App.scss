@@ -76,3 +76,17 @@ body {
     }
   }
 }
+
+// Table Header fixes
+
+.sortByButton {
+  font-size: 0.7em;
+}
+
+.column {
+  min-width: 100px;
+}
+
+.addCoinToPortfolioColumn, .removeCoinFromPortfolioColumn  {
+  min-width: initial;
+}

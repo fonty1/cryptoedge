@@ -41,7 +41,7 @@ import usdt from '../img/usdt.png';
 import unknown from '../img/unknown.png';
 
 //const url = "https://cors-anywhere.herokuapp.com/https://api.coinmarketcap.com/v1/ticker/?limit=10";
-const url = "https://api.coinmarketcap.com/v1/ticker/?limit=200";
+const url = "https://api.coinmarketcap.com/v1/ticker/?limit=300";
 const marketDataUrl = "https://api.coinmarketcap.com/v1/global/";
 
 const api = {

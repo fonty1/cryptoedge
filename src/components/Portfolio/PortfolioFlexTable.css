@@ -12,7 +12,6 @@
 .Portfolio .flexTable .table-row.header .column {
   text-align: right;
   vertical-align: bottom;
-  font-size: 1em;
   padding-right: 0; }
 
 .Portfolio .flexTable .table-row.header .capColumn,
@@ -22,7 +21,6 @@
   text-align: center; }
 
 .Portfolio .flexTable .table-row.header .column span {
-  font-size: 0.8em;
   display: block;
   color: #CCC;
   font-weight: normal;
@@ -233,7 +231,6 @@
     margin-top: -5px; } }
 
 .Portfolio .flexTable .table-row.header .sortByButton {
-  font-size: 1em;
   color: black;
   background: transparent;
   border: 0; }
@@ -252,7 +249,8 @@
 
 .Portfolio .flexTable .cryptoNameFull {
   position: relative;
-  display: inline; }
+  display: inline;
+  font-size: 0.9em; }
 
 .Portfolio .flexTable .cryptoSymbol {
   position: relative;

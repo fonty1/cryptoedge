@@ -105,7 +105,9 @@ class Portfolio extends Component {
                             </button>
                         </div>
                         <div className="nameColumn column">
-                            Crypto
+                            <button className="sortByButton">
+                              Crypto
+                            </button>
                         </div>
                         <div className="coinCountColumn column">
                             <button onClick={() => this.sortByCoinCount()} className="sortByButton">
